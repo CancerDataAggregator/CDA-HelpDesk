@@ -5,7 +5,7 @@ Integrative cancer research currently is hampered by the fact that important dat
 
 In addition to a query engine, the CDA will provide a central repository for basic clinical and biospecimen metadata to serve as a primary resource for the CRDC. It will contain both open- and controlled-access metadata in a structured format to support federation across multiple repositories. This central repository will be accessible via an Application Programming Interface (API) and includes mechanisms for receiving new data and updating existing data. The central repository will eliminate the need for each CRDC repository to store redundant copies of common clinical and biospecimen data. This will avoid discrepancies between individual CRDC repositories that could compromise the CDA’s ability to return accurate results. The CDA will facilitate interoperability within the cancer data ecosystem to make complex datasets available to the research community to perform integrative analysis. 
 
-**cdapython** (/c-d-a python/) is a Python library sits on top of the machine generated [CDA Python Client](https://github.com/CancerDataAggregator/cda-service-python-client) built to make it more pleasant to query the CDA.
+**cdapython** (/c-d-a python/) is a Python library sits on top of the machine generated `CDA Python Client <https://github.com/CancerDataAggregator/cda-service-python-client/>` built to make it more pleasant to query the CDA.
 It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
 and offers a *simple* and *intuitive* API.
 
