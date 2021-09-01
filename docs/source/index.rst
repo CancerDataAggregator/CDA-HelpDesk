@@ -21,5 +21,8 @@ Contents
 
 .. toctree::
 
-   usage
-   api
+   Installation
+   Usage
+   Query Examples
+   Release notes
+   Troubleshooting
