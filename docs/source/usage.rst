@@ -1,7 +1,8 @@
 Basics Usage
 ============
 
-.. _Usage:
+.. _usage:
+
 We will now show you the basic structure of `CDA python` through the use of the most commands:
 
 - ``columns()``: show all available columns in the table,
