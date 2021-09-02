@@ -21,8 +21,8 @@ Contents
 
 .. toctree::
 
-   Usage
    Installation
+   usage
    Query Examples
    Release notes
    Troubleshooting
