@@ -1,5 +1,5 @@
-Basics Usage
-============
+Usage
+=====
 
 .. _usage:
 
