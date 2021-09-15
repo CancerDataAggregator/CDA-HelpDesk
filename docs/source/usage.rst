@@ -1,3 +1,4 @@
+=====
 Usage
 =====
 
@@ -7,12 +8,13 @@ We will now show you the basic structure of `CDA python` through the use of the 
 
 - ``columns()``: show all available columns in the table,
 - ``unique_terms()``: for a given column show all unique terms,
-- ``Q``: Executes this query on the public CDA server, and
+- ``Q``: Executes this query on the public CDA server,
+- ``query`` : allows you to write long form Q statments with out chaining, and
 - ``Q.sql``: allows you to enter SQL style queries.
-- ``single_operator_parser`` : allows you to write long form Q statments with out chaining
+
 
 columns
--------
+-----
 
 ``columns()`` displays all of the fields that can be queried using the ``Q`` or ``single_operator_parser`` (e.g. ethnicity, tumor stage, disease type, etc.)
 
@@ -256,8 +258,8 @@ There are three operators available:
 The following examples show how those operators work in practice.
 
 
-### Query 1
-
+Query 1
++++++++
 **Find data for subjects who were diagnosed after the age of 50 and who were investigated as part of the TCGA-OV project.**
 
 .. code-block:: python
@@ -283,8 +285,8 @@ The following examples show how those operators work in practice.
  More pages: False
 
 
-### Query 2
-
+Query 2
++++++++
 **Find data for donors with melanoma (Nevi and Melanomas) diagnosis and who were diagnosed before the age of 30.**
 
 .. code-block:: python
@@ -544,6 +546,28 @@ Limit: 2
 Count: 2
 More pages: Yes
 
+
+
+query
+-----
+
+To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
+
+ >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
+ >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
+ >>> q3 = Q('ResearchSubject.Specimen.identifier.system = "GDC"')
+ 
+ >>> q = q1.And(q2.And(q3))
+ 
+can be rewritten using the `query` function:
+
+>>> query('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas" AND ResearchSubject.Diagnosis.age_at_diagnosis < 30*365 AND ResearchSubject.identifier.system = "GDC"')
+>>> result = q1.run()
+
+Q.sql
+-----
+
+In some cases 
 .. code-block:: python
  r1 = Q.sql("""
  SELECT
@@ -575,7 +599,3 @@ More pages: Yes
   'primary_disease_type': 'Adenomas and Adenocarcinomas',
   'race': None,
   'sex': None}
-
-
->>> single_operator_parser('ResearchSubject.identifier.system = "GDC" FROM ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma" AND ResearchSubject.identifier.system = "PDC"')
->>> result = q1.run()
