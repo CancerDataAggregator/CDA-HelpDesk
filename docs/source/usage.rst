@@ -246,12 +246,12 @@ The record is pretty large, so we'll print out identifier values for each Resear
 
 The values represent ResearchSubject IDs and are equivalent to case_id values in data nodes.
 
-Now that we can create a query with ```Q()``` function, let's see how we can combine multiple conditions.
+Now that we can create a query with ``Q()`` function, let's see how we can combine multiple conditions.
 
 There are three operators available:
-* ``And()``
-* ``Or()``
-* ``From()``
+ * ``And()``
+ * ``Or()``
+ * ``From()``
 
 The following examples show how those operators work in practice.
 
@@ -260,87 +260,98 @@ The following examples show how those operators work in practice.
 
 **Find data for subjects who were diagnosed after the age of 50 and who were investigated as part of the TCGA-OV project.**
 
->>> q1 = Q('ResearchSubject.Diagnosis.age_at_diagnosis > 50*365')
->>> q2 = Q('ResearchSubject.associated_project = "TCGA-OV"')
+.. code-block:: python
 
->>> q = q1.And(q2)
->>> r = q.run()
-
->>> print(r)
-
-Getting results from database
-
-Total execution time: 10550 ms
-
-QueryID: d43dd6bc-cab5-43c0-a683-ff32c5a6f621
-Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis WHERE ((_Diagnosis.age_at_diagnosis > 50*365) AND (_ResearchSubject.associated_project = 'TCGA-OV'))
-Offset: 0
-Count: 461
-Total Row Count: 461
-More pages: False
+ 
+ >>> q1 = Q('ResearchSubject.Diagnosis.age_at_diagnosis > 50*365')
+ >>> q2 = Q('ResearchSubject.associated_project = "TCGA-OV"')
+ 
+ >>> q = q1.And(q2)
+ >>> r = q.run()
+ 
+ >>> print(r)
+ 
+ Getting results from database
+ 
+ Total execution time: 10550 ms
+ 
+ QueryID: d43dd6bc-cab5-43c0-a683-ff32c5a6f621
+ Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis WHERE ((_Diagnosis.age_at_diagnosis > 50*365) AND (_ResearchSubject.associated_project = 'TCGA-OV'))
+ Offset: 0
+ Count: 461
+ Total Row Count: 461
+ More pages: False
 
 
 ### Query 2
 
 **Find data for donors with melanoma (Nevi and Melanomas) diagnosis and who were diagnosed before the age of 30.**
 
->>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
->>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
+.. code-block:: python
 
->>> q = q1.And(q2)
->>> r = q.run()
-
->>> print(r)
-Getting results from database
-
-Total execution time: 11287 ms
-
-QueryID: 02c118d4-08ac-442f-bc79-71b794bab6bc
-Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis WHERE ((_Specimen.primary_disease_type = 'Nevi and Melanomas') AND (_Diagnosis.age_at_diagnosis < 30*365))
-Offset: 0
-Count: 647
-Total Row Count: 647
-More pages: False
+ >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
+ >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
+ 
+ >>> q = q1.And(q2)
+ >>> r = q.run()
+ 
+ >>> print(r)
+ 
+ Getting results from database
+ 
+ Total execution time: 11287 ms
+ 
+ QueryID: 02c118d4-08ac-442f-bc79-71b794bab6bc
+ Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis WHERE ((_Specimen.primary_disease_type = 'Nevi and Melanomas') AND (_Diagnosis.age_at_diagnosis < 30*365))
+ Offset: 0
+ Count: 647
+ Total Row Count: 647
+ More pages: False
 
 
 In addition, we can check how many records come from particular systems by adding one more condition to the query:
 
->>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
->>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
->>> q3 = Q('ResearchSubject.Specimen.identifier.system = "GDC"')
+.. code-block:: python
 
->>> q = q1.And(q2.And(q3))
->>> r = q.run()
-
->>> print(r)
-
->>> q1 = Q('ResearchSubject.primary_disease_type = "Adenomas and Adenocarcinomas"')
->>> r = q1.run()                                 # Executes this query on the public CDA server
-Getting results from database
-
-Total execution time: 9604 ms
-
-QueryID: 2cd1f165-f6f5-49e4-b699-b4df191a540f
-Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Specimen.identifier) AS _identifier WHERE ((_Specimen.primary_disease_type = 'Nevi and Melanomas') AND ((_Diagnosis.age_at_diagnosis < 30*365) AND (_identifier.system = 'GDC')))
-Offset: 0
-Count: 647
-Total Row Count: 647
-More pages: False
+ >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
+ >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
+ >>> q3 = Q('ResearchSubject.Specimen.identifier.system = "GDC"')
+ 
+ >>> q = q1.And(q2.And(q3))
+ >>> r = q.run()
+ 
+ >>> print(r)
+ 
+ >>> q1 = Q('ResearchSubject.primary_disease_type = "Adenomas and Adenocarcinomas"')
+ >>> r = q1.run()                                 # Executes this query on the public CDA server
+ 
+ Getting results from database
+ 
+ Total execution time: 9604 ms
+ 
+ QueryID: 2cd1f165-f6f5-49e4-b699-b4df191a540f
+ Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Specimen.identifier) AS _identifier WHERE ((_Specimen.primary_disease_type = 'Nevi and Melanomas') AND ((_Diagnosis.age_at_diagnosis < 30*365) AND (_identifier.system = 'GDC')))
+ Offset: 0
+ Count: 647
+ Total Row Count: 647
+ More pages: False
 
 
 By comparing the ``Count`` value of the two results we can see that all the patients returned in the initial query are coming from the GDC.
 
 To explore the results further, we can fetch the patient JSON objects by iterating through the results:
 
->>> projects = set()
+.. code-block:: python
 
->>> for patient in r:
->>>     research_subjects = patient['ResearchSubject']
->>>     for rs in research_subjects:
->>>         projects.add(rs['associated_project'])
-
->>> print(projects)
-{'FM-AD', 'TCGA-UVM', 'TCGA-SKCM'}
+ >>> projects = set()
+ 
+ >>> for patient in r:
+ >>>     research_subjects = patient['ResearchSubject']
+ >>>     for rs in research_subjects:
+ >>>         projects.add(rs['associated_project'])
+ 
+ >>> print(projects)
+ {'FM-AD', 'TCGA-UVM', 'TCGA-SKCM'}
 
 
 The output shows the projects where Nevi and Melanomas cases appear.
@@ -353,43 +364,48 @@ The output shows the projects where Nevi and Melanomas cases appear.
 * **Disease is ovarian or breast cancer**
 * **Subjects are females under the age of 60 years**
 
->>> tumor_type = Q('ResearchSubject.Specimen.source_material_type = "Primary Tumor"')
->>> disease1 = Q('ResearchSubject.primary_disease_site = "Ovary"')
->>> disease2 = Q('ResearchSubject.primary_disease_site = "Breast"')
->>> demographics1 = Q('sex = "female"')
->>> demographics2 = Q('days_to_birth > -60*365') # note that days_to_birth is a negative value
+.. code-block:: python
 
->>> q1 = tumor_type.And(demographics1.And(demographics2))
->>> q2 = disease1.Or(disease2)
->>> q = q1.And(q2)
-
->>> r = q.run()
->>> print(r)
-Getting results from database
-
-Total execution time: 20529 ms
-
-QueryID: 2b325482-f764-4675-aebe-43f7e8d4004a
-Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen WHERE (((_Specimen.source_material_type = 'Primary Tumor') AND ((v3.sex = 'female') AND (v3.days_to_birth > -60*365))) AND ((_ResearchSubject.primary_disease_site = 'Ovary') OR (_ResearchSubject.primary_disease_site = 'Breast')))
-Offset: 0
-Count: 1000
-Total Row Count: 27284
-More pages: True
+ >>> tumor_type = Q('ResearchSubject.Specimen.source_material_type = "Primary Tumor"')
+ >>> disease1 = Q('ResearchSubject.primary_disease_site = "Ovary"')
+ >>> disease2 = Q('ResearchSubject.primary_disease_site = "Breast"')
+ >>> demographics1 = Q('sex = "female"')
+ >>> demographics2 = Q('days_to_birth > -60*365') # note that days_to_birth is a negative value
+ 
+ >>> q1 = tumor_type.And(demographics1.And(demographics2))
+ >>> q2 = disease1.Or(disease2)
+ >>> q = q1.And(q2)
+ 
+ >>> r = q.run()
+ >>> print(r)
+ 
+ Getting results from database
+ 
+ Total execution time: 20529 ms
+ 
+ QueryID: 2b325482-f764-4675-aebe-43f7e8d4004a
+ Query: SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen WHERE (((_Specimen.source_material_type = 'Primary Tumor') AND ((v3.sex = 'female') AND (v3.days_to_birth > -60*365))) AND ((_ResearchSubject.primary_disease_site = 'Ovary') OR (_ResearchSubject.primary_disease_site = 'Breast')))
+ Offset: 0
+ Count: 1000
+ Total Row Count: 27284
+ More pages: True
 
 
 In this case, we have a result that contains more than 1000 records which is the default page size. To load the next 1000 records, we can use the ``next_page()`` method:
 
->>> r2 = r.next_page()
+.. code-block:: python
 
->>> print(r2)
+ >>> r2 = r.next_page()
+ 
+ >>> print(r2)
 
 Alternatively, we can use the ``offset`` argument to specify the record to start from:
 
-```
-...
-r = q.run(offset=1000)
-print(r)
-```
+.. code-block:: python
+ ...
+ >>> r = q.run(offset=1000)
+ >>> print(r)
+
 
 ### Query 4
 
@@ -432,141 +448,134 @@ Since “Ovarian Serous Cystadenocarcinoma” doesn’t appear in GDC values we 
  'Papillary Renal Cell Carcinoma',
  'Oral Squamous Cell Carcinoma']
  
- After examining the output, we see that it does come from the PDC. Hence, if we could first identify the data that has research subjects found within the PDC that have this particular disease type, and then further narrow down the results to include only the portion of the data that is present in GDC, we could get the records that we are looking for.
+After examining the output, we see that it does come from the PDC. Hence, if we could first identify the data that has research subjects found within the PDC that have this particular disease type, and then further narrow down the results to include only the portion of the data that is present in GDC, we could get the records that we are looking for.
 
->>> q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
->>> q2 = Q('ResearchSubject.identifier.system = "PDC"')
->>> q3 = Q('ResearchSubject.identifier.system = "GDC"')
->>> 
->>> q = q3.From(q1.And(q2))
->>> r = q.run()
->>> 
->>> print(r)
-Getting results from database
+.. code-block:: python
 
-Total execution time: 11682 ms
-
-QueryID: 9755ed03-e8de-4e26-9ea8-de8a9b3a0c94
-Query: SELECT v3.* FROM (SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_disease_type = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'GDC')
-Offset: 0
-Count: 275
-Total Row Count: 275
-More pages: False
+ >>> q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
+ >>> q2 = Q('ResearchSubject.identifier.system = "PDC"')
+ >>> q3 = Q('ResearchSubject.identifier.system = "GDC"')
+ >>> 
+ >>> q = q3.From(q1.And(q2))
+ >>> r = q.run()
+ >>> 
+ >>> print(r)
+ Getting results from database
+ 
+ Total execution time: 11682 ms
+ 
+ QueryID: 9755ed03-e8de-4e26-9ea8-de8a9b3a0c94
+ Query: SELECT v3.* FROM (SELECT v3.* FROM gdc-bq-sample.cda_mvp.v3 AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_disease_type = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS v3, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'GDC')
+ Offset: 0
+ Count: 275
+ Total Row Count: 275
+ More pages: False
 
 As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single patient. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
 
 
+.. code-block:: python
+ >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
+ >>> r = q1.run(limit=2)                        # Limit to two results per page
+ 
+ >>> r.sql   # Return SQL string used to generate the query e.g.
+ "SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
+
+>>> print(r) # Prints some brief information about the result page eg:
+Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
+Offset: 0
+Limit: 2
+Count: 2
+More pages: Yes
 
 
+>>> r[0] # Returns nth result of this page as a Python dict e.g.
+ {'days_to_birth': None,
+  'race': None,
+  'sex': None,
+  'ethnicity': None,
+  'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+  'ResearchSubject': [{'Diagnosis': [],
+    'Specimen': [],
+    'associated_project': 'CGCI-HTMCP-CC',
+    'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+    'primary_disease_type': 'Adenomas and Adenocarcinomas',
+    'identifier': [{'system': 'GDC',
+      'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+    'primary_disease_site': 'Cervix uteri'}],
+  'Diagnosis': [],
+  'Specimen': [],
+  'associated_project': 'CGCI-HTMCP-CC',
+  'primary_disease_type': 'Adenomas and Adenocarcinomas',
+  'identifier': [{'system': 'GDC',
+    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+  'primary_disease_site': 'Cervix uteri'}
 
 
-# r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
-# r = q1.run(limit=2)                        # Limit to two results per page
+>>> r.pretty_print(0) # Prints the nth result nicely
+ { 'Diagnosis': [],
+   'ResearchSubject': [ { 'Diagnosis': [],
+                          'Specimen': [],
+                          'associated_project': 'CGCI-HTMCP-CC',
+                          'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+                          'identifier': [ { 'system': 'GDC',
+                                            'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+                          'primary_disease_site': 'Cervix uteri',
+                          'primary_disease_type': 'Adenomas and '
+                                                  'Adenocarcinomas'}],
+   'Specimen': [],
+   'associated_project': 'CGCI-HTMCP-CC',
+   'days_to_birth': None,
+   'ethnicity': None,
+   'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+   'identifier': [ { 'system': 'GDC',
+                     'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+   'primary_disease_site': 'Cervix uteri',
+   'primary_disease_type': 'Adenomas and Adenocarcinomas',
+   'race': None,
+   'sex': None}
 
 
-r.sql   # Return SQL string used to generate the query e.g.
-# "SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
+>>> r2 = r.next_page()  # Fetches the next page of results
+>>> print(r2)
+Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
+Offset: 2
+Limit: 2
+Count: 2
+More pages: Yes
 
-print(r) # Prints some brief information about the result page eg:
-#
-# Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
-# Offset: 0
-# Limit: 2
-# Count: 2
-# More pages: Yes
+.. code-block:: python
+ r1 = Q.sql("""
+ SELECT
+ *
+ FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject
+ WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')
+ """)
 
-
-r[0] # Returns nth result of this page as a Python dict e.g.
-#
-# {'days_to_birth': None,
-#  'race': None,
-#  'sex': None,
-#  'ethnicity': None,
-#  'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-#  'ResearchSubject': [{'Diagnosis': [],
-#    'Specimen': [],
-#    'associated_project': 'CGCI-HTMCP-CC',
-#    'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-#    'primary_disease_type': 'Adenomas and Adenocarcinomas',
-#    'identifier': [{'system': 'GDC',
-#      'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-#    'primary_disease_site': 'Cervix uteri'}],
-#  'Diagnosis': [],
-#  'Specimen': [],
-#  'associated_project': 'CGCI-HTMCP-CC',
-#  'primary_disease_type': 'Adenomas and Adenocarcinomas',
-#  'identifier': [{'system': 'GDC',
-#    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-#  'primary_disease_site': 'Cervix uteri'}
-
-
-r.pretty_print(0) # Prints the nth result nicely
-#
-# { 'Diagnosis': [],
-#   'ResearchSubject': [ { 'Diagnosis': [],
-#                          'Specimen': [],
-#                          'associated_project': 'CGCI-HTMCP-CC',
-#                          'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-#                          'identifier': [ { 'system': 'GDC',
-#                                            'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-#                          'primary_disease_site': 'Cervix uteri',
-#                          'primary_disease_type': 'Adenomas and '
-#                                                  'Adenocarcinomas'}],
-#   'Specimen': [],
-#   'associated_project': 'CGCI-HTMCP-CC',
-#   'days_to_birth': None,
-#   'ethnicity': None,
-#   'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-#   'identifier': [ { 'system': 'GDC',
-#                     'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-#   'primary_disease_site': 'Cervix uteri',
-#   'primary_disease_type': 'Adenomas and Adenocarcinomas',
-#   'race': None,
-#   'sex': None}
+>>> r1.pretty_print(0)
+{ 'Diagnosis': [],
+  'ResearchSubject': [ { 'Diagnosis': [],
+                         'Specimen': [],
+                         'associated_project': 'CGCI-HTMCP-CC',
+                         'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+                         'identifier': [ { 'system': 'GDC',
+                                           'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+                         'primary_disease_site': 'Cervix uteri',
+                         'primary_disease_type': 'Adenomas and '
+                                                 'Adenocarcinomas'}],
+  'Specimen': [],
+  'associated_project': 'CGCI-HTMCP-CC',
+  'days_to_birth': None,
+  'ethnicity': None,
+  'id': 'HTMCP-03-06-02177',
+  'id_1': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+  'identifier': [ { 'system': 'GDC',
+                    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+  'primary_disease_site': 'Cervix uteri',
+  'primary_disease_type': 'Adenomas and Adenocarcinomas',
+  'race': None,
+  'sex': None}
 
 
-r2 = r.next_page()  # Fetches the next page of results
-
-print(r2)
-
-# Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
-# Offset: 2
-# Limit: 2
-# Count: 2
-# More pages: Yes
-
-r1 = Q.sql("""
-SELECT
-*
-FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject
-WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')
-""")
-
-r1.pretty_print(0)
-#
-#{ 'Diagnosis': [],
-#  'ResearchSubject': [ { 'Diagnosis': [],
-#                         'Specimen': [],
-#                         'associated_project': 'CGCI-HTMCP-CC',
-#                         'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-#                         'identifier': [ { 'system': 'GDC',
-#                                           'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-#                         'primary_disease_site': 'Cervix uteri',
-#                         'primary_disease_type': 'Adenomas and '
-#                                                 'Adenocarcinomas'}],
-#  'Specimen': [],
-#  'associated_project': 'CGCI-HTMCP-CC',
-#  'days_to_birth': None,
-#  'ethnicity': None,
-#  'id': 'HTMCP-03-06-02177',
-#  'id_1': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-#  'identifier': [ { 'system': 'GDC',
-#                    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-#  'primary_disease_site': 'Cervix uteri',
-#  'primary_disease_type': 'Adenomas and Adenocarcinomas',
-#  'race': None,
-#  'sex': None}
-
-
-single_operator_parser('ResearchSubject.identifier.system = "GDC" FROM ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma" AND ResearchSubject.identifier.system = "PDC"')
-result = q1.run()
+>>> single_operator_parser('ResearchSubject.identifier.system = "GDC" FROM ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma" AND ResearchSubject.identifier.system = "PDC"')
+>>> result = q1.run()
