@@ -11,7 +11,7 @@ We will now show you the basic structure of `CDA python` through the use of the 
 - ``Q.sql``: allows you to enter SQL style queries.
 - ``single_operator_parser`` : allows you to write long form Q statments with out chaining
 
-colums
+columns
 -------
 
 ``columns()`` displays all of the fields that can be queried using the ``Q`` or ``single_operator_parser`` (e.g. ethnicity, tumor stage, disease type, etc.)
