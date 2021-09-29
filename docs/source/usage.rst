@@ -358,7 +358,8 @@ To explore the results further, we can fetch the patient JSON objects by iterati
 
 The output shows the projects where Nevi and Melanomas cases appear.
 
-### Query 3
+Query 3
++++++++
 
 **Identify all samples that meet the following conditions:**
 
@@ -409,7 +410,8 @@ Alternatively, we can use the ``offset`` argument to specify the record to start
  >>> print(r)
 
 
-### Query 4
+Query 4
++++++
 
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and genomic data.**
 
@@ -477,6 +479,7 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
 
 
 .. code-block:: python
+
  >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
  >>> r = q1.run(limit=2)                        # Limit to two results per page
  
@@ -553,6 +556,8 @@ query
 
 To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
 
+ .. code-block:: python
+ 
  >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
  >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
  >>> q3 = Q('ResearchSubject.Specimen.identifier.system = "GDC"')
@@ -567,7 +572,8 @@ can be rewritten using the `query` function:
 Q.sql
 -----
 
-In some cases 
+In some cases
+
 .. code-block:: python
  r1 = Q.sql("""
  SELECT
