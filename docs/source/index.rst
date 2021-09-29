@@ -24,5 +24,6 @@ Contents
    Installation
    usage
    Query Examples
+   limits.md
    Release notes
    Troubleshooting
