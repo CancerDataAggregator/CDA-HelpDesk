@@ -402,6 +402,7 @@ In this case, we have a result that contains more than 1000 records which is the
  
  >>> print(r2)
 
+
 Alternatively, we can use the ``offset`` argument to specify the record to start from:
 
 .. code-block:: python
@@ -479,21 +480,19 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
 
 
 .. code-block:: python
-
- >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
- >>> r = q1.run(limit=2)                        # Limit to two results per page
- 
- >>> r.sql   # Return SQL string used to generate the query e.g.
- "SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
-
+>>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
+>>> r = q1.run(limit=2)                        # Limit to two results per page
+>>> 
+>>> r.sql   # Return SQL string used to generate the query e.g.
+"SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
+>>>
 >>> print(r) # Prints some brief information about the result page eg:
 Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
 Offset: 0
 Limit: 2
 Count: 2
 More pages: Yes
-
-
+>>>
 >>> r[0] # Returns nth result of this page as a Python dict e.g.
  {'days_to_birth': None,
   'race': None,
@@ -515,8 +514,7 @@ More pages: Yes
   'identifier': [{'system': 'GDC',
     'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
   'primary_disease_site': 'Cervix uteri'}
-
-
+>>>
 >>> r.pretty_print(0) # Prints the nth result nicely
  { 'Diagnosis': [],
    'ResearchSubject': [ { 'Diagnosis': [],
@@ -539,8 +537,7 @@ More pages: Yes
    'primary_disease_type': 'Adenomas and Adenocarcinomas',
    'race': None,
    'sex': None}
-
-
+>>>
 >>> r2 = r.next_page()  # Fetches the next page of results
 >>> print(r2)
 Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
@@ -548,7 +545,6 @@ Offset: 2
 Limit: 2
 Count: 2
 More pages: Yes
-
 
 
 query
