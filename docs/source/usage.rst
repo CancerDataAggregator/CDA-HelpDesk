@@ -460,10 +460,10 @@ After examining the output, we see that it does come from the PDC. Hence, if we 
  >>> q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
  >>> q2 = Q('ResearchSubject.identifier.system = "PDC"')
  >>> q3 = Q('ResearchSubject.identifier.system = "GDC"')
- >>> 
+ 
  >>> q = q3.From(q1.And(q2))
  >>> r = q.run()
- >>> 
+ 
  >>> print(r)
  Getting results from database
  
@@ -480,20 +480,21 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
 
 
 .. code-block:: python
->>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
->>> r = q1.run(limit=2)                        # Limit to two results per page
->>> 
->>> r.sql   # Return SQL string used to generate the query e.g.
-"SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
->>>
->>> print(r) # Prints some brief information about the result page eg:
-Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
-Offset: 0
-Limit: 2
-Count: 2
-More pages: Yes
->>>
->>> r[0] # Returns nth result of this page as a Python dict e.g.
+
+ >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
+ >>> r = q1.run(limit=2)                        # Limit to two results per page
+ 
+ >>> r.sql   # Return SQL string used to generate the query e.g.
+ "SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
+ 
+ >>> print(r) # Prints some brief information about the result page eg:
+ Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
+ Offset: 0
+ Limit: 2
+ Count: 2
+ More pages: Yes
+ 
+ >>> r[0] # Returns nth result of this page as a Python dict e.g.
  {'days_to_birth': None,
   'race': None,
   'sex': None,
@@ -514,8 +515,8 @@ More pages: Yes
   'identifier': [{'system': 'GDC',
     'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
   'primary_disease_site': 'Cervix uteri'}
->>>
->>> r.pretty_print(0) # Prints the nth result nicely
+  
+ >>> r.pretty_print(0) # Prints the nth result nicely
  { 'Diagnosis': [],
    'ResearchSubject': [ { 'Diagnosis': [],
                           'Specimen': [],
@@ -537,14 +538,14 @@ More pages: Yes
    'primary_disease_type': 'Adenomas and Adenocarcinomas',
    'race': None,
    'sex': None}
->>>
->>> r2 = r.next_page()  # Fetches the next page of results
->>> print(r2)
-Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
-Offset: 2
-Limit: 2
-Count: 2
-More pages: Yes
+   
+ >>> r2 = r.next_page()  # Fetches the next page of results
+ >>> print(r2)
+ Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
+ Offset: 2
+ Limit: 2
+ Count: 2
+ More pages: Yes
 
 
 query
@@ -552,7 +553,7 @@ query
 
 To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
 
- .. code-block:: python
+.. code-block:: python
  
  >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
  >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
@@ -571,15 +572,16 @@ Q.sql
 In some cases
 
 .. code-block:: python
-r1 = Q.sql("""
-SELECT
-*
-FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject
-WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')
-""")
 
->>> r1.pretty_print(0)
-{ 'Diagnosis': [],
+ r1 = Q.sql("""
+ SELECT
+ *
+ FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject
+ WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')
+ """)
+ 
+ >>> r1.pretty_print(0)
+ { 'Diagnosis': [],
   'ResearchSubject': [ { 'Diagnosis': [],
                          'Specimen': [],
                          'associated_project': 'CGCI-HTMCP-CC',
