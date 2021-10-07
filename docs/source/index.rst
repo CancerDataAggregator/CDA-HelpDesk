@@ -27,3 +27,4 @@ Contents
    limits.md
    Release notes
    Troubleshooting
+   contact_info.md
