@@ -22,16 +22,13 @@ The achievements for R2 are outlined as follows:
 
 ## R2 ETL Process Overview
 
-	Each DC (GDC, PDC, and IDC) are all extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. We have figured out a way to create a table/view merging these two tables, and querying from the resulting table/view.
+Each DC (GDC, PDC, and IDC) are all extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. We have figured out a way to create a table/view merging these two tables, and querying from the resulting table/view.
 
 
 
-#ref(docs/source/ETL_Figures/ETL_Fig_1.png)
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
-
-_Figure 1. _
+![Figure1](ETL_Figures/ETL_Fig_1.png "Figure 1")
+|:--:| 
+| *Figure 1* |
 
 
 ### Current Flow of GDC and PDC ETL
@@ -41,14 +38,10 @@ The ETL processes for GDC and PDC data are very similar. They can be broken into
 
 #### Extraction and Transformation
 
+![Figure2](ETL_Figures/ETL_Fig2.png "Figure 2")
+|:--:| 
+| *Figure 2* |
 
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)	
-
-_Figure 2. _
 
 The extraction process for each node implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 2 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from **file** to **specimen **and** case**. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. There are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to.
 
@@ -59,14 +52,9 @@ Since the extracted data and the output of the transform code are written on a c
 
 #### Merger of GDC and PDC Data
 
-
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
-
-_Figure 3. _
+![Figure3](ETL_Figures/ETL_Fig3.png "Figure 3")
+|:--:| 
+| *Figure 3* |
 
 The merging of data between GDC and PDC is very similar to the aggregation step in the extraction and transformation sub-process. The merge code searches the GDC and PDC files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends ResearchSubject and File records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created (and hopefully will be sent to each DC).
 
@@ -76,16 +64,11 @@ The merging of data between GDC and PDC is very similar to the aggregation step 
 
 #### Direct From IDC BigQuery Table/View
 
-	The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
+The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
 
-
-
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
-
-_Figure 4. _
+![Figure4](ETL_Figures/ETL_Fig4.png "Figure 4")
+|:--:| 
+| *Figure 4* |
 
 
 ### Merging GDC/PDC with IDC
@@ -106,133 +89,85 @@ To merge the GDC/PDC table with the IDC table, CDA implements a procedure that i
 
 All the fields that are currently available through the CDA are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
-
 <table>
-  <tr>
-   <td><code>{</code>
-<p>
-<code>  case_id: value,</code>
-<p>
-<code>  ...</code>
-<p>
-<code>  project: {...},</code>
-<p>
-<code>  demographic: {...},</code>
-<p>
-<code>  diagnoses: [...],</code>
-<p>
-<code>  samples: [</code>
-<p>
-<code>    {</code>
-<p>
-<code>      ...</code>
-<p>
-<code>      portions: [</code>
-<p>
-<code>        {</code>
-<p>
-<code>         ...</code>
-<p>
-<code>         slides: [...],</code>
-<p>
-<code>         analytes: [</code>
-<p>
-<code>           {</code>
-<p>
-<code>             ...</code>
-<p>
-<code>             aliquots: [...]</code>
-<p>
-<code>            }</code>
-<p>
-<code>          ]</code>
-<p>
-<code>        }</code>
-<p>
-<code>      ]</code>
-<p>
-<code>    }</code>
-<p>
-<code>  ],</code>
-<p>
-<code>  files: [...]</code>
-<p>
-<code>}</code>
-   </td>
-   <td><code>{</code>
-<p>
-<code>  case_id: value,</code>
-<p>
-<code>  ...</code>
-<p>
-<code>  project: {...},</code>
-<p>
-<code>  demographic: {...},</code>
-<p>
-<code>  diagnoses: [...],</code>
-<p>
-<code>  samples: [</code>
-<p>
-<code>    {</code>
-<p>
-<code>      ...</code>
-<p>
-<code>      files: [...],</code>
-<p>
-<code>      portions: [</code>
-<p>
-<code>        {</code>
-<p>
-<code>          ...</code>
-<p>
-<code>          files: [...],</code>
-<p>
-<code>          slides: [</code>
-<p>
-<code>            {</code>
-<p>
-<code>              ...</code>
-<p>
-<code>              files: [...],</code>
-<p>
-<code>          analytes: [</code>
-<p>
-<code>            {</code>
-<p>
-<code>              ...</code>
-<p>
-<code>              files: [...],</code>
-<p>
-<code>              aliquots: [</code>
-<p>
-<code>                {</code>
-<p>
-<code>                  ...</code>
-<p>
-<code>                  files: [...]</code>
-<p>
-<code>                } </code>
-<p>
-<code>              ]</code>
-<p>
-<code>            }</code>
-<p>
-<code>          ]</code>
-<p>
-<code>        }</code>
-<p>
-<code>      ]</code>
-<p>
-<code>    }</code>
-<p>
-<code>  ],</code>
-<p>
-<code>  files: [...]</code>
-<p>
-<code>}</code>
-   </td>
-  </tr>
+<tr>
+<th>GDC Extract w/out File/Specimen Link</th>
+<th>GDC Extract with File/Specimen Link</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  case_id: value,
+  ...
+  project: {...},
+  demographic: {...},
+  diagnoses: [...],
+  samples: [
+    {
+      ...
+      portions: [
+        {
+         ...
+         slides: [...],
+         analytes: [
+           {
+             ...
+             aliquots: [...]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  files: [...]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  case_id: value,
+  ...
+  project: {...},
+  demographic: {...},
+  diagnoses: [...],
+  samples: [
+    {
+      ...
+      files: [...],
+      portions: [
+        {
+          ...
+          files: [...],
+          slides: [
+            {
+              ...
+              files: [...],
+          analytes: [
+            {
+              ...
+              files: [...],
+              aliquots: [
+                {
+                  ...
+                  files: [...]
+                } 
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  files: [...]
+}
+
+</pre>
+</td>
+</tr>
 </table>
+
 
 
 Table 1. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right we can see the final, processed JSON that includes **files** record under all specimen entities. The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
