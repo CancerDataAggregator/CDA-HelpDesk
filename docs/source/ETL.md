@@ -22,8 +22,7 @@ The achievements for R2 are outlined as follows:
 
 ## R2 ETL Process Overview
 
-Each DC (GDC, PDC, and IDC) are all extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. We have figured out a way to create a table/view merging these two tables, and querying from the resulting table/view.
-
+Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
 
 
 ![Figure1](ETL_Figures/ETL_Fig_1.png "Figure 1")
@@ -43,11 +42,11 @@ The ETL processes for GDC and PDC data are very similar. They can be broken into
 | *Figure 2* |
 
 
-The extraction process for each node implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 2 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from **file** to **specimen **and** case**. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. There are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to.
+The extraction process for each node implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 2 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from **file** to **specimen** and **case**. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to.
 
 The file created by the extraction process is written with one case/ResearchSubject per line. This extracted file is then submitted to the transformation code. The code reads the extracted file line by line, and transforms each line into the data structure expected in our BigQuery tables. 
 
-Since the extracted data and the output of the transform code are written on a case by case basis, whereas our data structure is on a subject by subject basis, further aggregation of the data is needed. The aggregation code searches for any entries in the transformed data which have identical ids (**Subject** level id) and aggregates those entries together. Currently the demographic information is coalesced between cases, whereas the **ResearchSubject** and **File** records from different cases are appended. The error logs for the individual DC examine the demographic data of two or more correlating **Subject**/**ResearchSubject** records and logs any discrepancy. After aggregation has occurred for both GDC and PDC, the next sub-process is ready to be performed.
+Since the extracted data and the output of the transform code are written on a case by case / **ResearchSubject** by **ResearchSubject** basis, whereas our data structure is on a **Subject** by **Subject** basis, further aggregation of the data is needed. The aggregation code searches for any entries in the transformed data which have identical ids (**Subject** level id) and aggregates those entries together. Currently the demographic information is coalesced between cases, whereas the **ResearchSubject** and **File** records from different cases are appended. The error logs for the individual DC examine the demographic data of two or more correlating **Subject**/**ResearchSubject** records and logs any discrepancy. After aggregation has occurred for both GDC and PDC, the next sub-process is ready to be performed.
 
 
 #### Merger of GDC and PDC Data
@@ -56,7 +55,7 @@ Since the extracted data and the output of the transform code are written on a c
 |:--:| 
 | *Figure 3* |
 
-The merging of data between GDC and PDC is very similar to the aggregation step in the extraction and transformation sub-process. The merge code searches the GDC and PDC files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends ResearchSubject and File records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created (and hopefully will be sent to each DC).
+The merging of data between GDC and PDC is very similar to the aggregation step in the extraction and transformation sub-process. The merge code searches the GDC and PDC files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends ResearchSubject and File records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created.
 
 
 ### IDC Flow
@@ -64,11 +63,11 @@ The merging of data between GDC and PDC is very similar to the aggregation step 
 
 #### Direct From IDC BigQuery Table/View
 
-The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
-
 ![Figure4](ETL_Figures/ETL_Fig4.png "Figure 4")
 |:--:| 
 | *Figure 4* |
+
+The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
 
 
 ### Merging GDC/PDC with IDC
@@ -76,7 +75,7 @@ The ETL process of IDC data takes a more concise approach. A single query is exe
 
 #### A Single Query to Create a Merged View
 
-To merge the GDC/PDC table with the IDC table, CDA implements a procedure that is very similar to the one used to create the merged GDC/PDC table. Subjects with the same id are merged and File information from both tables are appended. The id fields are coalesced since all merged subject records have the same id. The identifier, subject_associated_project, and File records are appended, and the demographic info along with ResearchSubject records are taken from the GDC/PDC table since IDC does not contain that info. The query used to implement this merger, and create the view that the CDA API queries from is shown in the appendix.
+To merge the GDC/PDC table with the IDC table, CDA implements a procedure that is very similar to the one used to create the merged GDC/PDC table. Subjects with the same id are merged and File information from both tables are appended. The id fields are coalesced since all merged subject records have the same id. The identifier, subject_associated_project, and File records are appended, and the demographic info along with ResearchSubject records are taken from the GDC/PDC table since IDC does not contain that information. The query used to implement this merger, and create the view that the CDA API queries from is shown in the appendix.
 
 
 ## Appendix
@@ -167,22 +166,16 @@ All the fields that are currently available through the CDA are pulled from the 
 </td>
 </tr>
 </table>
-
-
-
 Table 1. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right we can see the final, processed JSON that includes **files** record under all specimen entities. The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
 
-To be able to associate files and specimen entities, the `file_id,` `cases.samples.sample_id, cases.samples.portions.portion_id,` `cases.samples.portions.slides.slide_id, cases.samples.portions.analytes.analyte_id, and `
+To be able to associate files and specimen entities, the `file_id`, `cases.samples.sample_id, `cases.samples.portions.portion_id`, `cases.samples.portions.slides.slide_id`, `cases.samples.portions.analytes.analyte_id`, and `cases.samples.portions.analytes.aliquots.aliquot_id` fields from the _files_ endpoint were used (see [GDC documentation for file fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields)).
 
-`Cases.samples.portions.analytes.aliquots.aliquot_id `fields from the _files_ endpoint were used (see [GDC documentation for file fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields)).
-
-It is worth mentioning that there are files which are not associated with specimens (only with cases), and those are now available in Release 2.
+It is worth reiterating that there are files which are solely associated with cases, and not associated with specimens. These are now available in Release 2.
 
 
 #### PDC Extraction
 
 To get the PDC data, six graphQL queries were used:
-
 
 
 * filesMetadata
@@ -194,7 +187,7 @@ To get the PDC data, six graphQL queries were used:
 
 The first query used is filesMetadata. This query creates a cache file that contains a dictionary where the keys are sample or aliquot ids, and the values are lists of file ids associated with that sample or aliquot. 
 
-The next query – allPrograms – is used to get all the available Programs, and Studies. The extraction code loops over all Programs and Studies and performs several queries for each PDC study. Most queries are from the cases endpoint and include paginatedCaseDemographicsPerStudy, paginatedCaseDiagnosesPerStudy, and paginatedCasesSamplesAliquots. They are used to gather the demographics, diagnoses, and specimen records for all cases within the study. biospecimenPerStudy is used solely to determine the taxon/species of the cases in the study. For each case and specimen in the study, file information is added from the cache file created by the filesMetadata query. The result looks as follows:
+The next query – allPrograms – is used to get all the available Programs, and Studies. The extraction code loops over all Programs and Studies and performs several queries for each PDC study. Most queries are from the cases endpoint and include paginatedCaseDemographicsPerStudy, paginatedCaseDiagnosesPerStudy, and paginatedCasesSamplesAliquots. They are used to gather the demographics, diagnoses, and specimen records for all cases within the study. biospecimenPerStudy is used solely to determine the taxon/species of the cases in the study. For each case and specimen in the study, file information is added from the cache file created by the filesMetadata query. The result looks as follows for a single PDC case record after adding file information:
 
 
 ```
@@ -218,9 +211,7 @@ The next query – allPrograms – is used to get all the available Programs, an
   files: [...]
 }
 ```
-
-
-Table 2. PDC JSON for a single case record after adding file information. The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
+The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
 
 
 #### Transformation
@@ -234,61 +225,261 @@ For this section, the DC’s are similar enough that the differences can be show
 
 ##### step 1: Transformation
 
-	For GDC and PDC, we iterate over every entry from the extracted data file and make specific changes to that entry. These include creating a top Subject level of data which correlates to the Subject entity as defined by the CCDH model. From there, the specific case information is recorded in a ResearchSubject entity, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry is still representative of a case, now known as a ResearchSubject, but has Subject level information. A simplified example of an entry is given below in Figure X.
+For GDC and PDC, we iterate over every entry from the extracted data file and make specific changes to that entry. These include creating a top Subject level of data which correlates to the Subject entity as defined by the CCDH model. From there, the specific case information is recorded in a ResearchSubject entity, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry is still representative of a case, now known as a ResearchSubject, but has Subject level information. A simplified example of an entry is given below in Table 2.
 
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
-
-Figure X
+<table>
+<tr>
+<th>Entry 1</th>
+<th>Transformed Entry 1</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  submitter_id: S1
+  case_id: C3
+  demographics:
+    {days_to_birth: 45}
+  primary_disease_site: Brain
+  files:
+    {file_id: file_1.doc}
+    {file_id: file_2.txt}
+  samples:
+    {sample_id: samp_1
+    files:
+      {file_id: file_2.txt}
+    }
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: S1
+  days_to_birth: 45
+  ResearchSubject:
+    {id: C3
+    primary_disease_site: Brain
+    File:
+      {id: file_1.doc}
+      {id: file_2.txt}
+    Specimen:
+      {id: samp_1
+      File:
+        {id: file_2.txt}
+      }
+    }
+  File:
+    {id: file_1.doc}
+    {id: file_2.txt}
+}
+</pre>
+</td>
+</tr>
+</table>
+Table 2
 
 
 ##### step 2: Aggregation 
 
-At this point, a list of Subjects and corresponding ResearchSubjects is made, and any Subject with multiple ResearchSubjects has the records for ResearchSubjects and File records appended (with duplicates removed from File) under a single entry for the Subject. A simplified example of this aggregation can be seen in Figure X below.
+At this point, a list of Subjects and corresponding ResearchSubjects is made, and any Subject with multiple ResearchSubject records has the ResearchSubject and File records appended (with duplicates removed from File) under a single entry for the Subject. A simplified example of this aggregation can be seen in Table 3 below.
 
+<table>
+<tr>
+<th>Transformed Entry 1</th>
+<th>Transformed Entry 2</th>
+<th>Aggregated</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  id: S1
+  days_to_birth: 45
+  ResearchSubject:
+    {id: C3
+    primary_disease_site: Brain
+    File:
+      {id: file_1.doc}
+      {id: file_2.txt}
+    Specimen:
+      {id: samp_1
+      File:
+        {id: file_2.txt}
+      }
+    }
+  File:
+    {id: file_1.doc}
+    {id: file_2.txt}
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: S1
+  days_to_birth: 45
+  ResearchSubject:
+    {id: C7
+    primary_disease_site: Brain
+    File:
+      {id: file_1.doc}
+      {id: file_5.txt}
+    Specimen:
+      {id: samp_4
+      File:
+        {id: file_5.txt}
+      }
+    }
+  File:
+    {id: file_1.doc}
+    {id: file_5.txt}
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: S1
+  days_to_birth: 45
+  ResearchSubject:
+    {id: C3
+    primary_disease_site: Brain
+    File:
+      {id: file_1.doc}
+      {id: file_2.txt}
+    Specimen:
+      {id: samp_1
+      File:
+        {id: file_2.txt}
+      }
+    },
+    {id: C7
+    primary_disease_site: Brain
+    File:
+      {id: file_1.doc},
+      {id: file_5.txt}
+    Specimen:
+      {id: samp_4
+      File:
+        {id: file_5.txt}
+      }
+    }
+  File:
+    {id: file_1.doc},
+    {id: file2.txt}
+    {id: file_5.txt}
+}
+</pre>
+</td>
+</tr>
+</table>
+Table 3
 
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
-
-Figure X
-
-Transformed Entry 1 and 2 are aggregated in this example. Transformed Entry 1 and 2 both correspond to the Subject with the id ‘S1’, but have different ResearchSubject records, and overlapping entries in their Subject level File records (file_1.doc is in both). The aggregated entry appended the ResearchSubject records together, and appended the File records together while removing duplicate entry.
+Transformed Entry 1 and 2 are aggregated in this example. Transformed Entry 1 and 2 both correspond to the Subject with the id ‘S1’, but have different ResearchSubject records, and overlapping entries in their Subject level File records (file_1.doc is in both). The aggregated entry appended the ResearchSubject records together, and appended the File records together while removing the duplicate entry.
 
 
 #### Merge
 
-After the data from GDC and PDC have been transformed into a common data format, merging the data together can begin. Subject level info is coalesced, and any data from records in ResearchSubject and File are simply appended underneath the same Subject. A simplified example of the merge between GDC and PDC data can be seen in figure 2.
+After the data from GDC and PDC have been transformed into a common data format, merging the data together can begin. Subject level info is coalesced, and any data from records in ResearchSubject and File are simply appended underneath the same Subject. A simplified example of the merge between GDC and PDC data can be seen in Table 4.
 
-
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href="https://github.com/evbacher/gd2md-html/wiki/Google-Drawings-by-reference">Google Drawings by reference</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![drawing](https://docs.google.com/drawings/d/12345/export/png)
-
-Figure 2. Simplified example of a merger between GDC and PDC
+<table>
+<tr>
+<th>GDC</th>
+<th>PDC</th>
+<th>Merged</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: 23
+  race: None
+  sex: M
+  ResearchSubject:
+    {id: A1
+    ...
+    }
+    {id: A2
+    ...
+    }
+  File:
+    {id: file_G1.doc
+    ...
+    }
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: None
+  race: Caucasian
+  sex: F
+  ResearchSubject:
+    {id: B4
+    ...
+    }
+    {id: B5
+    ...
+    }
+  File:
+    {id: file_P1.doc
+    ...
+    }
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: 23
+  race: Caucasian
+  sex: M
+  ResearchSubject:
+    {id: A1
+    ...
+    }
+    {id: A2
+    ...
+    }
+    {id: B4
+    ...
+    }
+    {id: B5
+    ...
+    }
+  File:
+    {id: file_G1.doc
+    ...
+    }
+    {id: file_P1.doc
+    ...
+    }
+}
+</pre>
+</td>
+</tr>
+</table>
+Table 4. Simplified example of a merger between GDC and PDC
 
 
 ##### Subject level merge
 
-	The fields at the Subject level are merged based on coalescing data. The code looks for values in GDC, then PDC until a value is found. The first value found is used in the merged data, unless there is strictly conflicting data. In Figure 2, id under Subject must be the same to consider merging data. The example for days_to_birth shows that GDC has a value of 23, whereas PDC shows none. Since GDC has a populated value, and PDC has none, the value from GDC is stored as the value for days_to_birth. Similarly, for race, GDC has no recorded value but PDC has a value of ‘Caucasian’. Since GDC is empty, and PDC has a value, the value from PDC is stored. The final example shows conflicting data between GDC and PDC. GDC records sex as ‘M’ whereas PDC records it as ‘F’. Due to conflicting information, this instance is recorded in a log, but the GDC value of ‘M’ is used in the merged data.
+The fields at the Subject level are merged based on coalescing data. The code looks for values in GDC, then PDC until a value is found. The first value found is used in the merged data, unless there is strictly conflicting data. In Figure 2, id under Subject must be the same to consider merging data. The example for days_to_birth shows that GDC has a value of 23, whereas PDC shows none. Since GDC has a populated value, and PDC has none, the value from GDC is stored as the value for days_to_birth. Similarly, for race, GDC has no recorded value but PDC has a value of ‘Caucasian’. Since GDC is empty, and PDC has a value, the value from PDC is stored. The final example shows conflicting data between GDC and PDC. GDC records sex as ‘M’ whereas PDC records it as ‘F’. Due to conflicting information, this instance is recorded in a log, but the GDC value of ‘M’ is used in the merged data.
 
 
 ##### ResearchSubject level append
 
-Looking at Figure 2., in the merged data, all of the records from the ResearchSubject from GDC and PDC are appended. Currently no merging happens at this level, but will be supported in future releases. 
+Looking at Table 4, in the merged data, all of the records from the ResearchSubject from GDC and PDC are appended. Currently no merging happens at this level.
 
 
 ##### File level append
 
-Looking at Figure 2., in the merged data, all of the records from the File from GDC and PDC are appended. Currently no merging happens at this level and none is expected at this point in time.
+Looking at Table 4, in the merged data, all of the records from the File from GDC and PDC are appended. Currently no merging happens at this level and none is expected at this point in time.
 
 
 ### IDC
@@ -298,6 +489,7 @@ Looking at Figure 2., in the merged data, all of the records from the File from 
 
 For Release 2, the IDC extraction and transformation process are executed using one query. This is possible due to IDC making their data available on BigQuery, as well as other features of BigQuery including temporary functions, array aggregation of structured data, and grouping data by particular fields (id, species, etc.). The query currently used is:
 
+```
 CREATE TEMP FUNCTION idc_species_mapping(x STRING) 
 
 RETURNS STRING AS 
@@ -349,7 +541,7 @@ STRING(NULL) AS checksum) ) as File
 FROM `canceridc-data.idc_v4.dicom_pivot_v4` 
 
 GROUP by id, species, collection_id
-
+```
 
 ##### Temp Functions
 
@@ -369,7 +561,7 @@ This statement selects which table from IDC to query from, as well as how to agg
 ### Merge GDC/PDC and IDC
 
 The query used to merge the GDC/PDC and IDC tables on BigQuery is shown below.
-
+```
 SELECT COALESCE(t1.id, t2.id) as id,
 
 ARRAY_CONCAT(
@@ -409,3 +601,4 @@ t1.ResearchSubject
 FROM `gdc-bq-sample.integration.gdc_pdc` t1
 
 FULL OUTER JOIN `gdc-bq-sample.integration.idc_v4` t2 ON t1.id = t2.id
+```
