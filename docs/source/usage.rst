@@ -112,7 +112,27 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Cell Lines',
  'Normal Adjacent Tissue',
  'Xenograft']
- 
+
+.. warning::
+ Some columns are array value and do not have `unique_terms`. Arrays columns contain multiple values; an example of this would be `File.identifier` which as  comprised of `system` (which data common the information is from) and `value` (the id for a given file). Below is the list of column values that do have `unique_terms`.
+  
+ - 'File',
+ - 'File.identifier',
+ - 'identifier',
+ - 'ResearchSubject',
+ - 'ResearchSubject.Diagnosis',
+ - 'ResearchSubject.Diagnosis.Treatment',
+ - 'ResearchSubject.Specimen',
+ - 'ResearchSubject.Specimen.File',
+ - 'ResearchSubject.Specimen.File.associated_project',
+ - 'ResearchSubject.Specimen.File.identifier',
+ - 'ResearchSubject.Specimen.identifier',
+ - 'ResearchSubject.identifier',
+ - 'subject_associated_project',
+ - 'ResearchSubject.Diagnosis.identifier',
+ - 'ResearchSubject.Diagnosis.Treatment.identifier',
+ - 'ResearchSubject.File',
+ - 'ResearchSubject.File.identifier'
 
 Q
 ----
