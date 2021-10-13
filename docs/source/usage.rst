@@ -19,7 +19,7 @@ We will now show you the basic structure of `CDA python` through the use of the 
 
 
 def some_func(foo, bar, baz):
-  """
+  ```
   Does some stuff
   :param foo: The foo to bar
   :type foo: int
@@ -29,10 +29,10 @@ def some_func(foo, bar, baz):
   :type baz: float
   :returns: The frobnicated baz
   :rtype: float
-  """
+  ```
 
 def some_func(foo, bar, baz):
-  """
+  ```
   Does some stuff
 
   Parameters
@@ -49,7 +49,7 @@ def some_func(foo, bar, baz):
   -------
   float
     The frobnicated baz
-  """
+  ```
   
 columns
 -----
