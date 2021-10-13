@@ -12,13 +12,29 @@ We will now show you the basic structure of `CDA python` through the use of the 
 - ``query`` : allows you to write long form Q statments with out chaining, and
 - ``Q.sql``: allows you to enter SQL style queries.
 
+**To begin we will first load all of the library and it's methods:**
+
+>>> from cdapython import Q, columns, unique_terms, query
+
+
+
+def some_func(foo, bar, baz):
+  """Does some stuff
+  :param foo: The foo to bar
+  :type foo: int
+  :param bar: Bar to use on foo
+  :type bar: str
+  :param baz: Baz to frobnicate
+  :type baz: float
+  :returns: The frobnicated baz
+  :rtype: float
+  """
 
 columns
 -----
 
-``columns()`` displays all of the fields that can be queried using the ``Q`` or ``single_operator_parser`` (e.g. ethnicity, tumor stage, disease type, etc.)
+``columns()`` displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
 
->>> from cdapython import Q, columns, unique_terms
 >>> columns() # List column names eg:
 ['days_to_birth',
  'race',
@@ -114,7 +130,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Xenograft']
 
 .. warning::
- Some columns are array value and do not have `unique_terms`. Arrays columns contain multiple values; an example of this would be `File.identifier` which as  comprised of `system` (which data common the information is from) and `value` (the id for a given file). Below is the list of column values that do have `unique_terms`.
+ Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
   
  - 'File',
  - 'File.identifier',
