@@ -19,7 +19,8 @@ We will now show you the basic structure of `CDA python` through the use of the 
 
 
 def some_func(foo, bar, baz):
-  """Does some stuff
+  """
+  Does some stuff
   :param foo: The foo to bar
   :type foo: int
   :param bar: Bar to use on foo
@@ -30,6 +31,26 @@ def some_func(foo, bar, baz):
   :rtype: float
   """
 
+def some_func(foo, bar, baz):
+  """
+  Does some stuff
+
+  Parameters
+  ----------
+  foo : int, float, str, or tf.Tensor
+    The foo to bar, which has a really really, reeeeeeeeeeeeeeeeally
+    unnecessarily long multiline description.
+  bar : str
+    Bar to use on foo
+  baz : float
+    Baz to frobnicate
+
+  Returns
+  -------
+  float
+    The frobnicated baz
+  """
+  
 columns
 -----
 
