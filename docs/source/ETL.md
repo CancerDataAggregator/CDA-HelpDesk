@@ -1,6 +1,23 @@
-# R2 ETL Documentation
+# CDA Extraction Transfer and Load (ETL) Documentation
 ## Introduction
-The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data table which the API layer queries. A brief overview of the entire process is seen below in Fig.1. Data from the Data Commons (DC), GDC and PDC, undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the CCDH model before being merged together and loaded to BigQuery. IDC data is queried and transformed using a single BigQuery query. The results of this query are saved as a table in BigQuery. The merged GDC/PDC table and IDC table are merged in a view that is queried by the CDA API.
+The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data table which the API layer queries. A brief overview of the entire process is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the CCDH model before being merged together and loaded to BigQuery. IDC data is queried and transformed using a single BigQuery query. The results of this query are saved as a table in BigQuery. The merged GDC/PDC table and [IDC](https://portal.imaging.datacommons.cancer.gov/) table are merged in a view that is queried by the CDA API.
+
+## Data extraction and release information
+To identify the current version and release dates for each of the database, you can run the following command:
+
+```
+r = Q.sql("SELECT option_value FROM `gdc-bq-sample.integration.INFORMATION_SCHEMA.TABLE_OPTIONS` WHERE table_name = 'all_v1'")
+strings = r[0]['option_value'].split('\\n')
+new_strings = []
+
+for string in strings:
+    new_string = string.replace('\"', '')
+    new_strings.append(new_string)
+print(new_strings)
+```
+
+Which will produce the following output:
+['GDC extraction date - 09/27/2021', 'GDC data release - v30.0', 'PDC extraction date - 09/27/2021', 'PDC data release - v2.1', 'IDC extraction date - 09/27/2021', 'IDC data release - Version 3.0']
 
 ## R2 ETL Achievements
 The achievements for R2 are outlined as follows:
