@@ -16,75 +16,25 @@ We will now show you the basic structure of `CDA python` through the use of the 
 
 >>> from cdapython import Q, columns, unique_terms, query
 
-
-
-def func(arg1, arg2):
-    """Summary line.
-
-    Extended description of function.
-
-    Parameters
-    ----------
-    arg1 : int
-        Description of arg1
-    arg2 : str
-        Description of arg2
-
-    Returns
-    -------
-    bool
-        Description of return value
-
-    Raises
-    ------
-    AttributeError
-        The ``Raises`` section is a list of all exceptions
-        that are relevant to the interface.
-    ValueError
-        If `arg2` is equal to `arg1`.
-
-    See Also
-    --------
-    otherfunc: some other related function
-
-    Examples
-    --------
-    These are written in doctest format, and should illustrate how to
-    use the function.
-
-    >>> a=1
-    >>> b=2
-    >>> func(a,b)
-    True
-    """
-    if arg1 == arg2:
-        raise ValueError('arg1 must not be equal to arg2')
-
-    return True
-def some_func(foo, bar, baz):
-  ```
-  Does some stuff
-
-  Parameters
-  ----------
-  foo : int, float, str, or tf.Tensor
-    The foo to bar, which has a really really, reeeeeeeeeeeeeeeeally
-    unnecessarily long multiline description.
-  bar : str
-    Bar to use on foo
-  baz : float
-    Baz to frobnicate
-
-  Returns
-  -------
-  float
-    The frobnicated baz
-  ```
   
 columns
 -----
+``columns(version = 'all_v1', host = None, limit = 100, table = 'integration')``
 
-``columns()`` displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
+displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
+
+**Parameters:**
+   - version: str [Optional]
+       - version allows you to select different version of SQL (Big Query) tables to runs querys on; default = 'all_v1'
+   - host: str [Optional]
+       - host allows you to change the server in which you queries run; default = None (Board Institute)
+   - limit: int [Optional]
+       - limit allows you to set the number of values that ``columns`` returns; default = 100
+   - table: str [Optional]
+        table allows you to select with Big Query table is being searched; default = 'integration'
+**Returns:**
+    list
+**Example:**
 
 >>> columns() # List column names eg:
 ['days_to_birth',
@@ -150,6 +100,26 @@ The names in the list may look familiar to you, but they may have been renamed o
  
 unique_terms
 -------
+``unique_terms(col_name: str, system: str = '', limit: int = 100, host: Optional[str] = None, table: Optional[str] = None)``
+
+displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
+
+**Parameters:**
+    - col_name: str
+        - col_name is the value from the `column()` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
+    - system: str [Optional]
+        - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see ..ref: limit.md_)
+    - limit: int [Optional]
+        - limit allows you to set the number of values that ``columns`` returns; default = 100   
+    - host: str [Optional]
+        - host allows you to change the server in which you queries run; default = None (Board Institute)
+    - table: str [Optional] 
+        - table allows you to select with Big Query table is being searched; default = 'integration'
+**Returns:**
+    list
+**Example:**
+
+
 
 For each searchable field there are set values that can be searched (excluding numberic), to determine these vaues the ``unique_terms()`` command is used. For example if we were interested in searchable disease types were would type the following:
 
