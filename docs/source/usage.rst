@@ -704,10 +704,10 @@ In some cases more complex queries are required, and for that purpose we have im
 Pointing to a custom CDA instance
 ----
 
-`.run()` will execute the query on the public CDA API (`https://cda.cda-dev.broadinstitute.org/api/cda/v1/`).
+``.run()`` will execute the query on the public .. _CDA API: https://cda.cda-dev.broadinstitute.org/api/cda/v1/ .
 
-`.run("http://localhost:8080")` will execute the query on a CDA server running at
-`http://localhost:8080`.
+``.run("http://localhost:8080")`` will execute the query on a CDA server running at
+``http://localhost:8080``.
 
 Quick Explanation on UNNEST usage in BigQuery
 ----
