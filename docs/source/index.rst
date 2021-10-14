@@ -24,7 +24,7 @@ Contents
    Installation
    usage
    Query Examples
-   limits.md
+   ETL.md
    Release notes
    Troubleshooting
    contact_info.md
