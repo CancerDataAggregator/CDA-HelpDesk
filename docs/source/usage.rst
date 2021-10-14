@@ -24,13 +24,13 @@ columns
 displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
 
 **Parameters:**
-   - version: str [Optional]
+   - version : str [Optional]
        - version allows you to select different version of SQL (Big Query) tables to runs querys on; default = 'all_v1'
-   - host: str [Optional]
+   - host : str [Optional]
        - host allows you to change the server in which you queries run; default = None (Board Institute)
-   - limit: int [Optional]
+   - limit : int [Optional]
        - limit allows you to set the number of values that ``columns`` returns; default = 100
-   - table: str [Optional]
+   - table : str [Optional]
         table allows you to select with Big Query table is being searched; default = 'integration'
 **Returns:**
     list
@@ -105,15 +105,15 @@ unique_terms
 displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
 
 **Parameters:**
-    - col_name: str
+    - col_name : str
         - col_name is the value from the `column()` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
-    - system: str [Optional]
+    - system : str [Optional]
         - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see ..ref: limit.md_)
-    - limit: int [Optional]
+    - limit : int [Optional]
         - limit allows you to set the number of values that ``columns`` returns; default = 100   
-    - host: str [Optional]
+    - host : str [Optional]
         - host allows you to change the server in which you queries run; default = None (Board Institute)
-    - table: str [Optional] 
+    - table : str [Optional] 
         - table allows you to select with Big Query table is being searched; default = 'integration'
 **Returns:**
     list
@@ -173,7 +173,43 @@ Additionally, you can specify a particular data node by using the ``system`` arg
 
 Q
 ----
+``Q(query)``
 
+Q lang is Language used to send query to the cda service
+
+**Parameters:**
+    - query : str
+        - a query string containing a value from ``column()`` with an comparison operator (=, !=, <, >) and a numeric/boolean/unique value form ``unique_terms``. 
+**Returns:**
+    cda python q data type
+    
+Comparison operators
++++++++
+
+The following comparsion operators can be used with the `Q` command: 
+
++---------+---------------------------------------------------+---------------+
+|operator |Description                                        |Q.sql required?|
++=========+===================================================+===============+
+| =       | condition equals                                  |     no        |
++---------+---------------------------------------------------+---------------+
+| !=      | condition is not equal                            | no |
++---------+---------------------------------------------------+---------------+
+| < condition is less than                                    | no |
++---------+---------------------------------------------------+---------------+
+| >condition is greater than                                  | no |
++---------+---------------------------------------------------+---------------+
+| <=      | condition is less than or equal to                | no |
++---------+---------------------------------------------------+---------------+
+| >=   | condition is less than or equal to                   | no |
++---------+---------------------------------------------------+---------------+
+| like    | similar to = but always wildcards ('%', '_', etc) | yes |
++---------+---------------------------------------------------+---------------+
+| in      | compares to a set                                 | yes |
++---------+---------------------------------------------------+---------------+
+
+additionally, more complex SQL can be used with the `Q.sql` command. 
+**Example:**
 Now, let's dive into the querying!
 
 We can start by getting the record for ``id = TCGA-E2-A10A`` that we mentioned earlier:
