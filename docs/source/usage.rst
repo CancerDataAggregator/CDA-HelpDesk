@@ -183,32 +183,33 @@ Q lang is Language used to send query to the cda service
 **Returns:**
     cda python q data type
     
-Comparison operators
+Q Comparison operators
 +++++++
 
 The following comparsion operators can be used with the `Q` command: 
 
-+---------+---------------------------------------------------+---------------+
-|operator |Description                                        |Q.sql required?|
-+=========+===================================================+===============+
-| =       | condition equals                                  |     no        |
-+---------+---------------------------------------------------+---------------+
-| !=      | condition is not equal                            | no |
-+---------+---------------------------------------------------+---------------+
-| < condition is less than                                    | no |
-+---------+---------------------------------------------------+---------------+
-| >condition is greater than                                  | no |
-+---------+---------------------------------------------------+---------------+
-| <=      | condition is less than or equal to                | no |
-+---------+---------------------------------------------------+---------------+
-| >=   | condition is less than or equal to                   | no |
-+---------+---------------------------------------------------+---------------+
-| like    | similar to = but always wildcards ('%', '_', etc) | yes |
-+---------+---------------------------------------------------+---------------+
-| in      | compares to a set                                 | yes |
-+---------+---------------------------------------------------+---------------+
++----------+---------------------------------------------------+---------------+
+| operator |Description                                        |Q.sql required?|
++==========+===================================================+===============+
+| =        | condition equals                                  |     no        |
++----------+---------------------------------------------------+---------------+
+| !=       | condition is not equal                            |     no        |
++----------+---------------------------------------------------+---------------+
+| <        | condition is less than                            |     no        |
++----------+---------------------------------------------------+---------------+
+| >        | condition is greater than                         |     no        |
++----------+---------------------------------------------------+---------------+
+| <=       | condition is less than or equal to                |     no        |
++----------+---------------------------------------------------+---------------+
+| >=       | condition is less than or equal to                |     no        |
++----------+---------------------------------------------------+---------------+
+| like     | similar to = but always wildcards ('%', '_', etc) |    yes        |
++----------+---------------------------------------------------+---------------+
+| in       | compares to a set                                 |    yes        |
++----------+---------------------------------------------------+---------------+
 
 additionally, more complex SQL can be used with the `Q.sql` command. 
+
 **Example:**
 Now, let's dive into the querying!
 
@@ -351,7 +352,7 @@ There are three operators available:
 The following examples show how those operators work in practice.
 
 
-Query 1
+Example Query 1: And
 +++++++
 **Find data for subjects who were diagnosed after the age of 50 and who were investigated as part of the TCGA-OV project.**
 
@@ -378,7 +379,7 @@ Query 1
  More pages: False
 
 
-Query 2
+Example Query 2: And continued
 +++++++
 **Find data for donors with melanoma (Nevi and Melanomas) diagnosis and who were diagnosed before the age of 30.**
 
@@ -451,7 +452,7 @@ To explore the results further, we can fetch the patient JSON objects by iterati
 
 The output shows the projects where Nevi and Melanomas cases appear.
 
-Query 3
+Example Query 3: Or
 +++++++
 
 **Identify all samples that meet the following conditions:**
@@ -504,7 +505,7 @@ Alternatively, we can use the ``offset`` argument to specify the record to start
  >>> print(r)
 
 
-Query 4
+Example Query 4: From
 +++++
 
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and genomic data.**
