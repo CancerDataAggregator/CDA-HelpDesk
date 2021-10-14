@@ -17,7 +17,7 @@ We will now show you the basic structure of `CDA python` through the use of the 
 >>> from cdapython import Q, columns, unique_terms, query
 
   
-columns
+columns()
 -----
 ``columns(version = 'all_v1', host = None, limit = 100, table = 'integration')``
 
@@ -98,7 +98,7 @@ Note that the ``ResearchSubject`` entity is a list of records, as many other ent
 The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. The field name mappings are described in the _CDA Schema Field Mapping_ document that is linked in the _Testing Guide_. A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
  
  
-unique_terms
+unique_terms()
 -------
 ``unique_terms(col_name: str, system: str = '', limit: int = 100, host: Optional[str] = None, table: Optional[str] = None)``
 
@@ -171,7 +171,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  - 'ResearchSubject.File',
  - 'ResearchSubject.File.identifier'
 
-Q
+Q()
 ----
 ``Q(query)``
 
@@ -208,7 +208,7 @@ The following comparsion operators can be used with the `Q` command:
 | in       | compares to a set                                 |    yes        |
 +----------+---------------------------------------------------+---------------+
 
-additionally, more complex SQL can be used with the `Q.sql` command. 
+additionally, more complex SQL can be used with the Q.sql()_ command. 
 
 **Example:**
 Now, let's dive into the querying!
@@ -642,7 +642,7 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
  More pages: Yes
 
 
-query
+query()
 -----
 
 To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
@@ -660,7 +660,7 @@ can be rewritten using the `query` function:
 >>> query('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas" AND ResearchSubject.Diagnosis.age_at_diagnosis < 30*365 AND ResearchSubject.identifier.system = "GDC"')
 >>> result = q1.run()
 
-Q.sql
+Q.sql()
 -----
 
 In some cases
