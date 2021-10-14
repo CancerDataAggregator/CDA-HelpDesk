@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'Cancer Data Aggregator'
-copyright = '2021, Graziella'
+copyright = '2021, Cancer Data Aggregator'
 author = 'Graziella'
 
 release = '0.1'
