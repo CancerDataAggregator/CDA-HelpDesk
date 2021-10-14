@@ -182,6 +182,20 @@ Q lang is Language used to send query to the cda service
 **Returns:**
     cda python q data type
     
+``Q().run``
+
+run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
+
+**Parameters:**
+  - async_call:(bool)
+  - table (str)
+  - offset (int, optional): [description]. Defaults to 0.
+  - limit (int, optional): [description]. Defaults to 100.
+  - version ([type], optional): [description]. Defaults to table_version.
+  - host ([type], optional): [description]. Defaults to CDA_API_URL.
+  - dry_run (bool, optional): [description]. Defaults to False.
+
+    
 Q Comparison operators
 +++++++
 
@@ -210,7 +224,9 @@ The following comparsion operators can be used with the `Q` command:
 additionally, more complex SQL can be used with the `Q.sql()`_ command. 
 
 **Example:**
+
 .. note::
+
 Any given part of a query is expressed as a string of three parts separated by spaces. Therefore, there must be a space on both sides of the comparsion operator. The first part of the query is interpreted as a *column name*, the second as a *comparator* and the third part as a *value*. If the value is a string, it needs to be put in
 quotes.
 
@@ -218,7 +234,7 @@ Now, let's dive into the querying!
 
 We can start by getting the record for ``id = TCGA-E2-A10A`` that we mentioned earlier:
 
->>> q = query('id = "TCGA-E2-A10A"') # note the double quotes for the string value
+>>> q = Q('id = "TCGA-E2-A10A"') # note the double quotes for the string value
 >>> r = q.run()
 >>> print(r)
 Getting results from database
@@ -230,9 +246,9 @@ Count: 1
 Total Row Count: 1
 More pages: False
 
-We see that we've got a single patient record as a result, which is what we expect.
+We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single patient record as a result, which is what we expect.
 
-Let's see how the result looks like:
+Let's take a look at the results:
 
 
 >>> r[0]
@@ -717,13 +733,15 @@ when including a dot(.) structure which may need a quick explanation.
 UNNEST is similar to unwind in which embedded data structures must be flattend to appear in a table or Excel file.
 Note; The following call using the SQL endpoint is not the preferred method to execute a nested attribute query in BigQuery.
 The Q language DSL abstracts the required unnesting that exists in a Record. In BigQuery, structures must be represented in an UNNEST syntax such that:
-`A.B.C.D` must be unwound to `SELECT (_C.D)` in the following fashion: 
+``A.B.C.D`` must be unwound to ``SELECT (_C.D)`` in the following fashion: 
+
 ```
 SELECT (_C.D) 
 from TABLE, UNNEST(A) AS _A, UNNEST(_A.B) as _B, UNNEST(_B.C) as _C
 ```
 
-`ResearchSubject.Specimen.source_material_type` represents a complex record that needs to unwound in SQL syntax to be queried on properly when using SQL.
+``ResearchSubject.Specimen.source_material_type`` represents a complex record that needs to unwound in SQL syntax to be queried on properly when using SQL.
+
 ```
 SELECT DISTINCT(_Specimen.source_material_type) 
 FROM gdc-bq-sample.cda_mvp.v3, 
