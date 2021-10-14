@@ -208,7 +208,7 @@ The following comparsion operators can be used with the `Q` command:
 | in       | compares to a set                                 |    yes        |
 +----------+---------------------------------------------------+---------------+
 
-additionally, more complex SQL can be used with the Q.sql()_ command. 
+additionally, more complex SQL can be used with the `Q.sql()`_ command. 
 
 **Example:**
 Now, let's dive into the querying!
