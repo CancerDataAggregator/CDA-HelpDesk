@@ -2,15 +2,14 @@
 Usage
 =====
 
-.. _usage:
 
 We will now show you the basic structure of `CDA python` through the use of the most commands:
 
 - ``columns()``: show all available columns in the table,
 - ``unique_terms()``: for a given column show all unique terms,
-- ``Q``: Executes this query on the public CDA server,
-- ``query`` : allows you to write long form Q statments with out chaining, and
-- ``Q.sql``: allows you to enter SQL style queries.
+- ``Q()``: Executes this query on the public CDA server,
+- ``query()`` : allows you to write long form Q statments with out chaining, and
+- ``Q.sql()``: allows you to enter SQL style queries.
 
 **To begin we will first load all of the library and it's methods:**
 
@@ -211,6 +210,10 @@ The following comparsion operators can be used with the `Q` command:
 additionally, more complex SQL can be used with the `Q.sql()`_ command. 
 
 **Example:**
+.. note::
+Any given part of a query is expressed as a string of three parts separated by spaces. Therefore, there must be a space on both sides of the comparsion operator. The first part of the query is interpreted as a *column name*, the second as a *comparator* and the third part as a *value*. If the value is a string, it needs to be put in
+quotes.
+
 Now, let's dive into the querying!
 
 We can start by getting the record for ``id = TCGA-E2-A10A`` that we mentioned earlier:
@@ -663,7 +666,7 @@ can be rewritten using the `query` function:
 Q.sql()
 -----
 
-In some cases
+In some cases more complex queries are required, and for that purpose we have implimented ``Q.sql()`` which takes in a SQL style query
 
 .. code-block:: python
 
@@ -697,3 +700,33 @@ In some cases
   'primary_disease_type': 'Adenomas and Adenocarcinomas',
   'race': None,
   'sex': None}
+
+Pointing to a custom CDA instance
+----
+
+`.run()` will execute the query on the public CDA API (`https://cda.cda-dev.broadinstitute.org/api/cda/v1/`).
+
+`.run("http://localhost:8080")` will execute the query on a CDA server running at
+`http://localhost:8080`.
+
+Quick Explanation on UNNEST usage in BigQuery
+----
+
+Using Q in the CDA client will echo the generated SQL statement that may contain multiple `UNNEST` inclusions
+when including a dot(.) structure which may need a quick explanation.
+UNNEST is similar to unwind in which embedded data structures must be flattend to appear in a table or Excel file.
+Note; The following call using the SQL endpoint is not the preferred method to execute a nested attribute query in BigQuery.
+The Q language DSL abstracts the required unnesting that exists in a Record. In BigQuery, structures must be represented in an UNNEST syntax such that:
+`A.B.C.D` must be unwound to `SELECT (_C.D)` in the following fashion: 
+```
+SELECT (_C.D) 
+from TABLE, UNNEST(A) AS _A, UNNEST(_A.B) as _B, UNNEST(_B.C) as _C
+```
+
+`ResearchSubject.Specimen.source_material_type` represents a complex record that needs to unwound in SQL syntax to be queried on properly when using SQL.
+```
+SELECT DISTINCT(_Specimen.source_material_type) 
+FROM gdc-bq-sample.cda_mvp.v3, 
+UNNEST(ResearchSubject) AS _ResearchSubject,
+UNNEST(_ResearchSubject.Specimen) AS _Specimen
+```
