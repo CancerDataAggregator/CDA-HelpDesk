@@ -94,7 +94,7 @@ One of the contributions of the CDA is aggregated ``ResearchSubject`` informatio
 
 Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
 
-The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. The field name mappings are described in the _CDA Schema Field Mapping_ document that is linked in the _Testing Guide_. A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
+The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :ref:`ETL.md` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
  
  
 unique_terms()
