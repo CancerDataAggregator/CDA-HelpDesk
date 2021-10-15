@@ -4,20 +4,25 @@
 Last updated: October 15th, 2021
 
 ### Introduction to CDA
+![FigIntro](https://github.com/CancerDataAggregator/cda-data-model/blob/main/documents/CancerDataAggregator_PMD_0.png)
 
-![Figure1](ReleaseNotes_Figures/ETL_Fig_1.png "Figure 1")
+The Release 2 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services. 
+
+The CCDH data model promises to be a specimen-centric model whereas current CRDC nodes tend to use a case-centric approach.  The diagrams below depict the shift from the respective GDC and PDC entity models (provided by CCDH - Figure 1) towards a specimen-centric model (Figure 2).
+
+![Figure1](https://github.com/CancerDataAggregator/cda-data-model/blob/main/documents/GDCPDCModels.png "Figure 1")
 |:--:| 
 | **Figure 1**: The PDC and GDC data models are case centric. |
 
 
-![Figure2](ReleaseNotes_Figures/ETL_Fig_2.png "Figure 2")
+![Figure2](https://github.com/CancerDataAggregator/cda-data-model/blob/main/documents/CCDH%20Specimen-centric%20Jun2020.png "Figure 2")
 |:--:| 
 | **Figure 2**: CCDH is moving towards a specimen centric model. |
 
 
 As the CCDH model develops, CDA leverages the harmonization work of the [CCDH model](https://cancerdhc.github.io/ccdhmodel/entities/) by extending the model only where necessary, such as adding key search fields, to support CDA functionality.  CDA periodically synchronizes with CCDH to maintain consistency between the  [data model](https://github.com/CancerDataAggregator/cda-data-model) implemented in CDA and the developing CCDH model.  This data model is expressed as JSON Schema.
 
-![Figure3](ReleaseNotes_Figures/ETL_Fig_3.png "Figure 3")
+![Figure3](https://github.com/CancerDataAggregator/cda-data-model/blob/main/documents/CDA%20MVP%20Release%201.png "Figure 3")
 |:--:| 
 | **Figure 3**: The [data model](https://github.com/CancerDataAggregator/cda-data-model) is expressed as JSON schema. |
 
