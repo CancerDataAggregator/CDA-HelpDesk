@@ -180,21 +180,27 @@ Q lang is Language used to send query to the cda service
     - query : str
         - a query string containing a value from ``column()`` with an comparison operator (=, !=, <, >) and a numeric/boolean/unique value form ``unique_terms``. 
 **Returns:**
-    cda python q data type
+    cda python Q data type
     
 ``Q().run``
 
 run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
 
 **Parameters:**
-  - async_call:(bool)
-  - table (str)
-  - offset (int, optional): [description]. Defaults to 0.
-  - limit (int, optional): [description]. Defaults to 100.
-  - version ([type], optional): [description]. Defaults to table_version.
-  - host ([type], optional): [description]. Defaults to CDA_API_URL.
-  - dry_run (bool, optional): [description]. Defaults to False.
-
+  - async_call : bool
+    - async_call allows for 
+  - table : str
+    - table allows you to select with BigQuery table is being searched; default = ‘integration’
+  - offset : int [optional] 
+    - [description]. Defaults to 0.
+  - limit : int, optional):
+    - limit allows you to set the number of values that returns per page; default = 100
+  - host : URL, [optional]
+    - host allows you to change the server in which you queries run; default = None (Board Institute)
+  - dry_run : bool, [optional] 
+    - [description]. Defaults to False.
+**Returns:**
+    cda python Q data type
     
 Q Comparison operators
 +++++++
