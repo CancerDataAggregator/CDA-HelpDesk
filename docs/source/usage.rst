@@ -840,3 +840,15 @@ Test query 1
     Count: 100
     Total Row Count: 369
     More pages: True
+
+
+.. toggle::
+
+    .. admonition:: Wow!
+       :class: tip
+
+       It's a code block!
+
+       .. code-block:: python
+
+           a = "wow, very python"
