@@ -818,7 +818,7 @@ Test query 1
 +++++
 **Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
-. toggle-header::
+.. toggle-header::
   :header: Example 1 **Show/Hide Code**
     q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
     q2 = Q('ResearchSubject.identifier.system = "PDC"')
