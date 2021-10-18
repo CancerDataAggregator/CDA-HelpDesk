@@ -33,19 +33,9 @@ The achievements for R2 are outlined as follows:
 
 Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
 
-<img src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig_1.png" class="bg-primary mb-1" name="This">
-
-
 | ![figure](./ETL_Figures/ETL_Fig_1.png) "figure 1"|
 |:---:|
 | **Figure 1** |
-
-
-<figure>
-  <img
-  src="ETL_Figures/ETL_Fig_1.png"
-       <figcaption> <b> Figure 1 </b> </figcaption>
-</figure>
 
 ### Current Flow of GDC and PDC ETL
 
@@ -53,11 +43,9 @@ The ETL processes for GDC and PDC data are very similar. They can be broken into
 
 #### Extraction and Transformation
 
-<figure>
-  <img
-  src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig2.png"
-       <figcaption> <b> Figure 2 </b> </figcaption>
-</figure>
+| ![figure](./ETL_Figures/ETL_Fig2.png) "figure 2"|
+|:---:|
+| **Figure 2** |
 
 The extraction process for each node implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 2 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from files to associated specimens and cases. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC, there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to. The file created by the extraction process is written with one case/**ResearchSubject** per line. This extracted file is then submitted to the transformation code. The code reads the extracted file line by line, and transforms each line into the data structure expected in our BigQuery tables. 
 
@@ -66,11 +54,9 @@ Since the extracted data and the output of the transform code are written on a c
 
 #### Merger of GDC and PDC Data
 
-<figure>
-  <img
-  src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig3.png"
-       <figcaption> <b> Figure 3 </b> </figcaption>
-</figure>
+| ![figure](./ETL_Figures/ETL_Fig3.png) "figure 3"|
+|:---:|
+| **Figure 3** |
 
 The merging of data between GDC and PDC is very similar to the aggregation step in the extraction and transformation sub-process. The merge code searches the GDC and PDC files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends **ResearchSubject** and **File** records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created.
 
@@ -78,11 +64,9 @@ The merging of data between GDC and PDC is very similar to the aggregation step 
 
 #### Direct From IDC BigQuery Table/View
 
-<figure>
-  <img
-  src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig4.png"
-       <figcaption> <b> Figure 4 </b> </figcaption>
-</figure>
+| ![figure](./ETL_Figures/ETL_Fig4.png) "figure 4"|
+|:---:|
+| **Figure 4** |
 
 The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
 
