@@ -19,7 +19,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.intersphinx',
 #    'sphinx_togglebutton',
-    'myst_parser'
+    'myst_parser',
+    'sphinx.ext.imgconverter'
 ]
 
 intersphinx_mapping = {
