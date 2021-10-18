@@ -33,6 +33,9 @@ The achievements for R2 are outlined as follows:
 
 Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
 
+<img src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig_1.png" class="bg-primary mb-1" name="This">
+
+
 | ![figure](https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig_1.png) |
 |:---:|
 | **Figure 1** |
