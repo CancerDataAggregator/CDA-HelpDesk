@@ -820,35 +820,49 @@ Test query 1
 
 .. toggle-header::
   :header: Example 1 **Show/Hide Code**
+.. code-block:: python
+      q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
+      q2 = Q('ResearchSubject.identifier.system = "PDC"')
+      q3 = Q('ResearchSubject.identifier.system = "GDC"')
+      
+      q = q2.From(q1.And(q3))
+      r = q.run()
+      
+      print(r)
+      
+      Getting results from database
+      
+      Total execution time: 27414 ms
+      
+      QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
+      Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
+      Offset: 0
+      Count: 100
+      Total Row Count: 369
+      More pages: True
+
+
+Test query 2
++++++
+**Find data from TCGA-BRCA project, with donors over the age of 50 with imaging data**
+
+.. code-block:: python
+  q1 = Q('ResearchSubject.associated_project = "TCGA-BRCA"')
+  q2 = Q('days_to_birth > -50*365')
+  q3 = Q('identifier.system = "IDC"')
   
-    q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
-    q2 = Q('ResearchSubject.identifier.system = "PDC"')
-    q3 = Q('ResearchSubject.identifier.system = "GDC"')
-    
-    q = q2.From(q1.And(q3))
-    r = q.run()
-    
-    print(r)
-    
-    Getting results from database
-    
-    Total execution time: 27414 ms
-    
-    QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
-    Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
-    Offset: 0
-    Count: 100
-    Total Row Count: 369
-    More pages: True
-
-
-.. toggle::
-
-    .. admonition:: Wow!
-       :class: tip
-
-       It's a code block!
-
-       .. code-block:: python
-
-           a = "wow, very python"
+  q = q3.From(q1.And(q2))
+  r = q.run()
+  
+  print(r)
+  
+  Getting results from database
+  
+  Total execution time: 24125 ms
+  
+  QueryID: a5de2545-2b5e-476c-9e92-b768d058f603
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE ((_ResearchSubject.associated_project = 'TCGA-BRCA') AND (all_v1.days_to_birth < -50*365))) AS all_v1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Offset: 0
+  Count: 88
+  Total Row Count: 88
+  More pages: False
