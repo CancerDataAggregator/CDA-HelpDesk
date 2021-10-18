@@ -813,3 +813,30 @@ FROM gdc-bq-sample.cda_mvp.v3,
 UNNEST(ResearchSubject) AS _ResearchSubject,
 UNNEST(_ResearchSubject.Specimen) AS _Specimen
 ```
+
+Test query 1
+-----
+**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+
+. toggle-header::
+    :header: Example 1 **Show/Hide Code**
+
+        q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
+        q2 = Q('ResearchSubject.identifier.system = "PDC"')
+        q3 = Q('ResearchSubject.identifier.system = "GDC"')
+        
+        q = q2.From(q1.And(q3))
+        r = q.run()
+        
+        print(r)
+        
+        Getting results from database
+        
+        Total execution time: 27414 ms
+        
+        QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
+        Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
+        Offset: 0
+        Count: 100
+Total Row Count: 369
+More pages: True
