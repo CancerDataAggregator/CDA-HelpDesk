@@ -36,7 +36,7 @@ Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and P
 <img src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig_1.png" class="bg-primary mb-1" name="This">
 
 
-| ![figure](https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig_1.png) |
+| ![figure](https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig_1.png) "figure 1"|
 |:---:|
 | **Figure 1** |
 
