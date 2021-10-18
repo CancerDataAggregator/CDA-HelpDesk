@@ -820,6 +820,7 @@ Test query 1
 
 .. toggle-header::
   :header: Example 1 **Show/Hide Code**
+  
     q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
     q2 = Q('ResearchSubject.identifier.system = "PDC"')
     q3 = Q('ResearchSubject.identifier.system = "GDC"')
