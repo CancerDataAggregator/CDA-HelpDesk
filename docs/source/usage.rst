@@ -666,6 +666,65 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
  Count: 2
  More pages: Yes
 
+Example Query 5: From continued (IDC)
++++++
+
+**Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and imaging data.**
+
+So now we would like to repeat the previouse query but this time identify cases that are also in IDC. As noted before disease type value denoting the same disease groups can be completely different within different systems. So let's explore the values available for this particular field in IDC.
+
+>>> unique_terms('ResearchSubject.primary_disease_type', system="IDC",limit=10)
+[]
+
+Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` intities. So, let try the same code as .. ref::Example Query 4: From but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
+
+.. code-block:: python
+  q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
+  q2 = Q('ResearchSubject.identifier.system = "PDC"')
+  q3 = Q('ResearchSubject.identifier.system = "IDC"')
+  
+  q = q3.From(q1.And(q2))
+  r = q.run()
+  
+  print(r)
+  
+  Getting results from database
+  
+  Total execution time: 7810 ms
+  
+  QueryID: 664b226e-babc-462b-a826-448b8ab551a7
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_disease_type = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Offset: 0
+  Count: 0
+  Total Row Count: 0
+  More pages: False
+
+
+Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system``. 
+
+.. code-block:: python
+  q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
+  q2 = Q('ResearchSubject.identifier.system = "PDC"')
+  q3 = Q('identifier.system = "IDC"')
+  
+  q = q3.From(q1.And(q2))
+  r = q.run()
+  
+  print(r)
+  
+  Getting results from database
+  
+  Total execution time: 7281 ms
+  
+  QueryID: 2baf2b96-8424-440b-8765-6d44cf098feb
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_disease_type = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Offset: 0
+  Count: 37
+  Total Row Count: 37
+  More pages: False
+
+
+After a quick fix we now have 37 cases. 
 
 query()
 -----
