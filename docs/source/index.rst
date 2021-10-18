@@ -25,5 +25,5 @@ Contents
    usage
    Query Examples
    limits.md
-   Release notes
+   Release notes.md
    Troubleshooting
