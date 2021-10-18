@@ -4,5 +4,5 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "Cancer Data Aggregator"
-authors = [{name = "Graziella", email = "graziella@lumache"}]
+authors = [{name = "CDA", email = "cda-developers@broadinstitute.org"}]
 dynamic = ["version", "description"]

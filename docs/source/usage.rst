@@ -2,23 +2,39 @@
 Usage
 =====
 
-.. _usage:
 
 We will now show you the basic structure of `CDA python` through the use of the most commands:
 
 - ``columns()``: show all available columns in the table,
 - ``unique_terms()``: for a given column show all unique terms,
-- ``Q``: Executes this query on the public CDA server,
-- ``query`` : allows you to write long form Q statments with out chaining, and
-- ``Q.sql``: allows you to enter SQL style queries.
+- ``Q()``: Executes this query on the public CDA server,
+- ``query()`` : allows you to write long form Q statments with out chaining, and
+- ``Q.sql()``: allows you to enter SQL style queries.
 
+**To begin we will first load all of the library and it's methods:**
 
-columns
+>>> from cdapython import Q, columns, unique_terms, query
+
+  
+columns()
 -----
+``columns(version = 'all_v1', host = None, limit = 100, table = 'integration')``
 
-``columns()`` displays all of the fields that can be queried using the ``Q`` or ``single_operator_parser`` (e.g. ethnicity, tumor stage, disease type, etc.)
+displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
 
->>> from cdapython import Q, columns, unique_terms
+**Parameters:**
+   - version : str [Optional]
+       - version allows you to select different version of SQL (Big Query) tables to runs querys on; default = 'all_v1'
+   - host : str [Optional]
+       - host allows you to change the server in which you queries run; default = None (Board Institute)
+   - limit : int [Optional]
+       - limit allows you to set the number of values that ``columns`` returns; default = 100
+   - table : str [Optional]
+        table allows you to select with Big Query table is being searched; default = 'integration'
+**Returns:**
+    list
+**Example:**
+
 >>> columns() # List column names eg:
 ['days_to_birth',
  'race',
@@ -78,11 +94,31 @@ One of the contributions of the CDA is aggregated ``ResearchSubject`` informatio
 
 Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
 
-The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. The field name mappings are described in the _CDA Schema Field Mapping_ document that is linked in the _Testing Guide_. A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
+The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :ref:`ETL.md` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
  
  
-unique_terms
+unique_terms()
 -------
+``unique_terms(col_name: str, system: str = '', limit: int = 100, host: Optional[str] = None, table: Optional[str] = None)``
+
+displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
+
+**Parameters:**
+    - col_name : str
+        - col_name is the value from the `column()` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
+    - system : str [Optional]
+        - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see ..ref: limit.md_)
+    - limit : int [Optional]
+        - limit allows you to set the number of values that ``columns`` returns; default = 100   
+    - host : str [Optional]
+        - host allows you to change the server in which you queries run; default = None (Board Institute)
+    - table : str [Optional] 
+        - table allows you to select with Big Query table is being searched; default = 'integration'
+**Returns:**
+    list
+**Example:**
+
+
 
 For each searchable field there are set values that can be searched (excluding numberic), to determine these vaues the ``unique_terms()`` command is used. For example if we were interested in searchable disease types were would type the following:
 
@@ -112,16 +148,99 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Cell Lines',
  'Normal Adjacent Tissue',
  'Xenograft']
- 
 
-Q
+.. warning::
+ Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
+  
+ - 'File',
+ - 'File.identifier',
+ - 'identifier',
+ - 'ResearchSubject',
+ - 'ResearchSubject.Diagnosis',
+ - 'ResearchSubject.Diagnosis.Treatment',
+ - 'ResearchSubject.Specimen',
+ - 'ResearchSubject.Specimen.File',
+ - 'ResearchSubject.Specimen.File.associated_project',
+ - 'ResearchSubject.Specimen.File.identifier',
+ - 'ResearchSubject.Specimen.identifier',
+ - 'ResearchSubject.identifier',
+ - 'subject_associated_project',
+ - 'ResearchSubject.Diagnosis.identifier',
+ - 'ResearchSubject.Diagnosis.Treatment.identifier',
+ - 'ResearchSubject.File',
+ - 'ResearchSubject.File.identifier'
+
+Q()
 ----
+``Q(query)``
+
+Q lang is Language used to send query to the cda service
+
+**Parameters:**
+    - query : str
+        - a query string containing a value from ``column()`` with an comparison operator (=, !=, <, >) and a numeric/boolean/unique value form ``unique_terms``. 
+**Returns:**
+    cda python Q data type
+    
+``Q().run``
+
+run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
+
+**Parameters:**
+  - async_call : bool
+    - async_call allows for 
+  - table : str
+    - table allows you to select with BigQuery table is being searched; default = ‘integration’
+  - offset : int [optional] 
+    - [description]. Defaults to 0.
+  - limit : int, optional):
+    - limit allows you to set the number of values that returns per page; default = 100
+  - host : URL, [optional]
+    - host allows you to change the server in which you queries run; default = None (Board Institute)
+  - dry_run : bool, [optional] 
+    - [description]. Defaults to False.
+**Returns:**
+    cda python Q data type
+    
+Q Comparison operators
++++++++
+
+The following comparsion operators can be used with the `Q` command: 
+
++----------+---------------------------------------------------+---------------+
+| operator |Description                                        |Q.sql required?|
++==========+===================================================+===============+
+| =        | condition equals                                  |     no        |
++----------+---------------------------------------------------+---------------+
+| !=       | condition is not equal                            |     no        |
++----------+---------------------------------------------------+---------------+
+| <        | condition is less than                            |     no        |
++----------+---------------------------------------------------+---------------+
+| >        | condition is greater than                         |     no        |
++----------+---------------------------------------------------+---------------+
+| <=       | condition is less than or equal to                |     no        |
++----------+---------------------------------------------------+---------------+
+| >=       | condition is less than or equal to                |     no        |
++----------+---------------------------------------------------+---------------+
+| like     | similar to = but always wildcards ('%', '_', etc) |    yes        |
++----------+---------------------------------------------------+---------------+
+| in       | compares to a set                                 |    yes        |
++----------+---------------------------------------------------+---------------+
+
+additionally, more complex SQL can be used with the `Q.sql()`_ command. 
+
+**Example:**
+
+.. note::
+
+Any given part of a query is expressed as a string of three parts separated by spaces. Therefore, there must be a space on both sides of the comparsion operator. The first part of the query is interpreted as a *column name*, the second as a *comparator* and the third part as a *value*. If the value is a string, it needs to be put in
+quotes.
 
 Now, let's dive into the querying!
 
 We can start by getting the record for ``id = TCGA-E2-A10A`` that we mentioned earlier:
 
->>> q = query('id = "TCGA-E2-A10A"') # note the double quotes for the string value
+>>> q = Q('id = "TCGA-E2-A10A"') # note the double quotes for the string value
 >>> r = q.run()
 >>> print(r)
 Getting results from database
@@ -133,9 +252,9 @@ Count: 1
 Total Row Count: 1
 More pages: False
 
-We see that we've got a single patient record as a result, which is what we expect.
+We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single patient record as a result, which is what we expect.
 
-Let's see how the result looks like:
+Let's take a look at the results:
 
 
 >>> r[0]
@@ -258,7 +377,7 @@ There are three operators available:
 The following examples show how those operators work in practice.
 
 
-Query 1
+Example Query 1: And
 +++++++
 **Find data for subjects who were diagnosed after the age of 50 and who were investigated as part of the TCGA-OV project.**
 
@@ -285,7 +404,7 @@ Query 1
  More pages: False
 
 
-Query 2
+Example Query 2: And continued
 +++++++
 **Find data for donors with melanoma (Nevi and Melanomas) diagnosis and who were diagnosed before the age of 30.**
 
@@ -358,7 +477,7 @@ To explore the results further, we can fetch the patient JSON objects by iterati
 
 The output shows the projects where Nevi and Melanomas cases appear.
 
-Query 3
+Example Query 3: Or
 +++++++
 
 **Identify all samples that meet the following conditions:**
@@ -411,7 +530,7 @@ Alternatively, we can use the ``offset`` argument to specify the record to start
  >>> print(r)
 
 
-Query 4
+Example Query 4: From
 +++++
 
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and genomic data.**
@@ -547,8 +666,67 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
  Count: 2
  More pages: Yes
 
+Example Query 5: From continued (IDC)
++++++
 
-query
+**Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and imaging data.**
+
+So now we would like to repeat the previouse query but this time identify cases that are also in IDC. As noted before disease type value denoting the same disease groups can be completely different within different systems. So let's explore the values available for this particular field in IDC.
+
+>>> unique_terms('ResearchSubject.primary_disease_type', system="IDC",limit=10)
+[]
+
+Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` intities. So, let try the same code as .. ref::Example Query 4: From but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
+
+.. code-block:: python
+  q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
+  q2 = Q('ResearchSubject.identifier.system = "PDC"')
+  q3 = Q('ResearchSubject.identifier.system = "IDC"')
+  
+  q = q3.From(q1.And(q2))
+  r = q.run()
+  
+  print(r)
+  
+  Getting results from database
+  
+  Total execution time: 7810 ms
+  
+  QueryID: 664b226e-babc-462b-a826-448b8ab551a7
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_disease_type = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Offset: 0
+  Count: 0
+  Total Row Count: 0
+  More pages: False
+
+
+Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system``. 
+
+.. code-block:: python
+  q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
+  q2 = Q('ResearchSubject.identifier.system = "PDC"')
+  q3 = Q('identifier.system = "IDC"')
+  
+  q = q3.From(q1.And(q2))
+  r = q.run()
+  
+  print(r)
+  
+  Getting results from database
+  
+  Total execution time: 7281 ms
+  
+  QueryID: 2baf2b96-8424-440b-8765-6d44cf098feb
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_disease_type = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Offset: 0
+  Count: 37
+  Total Row Count: 37
+  More pages: False
+
+
+After a quick fix we now have 37 cases. 
+
+query()
 -----
 
 To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
@@ -566,10 +744,10 @@ can be rewritten using the `query` function:
 >>> query('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas" AND ResearchSubject.Diagnosis.age_at_diagnosis < 30*365 AND ResearchSubject.identifier.system = "GDC"')
 >>> result = q1.run()
 
-Q.sql
+Q.sql()
 -----
 
-In some cases
+In some cases more complex queries are required, and for that purpose we have implimented ``Q.sql()`` which takes in a SQL style query
 
 .. code-block:: python
 
@@ -603,3 +781,62 @@ In some cases
   'primary_disease_type': 'Adenomas and Adenocarcinomas',
   'race': None,
   'sex': None}
+
+Pointing to a custom CDA instance
+----
+
+``.run()`` will execute the query on the public .. _CDA API: https://cda.cda-dev.broadinstitute.org/api/cda/v1/ .
+
+``.run("http://localhost:8080")`` will execute the query on a CDA server running at
+``http://localhost:8080``.
+
+Quick Explanation on UNNEST usage in BigQuery
+----
+
+Using Q in the CDA client will echo the generated SQL statement that may contain multiple `UNNEST` inclusions
+when including a dot(.) structure which may need a quick explanation.
+UNNEST is similar to unwind in which embedded data structures must be flattend to appear in a table or Excel file.
+Note; The following call using the SQL endpoint is not the preferred method to execute a nested attribute query in BigQuery.
+The Q language DSL abstracts the required unnesting that exists in a Record. In BigQuery, structures must be represented in an UNNEST syntax such that:
+``A.B.C.D`` must be unwound to ``SELECT (_C.D)`` in the following fashion: 
+
+```
+SELECT (_C.D) 
+from TABLE, UNNEST(A) AS _A, UNNEST(_A.B) as _B, UNNEST(_B.C) as _C
+```
+
+``ResearchSubject.Specimen.source_material_type`` represents a complex record that needs to unwound in SQL syntax to be queried on properly when using SQL.
+
+```
+SELECT DISTINCT(_Specimen.source_material_type) 
+FROM gdc-bq-sample.cda_mvp.v3, 
+UNNEST(ResearchSubject) AS _ResearchSubject,
+UNNEST(_ResearchSubject.Specimen) AS _Specimen
+```
+
+Test query 1
++++++
+**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+
+.. toggle-header::
+  :header: Example 1 **Show/Hide Code**
+  
+    q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
+    q2 = Q('ResearchSubject.identifier.system = "PDC"')
+    q3 = Q('ResearchSubject.identifier.system = "GDC"')
+    
+    q = q2.From(q1.And(q3))
+    r = q.run()
+    
+    print(r)
+    
+    Getting results from database
+    
+    Total execution time: 27414 ms
+    
+    QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
+    Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
+    Offset: 0
+    Count: 100
+    Total Row Count: 369
+    More pages: True

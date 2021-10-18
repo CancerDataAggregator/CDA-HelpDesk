@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'Cancer Data Aggregator'
-copyright = '2021, Graziella'
+copyright = '2021, Cancer Data Aggregator'
 author = 'Graziella'
 
 release = '0.1'
@@ -16,6 +16,7 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
+    'sphinx.ext.napoleon',
     'sphinx.ext.intersphinx',
     'myst_parser'
 ]
@@ -35,3 +36,7 @@ html_static_path = ['_static']
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+# -- Options for docstring output
+napoleon_google_docstring = False
+napoleon_numpy_docstring = True
