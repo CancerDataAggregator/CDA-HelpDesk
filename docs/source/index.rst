@@ -23,8 +23,6 @@ Contents
 
    Installation
    usage
-   Query Examples
    ETL.md
-   Release notes.md
-   Troubleshooting
+   ReleaseNotes.md
    contact_info.md
