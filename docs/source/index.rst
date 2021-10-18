@@ -25,6 +25,6 @@ Contents
    usage
    Query Examples
    ETL.md
-   Release notes
+   Release notes.md
    Troubleshooting
    contact_info.md
