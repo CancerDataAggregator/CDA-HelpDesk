@@ -728,6 +728,7 @@ After a quick fix we now have 37 cases.
 
 Test query 1
 +++++
+
 **Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. toggle-header::
@@ -758,6 +759,7 @@ Test query 1
 
 Test query 2
 +++++
+
 **Find data from TCGA-BRCA project, with donors over the age of 50 with imaging data**
 
 .. code-block:: python
