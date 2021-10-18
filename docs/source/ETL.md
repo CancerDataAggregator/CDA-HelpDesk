@@ -45,9 +45,11 @@ The ETL processes for GDC and PDC data are very similar. They can be broken into
 
 #### Extraction and Transformation
 
-![Figure2](ETL_Figures/ETL_Fig2.png "Figure 2")
-|:--:| 
-| *Figure 2* |
+<figure>
+  <img
+  src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig2.png"
+       <figcaption> <b> Figure 2 </b> </figcaption>
+</figure>
 
 The extraction process for each node implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 2 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from files to associated specimens and cases. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC, there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to. The file created by the extraction process is written with one case/**ResearchSubject** per line. This extracted file is then submitted to the transformation code. The code reads the extracted file line by line, and transforms each line into the data structure expected in our BigQuery tables. 
 
@@ -56,9 +58,11 @@ Since the extracted data and the output of the transform code are written on a c
 
 #### Merger of GDC and PDC Data
 
-![Figure3](ETL_Figures/ETL_Fig3.png "Figure 3")
-|:--:| 
-| *Figure 3* |
+<figure>
+  <img
+  src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig3.png"
+       <figcaption> <b> Figure 3 </b> </figcaption>
+</figure>
 
 The merging of data between GDC and PDC is very similar to the aggregation step in the extraction and transformation sub-process. The merge code searches the GDC and PDC files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends **ResearchSubject** and **File** records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created.
 
@@ -66,9 +70,11 @@ The merging of data between GDC and PDC is very similar to the aggregation step 
 
 #### Direct From IDC BigQuery Table/View
 
-![Figure4](ETL_Figures/ETL_Fig4.png "Figure 4")
-|:--:| 
-| *Figure 4* |
+<figure>
+  <img
+  src="https://github.com/CancerDataAggregator/readthedocs/blob/main/docs/source/ETL_Figures/ETL_Fig4.png"
+       <figcaption> <b> Figure 4 </b> </figcaption>
+</figure>
 
 The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
 
@@ -89,6 +95,7 @@ To merge the GDC/PDC table with the IDC table, CDA implements a procedure that i
 All the fields that are currently available through the CDA are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
 <table>
+    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes **files** record under all specimen type entities. The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).</caption>
 <tr>
 <th>GDC Extract w/out File/Specimen Link</th>
 <th>GDC Extract with File/Specimen Link</th>
@@ -165,8 +172,8 @@ All the fields that are currently available through the CDA are pulled from the 
 </pre>
 </td>
 </tr>
+    
 </table>
-Table 1. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes **files** record under all specimen type entities. The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
 
 To be able to associate files and specimen entities, the `file_id`, `cases.samples.sample_id`, `cases.samples.portions.portion_id`, `cases.samples.portions.slides.slide_id`, `cases.samples.portions.analytes.analyte_id`, and `cases.samples.portions.analytes.aliquots.aliquot_id` fields from the _files_ endpoint were used (see [GDC documentation for file fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields)).
 
@@ -227,6 +234,7 @@ For this section, the DC’s are similar enough that the differences can be show
 For GDC and PDC, we iterate over every entry from the extracted data file and make specific changes to that entry. These include creating a top **Subject** level of data which correlates to the **Subject** entity as defined by the CCDH model. From there, the specific case information is recorded in a **ResearchSubject** entity, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information. A simplified example of an entry is given below in Table 2.
 
 <table>
+    <caption><b>Table 2</b></caption>
 <tr>
 <th>Entry 1</th>
 <th>Transformed Entry 1</th>
@@ -276,7 +284,6 @@ For GDC and PDC, we iterate over every entry from the extracted data file and ma
 </td>
 </tr>
 </table>
-Table 2
 
 
 ##### step 2: Aggregation 
@@ -284,6 +291,7 @@ Table 2
 At this point, a list of Subjects and corresponding ResearchSubjects is made, and any **Subject** with multiple **ResearchSubject** records has the **ResearchSubject** and **File** records appended (with duplicates removed from **File**) under a single entry for the **Subject**. A simplified example of this aggregation can be seen in Table 3 below.
 
 <table>
+    <caption><b>Table 3</b></caption>
 <tr>
 <th>Transformed Entry 1</th>
 <th>Transformed Entry 2</th>
@@ -373,7 +381,6 @@ At this point, a list of Subjects and corresponding ResearchSubjects is made, an
 </td>
 </tr>
 </table>
-Table 3
 
 Transformed Entry 1 and 2 are aggregated in this example. Transformed Entry 1 and 2 both correspond to the **Subject** with the id ‘S1’, but have different **ResearchSubject** records, and overlapping entries in their **Subject** level **File** records (file_1.doc is in both). The aggregated entry appended the **ResearchSubject** records together and appended the **File** records together while removing the duplicate entry.
 
@@ -383,6 +390,7 @@ Transformed Entry 1 and 2 are aggregated in this example. Transformed Entry 1 an
 After the data from GDC and PDC have been transformed into a common data format, merging the data together can begin. **Subject** level info is coalesced, and any data from records in **ResearchSubject** and **File** are simply appended underneath the same **Subject**. A simplified example of the merge between GDC and PDC data can be seen in Table 4.
 
 <table>
+    <caption><b>Table 4</b>. Simplified example of a merger between GDC and PDC</caption>
 <tr>
 <th>GDC</th>
 <th>PDC</th>
@@ -463,7 +471,6 @@ After the data from GDC and PDC have been transformed into a common data format,
 </td>
 </tr>
 </table>
-Table 4. Simplified example of a merger between GDC and PDC
 
 ##### Subject level merge
 
