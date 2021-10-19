@@ -18,14 +18,14 @@ The CCDH data model promises to be a specimen-centric model whereas current CRDC
 
 
 
-| ![figure](./ReleaseNotesFigs/CCDH_Specimen-centric_Jun2020.png) "figure 2"|
+| ![figure](./ReleaseNotesFigs/CCDH_Specimen-centric_Jun2020.png) |
 |:---:|
 | **Figure 2**: CCDH is moving towards a specimen centric model. |
 
 As the CCDH model develops, CDA leverages the harmonization work of the [CCDH model](https://cancerdhc.github.io/ccdhmodel/entities/) by extending the model only where necessary, such as adding key search fields, to support CDA functionality.  CDA periodically synchronizes with CCDH to maintain consistency between the  [data model](https://github.com/CancerDataAggregator/cda-data-model) implemented in CDA and the developing CCDH model.  This data model is expressed as JSON Schema.
 
 
-| ![figure](./ReleaseNotesFigs/CDA_MVP_Release_1.png) "figure 3"|
+| ![figure](./ReleaseNotesFigs/CDA_MVP_Release_1.png) |
 |:---:|
 | **Figure 3**: The <a href="https://github.com/CancerDataAggregator/cda-data-model">data model</a> is expressed as JSON schema. |
 
