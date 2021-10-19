@@ -87,7 +87,7 @@ To merge the GDC/PDC table with the IDC table, CDA implements a procedure that i
 All the fields that are currently available through the CDA are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
 <table>
-    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes **files** record under all specimen type entities. The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).</caption>
+    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes **files** record under all specimen type entities. The complete list of fields that are used can be found <a href="https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing">here</a>.</caption>
 <tr>
 <th>GDC Extract w/out File/Specimen Link</th>
 <th>GDC Extract with File/Specimen Link</th>
