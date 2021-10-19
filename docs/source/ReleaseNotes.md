@@ -4,7 +4,7 @@
 Last updated: October 15th, 2021
 
 ### Introduction to CDA
-![FigIntro](https://github.com/CancerDataAggregator/cda-data-model/blob/main/documents/CancerDataAggregator_PMD_0.png)
+![FigIntro](./ReleaseNotesFigs/CancerDataAggregator_PMD_0.png)
 
 The Release 2 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services. 
 
