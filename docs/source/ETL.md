@@ -33,7 +33,7 @@ The achievements for R2 are outlined as follows:
 
 Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
 
-| ![figure](./ETL_Figures/ETL_Fig_1.png) "figure 1"|
+| ![figure](./ETL_Figures/ETL_Fig_1.png) |
 |:---:|
 | **Figure 1** |
 
@@ -43,7 +43,7 @@ The ETL processes for GDC and PDC data are very similar. They can be broken into
 
 #### Extraction and Transformation
 
-| ![figure](./ETL_Figures/ETL_Fig2.png) "figure 2"|
+| ![figure](./ETL_Figures/ETL_Fig2.png) |
 |:---:|
 | **Figure 2** |
 
@@ -54,7 +54,7 @@ Since the extracted data and the output of the transform code are written on a c
 
 #### Merger of GDC and PDC Data
 
-| ![figure](./ETL_Figures/ETL_Fig3.png) "figure 3"|
+| ![figure](./ETL_Figures/ETL_Fig3.png) |
 |:---:|
 | **Figure 3** |
 
@@ -64,7 +64,7 @@ The merging of data between GDC and PDC is very similar to the aggregation step 
 
 #### Direct From IDC BigQuery Table/View
 
-| ![figure](./ETL_Figures/ETL_Fig4.png) "figure 4"|
+| ![figure](./ETL_Figures/ETL_Fig4.png) |
 |:---:|
 | **Figure 4** |
 
