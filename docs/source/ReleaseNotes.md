@@ -1,9 +1,11 @@
 # CDA Release 2
+
 ## Release Notes
 
 Last updated: October 15th, 2021
 
 ### Introduction to CDA
+
 ![FigIntro](./ReleaseNotesFigs/CancerDataAggregator_PMD_0.png)
 
 The Release 2 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services. 
@@ -36,7 +38,7 @@ To assist you with the transition to CCDH data model terminology, we have provid
 For details on the extraction, transformation, load (ETL) process, please see CDA ETL Process.
 
 
-# Datasets & Fields
+## Datasets & Fields
 
 * Imaging Data Commons added
 * All datasets updated as follows
@@ -47,7 +49,7 @@ For details on the extraction, transformation, load (ETL) process, please see CD
 * All types of specimens have Files
 
 
-# Enhanced query functionality
+## Enhanced query functionality
 
 * Added Docker for enabling quickstart
 * Enhanced Q functionality to more mimic natural language
@@ -58,7 +60,7 @@ For details on the extraction, transformation, load (ETL) process, please see CD
 * Unique values and columns return faster than in Release 1
 
 
-# Metadata Changes
+## Metadata Changes
 
 * See [CDA Schema Field Mapping](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing)
 * Summary
@@ -90,7 +92,7 @@ For details on the extraction, transformation, load (ETL) process, please see CD
         * drs_uri field is not currently available for IDC data
 
 
-# Bug fixes
+## Bug fixes
 
 * Fixed problem of unnested items would appear at the top level in the JSON response, resulting in duplication of elements
 * Fixed cda-service overwrites query columns with same name
@@ -100,7 +102,7 @@ For details on the extraction, transformation, load (ETL) process, please see CD
 * Support the ability to query development tables being used for integrating the IDC data with the existing PDC and GDC data. If your jupyter notebooks fail to execute, you will likely have to reload the cda-python into your python virtual environment.
 
 
-# Known bugs and issues
+## Known bugs and issues
 
 * `unique_terms` are not sorted when they return
 * tumor stages are not harmonized, there are redundant terms (complicates query)
