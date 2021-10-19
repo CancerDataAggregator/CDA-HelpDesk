@@ -10,20 +10,20 @@ The Release 2 of CDA searches across data from the Genomics Data Commons (GDC), 
 
 The CCDH data model promises to be a specimen-centric model whereas current CRDC nodes tend to use a case-centric approach.  The diagrams below depict the shift from the respective GDC and PDC entity models (provided by CCDH - Figure 1) towards a specimen-centric model (Figure 2).
 
-| ![figure](./rdt_images/GDCPDCModels.png) "figure 1"|
+| ![figure](./ReleaseNotesFigs/GDCPDCModels.png) "figure 1"|
 |:---:|
 | **Figure 1**: The PDC and GDC data models are case centric. |
 
 
 
-| ![figure](./rdt_images/CCDH Specimen-centric Jun2020.png) "figure 2"|
+| ![figure](./ReleaseNotesFigs/CCDH_Specimen-centric_Jun2020.png) "figure 2"|
 |:---:|
 | **Figure 2**: CCDH is moving towards a specimen centric model. |
 
 As the CCDH model develops, CDA leverages the harmonization work of the [CCDH model](https://cancerdhc.github.io/ccdhmodel/entities/) by extending the model only where necessary, such as adding key search fields, to support CDA functionality.  CDA periodically synchronizes with CCDH to maintain consistency between the  [data model](https://github.com/CancerDataAggregator/cda-data-model) implemented in CDA and the developing CCDH model.  This data model is expressed as JSON Schema.
 
 
-| ![figure](./rdt_images/CDA MVP Release 1.png) "figure 3"|
+| ![figure](./ReleaseNotesFigs/CDA_MVP_Release_1.png) "figure 3"|
 |:---:|
 | **Figure 3**: The <a href="https://github.com/CancerDataAggregator/cda-data-model">data model</a> is expressed as JSON schema. |
 
