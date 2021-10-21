@@ -23,6 +23,7 @@ Contents
 
    Installation
    usage
-   ETL.md
    ReleaseNotes.md
+   ETL.md
+   Schema.md
    contact_info.md
