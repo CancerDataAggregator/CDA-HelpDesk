@@ -1,5 +1,9 @@
 # Schema and Mapping
 ## Full Schema
+
+The **Subject** entity is the outer most record in the CDA schema. Within the **Subject** record are the fields for the **Subject** (demographic and other subject-specific information) as well as the record of all **ResearchSubject** and **File** records associated with that **Subject**. Each **ResearchSubject** record has fields associated with the **ResearchSubject**, as well as records for the **Diagnosis** and **Specimen** entities associated with that **ResearchSubject**, and so on.
+ 
+
 | [Subject](#subject) |                                             |                              |                               |                            |
 | ------- | ------------------------------------------- | ---------------------------- | ----------------------------- | -------------------------- |
 |         | id                                          |                              |                               |                            |
