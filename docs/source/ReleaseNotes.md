@@ -33,7 +33,7 @@ In Figure 3, the entities rimmed in blue are not yet part of the CCDH model but 
 
 When the data is fully harmonized, finding data for a specific patient or a specific specimen across all nodes will be simplified.  For Release 1, CDA was able to identify common patients across GDC and PDC in cases where the PDC “case_submitter_id” is equal to the GDC “submitter_id”, essentially harmonizing this field. Further alignment was achieved by using lower case characters consistently. For Release 2, CDA similarly merged IDC with GDC and PDC data by matching IDC “PatientID” with GDC “submitter_id” and PDC “case_submitter_id”.
 
-To assist you with the transition to CCDH data model terminology, we have provided a field by field mapping of terms from the GDC, PDC[^1], and IDC data dictionaries to the implemented JSON schema. This information can be found in [CDA Schema Field Mapping](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
+To assist you with the transition to CCDH data model terminology, we have provided a field by field mapping of terms from the GDC, PDC[^1], and IDC data dictionaries to the implemented JSON schema. This information can be found in [CDA Schema Field Mapping](./Schema.md).
 
 For details on the extraction, transformation, load (ETL) process, please see CDA ETL Process.
 
