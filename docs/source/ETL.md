@@ -209,7 +209,7 @@ The next query – allPrograms – is used to get all the available Programs and
   files: [...]
 }
 ```
-The complete list of fields that are used can be found [here](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing).
+The complete list of fields that are used can be found [here](./Schema.md).
 
 
 #### Transformation
