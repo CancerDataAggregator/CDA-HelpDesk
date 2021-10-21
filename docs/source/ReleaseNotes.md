@@ -35,7 +35,7 @@ When the data is fully harmonized, finding data for a specific patient or a spec
 
 To assist you with the transition to CCDH data model terminology, we have provided a field by field mapping of terms from the GDC, PDC[^1], and IDC data dictionaries to the implemented JSON schema. This information can be found in [CDA Schema Field Mapping](./Schema.md).
 
-For details on the extraction, transformation, load (ETL) process, please see CDA ETL Process.
+For details on the extraction, transformation, load (ETL) process, please see [CDA ETL Process](./ETL.md).
 
 
 ## Datasets & Fields
