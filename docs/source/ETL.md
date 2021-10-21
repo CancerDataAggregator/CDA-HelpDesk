@@ -218,7 +218,7 @@ Transformation in this section can for the most part be broken into two steps. T
 
 The second step aggregates Subjects together from the same DC. For all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging. 
 
-For this section, the DC’s are similar enough that the differences can be shown with a simple mapping from GDC/PDC fields to the common data format found [here](https://docs.google.com/spreadsheets/d/1C3iyOYN9R1UGFMa7EazHxtsabPOPlT0vvAPRDGQXPZI/edit?usp=sharing).
+For this section, the DC’s are similar enough that the differences can be shown with a simple mapping from GDC/PDC fields to the common data format found [here](./Schema.md).
 
 
 ##### step 1: Transformation
