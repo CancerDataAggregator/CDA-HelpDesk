@@ -62,7 +62,7 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 
 ## Metadata Changes
 
-* See [CDA Schema Field Mapping](https://docs.google.com/spreadsheets/d/1S4qxo_D-mKF_N7C-m8KV7Wbs-Nzeif_itpMrJwwEPOc/edit?usp=sharing)
+* See [CDA Schema Field Mapping](./Schema.md)
 * Summary
     * Patient was renamed to Subject to align with CRDC-H model
     * Add files records to the Subject and ResearchSubject (repeat from above)
