@@ -706,6 +706,65 @@ Hmm, zero results. Looks like we made a similar mistake and once again included 
 
 After a quick fix we now have 37 cases. 
 
+query()
+-----
+
+To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
+
+.. code-block:: python
+ 
+ >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
+ >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
+ >>> q3 = Q('ResearchSubject.Specimen.identifier.system = "GDC"')
+ 
+ >>> q = q1.And(q2.And(q3))
+ 
+can be rewritten using the `query` function:
+
+>>> query('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas" AND ResearchSubject.Diagnosis.age_at_diagnosis < 30*365 AND ResearchSubject.identifier.system = "GDC"')
+>>> result = q1.run()
+
+Q.sql()
+-----
+
+In some cases more complex queries are required, and for that purpose we have implimented ``Q.sql()`` which takes in a SQL style query
+
+.. code-block:: python
+
+ r1 = Q.sql("""
+ SELECT
+ *
+ FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject
+ WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')
+ """)
+ 
+ >>> r1.pretty_print(0)
+ { 'Diagnosis': [],
+  'ResearchSubject': [ { 'Diagnosis': [],
+                         'Specimen': [],
+                         'associated_project': 'CGCI-HTMCP-CC',
+                         'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+                         'identifier': [ { 'system': 'GDC',
+                                           'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+                         'primary_disease_site': 'Cervix uteri',
+                         'primary_disease_type': 'Adenomas and '
+                                                 'Adenocarcinomas'}],
+  'Specimen': [],
+  'associated_project': 'CGCI-HTMCP-CC',
+  'days_to_birth': None,
+  'ethnicity': None,
+  'id': 'HTMCP-03-06-02177',
+  'id_1': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
+  'identifier': [ { 'system': 'GDC',
+                    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
+  'primary_disease_site': 'Cervix uteri',
+  'primary_disease_type': 'Adenomas and Adenocarcinomas',
+  'race': None,
+  'sex': None}
+
+Test queries
+----
+
 Test query 1
 +++++
 
@@ -765,66 +824,10 @@ Test query 2
   More pages: False
 
 
-query()
------
-
-To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
-
-.. code-block:: python
- 
- >>> q1 = Q('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas"')
- >>> q2 = Q('ResearchSubject.Diagnosis.age_at_diagnosis < 30*365')
- >>> q3 = Q('ResearchSubject.Specimen.identifier.system = "GDC"')
- 
- >>> q = q1.And(q2.And(q3))
- 
-can be rewritten using the `query` function:
-
->>> query('ResearchSubject.Specimen.primary_disease_type = "Nevi and Melanomas" AND ResearchSubject.Diagnosis.age_at_diagnosis < 30*365 AND ResearchSubject.identifier.system = "GDC"')
->>> result = q1.run()
-
-Q.sql()
------
-
-In some cases more complex queries are required, and for that purpose we have implimented ``Q.sql()`` which takes in a SQL style query
-
-.. code-block:: python
-
- r1 = Q.sql("""
- SELECT
- *
- FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject
- WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')
- """)
- 
- >>> r1.pretty_print(0)
- { 'Diagnosis': [],
-  'ResearchSubject': [ { 'Diagnosis': [],
-                         'Specimen': [],
-                         'associated_project': 'CGCI-HTMCP-CC',
-                         'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-                         'identifier': [ { 'system': 'GDC',
-                                           'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-                         'primary_disease_site': 'Cervix uteri',
-                         'primary_disease_type': 'Adenomas and '
-                                                 'Adenocarcinomas'}],
-  'Specimen': [],
-  'associated_project': 'CGCI-HTMCP-CC',
-  'days_to_birth': None,
-  'ethnicity': None,
-  'id': 'HTMCP-03-06-02177',
-  'id_1': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-  'identifier': [ { 'system': 'GDC',
-                    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-  'primary_disease_site': 'Cervix uteri',
-  'primary_disease_type': 'Adenomas and Adenocarcinomas',
-  'race': None,
-  'sex': None}
-
 Pointing to a custom CDA instance
 ----
 
-``.run()`` will execute the query on the public .. _CDA API: https://cda.cda-dev.broadinstitute.org/api/cda/v1/ .
+``.run()`` will execute the query on the public `CDA API <https://cda.cda-dev.broadinstitute.org/api/cda/v1/>_.
 
 ``.run("http://localhost:8080")`` will execute the query on a CDA server running at
 ``http://localhost:8080``.
@@ -855,6 +858,7 @@ UNNEST(_ResearchSubject.Specimen) AS _Specimen
 
 Test query answers
 ----
+
 Test query 1
 +++++
 **Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
@@ -884,6 +888,7 @@ Test query 1
 
 Test query 2
 +++++
+
 **Find data from TCGA-BRCA project, with donors over the age of 50 with imaging data**
 
 .. code-block:: python
