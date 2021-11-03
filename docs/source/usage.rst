@@ -679,7 +679,7 @@ Oh no! looks like we have an empty set. This is because IDC does not have `Resea
   More pages: False
 
 
-Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system``. 
+Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system`` at the Subject level. So, let's try that:
 
 .. code-block:: python
 
@@ -712,10 +712,11 @@ Test query 1
 **Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. toggle-header::
+
   :header: Example 1 **Show/Hide Code**
     
     .. code-block:: python
-
+    
       q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
       q2 = Q('ResearchSubject.identifier.system = "PDC"')
       q3 = Q('ResearchSubject.identifier.system = "GDC"')
