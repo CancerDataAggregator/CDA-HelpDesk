@@ -3,8 +3,10 @@ Installation
 
 .. _installation:
 
+Currently there are two method for installation (Docker & pip), and an addition method that requires no installation (binder). The instructions for all of these methods can be found below. If you want to just jump in and start utilizing CDA-python, we suggest that you try the binder link. This link we take you to an example  jupyter notebook with some basic commands and example queries. 
 
-Install the CDA Python library locally:
+
+Install the CDA Python library locally
 --------------------------------------
 
 1. Download and install docker click this `link <https://www.docker.com/products/docker-desktop/>`_ or copy url https://www.docker.com/products/docker-desktop to your Browser
