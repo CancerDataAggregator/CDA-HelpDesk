@@ -24,13 +24,13 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 **Parameters:**
    - version : str [Optional]
-       - version allows you to select different version of SQL (Big Query) tables to runs querys on; default = 'all_v1'
+       - version allows you to select different version of SQL (BigQuery) tables to runs querys on; default = 'all_v1'
    - host : str [Optional]
        - host allows you to change the server in which you queries run; default = None (Board Institute)
    - limit : int [Optional]
        - limit allows you to set the number of values that ``columns`` returns; default = 100
    - table : str [Optional]
-        table allows you to select with Big Query table is being searched; default = 'integration'
+        table allows you to select with BigQuery table is being searched; default = 'integration'
 **Returns:**
     list
 **Example:**
@@ -126,13 +126,15 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
  'ResearchSubject.Specimen.File.checksum']
  
 
-All of the above fields are what describes the highest entity in the data structure hierarchy – ``Patient`` entity. The first five fields represent ``Patient`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
+All of the above fields are what describes the highest entity in the data structure hierarchy – ``Subject`` entity. The first five fields represent ``Subject`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
 
-One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Patient entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the patient record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
+One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Subject entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the subject record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
 
-Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
+.. note::
 
-The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :ref:`ETL.md` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
+  Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when  creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
+
+The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :doc:`ETL` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
  
  
 unique_terms()
@@ -143,9 +145,9 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 **Parameters:**
     - col_name : str
-        - col_name is the value from the `columns()` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
+        - col_name is the value from the ``columns()`` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
     - system : str [Optional]
-        - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see ..ref: limit.md_)
+        - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see :ref:`limit`)
     - limit : int [Optional]
         - limit allows you to set the number of values that ``columns`` returns; default = 100   
     - host : str [Optional]
@@ -158,7 +160,7 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 
 
-For each searchable field there are set values that can be searched (excluding numberic), to determine these vaues the ``unique_terms()`` command is used. For example if we were interested in searchable disease types were would type the following:
+For each searchable field there are set values that can be searched (excluding numberic), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
 
 >>> unique_terms("ResearchSubject.primary_disease_type")
 [None,
@@ -174,7 +176,10 @@ For each searchable field there are set values that can be searched (excluding n
  'Colon Adenocarcinoma',
 ...
 
-Additionally, you can specify a particular data node by using the ``system`` argument:
+.. note::
+  The results of ``unique_terms()`` may not be the same a different level (Subject vs ResearchSubject vs Specimen), so ``unique_terms()`` most be searched at the same level you plan to run your query.
+
+Additionally, you can specify a particular data node by using the ``system`` argument. For more information on data nodes/data commons see :ref:`ETL`.
 
 >>> unique_terms("ResearchSubject.Specimen.source_material_type", system="PDC")
 ['Solid Tissue Normal',
@@ -188,7 +193,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Xenograft']
 
 .. warning::
- Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
+  Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
   
  - 'File',
  - 'File.identifier',
@@ -225,25 +230,25 @@ Q lang is Language used to send query to the cda service
 run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
 
 **Parameters:**
-  - async_call : bool
-    - async_call allows for 
-  - table : str
-    - table allows you to select with BigQuery table is being searched; default = ‘integration’
-  - offset : int [optional] 
-    - [description]. Defaults to 0.
-  - limit : int, optional):
-    - limit allows you to set the number of values that returns per page; default = 100
-  - host : URL, [optional]
-    - host allows you to change the server in which you queries run; default = None (Board Institute)
-  - dry_run : bool, [optional] 
-    - [description]. Defaults to False.
+    - async_call : bool
+        - async_call allows for queries to run async
+    - table : str
+        - table allows you to select with BigQuery table is being searched; default = ‘integration’
+    - offset : int [optional] 
+        - [description]. Defaults to 0.
+    - limit : int, optional):
+        - limit allows you to set the number of values that returns per page; default = 100
+    - host : URL, [optional]
+        - host allows you to change the server in which you queries run; default = None (Board Institute)
+    - dry_run : bool, [optional] 
+        - [description]. Defaults to False.
 **Returns:**
     cda python Q data type
     
 Q Comparison operators
 +++++++
 
-The following comparsion operators can be used with the `Q` command: 
+The following comparsion operators can be used with the `Q` or `query` command: 
 
 +----------+---------------------------------------------------+---------------+
 | operator |Description                                        |Q.sql required?|
@@ -271,8 +276,7 @@ additionally, more complex SQL can be used with the `Q.sql()`_ command.
 
 .. note::
 
-Any given part of a query is expressed as a string of three parts separated by spaces. Therefore, there must be a space on both sides of the comparsion operator. The first part of the query is interpreted as a *column name*, the second as a *comparator* and the third part as a *value*. If the value is a string, it needs to be put in
-quotes.
+  Any given part of a query is expressed as a string of three parts separated by spaces. **Therefore, there must be a space on both sides of the comparsion operator**. The first part of the query is interpreted as a **column name**, the second as a **comparator operator** and the third part as a **value**. If the value is a string, it needs to be put in double quotes.
 
 Now, let's dive into the querying!
 
@@ -290,7 +294,7 @@ Count: 1
 Total Row Count: 1
 More pages: False
 
-We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single patient record as a result, which is what we expect.
+We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single Subject record as a result, which is what we expect.
 
 Let's take a look at the results:
 
@@ -403,10 +407,15 @@ The record is pretty large, so we'll print out identifier values for each Resear
 [{'system': 'GDC', 'value': '4da7abaf-ac7a-41c0-8033-5780a398545c'}]
 [{'system': 'PDC', 'value': '010df72d-63d9-11e8-bcf1-0a2705229b82'}]
 
-The values represent ResearchSubject IDs and are equivalent to case_id values in data nodes.
+The values represent ResearchSubject IDs and are equivalent to case_id values in data commons.
+
+.. warning::
+  In some instances the results will return multiple pages, if this is the case you must include ``next_page()`` in you loop. An example of looping with ``next_page()`` can be found here.
 
 Now that we can create a query with ``Q()`` function, let's see how we can combine multiple conditions.
 
+And, Or and From operators
+++++
 There are three operators available:
  * ``And()``
  * ``Or()``
@@ -481,8 +490,6 @@ In addition, we can check how many records come from particular systems by addin
  
  >>> print(r)
  
- >>> q1 = Q('ResearchSubject.primary_disease_type = "Adenomas and Adenocarcinomas"')
- >>> r = q1.run()                                 # Executes this query on the public CDA server
  
  Getting results from database
  
@@ -496,16 +503,16 @@ In addition, we can check how many records come from particular systems by addin
  More pages: False
 
 
-By comparing the ``Count`` value of the two results we can see that all the patients returned in the initial query are coming from the GDC.
+By comparing the ``Count`` value of the two results we can see that all the Subjects returned in the initial query are coming from the GDC.
 
-To explore the results further, we can fetch the patient JSON objects by iterating through the results:
+To explore the results further, we can fetch the Subject JSON objects by iterating through the results:
 
 .. code-block:: python
 
  >>> projects = set()
  
- >>> for patient in r:
- >>>     research_subjects = patient['ResearchSubject']
+ >>> for subject in r:
+ >>>     research_subjects = subject['ResearchSubject']
  >>>     for rs in research_subjects:
  >>>         projects.add(rs['associated_project'])
  
@@ -563,9 +570,9 @@ In this case, we have a result that contains more than 1000 records which is the
 Alternatively, we can use the ``offset`` argument to specify the record to start from:
 
 .. code-block:: python
- ...
- >>> r = q.run(offset=1000)
- >>> print(r)
+
+  >>> r = q.run(offset=1000)
+  >>> print(r)
 
 
 Example Query 4: From
@@ -573,7 +580,8 @@ Example Query 4: From
 
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and genomic data.**
 
-**Note that disease type value denoting the same disease groups can be completely different within different systems. This is where CDA features come into play.** We first start by exploring the values available for this particular field in both systems.
+.. note::
+  **Disease type values denoting the same disease groups can be completely different within different systems. This is where CDA features come into play.** We first start by exploring the values available for this particular field in both systems.
 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="GDC",limit=10)
 ['Osseous and Chondromatous Neoplasms',
@@ -633,76 +641,8 @@ After examining the output, we see that it does come from the PDC. Hence, if we 
  Total Row Count: 275
  More pages: False
 
-As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single patient. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
+As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single Subject. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
 
-
-.. code-block:: python
-
- >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
- >>> r = q1.run(limit=2)                        # Limit to two results per page
- 
- >>> r.sql   # Return SQL string used to generate the query e.g.
- "SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
- 
- >>> print(r) # Prints some brief information about the result page eg:
- Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
- Offset: 0
- Limit: 2
- Count: 2
- More pages: Yes
- 
- >>> r[0] # Returns nth result of this page as a Python dict e.g.
- {'days_to_birth': None,
-  'race': None,
-  'sex': None,
-  'ethnicity': None,
-  'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-  'ResearchSubject': [{'Diagnosis': [],
-    'Specimen': [],
-    'associated_project': 'CGCI-HTMCP-CC',
-    'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-    'primary_disease_type': 'Adenomas and Adenocarcinomas',
-    'identifier': [{'system': 'GDC',
-      'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-    'primary_disease_site': 'Cervix uteri'}],
-  'Diagnosis': [],
-  'Specimen': [],
-  'associated_project': 'CGCI-HTMCP-CC',
-  'primary_disease_type': 'Adenomas and Adenocarcinomas',
-  'identifier': [{'system': 'GDC',
-    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-  'primary_disease_site': 'Cervix uteri'}
-  
- >>> r.pretty_print(0) # Prints the nth result nicely
- { 'Diagnosis': [],
-   'ResearchSubject': [ { 'Diagnosis': [],
-                          'Specimen': [],
-                          'associated_project': 'CGCI-HTMCP-CC',
-                          'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-                          'identifier': [ { 'system': 'GDC',
-                                            'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-                          'primary_disease_site': 'Cervix uteri',
-                          'primary_disease_type': 'Adenomas and '
-                                                  'Adenocarcinomas'}],
-   'Specimen': [],
-   'associated_project': 'CGCI-HTMCP-CC',
-   'days_to_birth': None,
-   'ethnicity': None,
-   'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-   'identifier': [ { 'system': 'GDC',
-                     'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-   'primary_disease_site': 'Cervix uteri',
-   'primary_disease_type': 'Adenomas and Adenocarcinomas',
-   'race': None,
-   'sex': None}
-   
- >>> r2 = r.next_page()  # Fetches the next page of results
- >>> print(r2)
- Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
- Offset: 2
- Limit: 2
- Count: 2
- More pages: Yes
 
 Example Query 5: From continued (IDC)
 +++++
@@ -714,9 +654,10 @@ So now we would like to repeat the previouse query but this time identify cases 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="IDC",limit=10)
 []
 
-Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` intities. So, let try the same code as .. ref::Example Query 4: From but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
+Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` (or Specimen) intities, only Subject intities (see .. ref:: here `ETL` for more information). So, let try the same code as `Example Query 4: From`_ but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
 
 .. code-block:: python
+
   q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
   q2 = Q('ResearchSubject.identifier.system = "PDC"')
   q3 = Q('ResearchSubject.identifier.system = "IDC"')
@@ -738,9 +679,10 @@ Oh no! looks like we have an empty set. This is because IDC does not have `Resea
   More pages: False
 
 
-Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system``. 
+Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system`` at the Subject level. So, let's try that:
 
 .. code-block:: python
+
   q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
   q2 = Q('ResearchSubject.identifier.system = "PDC"')
   q3 = Q('identifier.system = "IDC"')
@@ -763,64 +705,6 @@ Hmm, zero results. Looks like we made a similar mistake and once again included 
 
 
 After a quick fix we now have 37 cases. 
-
-Test query 1
-+++++
-
-**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
-
-.. toggle-header::
-  :header: Example 1 **Show/Hide Code**
-    
-    .. code-block:: python
-
-      q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
-      q2 = Q('ResearchSubject.identifier.system = "PDC"')
-      q3 = Q('ResearchSubject.identifier.system = "GDC"')
-      
-      q = q2.From(q1.And(q3))
-      r = q.run()
-      
-      print(r)
-      
-      Getting results from database
-      
-      Total execution time: 27414 ms
-      
-      QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
-      Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
-      Offset: 0
-      Count: 100
-      Total Row Count: 369
-      More pages: True
-
-
-Test query 2
-+++++
-
-**Find data from TCGA-BRCA project, with donors over the age of 50 with imaging data**
-
-.. code-block:: python
-  q1 = Q('ResearchSubject.associated_project = "TCGA-BRCA"')
-  q2 = Q('days_to_birth > -50*365')
-  q3 = Q('identifier.system = "IDC"')
-  
-  q = q3.From(q1.And(q2))
-  r = q.run()
-  
-  print(r)
-  
-  Getting results from database
-  
-  Total execution time: 24125 ms
-  
-  QueryID: a5de2545-2b5e-476c-9e92-b768d058f603
-  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE ((_ResearchSubject.associated_project = 'TCGA-BRCA') AND (all_v1.days_to_birth < -50*365))) AS all_v1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
-  Offset: 0
-  Count: 88
-  Total Row Count: 88
-  More pages: False
-
 
 query()
 -----
@@ -878,10 +762,72 @@ In some cases more complex queries are required, and for that purpose we have im
   'race': None,
   'sex': None}
 
+Test queries
+----
+
+Test query 1
++++++
+
+**Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+
+.. toggle-header::
+
+  :header: Example 1 **Show/Hide Code**
+    
+    .. code-block:: python
+    
+      q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
+      q2 = Q('ResearchSubject.identifier.system = "PDC"')
+      q3 = Q('ResearchSubject.identifier.system = "GDC"')
+      
+      q = q2.From(q1.And(q3))
+      r = q.run()
+      
+      print(r)
+      
+      Getting results from database
+      
+      Total execution time: 27414 ms
+      
+      QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
+      Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
+      Offset: 0
+      Count: 100
+      Total Row Count: 369
+      More pages: True
+
+
+Test query 2
++++++
+
+**Find data from TCGA-BRCA project, with donors over the age of 50 with imaging data**
+
+.. code-block:: python
+  q1 = Q('ResearchSubject.associated_project = "TCGA-BRCA"')
+  q2 = Q('days_to_birth > -50*365')
+  q3 = Q('identifier.system = "IDC"')
+  
+  q = q3.From(q1.And(q2))
+  r = q.run()
+  
+  print(r)
+  
+  Getting results from database
+  
+  Total execution time: 24125 ms
+  
+  QueryID: a5de2545-2b5e-476c-9e92-b768d058f603
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE ((_ResearchSubject.associated_project = 'TCGA-BRCA') AND (all_v1.days_to_birth < -50*365))) AS all_v1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Offset: 0
+  Count: 88
+  Total Row Count: 88
+  More pages: False
+
+
 Pointing to a custom CDA instance
 ----
 
-``.run()`` will execute the query on the public .. _CDA API: https://cda.cda-dev.broadinstitute.org/api/cda/v1/ .
+``.run()`` will execute the query on the public `CDA API <https://cda.cda-dev.broadinstitute.org/api/cda/v1/>_.
 
 ``.run("http://localhost:8080")`` will execute the query on a CDA server running at
 ``http://localhost:8080``.
@@ -912,9 +858,10 @@ UNNEST(_ResearchSubject.Specimen) AS _Specimen
 
 Test query answers
 ----
+
 Test query 1
 +++++
-**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+**Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. code-block:: python
 
@@ -941,6 +888,7 @@ Test query 1
 
 Test query 2
 +++++
+
 **Find data from TCGA-BRCA project, with donors over the age of 50 with imaging data**
 
 .. code-block:: python
