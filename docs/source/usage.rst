@@ -131,7 +131,8 @@ All of the above fields are what describes the highest entity in the data struct
 One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Subject entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the subject record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
 
 .. note::
-Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
+
+  Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when  creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
 
 The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :doc:`ETL` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
  
@@ -176,7 +177,7 @@ For each searchable field there are set values that can be searched (excluding n
 ...
 
 .. note::
-The results of ``unique_terms()`` may not be the same a different level (Subject vs ResearchSubject vs Specimen), so ``unique_terms()`` most be searched at the same level you plan to run your query.
+  The results of ``unique_terms()`` may not be the same a different level (Subject vs ResearchSubject vs Specimen), so ``unique_terms()`` most be searched at the same level you plan to run your query.
 
 Additionally, you can specify a particular data node by using the ``system`` argument. For more information on data nodes/data commons see :ref:`ETL`.
 
@@ -192,7 +193,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Xenograft']
 
 .. warning::
- Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
+  Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
   
  - 'File',
  - 'File.identifier',
@@ -275,7 +276,7 @@ additionally, more complex SQL can be used with the `Q.sql()`_ command.
 
 .. note::
 
-Any given part of a query is expressed as a string of three parts separated by spaces. *Therefore, there must be a space on both sides of the comparsion operator*. The first part of the query is interpreted as a *column name*, the second as a *comparator operator* and the third part as a *value*. If the value is a string, it needs to be put in double quotes.
+  Any given part of a query is expressed as a string of three parts separated by spaces. *Therefore, there must be a space on both sides of the comparsion operator*. The first part of the query is interpreted as a *column name*, the second as a *comparator operator* and the third part as a *value*. If the value is a string, it needs to be put in double quotes.
 
 Now, let's dive into the querying!
 
@@ -409,7 +410,7 @@ The record is pretty large, so we'll print out identifier values for each Resear
 The values represent ResearchSubject IDs and are equivalent to case_id values in data commons.
 
 .. warning::
-In some instances the results will return multiple pages, if this is the case you must include ``next_page()`` in you loop. An example of looping with ``next_page()`` can be found here.
+  In some instances the results will return multiple pages, if this is the case you must include ``next_page()`` in you loop. An example of looping with ``next_page()`` can be found here.
 
 Now that we can create a query with ``Q()`` function, let's see how we can combine multiple conditions.
 
