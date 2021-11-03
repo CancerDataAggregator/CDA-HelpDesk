@@ -276,7 +276,7 @@ additionally, more complex SQL can be used with the `Q.sql()`_ command.
 
 .. note::
 
-  Any given part of a query is expressed as a string of three parts separated by spaces. *Therefore, there must be a space on both sides of the comparsion operator*. The first part of the query is interpreted as a *column name*, the second as a *comparator operator* and the third part as a *value*. If the value is a string, it needs to be put in double quotes.
+  Any given part of a query is expressed as a string of three parts separated by spaces. **Therefore, there must be a space on both sides of the comparsion operator**. The first part of the query is interpreted as a **column name**, the second as a **comparator operator** and the third part as a **value**. If the value is a string, it needs to be put in double quotes.
 
 Now, let's dive into the querying!
 
@@ -490,8 +490,6 @@ In addition, we can check how many records come from particular systems by addin
  
  >>> print(r)
  
- >>> q1 = Q('ResearchSubject.primary_disease_type = "Adenomas and Adenocarcinomas"')
- >>> r = q1.run()                                 # Executes this query on the public CDA server
  
  Getting results from database
  
@@ -572,9 +570,9 @@ In this case, we have a result that contains more than 1000 records which is the
 Alternatively, we can use the ``offset`` argument to specify the record to start from:
 
 .. code-block:: python
- ...
- >>> r = q.run(offset=1000)
- >>> print(r)
+
+  >>> r = q.run(offset=1000)
+  >>> print(r)
 
 
 Example Query 4: From
@@ -582,7 +580,8 @@ Example Query 4: From
 
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and genomic data.**
 
-**Note that disease type value denoting the same disease groups can be completely different within different systems. This is where CDA features come into play.** We first start by exploring the values available for this particular field in both systems.
+.. note::
+  **Disease type values denoting the same disease groups can be completely different within different systems. This is where CDA features come into play.** We first start by exploring the values available for this particular field in both systems.
 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="GDC",limit=10)
 ['Osseous and Chondromatous Neoplasms',
@@ -645,74 +644,6 @@ After examining the output, we see that it does come from the PDC. Hence, if we 
 As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single Subject. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
 
 
-.. code-block:: python
-
- >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
- >>> r = q1.run(limit=2)                        # Limit to two results per page
- 
- >>> r.sql   # Return SQL string used to generate the query e.g.
- "SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_disease_type = 'Adenomas and Adenocarcinomas')"
- 
- >>> print(r) # Prints some brief information about the result page eg:
- Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
- Offset: 0
- Limit: 2
- Count: 2
- More pages: Yes
- 
- >>> r[0] # Returns nth result of this page as a Python dict e.g.
- {'days_to_birth': None,
-  'race': None,
-  'sex': None,
-  'ethnicity': None,
-  'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-  'ResearchSubject': [{'Diagnosis': [],
-    'Specimen': [],
-    'associated_project': 'CGCI-HTMCP-CC',
-    'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-    'primary_disease_type': 'Adenomas and Adenocarcinomas',
-    'identifier': [{'system': 'GDC',
-      'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-    'primary_disease_site': 'Cervix uteri'}],
-  'Diagnosis': [],
-  'Specimen': [],
-  'associated_project': 'CGCI-HTMCP-CC',
-  'primary_disease_type': 'Adenomas and Adenocarcinomas',
-  'identifier': [{'system': 'GDC',
-    'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-  'primary_disease_site': 'Cervix uteri'}
-  
- >>> r.pretty_print(0) # Prints the nth result nicely
- { 'Diagnosis': [],
-   'ResearchSubject': [ { 'Diagnosis': [],
-                          'Specimen': [],
-                          'associated_project': 'CGCI-HTMCP-CC',
-                          'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-                          'identifier': [ { 'system': 'GDC',
-                                            'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-                          'primary_disease_site': 'Cervix uteri',
-                          'primary_disease_type': 'Adenomas and '
-                                                  'Adenocarcinomas'}],
-   'Specimen': [],
-   'associated_project': 'CGCI-HTMCP-CC',
-   'days_to_birth': None,
-   'ethnicity': None,
-   'id': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3',
-   'identifier': [ { 'system': 'GDC',
-                     'value': '4d54f72c-e8ac-44a7-8ab9-9f20001750b3'}],
-   'primary_disease_site': 'Cervix uteri',
-   'primary_disease_type': 'Adenomas and Adenocarcinomas',
-   'race': None,
-   'sex': None}
-   
- >>> r2 = r.next_page()  # Fetches the next page of results
- >>> print(r2)
- Query: SELECT * FROM gdc-bq-sample.cda_mvp.v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.# primary_disease_type = 'Adenomas and Adenocarcinomas')
- Offset: 2
- Limit: 2
- Count: 2
- More pages: Yes
-
 Example Query 5: From continued (IDC)
 +++++
 
@@ -723,9 +654,10 @@ So now we would like to repeat the previouse query but this time identify cases 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="IDC",limit=10)
 []
 
-Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` intities. So, let try the same code as .. ref::Example Query 4: From but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
+Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` (or Specimen) intities, only Subject intities (see .. ref:: here `ETL` for more information). So, let try the same code as `Example Query 4: From`_ but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
 
 .. code-block:: python
+
   q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
   q2 = Q('ResearchSubject.identifier.system = "PDC"')
   q3 = Q('ResearchSubject.identifier.system = "IDC"')
@@ -750,6 +682,7 @@ Oh no! looks like we have an empty set. This is because IDC does not have `Resea
 Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system``. 
 
 .. code-block:: python
+
   q1 = Q('ResearchSubject.primary_disease_type = "Ovarian Serous Cystadenocarcinoma"')
   q2 = Q('ResearchSubject.identifier.system = "PDC"')
   q3 = Q('identifier.system = "IDC"')
