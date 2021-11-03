@@ -24,13 +24,13 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 **Parameters:**
    - version : str [Optional]
-       - version allows you to select different version of SQL (Big Query) tables to runs querys on; default = 'all_v1'
+       - version allows you to select different version of SQL (BigQuery) tables to runs querys on; default = 'all_v1'
    - host : str [Optional]
        - host allows you to change the server in which you queries run; default = None (Board Institute)
    - limit : int [Optional]
        - limit allows you to set the number of values that ``columns`` returns; default = 100
    - table : str [Optional]
-        table allows you to select with Big Query table is being searched; default = 'integration'
+        table allows you to select with BigQuery table is being searched; default = 'integration'
 **Returns:**
     list
 **Example:**
@@ -126,13 +126,14 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
  'ResearchSubject.Specimen.File.checksum']
  
 
-All of the above fields are what describes the highest entity in the data structure hierarchy – ``Patient`` entity. The first five fields represent ``Patient`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
+All of the above fields are what describes the highest entity in the data structure hierarchy – ``Subject`` entity. The first five fields represent ``Subject`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
 
-One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Patient entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the patient record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
+One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Subject entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the subject record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
 
+.. note::
 Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
 
-The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :ref:`ETL.md` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
+The names in the list may look familiar to you, but they may have been renamed or restructured in the CDA. For more information about the field name mappings you can look into :doc:`ETL` . A more direct way to explore and understand the fields is to use the ``unique_terms()`` function:
  
  
 unique_terms()
