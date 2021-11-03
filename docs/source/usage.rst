@@ -294,7 +294,7 @@ Count: 1
 Total Row Count: 1
 More pages: False
 
-We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single patient record as a result, which is what we expect.
+We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single Subject record as a result, which is what we expect.
 
 Let's take a look at the results:
 
@@ -505,16 +505,16 @@ In addition, we can check how many records come from particular systems by addin
  More pages: False
 
 
-By comparing the ``Count`` value of the two results we can see that all the patients returned in the initial query are coming from the GDC.
+By comparing the ``Count`` value of the two results we can see that all the Subjects returned in the initial query are coming from the GDC.
 
-To explore the results further, we can fetch the patient JSON objects by iterating through the results:
+To explore the results further, we can fetch the Subject JSON objects by iterating through the results:
 
 .. code-block:: python
 
  >>> projects = set()
  
- >>> for patient in r:
- >>>     research_subjects = patient['ResearchSubject']
+ >>> for subject in r:
+ >>>     research_subjects = subject['ResearchSubject']
  >>>     for rs in research_subjects:
  >>>         projects.add(rs['associated_project'])
  
@@ -642,7 +642,7 @@ After examining the output, we see that it does come from the PDC. Hence, if we 
  Total Row Count: 275
  More pages: False
 
-As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single patient. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
+As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single Subject. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
 
 
 .. code-block:: python
@@ -776,7 +776,7 @@ After a quick fix we now have 37 cases.
 Test query 1
 +++++
 
-**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+**Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. toggle-header::
   :header: Example 1 **Show/Hide Code**
@@ -923,7 +923,7 @@ Test query answers
 ----
 Test query 1
 +++++
-**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+**Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. code-block:: python
 
