@@ -144,9 +144,9 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 **Parameters:**
     - col_name : str
-        - col_name is the value from the `columns()` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
+        - col_name is the value from the ``columns()`` that you would like a list of searchable terms from (e.g. 'ResearchSubject.primary_disease_site')
     - system : str [Optional]
-        - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see ..ref: limit.md_)
+        - system allows you to determine which data common you would like to search (GDC, PDC, or IDC; see :ref:`limit`)
     - limit : int [Optional]
         - limit allows you to set the number of values that ``columns`` returns; default = 100   
     - host : str [Optional]
@@ -159,7 +159,7 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 
 
-For each searchable field there are set values that can be searched (excluding numberic), to determine these vaues the ``unique_terms()`` command is used. For example if we were interested in searchable disease types were would type the following:
+For each searchable field there are set values that can be searched (excluding numberic), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
 
 >>> unique_terms("ResearchSubject.primary_disease_type")
 [None,
@@ -175,7 +175,10 @@ For each searchable field there are set values that can be searched (excluding n
  'Colon Adenocarcinoma',
 ...
 
-Additionally, you can specify a particular data node by using the ``system`` argument:
+.. note::
+The results of ``unique_terms()`` may not be the same a different level (Subject vs ResearchSubject vs Specimen), so ``unique_terms()`` most be searched at the same level you plan to run your query.
+
+Additionally, you can specify a particular data node by using the ``system`` argument. For more information on data nodes/data commons see :ref:`ETL`.
 
 >>> unique_terms("ResearchSubject.Specimen.source_material_type", system="PDC")
 ['Solid Tissue Normal',
@@ -226,25 +229,25 @@ Q lang is Language used to send query to the cda service
 run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
 
 **Parameters:**
-  - async_call : bool
-    - async_call allows for 
-  - table : str
-    - table allows you to select with BigQuery table is being searched; default = ‘integration’
-  - offset : int [optional] 
-    - [description]. Defaults to 0.
-  - limit : int, optional):
-    - limit allows you to set the number of values that returns per page; default = 100
-  - host : URL, [optional]
-    - host allows you to change the server in which you queries run; default = None (Board Institute)
-  - dry_run : bool, [optional] 
-    - [description]. Defaults to False.
+    - async_call : bool
+        - async_call allows for queries to run async
+    - table : str
+        - table allows you to select with BigQuery table is being searched; default = ‘integration’
+    - offset : int [optional] 
+        - [description]. Defaults to 0.
+    - limit : int, optional):
+        - limit allows you to set the number of values that returns per page; default = 100
+    - host : URL, [optional]
+        - host allows you to change the server in which you queries run; default = None (Board Institute)
+    - dry_run : bool, [optional] 
+        - [description]. Defaults to False.
 **Returns:**
     cda python Q data type
     
 Q Comparison operators
 +++++++
 
-The following comparsion operators can be used with the `Q` command: 
+The following comparsion operators can be used with the `Q` or `query` command: 
 
 +----------+---------------------------------------------------+---------------+
 | operator |Description                                        |Q.sql required?|
@@ -272,8 +275,7 @@ additionally, more complex SQL can be used with the `Q.sql()`_ command.
 
 .. note::
 
-Any given part of a query is expressed as a string of three parts separated by spaces. Therefore, there must be a space on both sides of the comparsion operator. The first part of the query is interpreted as a *column name*, the second as a *comparator* and the third part as a *value*. If the value is a string, it needs to be put in
-quotes.
+Any given part of a query is expressed as a string of three parts separated by spaces. *Therefore, there must be a space on both sides of the comparsion operator*. The first part of the query is interpreted as a *column name*, the second as a *comparator operator* and the third part as a *value*. If the value is a string, it needs to be put in double quotes.
 
 Now, let's dive into the querying!
 
@@ -404,10 +406,15 @@ The record is pretty large, so we'll print out identifier values for each Resear
 [{'system': 'GDC', 'value': '4da7abaf-ac7a-41c0-8033-5780a398545c'}]
 [{'system': 'PDC', 'value': '010df72d-63d9-11e8-bcf1-0a2705229b82'}]
 
-The values represent ResearchSubject IDs and are equivalent to case_id values in data nodes.
+The values represent ResearchSubject IDs and are equivalent to case_id values in data commons.
+
+.. warning::
+In some instances the results will return multiple pages, if this is the case you must include ``next_page()`` in you loop. An example of looping with ``next_page()`` can be found here.
 
 Now that we can create a query with ``Q()`` function, let's see how we can combine multiple conditions.
 
+And, Or and From operators
+++++
 There are three operators available:
  * ``And()``
  * ``Or()``
