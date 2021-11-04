@@ -44,7 +44,7 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 * All datasets updated as follows
     * GDC: v30.0, 09/27/2021
     * PDC: v2.1, 09/27/2021
-    * IDC: v.3.0, 09/27/2021
+    * IDC: v.4.0, 09/29/2021
 * Now associate File entity with Subject and ResearchSubject entity
 * All types of specimens have Files
 
