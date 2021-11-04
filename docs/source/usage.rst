@@ -141,7 +141,7 @@ unique_terms()
 -------
 ``unique_terms(col_name: str, system: str = '', limit: int = 100, host: Optional[str] = None, table: Optional[str] = None)``
 
-displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
+displays all non-numeric values that can be searched in a query for a given column.
 
 **Parameters:**
     - col_name : str
@@ -160,7 +160,7 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 
 
-For each searchable field there are set values that can be searched (excluding numberic), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
+For each searchable field there are set values that can be searched (excluding numeric), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
 
 >>> unique_terms("ResearchSubject.primary_disease_type")
 [None,
