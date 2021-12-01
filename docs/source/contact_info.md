@@ -2,7 +2,9 @@
 
 All feedback can be submitted via email at [cda-developers@broadinstitute.org](mailto:cda-developers@broadinstitute.org). 
 
-## How to report a bug
+## How to report a bug as a Tester
+
+One advanage testers have over other end-user is the ability to contact the CDA team via slack. We encourage our testers to use slack to communicate with us for small bugs. However, if bugs is not able to be resolved within an hour, we has that you follow the protocols below and report the bug via github. 
 
 If you have a bug or question, you can create an issue in [github](https://github.com/CancerDataAggregator/cda-python/issues).
 When report bugs ask that you please using the following template:
