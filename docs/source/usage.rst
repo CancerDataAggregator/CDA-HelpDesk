@@ -141,7 +141,7 @@ unique_terms()
 -------
 ``unique_terms(col_name: str, system: str = '', limit: int = 100, host: Optional[str] = None, table: Optional[str] = None)``
 
-displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g. ethnicity, tumor stage, disease type, etc.)
+displays all non-numeric values that can be searched in a query for a given column.
 
 **Parameters:**
     - col_name : str
@@ -160,7 +160,7 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 
 
-For each searchable field there are set values that can be searched (excluding numberic), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
+For each searchable field there are set values that can be searched (excluding numeric), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
 
 >>> unique_terms("ResearchSubject.primary_disease_type")
 [None,
@@ -704,7 +704,29 @@ Hmm, zero results. Looks like we made a similar mistake and once again included 
   More pages: False
 
 
-After a quick fix we now have 37 cases. 
+After a quick fix we now have 37 cases.
+
+Example query 6: Return all data
+++++
+
+In some instances you may want to return all of the data to build/process your own database. This can be done by queries for data in any of the Data Commons using the ``identifier.system`` columns and ``OR`` operator.
+
+.. code-block:: python
+
+  q = query('identifier.system = "GDC" OR identifier.system = "PDC" OR identifier.system = "IDC"')
+  r = q.run()
+  r
+  
+  Getting results from database
+  
+  Total execution time: 25049 ms
+  
+  QueryID: 211bf374-62bd-477e-8bc6-5c7954eb587f
+  Query: SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(identifier) AS _identifier WHERE (((_identifier.system = 'GDC') OR (_identifier.system = 'PDC')) OR (_identifier.system = 'IDC'))
+  Offset: 0
+  Count: 100
+  Total Row Count: 104731
+  More pages: True
 
 query()
 -----
