@@ -29,9 +29,9 @@ As the CCDH model develops, CDA leverages the harmonization work of the [CCDH mo
 |:---:|
 | **Figure 3**: The <a href="https://github.com/CancerDataAggregator/cda-data-model">data model</a> is expressed as JSON schema. |
 
-In Figure 3, the entities rimmed in blue are not yet part of the CCDH model but are extensions to allow CDA to aggregate and deliver data as the CCDH model evolves. It may be helpful to think about your queries in terms of these entities (e.g. Specimen, Patient, Research Subject, Project, Diagnosis) and their attributes (e.g. derived_from_subject, ethnicity, reference_assembly).
+In Figure 3, the entities rimmed in blue are not yet part of the CCDH model but are extensions to allow CDA to aggregate and deliver data as the CCDH model evolves. It may be helpful to think about your queries in terms of these entities (e.g. Specimen, Subject, Research Subject, Project, Diagnosis) and their attributes (e.g. derived_from_subject, ethnicity, reference_assembly).
 
-When the data is fully harmonized, finding data for a specific patient or a specific specimen across all nodes will be simplified.  For Release 1, CDA was able to identify common patients across GDC and PDC in cases where the PDC “case_submitter_id” is equal to the GDC “submitter_id”, essentially harmonizing this field. Further alignment was achieved by using lower case characters consistently. For Release 2, CDA similarly merged IDC with GDC and PDC data by matching IDC “PatientID” with GDC “submitter_id” and PDC “case_submitter_id”.
+When the data is fully harmonized, finding data for a specific subject or a specific specimen across all nodes will be simplified.  For Release 1, CDA was able to identify common subjects across GDC and PDC in cases where the PDC “case_submitter_id” is equal to the GDC “submitter_id”, essentially harmonizing this field. Further alignment was achieved by using lower case characters consistently. For Release 2, CDA similarly merged IDC with GDC and PDC data by matching IDC “PatientID” with GDC “submitter_id” and PDC “case_submitter_id”.
 
 To assist you with the transition to CCDH data model terminology, we have provided a field by field mapping of terms from the GDC, PDC[^1], and IDC data dictionaries to the implemented JSON schema. This information can be found in [CDA Schema Field Mapping](./Schema.md).
 
@@ -44,8 +44,8 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 * All datasets updated as follows
     * GDC: v30.0, 09/27/2021
     * PDC: v2.1, 09/27/2021
-    * IDC: v.3.0, 09/27/2021
-* Now associate File entity with Patient and ResearchSubject entity
+    * IDC: v.4.0, 09/29/2021
+* Now associate File entity with Subject and ResearchSubject entity
 * All types of specimens have Files
 
 
