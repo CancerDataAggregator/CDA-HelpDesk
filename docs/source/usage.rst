@@ -193,7 +193,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Xenograft']
 
 .. warning::
-  Some columns are array value and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do have ``unique_terms``.
+  Some columns are complex datatype consisting of sub-columns and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do not have ``unique_terms``. Additionally, these columns should not be used in a query.
   
  - 'File',
  - 'File.identifier',
@@ -203,7 +203,6 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  - 'ResearchSubject.Diagnosis.Treatment',
  - 'ResearchSubject.Specimen',
  - 'ResearchSubject.Specimen.File',
- - 'ResearchSubject.Specimen.File.associated_project',
  - 'ResearchSubject.Specimen.File.identifier',
  - 'ResearchSubject.Specimen.identifier',
  - 'ResearchSubject.identifier',
