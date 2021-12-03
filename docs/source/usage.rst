@@ -193,7 +193,14 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Xenograft']
 
 .. warning::
-  Some columns are complex datatype consisting of sub-columns and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). Below is the list of column values that do not have ``unique_terms``. Additionally, these columns should not be used in a query.
+  Some columns are nested array datatypes consisting of sub-columns/arrays and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file). 
+  ```{'File': [{'label': '0012f466-075a-4d47-b1d7-e8e63e8b9c99.vep.vcf.gz',
+       'associated_project': ['TCGA-BRCA'],
+       'drs_uri': 'drs://dg.4DFC:0012f466-075a-4d47-b1d7-e8e63e8b9c99',
+       **'identifier': [{'system': 'GDC', 'value': '0012f466-075a-4d47-b1d7-e8e63e8b9c99'}]**
+      ...
+  ```
+  Below is the list of column values that do not have ``unique_terms``. Additionally, these columns should not be used in a query.
   
  - 'File',
  - 'File.identifier',
