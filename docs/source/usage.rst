@@ -3,7 +3,8 @@ Usage
 =====
 
 
-We will now show you the basic structure of `CDA python` through the use of the most commands:
+We will now show you the basic structure of `CDA python` through the
+use of the most common commands:
 
 - ``columns()``: show all available columns in the table,
 - ``unique_terms()``: for a given column show all unique terms,
@@ -11,7 +12,7 @@ We will now show you the basic structure of `CDA python` through the use of the 
 - ``query()`` : allows you to write long form Q statments with out chaining, and
 - ``Q.sql()``: allows you to enter SQL style queries.
 
-**To begin we will first load all of the library and it's methods:**
+**To begin we will first load all of the library and its methods:**
 
 >>> from cdapython import Q, columns, unique_terms, query
 
@@ -24,7 +25,7 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
 
 **Parameters:**
    - version : str [Optional]
-       - version allows you to select different version of SQL (BigQuery) tables to runs querys on; default = 'all_v1'
+       - version allows you to select different version of SQL (BigQuery) tables to runs queries on; default = 'all_v1'
    - host : str [Optional]
        - host allows you to change the server in which you queries run; default = None (Board Institute)
    - limit : int [Optional]
@@ -126,9 +127,9 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
  'ResearchSubject.Specimen.File.checksum']
  
 
-All of the above fields are what describes the highest entity in the data structure hierarchy – ``Subject`` entity. The first five fields represent ``Subject`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
+All of the above fields describe the highest entity in the data structure hierarchy – ``Subject`` entity. The first five fields represent ``Subject`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
 
-One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Subject entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the subject record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
+One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Subject entity. Certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the subject record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
 
 .. note::
 
@@ -151,16 +152,17 @@ displays all non-numeric values that can be searched in a query for a given colu
     - limit : int [Optional]
         - limit allows you to set the number of values that ``columns`` returns; default = 100   
     - host : str [Optional]
-        - host allows you to change the server in which you queries run; default = None (Board Institute)
+        - host allows you to change the server in which you queries run; default = None (Broad Institute)
     - table : str [Optional] 
-        - table allows you to select with Big Query table is being searched; default = 'integration'
+        - table allows you to select which Big Query table is being searched; default = 'integration'
 **Returns:**
     list
 **Example:**
 
 
 
-For each searchable field there are set values that can be searched (excluding numeric), to determine these values the ``unique_terms()`` command is used. For example if we were interested in searchable disease types at the ResearchSubject level were would type the following:
+For each searchable field there are set values that can be searched
+(excluding numeric fields). To determine these values the ``unique_terms()`` command is used. For example, if we were interested in searchable disease types at the ResearchSubject level we would type the following:
 
 >>> unique_terms("ResearchSubject.primary_disease_type")
 [None,
@@ -177,7 +179,9 @@ For each searchable field there are set values that can be searched (excluding n
 ...
 
 .. note::
-  The results of ``unique_terms()`` may not be the same a different level (Subject vs ResearchSubject vs Specimen), so ``unique_terms()`` most be searched at the same level you plan to run your query.
+  The results of ``unique_terms()`` may not be the same at different
+  level (Subject vs ResearchSubject vs Specimen), so
+  ``unique_terms()`` must be searched at the same level on which you plan to run your query.
 
 Additionally, you can specify a particular data node by using the ``system`` argument. For more information on data nodes/data commons see :ref:`ETL`.
 
@@ -193,7 +197,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
  'Xenograft']
 
 .. warning::
-  Some columns are nested array datatypes consisting of sub-columns/arrays and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which as  comprised of ``system`` (which data common the information is from) and ``value`` (the id for a given file), as shown below. 
+  Some columns are nested array datatypes consisting of sub-columns/arrays and do not have ``unique_terms``. Arrays columns contain multiple values; an example of this would be ``File.identifier`` which is comprised of ``system`` (which data commons the information is from) and ``value`` (the id for a given file), as shown below. 
   
   .. code-block:: json
   
@@ -203,7 +207,7 @@ Additionally, you can specify a particular data node by using the ``system`` arg
      **'identifier': [{'system': 'GDC', 'value': '0012f466-075a-4d47-b1d7-e8e63e8b9c99'}]**
      ...
 
-  Below is the list of column values that do not have ``unique_terms``. Additionally, these columns should not be used in a query.
+  Below is the list of column values that are not supported by ``unique_terms``. Additionally, these columns should not be used in a query.
   
  - 'File',
  - 'File.identifier',
@@ -226,13 +230,13 @@ Q()
 ----
 ``Q(query)``
 
-Q lang is Language used to send query to the cda service
+Q lang is a language used to query the cda service directly.
 
 **Parameters:**
     - query : str
-        - a query string containing a value from ``columns()`` with an comparison operator (=, !=, <, >) and a numeric/boolean/unique value form ``unique_terms``. 
+        - a query string containing a value from ``columns()`` with an comparison operator (=, !=, <, >) and a numeric/boolean/unique value from ``unique_terms``. 
 **Returns:**
-    cda python Q data type
+    cda-python Q data type
     
 ``Q().run``
 
@@ -240,19 +244,19 @@ run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, t
 
 **Parameters:**
     - async_call : bool
-        - async_call allows for queries to run async
+        - async_call allows for queries to run asynchronously
     - table : str
-        - table allows you to select with BigQuery table is being searched; default = ‘integration’
+        - table allows you to select which BigQuery table is being searched; default = ‘integration’
     - offset : int [optional] 
         - [description]. Defaults to 0.
     - limit : int, optional):
-        - limit allows you to set the number of values that returns per page; default = 100
+        - limit allows you to set the number of values returned per page; default = 100
     - host : URL, [optional]
-        - host allows you to change the server in which you queries run; default = None (Board Institute)
+        - host allows you to change the server where your queries run; default = None (Broad Institute)
     - dry_run : bool, [optional] 
         - [description]. Defaults to False.
 **Returns:**
-    cda python Q data type
+    cda-python Q data type
     
 Q Comparison operators
 +++++++
@@ -260,21 +264,21 @@ Q Comparison operators
 The following comparsion operators can be used with the `Q` or `query` command: 
 
 +----------+---------------------------------------------------+---------------+
-| operator |Description                                        |Q.sql required?|
+| operator |condition description                                        |Q.sql required?|
 +==========+===================================================+===============+
-| =        | condition equals                                  |     no        |
+| =        | equals                                  |     no        |
 +----------+---------------------------------------------------+---------------+
-| !=       | condition is not equal                            |     no        |
+| !=       | does not equal                            |     no        |
 +----------+---------------------------------------------------+---------------+
-| <        | condition is less than                            |     no        |
+| <        | is less than                            |     no        |
 +----------+---------------------------------------------------+---------------+
-| >        | condition is greater than                         |     no        |
+| >        | is greater than                         |     no        |
 +----------+---------------------------------------------------+---------------+
-| <=       | condition is less than or equal to                |     no        |
+| <=       | is less than or equal to                |     no        |
 +----------+---------------------------------------------------+---------------+
-| >=       | condition is less than or equal to                |     no        |
+| >=       | is less than or equal to                |     no        |
 +----------+---------------------------------------------------+---------------+
-| like     | similar to = but always wildcards ('%', '_', etc) |    yes        |
+| like     | similar to = but allows wildcards ('%', '_', etc) |    yes        |
 +----------+---------------------------------------------------+---------------+
 | in       | compares to a set                                 |    yes        |
 +----------+---------------------------------------------------+---------------+
@@ -303,7 +307,9 @@ Count: 1
 Total Row Count: 1
 More pages: False
 
-We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must be called to actually process your query. After calling ``print()`` on the query result variable we see that we've got a single Subject record as a result, which is what we expect.
+We've discussed ``Q`` but not the ``.run()`` method; ``.run()`` must
+be called to actually process your query. After calling ``print()`` on
+the query result variable we see that we have a single Subject record as a result, which is what we expect.
 
 Let's take a look at the results:
 
@@ -416,7 +422,8 @@ The record is pretty large, so we'll print out identifier values for each Resear
 [{'system': 'GDC', 'value': '4da7abaf-ac7a-41c0-8033-5780a398545c'}]
 [{'system': 'PDC', 'value': '010df72d-63d9-11e8-bcf1-0a2705229b82'}]
 
-The values represent ResearchSubject IDs and are equivalent to case_id values in data commons.
+The values represent ResearchSubject IDs and are equivalent to case_id
+values in some data commons.
 
 .. warning::
   In some instances the results will return multiple pages, if this is the case you must include ``next_page()`` in you loop. An example of looping with ``next_page()`` can be found here.
@@ -567,7 +574,7 @@ Example Query 3: Or
  More pages: True
 
 
-In this case, we have a result that contains more than 1000 records which is the default page size. To load the next 1000 records, we can use the ``next_page()`` method:
+In this case, we have a result that contains more than 1000 records, the default page size. To load the next 1000 records, we can use the ``next_page()`` method:
 
 .. code-block:: python
 
@@ -590,7 +597,7 @@ Example Query 4: From
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and genomic data.**
 
 .. note::
-  **Disease type values denoting the same disease groups can be completely different within different systems. This is where CDA features come into play.** We first start by exploring the values available for this particular field in both systems.
+  **Disease type values denoting the same disease groups can be completely different between different systems. This is where CDA features come into play.** We first start by exploring the values available for this particular field in both systems.
 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="GDC",limit=10)
 ['Osseous and Chondromatous Neoplasms',
@@ -605,7 +612,8 @@ Example Query 4: From
  'Germ Cell Neoplasms']
  
  
-Since “Ovarian Serous Cystadenocarcinoma” doesn’t appear in GDC values we decide to look into the PDC:
+Since “Ovarian Serous Cystadenocarcinoma” doesn’t appear among the GDC
+values, we decide to look into the PDC:
 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="PDC")
 ['Other',
@@ -627,7 +635,7 @@ Since “Ovarian Serous Cystadenocarcinoma” doesn’t appear in GDC values we 
  'Papillary Renal Cell Carcinoma',
  'Oral Squamous Cell Carcinoma']
  
-After examining the output, we see that it does come from the PDC. Hence, if we could first identify the data that has research subjects found within the PDC that have this particular disease type, and then further narrow down the results to include only the portion of the data that is present in GDC, we could get the records that we are looking for.
+After examining the output, we see that this term does appear at the PDC. Hence, if we could first identify the data that has research subjects found within the PDC that have this particular disease type, and then further narrow down the results to include only the portion of the data that is present in GDC, we could get the records that we are looking for.
 
 .. code-block:: python
 
@@ -650,7 +658,15 @@ After examining the output, we see that it does come from the PDC. Hence, if we 
  Total Row Count: 275
  More pages: False
 
-As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a single Subject. In such cases, ``And`` operator can’t help because it will return those entries where the field takes both values, which is zero entries.
+As you can see, this is achieved by utilizing ``From`` operator. The
+``From`` operator allows us to create queries from results of other
+queries. This is particularly useful when working with conditions that
+involve a single field which can take multiple different values for
+different items in a list that is being part of, e.g. we need
+``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a
+single Subject. In such cases, the ``And`` operator can’t help because
+it will return those entries where the field takes both values, ie.,
+zero entries.
 
 
 Example Query 5: From continued (IDC)
@@ -658,7 +674,8 @@ Example Query 5: From continued (IDC)
 
 **Find data for donors with "Ovarian Serous Cystadenocarcinoma" with proteomic and imaging data.**
 
-So now we would like to repeat the previouse query but this time identify cases that are also in IDC. As noted before disease type value denoting the same disease groups can be completely different within different systems. So let's explore the values available for this particular field in IDC.
+Let's repeat the previous query, but this time identify cases that are
+also in IDC. As noted before, the disease type value denoting the same disease groups can be completely different between different systems. So let's explore the values available for this particular field in IDC.
 
 >>> unique_terms('ResearchSubject.primary_disease_type', system="IDC",limit=10)
 []
@@ -740,7 +757,9 @@ In some instances you may want to return all of the data to build/process your o
 query()
 -----
 
-To ease the query writing process, we have also implimented ``query`` which allows ``AND``, ``OR`` and ``FROM`` to be included in the query string without the need of an additional step to use operators. The following `Q` query:
+To ease the query writing process, we have also implemented ``query``
+which allows ``AND``, ``OR`` and ``FROM`` to be included in the query
+string without needing to use operators. The following `Q` query:
 
 .. code-block:: python
  
@@ -758,7 +777,8 @@ can be rewritten using the `query` function:
 Q.sql()
 -----
 
-In some cases more complex queries are required, and for that purpose we have implimented ``Q.sql()`` which takes in a SQL style query
+In some cases more complex queries are required, and for that purpose
+we have implemented ``Q.sql()`` which accepts a SQL-style query
 
 .. code-block:: python
 
@@ -867,11 +887,13 @@ Quick Explanation on UNNEST usage in BigQuery
 ----
 
 Using Q in the CDA client will echo the generated SQL statement that may contain multiple `UNNEST` inclusions
-when including a dot(.) structure which may need a quick explanation.
-UNNEST is similar to unwind in which embedded data structures must be flattend to appear in a table or Excel file.
+when including a dot(.) structure.
+UNNEST is similar to unwind in which embedded data structures must be flattened to appear in a table or Excel file.
 Note; The following call using the SQL endpoint is not the preferred method to execute a nested attribute query in BigQuery.
-The Q language DSL abstracts the required unnesting that exists in a Record. In BigQuery, structures must be represented in an UNNEST syntax such that:
-``A.B.C.D`` must be unwound to ``SELECT (_C.D)`` in the following fashion: 
+The Q language DSL abstracts the required unnesting involved in
+querying a Record. In BigQuery, structures must be represented in an UNNEST
+syntax such that, for example, 
+``A.B.C.D`` must be unwound in order to ``SELECT (_C.D)``, as follows:
 
 ```
 SELECT (_C.D) 

@@ -3,27 +3,27 @@ Installation
 
 .. _installation:
 
-Currently there are two method for installation (Docker & pip), and an addition method that requires no installation (binder). The instructions for all of these methods can be found below. If you want to just jump in and start utilizing CDA-python, we suggest that you try the binder link. This link we take you to an example  jupyter notebook with some basic commands and example queries. 
+Currently there are two methods for installation (Docker & pip), and an additional method that requires no installation (binder). The instructions for all of these methods can be found below. If you want to just jump in and start using CDA-python, we suggest that you try the binder link. This link will take you to an example Jupyter notebook with some basic commands and example queries. 
 
 
 Install the CDA Python library locally
 --------------------------------------
 
-1. Download and install docker click this `link <https://www.docker.com/products/docker-desktop/>`_ or copy url https://www.docker.com/products/docker-desktop to your Browser
-2. Open Terminal or PowerShell a and navigate to cda-python folder then we will run a docker command:
+1. Download and install docker. Click this `link <https://www.docker.com/products/docker-desktop/>`_ or copy https://www.docker.com/products/docker-desktop to your browser.
+2. Open Terminal or PowerShell and navigate to the cda-python folder. Then run the docker command:
 
    - ``docker-compose up --build``
-3. Open a Browser to this url http://localhost:8888 and you are up and running.
+3. Open a Browser to http://localhost:8888 and you are up and running.
 
-4. To Stop the container from running return to the terminal where the cdapython project is on your keyboard you will click **Control C to stop** the container .
+4. To stop the container from running, return to the terminal window (from step 2), and type **Control C to stop** the container .
 
-To delete the container use this command in the cdapython project directory.
+To delete the container from your machine, use this command in the cdapython project directory.
 
 - ``docker compose down``
 
 Pip install
 ------------
-Alternatively, CDA Python can be installed using ``pip``. However, this requires python >= 3.6 on your system. To check your version at the command-line run ``python -V``. To update your version you can download from https://www.python.org/downloads/ additional python installation help can be found `here <https://realpython.com/installing-python/>`_ . Once you have the proper python version, you can run CDA using:
+Alternatively, CDA Python can be installed using ``pip``. However, this requires python version >= 3.6 on your system. To check your version at the command-line, run ``python -V``. To update your version you can download from https://www.python.org/downloads/. Additional python installation help can be found `here <https://realpython.com/installing-python/>`_ . Once you have the proper python version, you can run CDA using:
 
 .. code-block:: console
 
