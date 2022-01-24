@@ -31,7 +31,7 @@ The achievements for R2.1 are outlined as follows:
 * Updated GDC to data version 31.0 from data version 30.0
 * Updated PDC to data version 2.3 from data version 2.1
 
-## R2 ETL Process Overview
+## R2.1 ETL Process Overview
 
 Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
 
