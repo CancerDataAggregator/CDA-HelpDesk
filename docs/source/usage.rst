@@ -138,9 +138,9 @@ displays all of the fields that can be queried using the ``Q`` or ``query`` (e.g
  'ResearchSubject.Specimen.File.file_format']
  
 
-All of the above fields are what describes the highest entity in the data structure hierarchy – ``Patient`` entity. The first five fields represent ``Patient`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
+All of the above fields are what describes the highest entity in the data structure hierarchy – ``Subject`` entity. The first thirteen fields represent ``Subject`` demographic information, while the ``ResearchSubject`` entity contains details that we are used to seeing within the nodes' ``Case`` record.
 
-One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Patient entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the patient record with ``id = TCGA-E2-A10A`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC.
+One of the contributions of the CDA is aggregated ``ResearchSubject`` information. This means that all ``ResearchSubject`` records coming from the same subject are now gathered under the Subject entity. As we know, certain specimens are studied in multiple projects (being part of a single data node or multiple nodes) as different ``ResearchSubject`` entries. Those ``ResearchSubject`` entries are collected as a list under the ``ResearchSubject`` entity. One example of this is the patient record with ``id = TCGA-13-1409`` which contains two ``ResearchSubject`` entries, one from GDC and the other from PDC, and three ``Subject`` entries, and additional entry for IDC.
 
 Note that the ``ResearchSubject`` entity is a list of records, as many other entities above are. **There are certain considerations that should be made when creating the queries by using the fields that come from lists, but more about that will follow in examples below**.
 
@@ -233,13 +233,15 @@ Q lang is Language used to send query to the cda service
     
 ``Q().run``
 
-run(offset = 0, limit = 100, version = 'all_v1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
+run(offset = 0, limit = 100, version = 'all_v2_1', host = None, dry_run = False, table = 'gdc-bq-sample.integration', async_call = False)
 
 **Parameters:**
   - async_call : bool
     - async_call allows for 
   - table : str
-    - table allows you to select with BigQuery table is being searched; default = ‘integration’
+    - table allows you to select which BigQuery table is being searched; default = ‘gdc-bq-sample.integration’
+  - version : str
+    - version allows you to select which version of the BigQuery table is being searched; default = ‘all_v2_1’
   - offset : int [optional] 
     - [description]. Defaults to 0.
   - limit : int, optional):
@@ -447,7 +449,7 @@ Let's take a look at the results:
        'dbgap_accession_number': None},
        ...
    
-The record is pretty large, so we'll print out identifier values for each ResearchSubject to confirm that we have one ResearchSubject that comes from GDC, and one that comes from PDC:
+The record is pretty large, so we'll print out identifier values for each ``ResearchSubject`` to confirm that we have one ResearchSubject that comes from GDC, and one that comes from PDC:
 
 >>> for research_subject in r[0]['ResearchSubject']:
 >>>     print(research_subject['identifier'])
@@ -600,7 +602,7 @@ Example Query 3: Or
  More pages: True
 
 
-In this case, we have a result that contains more than 1000 records which is the default page size. To load the next 1000 records, we can use the ``next_page()`` method:
+In this case, we have a result that contains more than 100 records which is the default page size. To load the next 100 records, we can use the ``next_page()`` method:
 
 .. code-block:: python
 
@@ -620,7 +622,7 @@ Alternatively, we can use the ``offset`` argument to specify the record to start
 
 .. code-block:: python
  ...
- >>> r = q.run(offset=1000)
+ >>> r = q.run(offset=100)
  >>> print(r)
  
  Getting results from database
@@ -629,7 +631,7 @@ Total execution time: 4278 ms
 
         QueryID: ee2150d8-11fb-4720-a0b3-0352f2d4a38f
         Query: SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen WHERE (((_Specimen.source_material_type = 'Primary Tumor') AND ((all_v2_1.sex = 'female') AND (all_v2_1.days_to_birth > -60*365))) AND ((_ResearchSubject.primary_diagnosis_site = 'Ovary') OR (_ResearchSubject.primary_diagnosis_site = 'Breast')))
-        Offset: 0
+        Offset: 100
         Count: 100
         Total Row Count: 28040
         More pages: True
@@ -655,7 +657,7 @@ Example Query 4: From
  'Cystic, Mucinous and Serous Neoplasms']
  
  
-Since “Ovarian Serous Cystadenocarcinoma” doesn’t appear in GDC values we decide to look into the PDC:
+Since “Ovarian Serous Cystadenocarcinoma” doesn’t appear in GDC values let's take a look into the PDC:
 
 >>> unique_terms('ResearchSubject.primary_diagnosis_condition', system="PDC")
 ['Acute Myeloid Leukemia',
@@ -706,8 +708,8 @@ As you can see, this is achieved by utilizing ``From`` operator. The ``From`` op
 
 .. code-block:: python
 
- >>> r = q1.run(host="http://localhost:8080")   # Executes on local instance of CDA server
- >>> r = q1.run(limit=2)                        # Limit to two results per page
+ >>> r = q1.run()
+ >>> r = q1.run(limit=2)            # Limit to two results per page
  
  >>> r.sql   # Return SQL string used to generate the query e.g.
  "SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE (_ResearchSubject.primary_diagnosis_condition = 'Ovarian Serous Cystadenocarcinoma')"
@@ -870,7 +872,7 @@ After a quick fix we now have 37 cases.
 Test query 1
 +++++
 
-**Find data from all patients who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
+**Find data from all subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. toggle-header::
   :header: Example 1 **Show/Hide Code**
@@ -1035,7 +1037,7 @@ Test query 1
   Total execution time: 27414 ms
   
   QueryID: a8eabfc7-7258-45cb-8570-763ec4d1926c
-  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis, UNNEST(_Diagnosis.Treatment) AS _Treatment, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_Treatment.treatment_type = 'Radiation Therapy, NOS') AND (_identifier.system = 'GDC'))) AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'PDC')
   Offset: 0
   Count: 100
   Total Row Count: 369
@@ -1062,7 +1064,7 @@ Test query 2
   Total execution time: 24125 ms
   
   QueryID: a5de2545-2b5e-476c-9e92-b768d058f603
-  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v1 AS all_v1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE ((_ResearchSubject.associated_project = 'TCGA-BRCA') AND (all_v1.days_to_birth < -50*365))) AS all_v1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
+  Query: SELECT all_v1.* FROM (SELECT all_v1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject WHERE ((_ResearchSubject.associated_project = 'TCGA-BRCA') AND (all_v1.days_to_birth < -50*365))) AS all_v2_1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
   Offset: 0
   Count: 88
   Total Row Count: 88
