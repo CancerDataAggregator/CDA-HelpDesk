@@ -40,14 +40,10 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 
 ## Datasets & Fields
 
-* Imaging Data Commons added
 * All datasets updated as follows
-    * GDC: v30.0, 09/27/2021
-    * PDC: v2.1, 09/27/2021
-    * IDC: v.4.0, 09/29/2021
-* Now associate File entity with Subject and ResearchSubject entity
-* All types of specimens have Files
-
+    * GDC: v31.0, 12/08/2021
+    * PDC: v2.3, 12/08/2021
+    * IDC: v.4.0, 12/09/2021
 
 ## Enhanced query functionality
 
@@ -63,33 +59,30 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 ## Metadata Changes
 
 * See [CDA Schema Field Mapping](./Schema.md)
+
 * Summary
-    * Patient was renamed to Subject to align with CRDC-H model
-    * Add files records to the Subject and ResearchSubject (repeat from above)
     * Newly available fields include:
         * Subject:
-            * identifier.system
-            * identifier.value
-            * species
-            * Subject_associated_project
+            * age_at_death
+            * cause_of_death
+            * vital_status
         * Diagnosis:
-            * identifier.system
-            * identifier.value
+            * method_of_diagnosis
         * Treatment:
-            * id
-            * identifier.system
-            * identifier.value
-            * days_to_treatment_start
-            * days_to_treatment_end
+            * therapeutic_agent
+            * treatment_anatomic_site
+            * treatment_effect
+            * treatment_end_reason
+            * number_of_cycles
+         * File:
+            * data_modality
+            * imaging_modality
+            * dbgap_accession_number
     * Renamed fields (old -> new):
-        * Diagnosis:
-            * tumor_grade -> grade
-            * tumor_stage -> stage
-        * Treatment:
-            * type -> treatment_type
-            * outcome -> treatment_outcome
-    * IDC data available in Subject, and Subject.File entities.
-        * drs_uri field is not currently available for IDC data
+        * ResearchSubject:
+            * associated_project -> member_of_research_project
+            * primary_disease_type -> primary_diagnosis_condition
+            * primary_disease_site -> primary_diagnosis_site
 
 
 ## Bug fixes
