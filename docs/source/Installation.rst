@@ -28,6 +28,16 @@ Alternatively, CDA Python can be installed using ``pip``. However, this requires
 .. code-block:: console
 
    pip install git+https://github.com/CancerDataAggregator/cda-python.git
+   
+To install a specific version you and do as so: 
+
+.. code-block:: console
+
+   pip install git+https://github.com/CancerDataAggregator/cda-python.git@<version>
+   
+Currently we have version:
+   - 2.0.0
+   - 2.1.0
 
 .. note:: 
 
