@@ -23,7 +23,7 @@ To delete the container from your machine, use this command in the cdapython pro
 
 Pip install
 ------------
-Alternatively, CDA Python can be installed using ``pip``. However, this requires python version >= 3.6 on your system. To check your version at the command-line, run ``python -V``. To update your version you can download from https://www.python.org/downloads/. Additional python installation help can be found `here <https://realpython.com/installing-python/>`_ . Once you have the proper python version, you can run CDA using:
+Alternatively, CDA Python can be installed using ``pip``. However, this requires python version >= 3.7 on your system. To check your version at the command-line, run ``python -V``. To update your version you can download from https://www.python.org/downloads/. Additional python installation help can be found `here <https://realpython.com/installing-python/>`_ . Once you have the proper python version, you can run CDA using:
 
 .. code-block:: console
 
