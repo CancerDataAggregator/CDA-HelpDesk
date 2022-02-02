@@ -851,6 +851,7 @@ also in IDC. As noted before, the disease type value denoting the same disease g
 Oh no! looks like we have an empty set. This is because IDC does not have `ResearchSubject` (or Specimen) intities, only Subject intities (see .. ref:: here `ETL` for more information). So, let try the same code as `Example Query 4: From`_ but change the ``ResearchSubject.identifier.system`` to **IDC** instead of **GDC**. 
 
 .. code-block:: python
+  
   q1 = Q('ResearchSubject.primary_diagnosis_condition = "Ovarian Serous Cystadenocarcinoma"')
 
   q2 = Q('ResearchSubject.identifier.system = "PDC"')
@@ -876,6 +877,7 @@ Oh no! looks like we have an empty set. This is because IDC does not have `Resea
 Hmm, zero results. Looks like we made a similar mistake and once again included `ResearchSubject`. If we look at the available searchable fields again using ``columns()``, we will see that there is another field named ``identifier.system`` at the Subject level. So, let's try that:
 
 .. code-block:: python
+  
   q1 = Q('ResearchSubject.primary_diagnosis_condition = "Ovarian Serous Cystadenocarcinoma"')
   q2 = Q('ResearchSubject.identifier.system = "PDC"')
   q3 = Q('identifier.system = "IDC"')
