@@ -499,7 +499,6 @@ Example Query 1: And
 
 .. code-block:: python
 
- 
  >>> q1 = Q('ResearchSubject.Diagnosis.age_at_diagnosis > 50*365')
  >>> q2 = Q('ResearchSubject.member_of_research_project = "TCGA-OV"')
  
@@ -510,14 +509,14 @@ Example Query 1: And
  
  Getting results from database
  
- Total execution time: 10550 ms
- 
- QueryID: d43dd6bc-cab5-43c0-a683-ff32c5a6f621
- Query: SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis WHERE ((_Diagnosis.age_at_diagnosis > 50*365) AND (_ResearchSubject.member_of_research_project = 'TCGA-OV'))
- Offset: 0
- Count: 100
- Total Row Count: 461
- More pages: False
+ Total execution time: 17860 ms
+
+        QueryID: eb85cf0d-3edf-4310-9e52-de166ee58b7e
+        Query: SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Diagnosis) AS _Diagnosis WHERE ((_Diagnosis.age_at_diagnosis > 50*365) AND (_ResearchSubject.member_of_research_project = 'TCGA-OV'))
+        Offset: 0
+        Count: 100
+        Total Row Count: 461
+        More pages: True
 
 
 Example Query 2: And continued
@@ -652,8 +651,8 @@ Alternatively, we can use the ``offset`` argument to specify the record to start
  >>> print(r)
  
  Getting results from database
-
-Total execution time: 4278 ms
+ 
+ Total execution time: 4278 ms
 
         QueryID: ee2150d8-11fb-4720-a0b3-0352f2d4a38f
         Query: SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.Specimen) AS _Specimen WHERE (((_Specimen.source_material_type = 'Primary Tumor') AND ((all_v2_1.sex = 'female') AND (all_v2_1.days_to_birth > -60*365))) AND ((_ResearchSubject.primary_diagnosis_site = 'Ovary') OR (_ResearchSubject.primary_diagnosis_site = 'Breast')))
@@ -720,8 +719,8 @@ After examining the output, we see that this term does appear at the PDC. Hence,
  
  >>> print(r)
  Getting results from database
-
-Total execution time: 35006 ms
+ 
+ Total execution time: 35006 ms
 
         QueryID: a2ce5a91-bca5-411e-ad51-b6039ced6d5e
         Query: SELECT all_v2_1.* FROM (SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_diagnosis_condition = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'GDC')
@@ -730,14 +729,10 @@ Total execution time: 35006 ms
         Total Row Count: 275
         More pages: True
 
-As you can see, this is achieved by utilizing ``From`` operator. The
-``From`` operator allows us to create queries from results of other
-queries. This is particularly useful when working with conditions that
-involve a single field which can take multiple different values for
-different items in a list that is being part of, e.g. we need
-``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a
-single Subject. In such cases, the ``And`` operator can’t help because
-it will return those entries where the field takes both values, ie.,
+As you can see, this is achieved by utilizing ``From`` operator. The ``From`` operator allows us to create queries from results of other
+queries. This is particularly useful when working with conditions that involve a single field which can take multiple different values for
+different items in a list that is being part of, e.g. we need ``ResearchSubject.identifier.system`` to be both “PDC” and “GDC” for a
+single Subject. In such cases, the ``And`` operator can’t help because it will return those entries where the field takes both values, ie.,
 zero entries.
 
  >>> r = q1.run()
@@ -867,8 +862,8 @@ Oh no! looks like we have an empty set. This is because IDC does not have `Resea
   print(r)
   
   Getting results from database
-
-Total execution time: 8746 ms
+ 
+ Total execution time: 8746 ms
 
         QueryID: fc470d8d-a23d-4711-a79e-101226253108
         Query: SELECT all_v2_1.* FROM (SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_diagnosis_condition = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE (_identifier.system = 'IDC')
@@ -891,8 +886,8 @@ Hmm, zero results. Looks like we made a similar mistake and once again included 
   print(r)
   
   Getting results from database
-
-Total execution time: 17130 ms
+ 
+ Total execution time: 17130 ms
 
         QueryID: 92c68759-8516-4b12-bbcd-4554495f4748
         Query: SELECT all_v2_1.* FROM (SELECT all_v2_1.* FROM gdc-bq-sample.integration.all_v2_1 AS all_v2_1, UNNEST(ResearchSubject) AS _ResearchSubject, UNNEST(_ResearchSubject.identifier) AS _identifier WHERE ((_ResearchSubject.primary_diagnosis_condition = 'Ovarian Serous Cystadenocarcinoma') AND (_identifier.system = 'PDC'))) AS all_v2_1, UNNEST(identifier) AS _identifier WHERE (_identifier.system = 'IDC')
