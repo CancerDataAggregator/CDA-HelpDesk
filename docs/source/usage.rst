@@ -906,6 +906,7 @@ Example query 6: Return all data
 In some instances you may want to return all of the data to build/process your own database. This can be done by queries for data in any of the Data Commons using the ``identifier.system`` columns and ``OR`` operator.
 
 .. code-block:: python
+  
   q = query('identifier.system = "GDC" OR identifier.system = "PDC" OR identifier.system = "IDC"')
   r = q.run()
   r
@@ -989,11 +990,11 @@ Test query 1
 **Find data from all Subjects who have been treated with "Radiation Therapy, NOS" and have both genomic and proteomic data.**
 
 .. toggle-header::
-
+  
   :header: Example 1 **Show/Hide Code**
     
     .. code-block:: python
-    
+      
       q1 = Q('ResearchSubject.Diagnosis.Treatment.treatment_type = "Radiation Therapy, NOS"')
       q2 = Q('ResearchSubject.identifier.system = "PDC"')
       q3 = Q('ResearchSubject.identifier.system = "GDC"')
@@ -1062,19 +1063,21 @@ querying a Record. In BigQuery, structures must be represented in an UNNEST
 syntax such that, for example, 
 ``A.B.C.D`` must be unwound in order to ``SELECT (_C.D)``, as follows:
 
-```
-SELECT (_C.D) 
-from TABLE, UNNEST(A) AS _A, UNNEST(_A.B) as _B, UNNEST(_B.C) as _C
-```
+.. code-block:: sql
+ 
+ SELECT (_C.D) 
+ from TABLE, UNNEST(A) AS _A, UNNEST(_A.B) as _B, UNNEST(_B.C) as _C
+
 
 ``ResearchSubject.Specimen.source_material_type`` represents a complex record that needs to unwound in SQL syntax to be queried on properly when using SQL.
 
-```
-SELECT DISTINCT(_Specimen.source_material_type) 
-FROM gdc-bq-sample.cda_mvp.v3, 
-UNNEST(ResearchSubject) AS _ResearchSubject,
-UNNEST(_ResearchSubject.Specimen) AS _Specimen
-```
+.. code-block:: sql
+ 
+ SELECT DISTINCT(_Specimen.source_material_type) 
+ FROM gdc-bq-sample.cda_mvp.v3, 
+ UNNEST(ResearchSubject) AS _ResearchSubject,
+ UNNEST(_ResearchSubject.Specimen) AS _Specimen
+
 
 Test query answers
 ----
