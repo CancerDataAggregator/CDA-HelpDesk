@@ -1044,14 +1044,14 @@ Test query 2
   Total Row Count: 88
   More pages: False
 
-
-Pointing to a custom CDA instance
-----
-
-``.run()`` will execute the query on the public `CDA API <https://cda.cda-dev.broadinstitute.org/api/cda/v1/>_.
-
-``.run("http://localhost:8080")`` will execute the query on a CDA server running at
-``http://localhost:8080``.
+..
+  Pointing to a custom CDA instance
+  ----
+  
+  ``.run()`` will execute the query on the public `CDA API <https://cda.cda-dev.broadinstitute.org/api/cda/v1/>_.
+  
+  ``.run("http://localhost:8080")`` will execute the query on a CDA server running at
+  ``http://localhost:8080``.
 
 Quick Explanation on UNNEST usage in BigQuery
 ----
