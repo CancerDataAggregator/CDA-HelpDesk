@@ -1,14 +1,14 @@
-# CDA Release 2
+# CDA Release 3.0
 
 ## Release Notes
 
-Last updated: October 15th, 2021
+Last updated: March 22nd, 2022
 
 ### Introduction to CDA
 
 ![FigIntro](./ReleaseNotesFigs/CancerDataAggregator_PMD_0.png)
 
-The Release 2 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services. 
+The Release 3.0 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services. 
 
 The CCDH data model promises to be a specimen-centric model whereas current CRDC nodes tend to use a case-centric approach.  The diagrams below depict the shift from the respective GDC and PDC entity models (provided by CCDH - Figure 1) towards a specimen-centric model (Figure 2).
 
@@ -41,9 +41,9 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 ## Datasets & Fields
 
 * All datasets updated as follows
-    * GDC: v31.0, 12/08/2021
-    * PDC: v2.3, 12/08/2021
-    * IDC: v.4.0, 12/09/2021
+    * GDC: v31.0, 03/17/2022
+    * PDC: v2.7, 03/18/2022
+    * IDC: v.4.0, 03/09/2022
 
 ## Enhanced query functionality
 
@@ -61,28 +61,18 @@ For details on the extraction, transformation, load (ETL) process, please see [C
 * See [CDA Schema Field Mapping](./Schema.md)
 
 * Summary
-    * Newly available fields include:
-        * Subject:
-            * age_at_death
-            * cause_of_death
-            * vital_status
-        * Diagnosis:
-            * method_of_diagnosis
-        * Treatment:
-            * therapeutic_agent
-            * treatment_anatomic_site
-            * treatment_effect
-            * treatment_end_reason
-            * number_of_cycles
-         * File:
-            * data_modality
-            * imaging_modality
-            * dbgap_accession_number
+    * Previous table format now called Subjects endpoint
+        * Replaced all File entities with Files - a list of file ids associated with the entity that the list is located in. e.g
+            * File -> Files 
+            * ResearchSubject.File -> ResearchSubject.Files
+            * ResearchSubject.Specimen.File -> ResearchSubject.Specimen.Files
+    * Files endpoint added:
+        * Endpoint oriented around File information
+        * Includes all information regarding the file's associated entities(Subject, ResearchSubject, and Specimen)
+    * Newly available fields:
+        * None
     * Renamed fields (old -> new):
-        * ResearchSubject:
-            * associated_project -> member_of_research_project
-            * primary_disease_type -> primary_diagnosis_condition
-            * primary_disease_site -> primary_diagnosis_site
+        * None
 
 
 ## Bug fixes
