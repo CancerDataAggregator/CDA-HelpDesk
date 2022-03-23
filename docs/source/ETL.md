@@ -33,7 +33,7 @@ The achievements for R3.0 are outlined as follows:
 
 ## R3.0 ETL Process Overview
 
-Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
+Data from each DC (GDC, PDC, and IDC) is extracted and transformed independently. The case and file endpoints of GDC and PDC are queried via their publicly available API's to create case and file endpoint extracted data files(GDC case data, GDC file data, PDC case data, and PDC file data). Each extracted data file undergoes a transformation and aggregation step prior to being ready for merger with all of the other DCs transformed and aggregated data. At this point, all data from GDC and PDC are in the harmonized data schema, and representative of Subject and File endpoints in the CDA data schema.  IDC Subjects and Files endpoints data files are created using a single BigQuery query from IDC's available table. These data files do not require additional aggregation prior to being ready for merger with GDC and PDC. All of the Subjects endpoint data files from each DC are then merged into a Subjects endpoint, and all of the Files endpoint files are merged into a Files endpoint. These two files are then uploaded to BigQuery as two separate tables. One for all Subjects and one for all Files. The CDA API can query from these two tables. An overview of the entire process can be seen in Figure 1 and will be described in more detail below.
 
 | ![figure](./ETL_Figures/ETL_Fig_1.png) |
 |:---:|
@@ -41,44 +41,35 @@ Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and P
 
 ### Current Flow of ETL
 
-The ETL processes for GDC and PDC data are very similar. They can be broken into two sub-processes. The first includes extraction of the data, and transforming the data from the individual DC into the CCDH inspired data format. The second step merges the transformed data from both DCs.
+The extraction and transformation process for GDC and PDC data are very similar. They can be broken into two sub-processes. The first includes extraction of the data from their cases and files endpoints, and transforming the data from the individual DC into the CCDH inspired data format. The second step merges the transformed data from both DCs into our Subjects and Files endpoints data formats.
 
-#### Extraction and Transformation
+#### GDC/PDC Cases and Files Extraction and Transformation
 
 | ![figure](./ETL_Figures/ETL_Fig2.png) |
 |:---:|
 | **Figure 2** |
 
-The extraction process for each node implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 2 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from files to associated specimens and cases. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC, there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to. The file created by the extraction process is written with one case/**ResearchSubject** per line. This extracted file is then submitted to the transformation code. The code reads the extracted file line by line, and transforms each line into the data structure expected in our BigQuery tables. 
+The extraction process for each node and endpoint implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 3 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from files to associated specimens and cases. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC, there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to. The data files created by the extraction process are written with one case/**ResearchSubject** or file/**File** per line. These extracted data files are then submitted to the transformation code. The code reads the extracted data files line by line, and transforms each line into the data structure expected in our BigQuery tables. 
 
-Since the extracted data and the output of the transform code are written on a case by case / **ResearchSubject** by **ResearchSubject** basis, whereas our data structure is on a **Subject** by **Subject** basis, further aggregation of the data is needed. The aggregation code searches for any entries in the transformed data which have identical ids (**Subject** level id) and aggregates those entries together. Currently, the demographic information is coalesced between cases, whereas the **ResearchSubject** and **File** records from different cases are appended. The error logs for the individual DC examine the demographic data of two or more correlating **Subject**/**ResearchSubject** records and logs any discrepancy. After aggregation has occurred for both GDC and PDC, the next sub-process is ready to be performed.
+Since the extracted data file and the output of the transform code are written as one case/**ResearchSubject** per line, whereas our data structure is on a **Subject** by **Subject** basis, further aggregation of the data is needed for the Subjects endpoint. Aggregation of **Subject** entities in the **File** endpoint data file is also required. The aggregation code searches for any entries in the transformed data which have identical ids (**Subject** level id) and aggregates those entries together. Currently, for the **Subject** endpoint, the demographic information is coalesced between cases, whereas the **ResearchSubject** and **File** records from different cases are appended. For the **File** endpoint,the demographic information is coalesced between cases for the **Subject** entities. The error logs for the individual DC examine the demographic data of two or more correlating **Subject**/**ResearchSubject** records and logs any discrepancy.
 
-
-#### Merger of GDC and PDC Data
+#### IDC Subjects and Files Extraction and Transformation
 
 | ![figure](./ETL_Figures/ETL_Fig3.png) |
 |:---:|
 | **Figure 3** |
 
-The merging of data between GDC and PDC is very similar to the aggregation step in the extraction and transformation sub-process. The merge code searches the GDC and PDC files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends **ResearchSubject** and **File** records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created.
+The extraction and transformation process of IDC data takes a more concise approach. One query for the Subjects endpoint is executed to extract all data from IDC and transform it into the CDA Subjects schema. A similar query is run for the creation of the Files endpoint data. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
 
-### IDC Flow
 
-#### Direct From IDC BigQuery Table/View
 
-| ![figure](./ETL_Figures/ETL_Fig4.png) |
+#### Merger of GDC, PDC, and IDC Data
+
+| ![figure](./ETL_Figures/ETL_Fig3.png) |
 |:---:|
-| **Figure 4** |
+| **Figure 3** |
 
-The ETL process of IDC data takes a more concise approach. A single query is executed to extract all data from IDC and transform it into the CDA schema. Since IDC does not have demographic information, there is no need to do any logging of aggregation errors like that done in GDC and PDC.
-
-
-### Merging GDC/PDC with IDC
-
-
-#### A Single Query to Create a Merged View
-
-To merge the GDC/PDC table with the IDC table, CDA implements a procedure that is very similar to the one used to create the merged GDC/PDC table. Subjects with the same id are merged and **File** information from both tables are appended. The id fields are coalesced since all merged subject records have the same id. The identifier, subject_associated_project, and **File** records are appended, and the demographic info along with **ResearchSubject** records are taken from the GDC/PDC table since IDC does not contain that information. The query used to implement this merger, and create the view that the CDA API queries from is shown in the appendix.
+The merging of data between GDC, PDC, and IDC is very similar to the aggregation step in the extraction and transformation sub-process for GDC and PDC. For the Subjects endpoint, the merge code searches the GDC, PDC, and IDC Subjects files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends **ResearchSubject** and **File** records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created. For the Files endpoint, the merge code reads all of the **Subject** entity information created from the merged Subjects endpoint file just created, and replaces all **Subject** entities within the Files endpoint, with the information found in the merged Subjects endpoint file. The now merged Subjects and Files endpoint files are then uploaded to BigQuery as our Subjets and Files endpoint tables.
 
 ## Appendix
 
