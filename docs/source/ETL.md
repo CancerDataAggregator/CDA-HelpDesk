@@ -1,12 +1,12 @@
 # CDA Extraction Transfer and Load (ETL) Documentation
 ## Introduction
-The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data table which the API layer queries. A brief overview of the entire process is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the CCDH model before being merged together and loaded to BigQuery. IDC data is queried and transformed using a single BigQuery query. The results of this query are saved as a table in BigQuery. The merged GDC/PDC table and [IDC](https://portal.imaging.datacommons.cancer.gov/) table are merged in a view that is queried by the CDA API.
+The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data tables which the API layer queries. A brief overview of the process to generate an endpoint table is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the CCDH model. [IDC](https://portal.imaging.datacommons.cancer.gov/) data is queried and transformed using a single BigQuery query. The results of this query are saved and merged with the transformed GDC and PDC data and uploaded to BigQuery as a table that is queried by the CDA API.
 
 ## Data extraction and release information
 To identify the current version and release dates for each of the database, you can run the following command:
 
 ```
-r = Q.sql("SELECT option_value FROM `gdc-bq-sample.integration.INFORMATION_SCHEMA.TABLE_OPTIONS` WHERE table_name = 'all_v1'")
+r = Q.sql("SELECT option_value FROM `gdc-bq-sample.integration.INFORMATION_SCHEMA.TABLE_OPTIONS` WHERE table_name = 'all_v3_0_Subjects'")
 strings = r[0]['option_value'].split('\\n')
 new_strings = []
 
@@ -17,21 +17,21 @@ print(new_strings)
 ```
 
 Which will produce the following output:
-['GDC extraction date - 12/08/2021', 'GDC data release - v31.0', 'PDC extraction date - 12/08/2021', 'PDC data release - v2.3', 'IDC extraction date - 12/09/2021', 'IDC data release - Version 4.0']
+[GDC data version - v31.0, GDC extraction date - 03/17/2022, PDC data version - v2.7, PDC extraction date - 03/18/2022, IDC data version - v.4.0, IDC extraction date - 03/09/2022]
 
-## R2.1 ETL Achievements
-The achievements for R2.1 are outlined as follows:
+## R3.0 ETL Achievements
+The achievements for R3.0 are outlined as follows:
+* Previous table format now called Subjects endpoint
+    * Replaced all File entities with Files - a list of file ids associated with the entity that the list is located in. e.g
+        * File -> Files 
+        * ResearchSubject.File -> ResearchSubject.Files
+        * ResearchSubject.Specimen.File -> ResearchSubject.Specimen.Files
+* Files endpoint added:
+    * Endpoint oriented around File information
+    * Includes all information regarding the file's associated entities(Subject, ResearchSubject, and Specimen)
+* Updated PDC to data version 2.4 from data version 2.3
 
-* Adjusted data schema to better reflect CCDH
-    * Added age_at_death, cause_of_death, and vital_status fields to Subject entity
-    * Added method_of_diagnosis field to Diagnosis entity
-    * Added therapeutic_agent, treatment_anatomic_site, treatment_effect, treatment_end_reason, number_of_cycles to Treatment entity
-    * Added data_modality, imaging_modality, dbgap_accession_number to File entities
-    * Renamed associated_project, primary_disease_type, and primary_disease_site to member_of_research_project, primary_diagnosis_condition, and primary_diagnosis_site respectively in the ResearchSubject entity.
-* Updated GDC to data version 31.0 from data version 30.0
-* Updated PDC to data version 2.3 from data version 2.1
-
-## R2.1 ETL Process Overview
+## R3.0 ETL Process Overview
 
 Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and PDC data are merged together prior to loading, whereas IDC is loaded individually. In BigQuery, there are two separate tables. One for GDC and PDC merged, the second is IDC by itself. These two tables are then merged in a view, and the CDA API typically queries from the resulting view. An overview of this process can be seen in Figure 1 and will be described in more detail below.
 
@@ -39,7 +39,7 @@ Each DC (GDC, PDC, and IDC) is extracted and transformed individually. GDC and P
 |:---:|
 | **Figure 1** |
 
-### Current Flow of GDC and PDC ETL
+### Current Flow of ETL
 
 The ETL processes for GDC and PDC data are very similar. They can be broken into two sub-processes. The first includes extraction of the data, and transforming the data from the individual DC into the CCDH inspired data format. The second step merges the transformed data from both DCs.
 
