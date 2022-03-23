@@ -278,18 +278,42 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 #### <a name="treatment_F"></a>Treatment
 | Common Data Format (present in CDA) | GDC field name                                      | PDC field name                                        | IDC field name |
 | ----------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | -------------- |
-| id                                  | cases.diagnoses.treatments.treatment\_id            | cases.diagnoses.treatments.treatment\_id              | Not applicable |
+| id                                  | file.cases.diagnoses.treatments.treatment\_id            | cases.diagnoses.treatments.treatment\_id              | Not applicable |
 | identifier.system                   | GDC                                                 | PDC                                                   |                |
-| identifier.value                    | cases.diagnoses.treatments.treatment\_id            | cases.diagnoses.treatments.treatment\_id              |                |
-| treatment\_type                     | cases.diagnoses.treatments.treatment\_type          | cases.diagnoses.treatments.treatment\_type            |                |
-| treatment\_outcome                  | cases.diagnoses.treatments.treatment\_outcome       | cases.diagnoses.treatments. treatment\_outcome        |                |
-| days\_to\_treatment\_start          | cases.diagnoses.treatments.days\_to\_treatment      | cases.diagnoses.treatments.days\_to\_treatment\_start |                |
-| days\_to\_treatment\_end            | cases.diagnoses.treatments.days\_to\_treatment_end  | cases.diagnoses.treatments.days\_to\_treatment\_end   |                |
-| therapeutic\_agent	                 | cases.diagnoses.treatments.therapeutic\_agents	     | cases.diagnoses.treatments.therapeutic\_agents        |                |
-| treatment\_anatomic\_site	          | cases.diagnoses.treatments.treatment\_anatomic\_site|	cases.diagnoses.treatments.treatment\_anatomic\_site  |                |
-| treatment\_effect	                  | cases.diagnoses.treatments.treatment\_effect	       | cases.diagnoses.treatments.treatment\_effect          |                |
-| treatment\_end\_reason	             | cases.diagnoses.treatments.reason\_treatment\_ended	| cases.diagnoses.treatments.reason\_treatment\_ended   |                | 
-| number\_of\_cycles	                 | cases.diagnoses.treatments.number\_of\_cycles	      | cases.diagnoses.treatments.number\_of\_cycles         |                |
+| identifier.value                    | file.cases.diagnoses.treatments.treatment\_id            | cases.diagnoses.treatments.treatment\_id              |                |
+| treatment\_type                     | file.cases.diagnoses.treatments.treatment\_type          | cases.diagnoses.treatments.treatment\_type            |                |
+| treatment\_outcome                  | file.cases.diagnoses.treatments.treatment\_outcome       | cases.diagnoses.treatments. treatment\_outcome        |                |
+| days\_to\_treatment\_start          | file.cases.diagnoses.treatments.days\_to\_treatment      | cases.diagnoses.treatments.days\_to\_treatment\_start |                |
+| days\_to\_treatment\_end            | file.cases.diagnoses.treatments.days\_to\_treatment_end  | cases.diagnoses.treatments.days\_to\_treatment\_end   |                |
+| therapeutic\_agent	                 | file.cases.diagnoses.treatments.therapeutic\_agents	     | cases.diagnoses.treatments.therapeutic\_agents        |                |
+| treatment\_anatomic\_site	          | file.cases.diagnoses.treatments.treatment\_anatomic\_site|	cases.diagnoses.treatments.treatment\_anatomic\_site  |                |
+| treatment\_effect	                  | file.cases.diagnoses.treatments.treatment\_effect	       | cases.diagnoses.treatments.treatment\_effect          |                |
+| treatment\_end\_reason	             | file.cases.diagnoses.treatments.reason\_treatment\_ended	| cases.diagnoses.treatments.reason\_treatment\_ended   |                | 
+| number\_of\_cycles	                 | file.cases.diagnoses.treatments.number\_of\_cycles	      | cases.diagnoses.treatments.number\_of\_cycles         |                |
 
 #### <a name="specimen_F"></a>Specimen
+| Common Data Format (present in CDA) | GDC field name                                       | PDC field name                            | IDC field name |
+| ----------------------------------- | ---------------------------------------------------- | ----------------------------------------- | -------------- |
+| id                                  | file.cases.samples.sample\_id                             | cases.samples.sample\_id                  | Not applicable |
+|                                     | file.cases.samples.portions.portion\_id                   | cases.samples.aliquots.aliquot\_id        |                |
+|                                     | file.cases.samples.portions.slide\_id                     |                                           |                |
+|                                     | file.cases.samples.portions.analytes.analyte\_id          |                                           |                |
+|                                     | file.cases.samples.portions.analytes.aliquots.aliquot\_id |                                           |                |
+| identifier.system                   | GDC                                                  | PDC                                       |                |
+| identifier.value                    | file.cases.samples.sample\_id                             | cases.samples.sample\_id                  |                |
+|                                     | file.cases.samples.portions.portion\_id                   | cases.samples.aliquots.aliquot\_id        |                |
+|                                     | file.cases.samples.portions.slide\_id                     |                                           |                |
+|                                     | file.cases.samples.portions.analytes.analyte\_id          |                                           |                |
+|                                     | file.cases.samples.portions.analytes.aliquots.aliquot\_id |                                           |                |
+| associated\_project                 | file.cases.project.project\_id                            | cases.project\_submitter\_id              |                |
+| age\_at\_collection                 | file.cases.demographic.days\_to\_birth                    | cases.demographics.days\_to\_birth        |                |
+| derived\_from\_subject              | file.cases.submitter\_id                                  | cases.case\_submitter\_id                 |                |
+| primary\_disease\_type              | file.cases.disease\_type                                  | cases.disease\_type                       |                |
+| anatomical\_site                    | file.cases.samples.biospecimen\_anatomic\_site            | cases.samples.biospecimen\_anatomic\_site |                |
+| source\_material\_type              | file.cases.samples.sample\_type                           | cases.samples.sample\_type                |                |
+| specimen\_type                      | sample, portion, slide, analyte, aliquot             | sample, aliquot                           |                |
+| derived\_from\_specimen             | file.cases.samples.sample\_id                             | cases.samples.sample\_id                  |                |
+|                                     | file.cases.samples.portions.portion\_id                   |                                           |                |
+|                                     | file.cases.samples.portions.analytes.analyte\_id          |                                           |                |
+| derived\_from\_subject              | file.cases.submitter\_id                                  | cases.case\_submitter\_id                 |                |
 
