@@ -67,7 +67,7 @@ The extraction and transformation process of IDC data takes a more concise appro
 
 | ![figure](./ETL_Figures/ETL_Fig4.png) |
 |:---:|
-| **Figure 3** |
+| **Figure 4** |
 
 The merging of data between GDC, PDC, and IDC is very similar to the aggregation step in the extraction and transformation sub-process for GDC and PDC. For the Subjects endpoint, the merge code searches the GDC, PDC, and IDC Subjects files for matching ids, coalesces the demographic information (GDC taking priority over PDC), and appends **ResearchSubject** and **File** records. An Inter-DC log consisting of discrepancies between GDC and PDC demographic information is created. For the Files endpoint, the merge code reads all of the **Subject** entity information created from the merged Subjects endpoint file just created, and replaces all **Subject** entities within the Files endpoint, with the information found in the merged Subjects endpoint file. The now merged Subjects and Files endpoint files are then uploaded to BigQuery as our Subjets and Files endpoint tables.
 
