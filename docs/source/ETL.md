@@ -35,7 +35,7 @@ The achievements for R3.0 are outlined as follows:
 
 Data from each DC (GDC, PDC, and IDC) is extracted and transformed independently. The case and file endpoints of GDC and PDC are queried via their publicly available API's to create case and file endpoint extracted data files(GDC case data, GDC file data, PDC case data, and PDC file data). Each extracted data file undergoes a transformation and aggregation step prior to being ready for merger with all of the other DCs transformed and aggregated data. At this point, all data from GDC and PDC are in the harmonized data schema, and representative of Subject and File endpoints in the CDA data schema.  IDC Subjects and Files endpoints data files are created using a single BigQuery query from IDC's available table. These data files do not require additional aggregation prior to being ready for merger with GDC and PDC. All of the Subjects endpoint data files from each DC are then merged into a Subjects endpoint, and all of the Files endpoint files are merged into a Files endpoint. These two files are then uploaded to BigQuery as two separate tables. One for all Subjects and one for all Files. The CDA API can query from these two tables. An overview of the entire process can be seen in Figure 1 and will be described in more detail below.
 
-| ![figure](./ETL_Figures/ETL_Fig_1.png) |
+| ![figure](./ETL_Figures/ETL_Fig1.png) |
 |:---:|
 | **Figure 1** |
 
@@ -65,7 +65,7 @@ The extraction and transformation process of IDC data takes a more concise appro
 
 #### Merger of GDC, PDC, and IDC Data
 
-| ![figure](./ETL_Figures/ETL_Fig3.png) |
+| ![figure](./ETL_Figures/ETL_Fig4.png) |
 |:---:|
 | **Figure 3** |
 
