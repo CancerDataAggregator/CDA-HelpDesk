@@ -66,7 +66,8 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 |         |                                             |                              | Files                         |                            |
 
 ### Mapping
-#### <a name="subject_S"></a>Subject
+(subject_S)=
+#### Subject
 | Common Data Format (present in CDA) | GDC field name                                                         | PDC field name                     | IDC field name                   |
 | ----------------------------------- | ---------------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
 | id                                  | case.submitter\_id                                                     | cases.case\_submitter\_id          | files.PatientID                  |
