@@ -83,6 +83,7 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 | age\_at\_death	                     | case.demographic.days\_to\_death	                                      | cases.demographic.days\_to\_death  | No available mapping             |
 | cause\_of\_death	                   | case.demographic.cause\_of\_death	                                     | cases.demographic.cause\_of\_death | No available mapping             |
 | Files                               | Create array of all associated File ids for this Subject               |                                    |                                  |
+|                                      |           
 | [ResearchSubject](researchsubject_S) |                                                                        |                                    | No ResearchSubject entity in IDC |
 (researchsubject_S)=
 #### ResearchSubject
@@ -95,6 +96,7 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 | primary\_diagnosis\_site            | cases.primary\_site        | cases.primary\_site          |                |
 | member\_of\_research\_project       | cases.project.project\_id  | cases.project\_submitter\_id |                |
 | Files                               | Create array of all associated File ids for this ResearchSubject           |
+|                                      |
 | [Diagnosis](diagnosis_S)             |                            |                              |                |
 | [Specimen](specimen_S)               |                            |                              |                |
 (diagnosis_S)=
@@ -252,6 +254,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | data\_modality	                     | Genomic	                              | Proteomic	                     | Imaging                               |
 | imaging\_modality	                  | N\/A	                                 | N/A	                           | files.Modality                        |
 | dbgap\_accession\_number	           | cases.project.dbgap\_accession\_number|	files.dbgap\_control\_number   | No mapping available                  |
+|                                     |
 | [Subject](subject_F)                |
 | [ResearchSubject](researchsubject_F)|
 | [Specimen](specimen_F)              |
@@ -281,6 +284,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | primary\_diagnosis\_condition       | file.cases.disease\_type   | cases.disease\_type          |                |
 | primary\_diagnosis\_site            | file.cases.primary\_site   | cases.primary\_site          |                |
 | member\_of\_research\_project       | file.cases.project.project\_id | cases.project\_submitter\_id |                |
+|                                     |
 | [Diagnosis](diagnosis_F)           |                            |                              |                |
 (diagnosis_F)=
 #### Diagnosis
@@ -295,6 +299,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | grade                               | file.cases.diagnoses.tumor\_grade         | cases.diagnoses.tumor\_grade         |                |
 | stage                               | file.cases.diagnoses.tumor\_stage         | cases.diagnoses.tumor\_stage         |                |
 | method\_of\_diagnosis	              | file.cases.diagnosis.method\_of\_diagnosis|	cases.diagnosis.method\_of\_diagnosis|                |
+|                                     |
 | [Treatment](treatment_F)           |                                      |                                      |                |
 (treatment_F)=
 #### Treatment
