@@ -85,6 +85,7 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 | Files                               | Create array of all associated File ids for this Subject               |                                    |                                  |
 |                                      |           
 | [ResearchSubject](researchsubject_S) |                                                                        |                                    | No ResearchSubject entity in IDC |
+
 (researchsubject_S)=
 #### ResearchSubject
 | Common Data Format (present in CDA) | GDC field name             | PDC field name               | IDC field name |
@@ -99,6 +100,7 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 |                                      |
 | [Diagnosis](diagnosis_S)             |                            |                              |                |
 | [Specimen](specimen_S)               |                            |                              |                |
+
 (diagnosis_S)=
 #### Diagnosis
 | Common Data Format (present in CDA) | GDC field name                       | PDC field name                       | IDC field name |
@@ -114,6 +116,7 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 | method\_of\_diagnosis	              | cases.diagnosis.method\_of\_diagnosis|	cases.diagnosis.method\_of\_diagnosis|                |
 |                                     |                                      |                                      |                |
 | [Treatment](treatment_S)             |                                      |                                      |                |
+
 (treatment_S)=
 #### Treatment
 | Common Data Format (present in CDA) | GDC field name                                      | PDC field name                                        | IDC field name |
@@ -130,6 +133,7 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 | treatment\_effect	                  | cases.diagnoses.treatments.treatment\_effect	       | cases.diagnoses.treatments.treatment\_effect          |                |
 | treatment\_end\_reason	             | cases.diagnoses.treatments.reason\_treatment\_ended	| cases.diagnoses.treatments.reason\_treatment\_ended   |                | 
 | number\_of\_cycles	                 | cases.diagnoses.treatments.number\_of\_cycles	      | cases.diagnoses.treatments.number\_of\_cycles         |                |
+
 (specimen_S)=
 #### Specimen
 | Common Data Format (present in CDA) | GDC field name                                       | PDC field name                            | IDC field name |
@@ -258,6 +262,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | [Subject](subject_F)                |
 | [ResearchSubject](researchsubject_F)|
 | [Specimen](specimen_F)              |
+
 (subject_F)=
 #### Subject
 | Common Data Format (present in CDA) | GDC field name                                                         | PDC field name                     | IDC field name                   |
@@ -274,6 +279,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | vital\_status	                      | file.case.demographic.vital\_status	                                   | cases.demographic.vital\_status    | No available mapping             |
 | age\_at\_death	                     | file.case.demographic.days\_to\_death	                                 | cases.demographic.days\_to\_death  | No available mapping             |
 | cause\_of\_death	                   | file.case.demographic.cause\_of\_death	                                | cases.demographic.cause\_of\_death | No available mapping             |
+
 (researchsubject_F)=
 #### ResearchSubject
 | Common Data Format (present in CDA) | GDC field name             | PDC field name               | IDC field name |
@@ -286,6 +292,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | member\_of\_research\_project       | file.cases.project.project\_id | cases.project\_submitter\_id |                |
 |                                     |
 | [Diagnosis](diagnosis_F)           |                            |                              |                |
+
 (diagnosis_F)=
 #### Diagnosis
 | Common Data Format (present in CDA) | GDC field name                       | PDC field name                       | IDC field name |
@@ -301,6 +308,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | method\_of\_diagnosis	              | file.cases.diagnosis.method\_of\_diagnosis|	cases.diagnosis.method\_of\_diagnosis|                |
 |                                     |
 | [Treatment](treatment_F)           |                                      |                                      |                |
+
 (treatment_F)=
 #### Treatment
 | Common Data Format (present in CDA) | GDC field name                                      | PDC field name                                        | IDC field name |
@@ -317,6 +325,7 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 | treatment\_effect	                  | file.cases.diagnoses.treatments.treatment\_effect	       | cases.diagnoses.treatments.treatment\_effect          |                |
 | treatment\_end\_reason	             | file.cases.diagnoses.treatments.reason\_treatment\_ended	| cases.diagnoses.treatments.reason\_treatment\_ended   |                | 
 | number\_of\_cycles	                 | file.cases.diagnoses.treatments.number\_of\_cycles	      | cases.diagnoses.treatments.number\_of\_cycles         |                |
+
 (specimen_F)=
 #### Specimen
 | Common Data Format (present in CDA) | GDC field name                                       | PDC field name                            | IDC field name |
