@@ -5,7 +5,7 @@
 The **Subject** entity is the outer most record in the Subjects endpoint. Within the **Subject** record are the fields for the **Subject** (demographic and other subject-specific information), a Files field which lists the id of all files associated with the **Subject**, as well as the record of all **ResearchSubject** records associated with that **Subject**. Each **ResearchSubject** record has fields associated with the **ResearchSubject**, as well as records for the **Diagnosis** and **Specimen** entities associated with that **ResearchSubject**, and so on.
  
 
-| [Subject](#subject_S) |                                 |                              |                               |                            |
+| [Subject](subject_S) |                                 |                              |                               |                            |
 | ------- | ------------------------------------------- | ---------------------------- | ----------------------------- | -------------------------- |
 |         | id                                          |                              |                               |                            |
 |         | identifier.system                           |                              |                               |                            |
