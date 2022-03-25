@@ -181,7 +181,7 @@ The only query used is filesMetadata. This query creates a the _files_ cache fil
 
 #### Extract All _Cases_ Information
 
-The next query – allPrograms – is used to get all the available Programs and Studies. The extraction code loops over all Programs and Studies and performs several queries for each PDC study. Most queries are from the _cases_ endpoint and include paginatedCaseDemographicsPerStudy, paginatedCaseDiagnosesPerStudy, and paginatedCasesSamplesAliquots. They are used to gather the demographics, diagnoses, and specimen records for all cases within the study. biospecimenPerStudy is used solely to determine the taxon/species of the cases in the study. For each case and specimen in the study, file information is added from the _files_ cache file created by the filesMetadata query. The result looks as follows for a single PDC case record after adding file information:
+The next query – allPrograms – is used to get all the available Programs and Studies. The extraction code loops over all Programs and Studies and performs several queries for each PDC study. Most queries are from the _cases_ endpoint and include paginatedCaseDemographicsPerStudy, paginatedCaseDiagnosesPerStudy, and paginatedCasesSamplesAliquots. They are used to gather the demographics, diagnoses, and specimen records for all cases within the study. biospecimenPerStudy is used solely to determine the taxon/species of the cases in the study. For each case and specimen in the study, file information is added from the _files_ cache file created by the filesMetadata query. Due to extracting case information by PDC study, some case information is duplicated in the extracted file since cases can be seen in more than one PDC study. The result looks as follows for a single PDC case record after adding file information:
 
 
 ```
@@ -269,24 +269,24 @@ After all _cases_ information has been extracted, and _file_ information added w
 </tr>
 </table>
 
-### Transformation
+### GDC and PDC Transformation
 
-Transformation in this section can for the most part be broken into two steps. The first transformation step has both structural and simple field name changes to the extracted data files. The details of this process are slightly different for each DC, however the end result is the same. Each entry in the resultant file still correlates to a case/**ResearchSubject**, but is in an equivalent structure to the final schema where each entry will correspond to a Subject. In this file, Subjects may correspond to multiple entries and must be aggregated together.
+Transformation in this section can for the most part be broken into two steps. The first transformation step has both structural and simple field name changes to the extracted data files. This first step implements mapping files for GDC _cases_/Subjects endpoint, GDC _files_/Files endpoint, PDC _cases_/Subjects endpoint, and PDC _files_/Files endpoint. The details of this process are slightly different for each DC and endpoint, however the end result is the same. Each entry in the resultant Subjects file still correlates to a case/**ResearchSubject**, but is in an equivalent structure to the final schema where each entry will correspond to a Subject. In this file, Subjects may correspond to multiple entries and must be aggregated together. Each entry in the resultant Files file correlates to a file/**File**, so no aggregation is required at the top level, but aggregation is needed in the **Subject** entities for the same reason aggregation is needed in the Subject file.
 
-The second step aggregates Subjects together from the same DC. For all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging. 
+The second step aggregates Subjects together from the same DC. In the Subjects file, for all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging. 
 
-For this section, the DC’s are similar enough that the differences can be shown with a simple mapping from GDC/PDC fields to the common data format found [here](./Schema.md).
+For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found [here](./Schema.md).
 
 
 ##### step 1: Transformation
 
-For GDC and PDC, we iterate over every entry from the extracted data file and make specific changes to that entry. These include creating a top **Subject** level of data which correlates to the **Subject** entity as defined by the CCDH model. From there, the specific case information is recorded in a **ResearchSubject** entity, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information. A simplified example of an entry is given below in Table 2.
+For GDC and PDC, we iterate over every entry from the extracted data files and make specific changes to that entry. For the Subjects file, these include creating a top **Subject** level of data which correlates to the **Subject** entity as defined by the CCDH model. From there, the specific case information is recorded in a **ResearchSubject** entity, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information. A simplified example of an entry is given below in Table 3.
 
 <table>
-    <caption><b>Table 2</b></caption>
+    <caption><b>Table 3</b></caption>
 <tr>
-<th>Entry 1</th>
-<th>Transformed Entry 1</th>
+<th>Case Entry 1</th>
+<th>Transformed Case Entry 1</th>
 </tr>
 <tr>
 <td>
@@ -316,34 +316,76 @@ For GDC and PDC, we iterate over every entry from the extracted data file and ma
   ResearchSubject:
     {id: C3
     primary_disease_site: Brain
-    File:
-      {id: file_1.doc}
-      {id: file_2.txt}
+    Files:[file_1.doc, file_2.txt]
     Specimen:
-      {id: samp_1
-      File:
-        {id: file_2.txt}
+      {id: samp_1,
+       Files:[file_2.txt]
       }
     }
-  File:
-    {id: file_1.doc}
-    {id: file_2.txt}
+  Files[file_1.doc, file_2.txt]
 }
 </pre>
 </td>
 </tr>
 </table>
 
+Much like the Subjects file, the transformation of the Files file includes creating a top **File** level of data which correlates to the **File** entity as defined by the CCDH model. From there, the case information is used to create **Subject** entities as well as **ResearchSubject** entities, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry within the **Subject** is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information (just like in the Subjects file transformation). A simplified example of an entry is given below in Table 4.
+
+<table>
+    <caption><b>Table 4</b></caption>
+<tr>
+<th>File Entry 1</th>
+<th>Transformed File Entry 1</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  file_id: file_1.txt
+  cases:
+    [
+      {case_id: case_1,
+       submitter_id: S1,
+       samples:[...]
+      },
+      {case_id: case_2,
+       submitter_id: S1,
+       samples:[...]
+      }
+    ]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: file_1.txt
+  Subject:
+    [
+      {id: S1},
+      {id: S1}
+    ]
+  ResearchSubject:
+    [
+      {id: case_1},
+      {id: case_2}
+    ]
+  Specimen:[...]
+}
+</pre>
+</td>
+</tr>
+</table>
 
 ##### step 2: Aggregation 
 
-At this point, a list of Subjects and corresponding ResearchSubjects is made, and any **Subject** with multiple **ResearchSubject** records has the **ResearchSubject** and **File** records appended (with duplicates removed from **File**) under a single entry for the **Subject**. A simplified example of this aggregation can be seen in Table 3 below.
+At this point for the transformed Subjects file, a list of Subjects and corresponding ResearchSubjects is made, and any **Subject** with multiple **ResearchSubject** records has the **ResearchSubject** and **File** records appended (with duplicates removed from **File** (and **ResearchSubject** in PDC)) under a single entry for the **Subject**. A simplified example of this aggregation can be seen in Table 5 below.
 
 <table>
-    <caption><b>Table 3</b></caption>
+    <caption><b>Table 5</b></caption>
 <tr>
-<th>Transformed Entry 1</th>
-<th>Transformed Entry 2</th>
+<th>Transformed Subject Entry 1</th>
+<th>Transformed Subject Entry 2</th>
 <th>Aggregated</th>
 </tr>
 <tr>
@@ -355,18 +397,13 @@ At this point, a list of Subjects and corresponding ResearchSubjects is made, an
   ResearchSubject:
     {id: C3
     primary_disease_site: Brain
-    File:
-      {id: file_1.doc}
-      {id: file_2.txt}
+    Files: [file_1.doc, file_2.txt]
     Specimen:
-      {id: samp_1
-      File:
-        {id: file_2.txt}
+      {id: samp_1,
+       Files: [file_2.txt]
       }
     }
-  File:
-    {id: file_1.doc}
-    {id: file_2.txt}
+  Files: [file_1.doc, file_2.txt]
 }
 </pre>
 </td>
@@ -378,18 +415,13 @@ At this point, a list of Subjects and corresponding ResearchSubjects is made, an
   ResearchSubject:
     {id: C7
     primary_disease_site: Brain
-    File:
-      {id: file_1.doc}
-      {id: file_5.txt}
+    Files: [file_1.doc, file_5.txt]
     Specimen:
-      {id: samp_4
-      File:
-        {id: file_5.txt}
+      {id: samp_4,
+       Files: [file_5.txt]
       }
     }
-  File:
-    {id: file_1.doc}
-    {id: file_5.txt}
+  Files: [file_1.doc, file_5.txt]
 }
 </pre>
 </td>
@@ -401,37 +433,30 @@ At this point, a list of Subjects and corresponding ResearchSubjects is made, an
   ResearchSubject:
     {id: C3
     primary_disease_site: Brain
-    File:
-      {id: file_1.doc}
-      {id: file_2.txt}
+    Files: [file_1.doc, file_2.txt]
     Specimen:
       {id: samp_1
-      File:
-        {id: file_2.txt}
+      Files: [file_2.txt]
       }
     },
     {id: C7
     primary_disease_site: Brain
-    File:
-      {id: file_1.doc},
-      {id: file_5.txt}
+    Files: [file_1.doc, file_5.txt]
     Specimen:
       {id: samp_4
-      File:
-        {id: file_5.txt}
+      Files: [file_5.txt]
       }
     }
-  File:
-    {id: file_1.doc},
-    {id: file2.txt}
-    {id: file_5.txt}
+  Files: [file_1.doc, file2.txt, file_5.txt]
 }
 </pre>
 </td>
 </tr>
 </table>
 
-Transformed Entry 1 and 2 are aggregated in this example. Transformed Entry 1 and 2 both correspond to the **Subject** with the id ‘S1’, but have different **ResearchSubject** records, and overlapping entries in their **Subject** level **File** records (file_1.doc is in both). The aggregated entry appended the **ResearchSubject** records together and appended the **File** records together while removing the duplicate entry.
+Transformed Subject Entry 1 and 2 are aggregated in this example. Transformed Subject Entry 1 and 2 both correspond to the **Subject** with the id ‘S1’, but have different **ResearchSubject** records, and overlapping entries in their **Subject** level **File** records (file_1.doc is in both). The aggregated entry appended the **ResearchSubject** records together and appended the **File** records together while removing the duplicate entry.
+
+For the transformed Files file, a list of Subjects and corresponding ResearchSubjects is made, and any **Subject** with multiple **ResearchSubject** records has the **ResearchSubject** and **File** records appended (with duplicates removed from **File** (and **ResearchSubject** in PDC)) under a single entry for the **Subject**. A simplified example of this aggregation can be seen in Table 5 below.
 
 
 #### Merge
