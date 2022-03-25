@@ -73,11 +73,9 @@ The merging of data between GDC, PDC, and IDC is very similar to the aggregation
 
 ## Appendix
 
-### GDC and PDC
-
-#### GDC Extraction
-
-All the fields that are currently available through the CDA are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
+### GDC Extraction
+#### Cases Endpoint Data
+All the fields that are currently available through the CDA Subjects endpoint are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
 <table>
     <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
@@ -162,10 +160,10 @@ All the fields that are currently available through the CDA are pulled from the 
 
 To be able to associate files and specimen entities, the `file_id`, `cases.samples.sample_id`, `cases.samples.portions.portion_id`, `cases.samples.portions.slides.slide_id`, `cases.samples.portions.analytes.analyte_id`, and `cases.samples.portions.analytes.aliquots.aliquot_id` fields from the _files_ endpoint were used (see [GDC documentation for file fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields)).
 
-It is worth reiterating that there are files which are solely associated with cases and not associated with specimens. These are now available in Release 2.
+#### Files Endpoint Data
+All the fields that are currently available through the CDA Files endpoint are pulled from the [_files_ endpoint](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields). For extraction, no extra information or joining of data from the _cases_ endpoint is necessary. 
 
-
-#### PDC Extraction
+### PDC Extraction
 
 To get the PDC data, six graphQL queries were used:
 
@@ -176,9 +174,14 @@ To get the PDC data, six graphQL queries were used:
 * paginatedCasesSamplesAliquots
 * biospecimenPerStudy
 
-The first query used is filesMetadata. This query creates a cache file that contains a dictionary where the keys are sample or aliquot ids, and the values are lists of file ids associated with that sample or aliquot. 
+First the _files_ endpoint is queried to get all file information, as well as linkages from files to aliquots, samples, and cases. This information is saved in a _files_ cache file. Next, all case and specimen information is extracted using the remaining queries. During the extraction of the case information, file_id information is joined to the associated cases and specimens. After all case information has been gathered and saved, the _files_ cache file info is read through, and information about relevant cases, aliquots, and samples are added.
 
-The next query – allPrograms – is used to get all the available Programs and Studies. The extraction code loops over all Programs and Studies and performs several queries for each PDC study. Most queries are from the cases endpoint and include paginatedCaseDemographicsPerStudy, paginatedCaseDiagnosesPerStudy, and paginatedCasesSamplesAliquots. They are used to gather the demographics, diagnoses, and specimen records for all cases within the study. biospecimenPerStudy is used solely to determine the taxon/species of the cases in the study. For each case and specimen in the study, file information is added from the cache file created by the filesMetadata query. The result looks as follows for a single PDC case record after adding file information:
+#### Creating _Files_ Cache File 
+The only query used is filesMetadata. This query creates a the _files_ cache file that contains all of the _files_ endpoint information, indcluding all information about files, and the ids of associated cases, samples, and aliquots. 
+
+#### Extract All _Cases_ Information
+
+The next query – allPrograms – is used to get all the available Programs and Studies. The extraction code loops over all Programs and Studies and performs several queries for each PDC study. Most queries are from the _cases_ endpoint and include paginatedCaseDemographicsPerStudy, paginatedCaseDiagnosesPerStudy, and paginatedCasesSamplesAliquots. They are used to gather the demographics, diagnoses, and specimen records for all cases within the study. biospecimenPerStudy is used solely to determine the taxon/species of the cases in the study. For each case and specimen in the study, file information is added from the _files_ cache file created by the filesMetadata query. The result looks as follows for a single PDC case record after adding file information:
 
 
 ```
@@ -204,8 +207,69 @@ The next query – allPrograms – is used to get all the available Programs and
 ```
 The complete list of fields that are used can be found [here](./Schema.md).
 
+#### Add Case and Specimen Info to _Files_ Cache File
+After all _cases_ information has been extracted, and _file_ information added where necessary, case and specimen data are added to the _files_ cache file.
+<table>
+    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
+<tr>
+<th>PDC _Files_ Extract w/out _Cases_ and _Specimen_ info</th>
+<th>PDC _Files_ Extract with _Cases_ and _Specimen_ info</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  file_id: value,
+  ...
+  aliquots: [
+    {
+      aliquot_id: value,
+      sample_id: value,
+      case_id: value
+    },
+    {
+      aliquot_id: value,
+      sample_id: value,
+      case_id: value
+    },
+    ...
+  ]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  file_id: value,
+  ...
+  cases: [
+    {
+      case_id: value
+      ...
+      samples: [
+        {
+            sample_id: value,
+            ...
+            aliquots: [
+                {
+                    aliquot_id: value,
+                    ...
+                },
+                ...
+            ]
+        },
+        ...
+      ]
+    },
+    ...
+  ]
+}
+</pre>
+</td>
+</tr>
+</table>
 
-#### Transformation
+### Transformation
 
 Transformation in this section can for the most part be broken into two steps. The first transformation step has both structural and simple field name changes to the extracted data files. The details of this process are slightly different for each DC, however the end result is the same. Each entry in the resultant file still correlates to a case/**ResearchSubject**, but is in an equivalent structure to the final schema where each entry will correspond to a Subject. In this file, Subjects may correspond to multiple entries and must be aggregated together.
 
