@@ -456,18 +456,182 @@ At this point for the transformed Subjects file, a list of Subjects and correspo
 
 Transformed Subject Entry 1 and 2 are aggregated in this example. Transformed Subject Entry 1 and 2 both correspond to the **Subject** with the id ‘S1’, but have different **ResearchSubject** records, and overlapping entries in their **Subject** level **File** records (file_1.doc is in both). The aggregated entry appended the **ResearchSubject** records together and appended the **File** records together while removing the duplicate entry.
 
-For the transformed Files file, a list of Subjects and corresponding ResearchSubjects is made, and any **Subject** with multiple **ResearchSubject** records has the **ResearchSubject** and **File** records appended (with duplicates removed from **File** (and **ResearchSubject** in PDC)) under a single entry for the **Subject**. A simplified example of this aggregation can be seen in Table 5 below.
-
-
-#### Merge
-
-After the data from GDC and PDC have been transformed into a common data format, merging the data together can begin. **Subject** level info is coalesced, and any data from records in **ResearchSubject** and **File** are simply appended underneath the same **Subject**. A simplified example of the merge between GDC and PDC data can be seen in Table 4.
+For the transformed Files file, a list of Subjects and ResearchSubjects is made, and any **Subject** or **ResearchSubject** with multiple records has them merged into a single entry for the **Subject** or **ResearchSubject**. A simplified example of this aggregation can be seen in Table 6 below.
 
 <table>
-    <caption><b>Table 4</b>. Simplified example of a merger between GDC and PDC</caption>
+    <caption><b>Table 6</b></caption>
+<tr>
+<th>Transformed File Entry 1</th>
+<th>Aggregated</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  id: File1
+  Subject:
+    [
+        {id: S1},
+        {id: S1},
+        {id: S2}
+    ],
+  ResearchSubject:
+    [
+        {id: RS2},
+        {id: RS2},
+        {id: RS3}
+    ],
+  Specimen:
+    [
+        {id: samp_1},
+    ]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: File1
+  Subject:
+    [
+        {id: S1},
+        {id: S2}
+    ],
+  ResearchSubject:
+    [
+        {id: RS2},
+        {id: RS3}
+    ],
+  Specimen:
+    [
+        {id: samp_1},
+    ]
+}
+</pre>
+</td>
+</tr>
+</table>
+
+### IDC Extraction and Transformation
+
+For Release 3, the IDC extraction and transformation process are executed using one query. This is possible due to IDC making their data available on BigQuery, as well as other features of BigQuery including temporary functions, array aggregation of structured data, and grouping data by particular fields (id, species, etc.). The queries currently used for the Subjects and Files endpoints are:
+```
+# Subjects Endpoint Query
+CREATE TEMP FUNCTION
+  idc_species_mapping(x STRING)
+  RETURNS STRING AS (CASE x
+      WHEN 'Human' THEN 'Homo sapiens'
+      WHEN 'Canine' THEN 'Canis familiaris'
+      WHEN 'Mouse' THEN 'Mus musculus'
+    ELSE
+    ''
+  END
+    );
+CREATE TEMP FUNCTION
+  idc_SUBSTR(x STRING)
+  RETURNS STRING AS (SUBSTR(x, 15));
+CREATE TEMP FUNCTION
+  idc_drs_uri(x STRING)
+  RETURNS STRING AS (CONCAT("drs://dg.4DFC:", x));
+SELECT
+  PatientID AS id,
+  [STRUCT('IDC' AS system,
+    PatientID AS value)] AS identifier,
+  idc_species_mapping(tcia_species) AS species,
+  STRING(NULL) AS sex,
+  STRING(NULL) AS race,
+  STRING(NULL) AS ethnicity,
+  NULL AS days_to_birth,
+  [collection_id] AS subject_associated_project,
+  STRING(NULL) AS vital_status,
+  NULL AS age_at_death,
+  STRING(NULL) AS cause_of_death,
+  ARRAY_AGG(crdc_instance_uuid) AS Files
+FROM
+  `canceridc-data.idc_v4.dicom_pivot_v4`
+GROUP BY
+  id,
+  species,
+  collection_id
+```
+```
+# Files Endpoint Query
+CREATE TEMP FUNCTION
+  idc_species_mapping(x STRING)
+  RETURNS STRING AS (CASE x
+      WHEN 'Human' THEN 'Homo sapiens'
+      WHEN 'Canine' THEN 'Canis familiaris'
+      WHEN 'Mouse' THEN 'Mus musculus'
+    ELSE
+    ''
+  END
+    );
+CREATE TEMP FUNCTION
+  idc_SUBSTR(x STRING)
+  RETURNS STRING AS (SUBSTR(x, 15));
+CREATE TEMP FUNCTION
+  idc_drs_uri(x STRING)
+  RETURNS STRING AS (CONCAT("drs://dg.4DFC:", x));
+SELECT
+  crdc_instance_uuid AS id,
+  [STRUCT('IDC' AS system,
+    crdc_instance_uuid AS value)] AS identifier,
+  idc_SUBSTR(gcs_url) AS label,
+  'Imaging' AS data_category,
+  STRING(NULL) AS data_type,
+  'DICOM' AS file_format,
+  collection_id AS associated_project,
+  idc_drs_uri(crdc_instance_uuid) AS drs_uri,
+  NULL AS byte_size,
+  STRING(NULL) AS checksum,
+  'Imaging' AS data_modality,
+  Modality AS imaging_modality,
+  STRING(NULL) AS dbgap_accession_number,
+  [STRUCT(PatientID AS id,
+    [STRUCT('IDC' AS system,
+      PatientID AS value)] AS identifier,
+    idc_species_mapping(tcia_species) AS species,
+    STRING(NULL) AS sex,
+    STRING(NULL) AS race,
+    STRING(NULL) AS ethnicity,
+    NULL AS days_to_birth,
+    [collection_id] AS subject_associated_project,
+    STRING(NULL) AS vital_status,
+    NULL AS age_at_death,
+    STRING(NULL) AS cause_of_death)] AS Subject
+FROM
+  `canceridc-data.idc_v4.dicom_pivot_v4`
+GROUP BY
+  id,
+  gcs_url,
+  Modality,
+  collection_id,
+  PatientID,
+  tcia_species
+```
+
+#### Temp Functions
+
+The temporary functions created include `idc_species_mapping`, `idc_substr`, and `idc_drs_uri`. These functions are used to transform the IDC fields `tcia_species`, `gcs_url`, and `crdc_instance_uuid` to the CDA data schema fields `species`, `File.label`, and `File.drs_uri`. As more fields become available, and more transformations are necessary, more temporary functions will be added.
+
+#### SELECT ‘x’ AS ‘y’
+
+Due to the nature of the query, all fields desired in the CDA schema must be specified. The query is built using a mapping file similar to the GDC and PDC mapping files. If it is a direct mapping such as `PatientID` to id, then simply `PatientID` AS id works. For fields that require some type of transformation like `File.label` or `species`, the function is added to the query (eg `idc_species_mapping(tcia_species)` AS `species`). For integer type fields that have no mapping to IDC, `NULL` is mapped and for string type fields, `STRING(NULL)` is mapped. Any fields that have a string mapped to a field will be populated by the string listed (eg. 'DICOM' AS `file_format`). The IDC mapping file can be found [here](https://github.com/CancerDataAggregator/transform/blob/integration/IDC_mapping.yml).
+
+#### FROM and GROUP BY
+
+This statement selects which table from IDC to query from, as well as how to aggregate the data. It is grouped by `id` (**Subject** level `identifier`), then `species` and `collection_id` to keep with proper BigQuery formatting. 
+
+### Merge
+#### Subjects Endpoint Merger
+After the data from GDC, PDC, and IDC have been transformed into a common data format, merging the data together can begin. For the Subjects endpoint, **Subject** level info is coalesced, and any data from records in **ResearchSubject** are simply appended underneath the same **Subject**, and the **Subject** Files lists are appended together. A simplified example of the merge between GDC, PDC, and IDC data can be seen in Table 7.
+
+<table>
+    <caption><b>Table 7</b>. Simplified example of a merger between GDC, PDC, and IDC</caption>
 <tr>
 <th>GDC</th>
 <th>PDC</th>
+<th>IDC</th>
 <th>Merged</th>
 </tr>
 <tr>
@@ -485,10 +649,7 @@ After the data from GDC and PDC have been transformed into a common data format,
     {id: A2
     ...
     }
-  File:
-    {id: file_G1.doc
-    ...
-    }
+  Files: [file_G1.doc]
 }
 </pre>
 </td>
@@ -506,10 +667,18 @@ After the data from GDC and PDC have been transformed into a common data format,
     {id: B5
     ...
     }
-  File:
-    {id: file_P1.doc
-    ...
-    }
+  Files: [file_P1.doc]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth:
+  race:
+  sex:
+  Files: [file_I1.doc]
 }
 </pre>
 </td>
@@ -533,13 +702,7 @@ After the data from GDC and PDC have been transformed into a common data format,
     {id: B5
     ...
     }
-  File:
-    {id: file_G1.doc
-    ...
-    }
-    {id: file_P1.doc
-    ...
-    }
+  Files: [file_G1.doc, file_P1.doc, file_I1.doc]
 }
 </pre>
 </td>
@@ -548,92 +711,180 @@ After the data from GDC and PDC have been transformed into a common data format,
 
 ##### Subject level merge
 
-The fields at the **Subject** level are merged based on coalescing data. The code looks for values in GDC then PDC until a value is found. The first value found is used in the merged data, unless there is strictly conflicting data. In Figure 2, id under **Subject** must be the same to consider merging data. The example for days_to_birth shows that GDC has a value of 23, whereas PDC shows none. Since GDC has a populated value, and PDC has none, the value from GDC is stored as the value for days_to_birth. Similarly, for race, GDC has no recorded value but PDC has a value of ‘Caucasian’. Since GDC is empty, and PDC has a value, the value from PDC is stored. The final example shows conflicting data between GDC and PDC. GDC records sex as ‘M’ whereas PDC records it as ‘F’. Due to conflicting information, this instance is recorded in a log, but the GDC value of ‘M’ is used in the merged data.
+The fields at the **Subject** level are merged based on coalescing data. The code looks for values in GDC, then PDC, and then IDC until a value is found. The first value found is used in the merged data. (if there is conflicting data, this is logged). In Figure 2, id under **Subject** must be the same to consider merging data. The example for days_to_birth shows that GDC has a value of 23, whereas PDC shows none. Since GDC has a populated value, the value from GDC is stored as the value for days_to_birth. Similarly, for race, GDC has no recorded value but PDC has a value of ‘Caucasian’. Since GDC is empty, and PDC has a value, the value from PDC is stored. The final example shows conflicting data between GDC and PDC. GDC records sex as ‘M’ whereas PDC records it as ‘F’. Due to conflicting information, this instance is recorded in a log, but the GDC value of ‘M’ is used in the merged data.
 
 ##### ResearchSubject level append
 
-Looking at Table 4, in the merged data, all of the records from **ResearchSubject** from GDC and PDC are appended. Currently no merging happens at this level.
+Looking at Table 7, in the merged data, all of the records from **ResearchSubject** from GDC and PDC are appended. At this time there is no equivalent **ResearchSubject** entity available for IDC data. Currently no merging happens at this level.
 
 ##### File level append
 
-Looking at Table 4, in the merged data, all of the records from **File** from GDC and PDC are appended. Currently no merging happens at this level.
+Looking at Table 7, in the merged data, all of the records from **File** from GDC, PDC, and IDC are appended. Currently no merging happens at this level.
 
-### IDC
+For the Subjects endpoint, **Subject** level info is coalesced, and any data from records in **ResearchSubject** are simply appended underneath the same **Subject**, and the **Subject** Files lists are appended together. A simplified example of the merge between GDC, PDC, and IDC data can be seen in Table 7.
 
-#### IDC Extraction and Transformation
+<table>
+    <caption><b>Table 7</b>. Simplified example of a merger between GDC, PDC, and IDC</caption>
+<tr>
+<th>GDC</th>
+<th>PDC</th>
+<th>IDC</th>
+<th>Merged</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: 23
+  race: None
+  sex: M
+  ResearchSubject:
+    {id: A1
+    ...
+    }
+    {id: A2
+    ...
+    }
+  Files: [file_G1.doc]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: None
+  race: Caucasian
+  sex: F
+  ResearchSubject:
+    {id: B4
+    ...
+    }
+    {id: B5
+    ...
+    }
+  Files: [file_P1.doc]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth:
+  race:
+  sex:
+  Files: [file_I1.doc]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: 23
+  race: Caucasian
+  sex: M
+  ResearchSubject:
+    {id: A1
+    ...
+    }
+    {id: A2
+    ...
+    }
+    {id: B4
+    ...
+    }
+    {id: B5
+    ...
+    }
+  Files: [file_G1.doc, file_P1.doc, file_I1.doc]
+}
+</pre>
+</td>
+</tr>
+</table>
 
-For Release 2, the IDC extraction and transformation process are executed using one query. This is possible due to IDC making their data available on BigQuery, as well as other features of BigQuery including temporary functions, array aggregation of structured data, and grouping data by particular fields (id, species, etc.). The query currently used is:
+**** Files Endpoint Merger ****
 
-```
-CREATE TEMP FUNCTION idc_species_mapping(x STRING) 
-    RETURNS STRING AS (CASE x WHEN 'Human' THEN 'Homo sapiens' WHEN 'Canine' THEN 'Canis familiaris' WHEN 'Mouse' THEN 'Mus musculus' ELSE ''END); 
-CREATE TEMP FUNCTION idc_substr(x STRING) RETURNS STRING AS (SUBSTR(x, 15));  
-SELECT PatientID AS id, 
-[STRUCT('IDC' AS system, PatientID AS value)] AS identifier, 
-idc_species_mapping(tcia_species) AS species, 
-STRING(NULL) AS sex, 
-STRING(NULL) AS race, 
-STRING(NULL) AS ethnicity, 
-Null AS days_to_birth, 
-[collection_id] AS subject_associated_project, 
-STRING(NULL) AS vital_status, 
-Null AS age_at_death, 
-STRING(NULL) AS cause_of_death, 
-ARRAY_AGG(STRUCT(crdc_instance_uuid AS id, 
-    [STRUCT('IDC' AS system, crdc_instance_uuid AS value)] AS identifier, 
-    idc_substr(gcs_url) AS label, 
-    'Imaging' AS data_category, 
-    STRING(NULL) AS data_type, 
-    'DICOM' AS file_format, 
-    collection_id AS associated_project, 
-    gcs_url AS drs_uri, 
-    Null AS byte_size, 
-    STRING(NULL) AS checksum, 
-    'Imaging' AS data_modality, 
-    Modality AS imaging_modality, 
-    STRING(NULL) AS dbgap_accession_number)) as File 
-FROM `canceridc-data.idc_v3.dicom_pivot_v3` 
-GROUP by id, species, collection_id
-```
+Since there are no shared files between any of the DC's, no top level **File** information can be merged. The problem is that there is no easy way to correct the **Subject** entity information strictly from the Files endpoint file. For this reason, CDA merges the Subjects endpoint information first, and uses the records from the fully merged Subjects endpoint to overwrite the corresponding **Subject** entities found in the Files endpoint. A simplified example of the this is shown in Table 8.
 
-##### Temp Functions
+<table>
+    <caption><b>Table 8</b>. Simplified example of a merger between GDC, PDC, and IDC</caption>
+<tr>
+<th>Relevant Merged Subject</th>
+<th>Unmerged File Record</th>
+<th>File w/ Merged Subjects</th>
+</tr>
+<tr>
+<td>
+<pre>
+{
+  id: A
+  days_to_birth: 23
+  race: Caucasian
+  sex: M
+  ResearchSubject:
+    {id: A1
+    ...
+    }
+    {id: A2
+    ...
+    }
+  Files: [file_G1.doc]
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: F1
+  Subject:
+    [
+        {id: A
+        days_to_birth: None
+        race: None
+        sex: M
+        }
+    ]
+  ResearchSubject:
+    {id: B4
+    ...
+    }
+    {id: B5
+    ...
+    }
+}
+</pre>
+</td>
+<td>
+<pre>
+{
+  id: F1
+  Subject:
+    [
+        {id: A
+        days_to_birth: 23
+        race: Caucasian
+        sex: M
+        }
+    ]
+  ResearchSubject:
+    [
+        {id: B4
+        ...
+        },
+        {id: B5
+        ...
+        },
+    ]
+}
+</pre>
+</td>
+</tr>
+</table>
 
-The temporary functions created include `idc_species_mapping` and `idc_substr`. These functions are used to transform the IDC fields `tcia_species` and `gcs_url` to the CDA data schema fields `species` and `File.label`. As more fields become available, and more transformations are necessary, more temporary functions will be added.
+##### Subject level merge
 
-##### SELECT ‘x’ AS ‘y’
-
-Due to the nature of the query, all fields desired in the CDA schema must be specified. The query is built using a mapping file similar to the GDC and PDC mapping files. If it is a direct mapping such as `PatientID` to id, then simply `PatientID` AS id works. For fields that require some type of transformation like `File.label` or `species`, the function is added to the query (eg `idc_species_mapping(tcia_species)` AS `species`). For integer type fields that have no mapping to IDC, `NULL` is mapped and for string type fields, `STRING(NULL)` is mapped. Any fields that have a string mapped to a field will be populated by the string listed (eg. 'DICOM' AS `file_format`). The IDC mapping file can be found [here](https://github.com/CancerDataAggregator/transform/blob/integration/IDC_mapping.yml).
-
-##### FROM and GROUP BY
-
-This statement selects which table from IDC to query from, as well as how to aggregate the data. It is grouped by `id` (**Subject** level `identifier`), then `species` and `collection_id` to keep with proper BigQuery formatting. 
-
-### Merge GDC/PDC and IDC
-
-The query used to merge the GDC/PDC and IDC tables on BigQuery is shown below.
-```
-SELECT COALESCE(t1.id, t2.id) as id,
-ARRAY_CONCAT(
-    IFNULL(t1.identifier,[]),
-    IFNULL(t2.identifier,[])
-) as identifier,
-t1.species,
-t1.sex,
-t1.race,
-t1.ethnicity,
-t1.days_to_birth,
-ARRAY_CONCAT(
-    IFNULL(t1.subject_associated_project,[]),
-    IFNULL(t2.subject_associated_project, [])
-) as subject_associated_project,
-t1.vital_status,
-t1.age_at_death,
-t1.cause_of_death,
-ARRAY_CONCAT(
-    IFNULL(t1.File, []),
-    IFNULL(t2.File, [])
-    ) as File,
-t1.ResearchSubject
-FROM `gdc-bq-sample.integration.gdc_pdc` t1
-FULL OUTER JOIN `gdc-bq-sample.integration.idc_v4` t2 ON t1.id = t2.id
-```
+The fields at the **Subject** level are overwritten by the **Subject** information found in the fully merged Subjects endpoint. The record for the **Subject** entity with id = A is missing demographic information in the Files endpoint data. This can happen when another DC contains this missing information. As such, the **Subject** entity information is overwritten by that found in the fully merged Subjects endpoint.
