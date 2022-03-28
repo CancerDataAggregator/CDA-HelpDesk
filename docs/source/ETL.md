@@ -806,7 +806,7 @@ For the Subjects endpoint, **Subject** level info is coalesced, and any data fro
 </tr>
 </table>
 
-**** Files Endpoint Merger ****
+#### Files Endpoint Merger ####
 
 Since there are no shared files between any of the DC's, no top level **File** information can be merged. The problem is that there is no easy way to correct the **Subject** entity information strictly from the Files endpoint file. For this reason, CDA merges the Subjects endpoint information first, and uses the records from the fully merged Subjects endpoint to overwrite the corresponding **Subject** entities found in the Files endpoint. A simplified example of the this is shown in Table 8.
 
