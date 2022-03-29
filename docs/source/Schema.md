@@ -68,6 +68,9 @@ The **Subject** entity is the outer most record in the Subjects endpoint. Within
 ### Mapping
 (subject_S)=
 #### Subject
+
+All GDC, PDC, and IDC field names use a 'dot' notation to specify the paths. The first word denotes the endpoints that the field is taken from, such as "file(s)" or "case(s)". The rest of the field name is as seen in GDC and PDC documentation for those endpoints. Since we extract all IDC data from one pivot table which is written oriented around files, we use "files" as the endpoint for all fields from IDC.
+
 | Common Data Format (present in CDA) | GDC field name                                                         | PDC field name                     | IDC field name                   |
 | ----------------------------------- | ---------------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
 | id                                  | case.submitter\_id                                                     | cases.case\_submitter\_id          | files.PatientID                  |
@@ -265,6 +268,9 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 
 (subject_F)=
 #### Subject
+
+All GDC, PDC, and IDC field names use a 'dot' notation to specify the paths. The first word denotes the endpoints that the field is taken from, such as "file(s)" or "case(s)". The rest of the field name is as seen in GDC and PDC documentation for those endpoints. Since we extract all IDC data from one pivot table which is written oriented around files, we use "files" as the endpoint for all fields from IDC.
+
 | Common Data Format (present in CDA) | GDC field name                                                         | PDC field name                     | IDC field name                   |
 | ----------------------------------- | ---------------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
 | id                                  | file.case.submitter\_id                                                | files.cases.case\_submitter\_id    | files.PatientID                  |
