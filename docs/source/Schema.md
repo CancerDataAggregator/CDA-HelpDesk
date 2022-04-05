@@ -129,7 +129,7 @@ All GDC, PDC, and IDC field names use a 'dot' notation to specify the paths. The
 | identifier.value                    | cases.diagnoses.treatments.treatment\_id            | cases.diagnoses.treatments.treatment\_id              |                |
 | treatment\_type                     | cases.diagnoses.treatments.treatment\_type          | cases.diagnoses.treatments.treatment\_type            |                |
 | treatment\_outcome                  | cases.diagnoses.treatments.treatment\_outcome       | cases.diagnoses.treatments. treatment\_outcome        |                |
-| days\_to\_treatment\_start          | cases.diagnoses.treatments.days\_to\_treatment      | cases.diagnoses.treatments.days\_to\_treatment\_start |                |
+| days\_to\_treatment\_start          | cases.diagnoses.treatments.days\_to\_treatment\_start| cases.diagnoses.treatments.days\_to\_treatment\_start |                |
 | days\_to\_treatment\_end            | cases.diagnoses.treatments.days\_to\_treatment_end  | cases.diagnoses.treatments.days\_to\_treatment\_end   |                |
 | therapeutic\_agent	                 | cases.diagnoses.treatments.therapeutic\_agents	     | cases.diagnoses.treatments.therapeutic\_agents        |                |
 | treatment\_anatomic\_site	          | cases.diagnoses.treatments.treatment\_anatomic\_site|	cases.diagnoses.treatments.treatment\_anatomic\_site  |                |
@@ -324,7 +324,7 @@ All GDC, PDC, and IDC field names use a 'dot' notation to specify the paths. The
 | identifier.value                    | file.cases.diagnoses.treatments.treatment\_id            | cases.diagnoses.treatments.treatment\_id              |                |
 | treatment\_type                     | file.cases.diagnoses.treatments.treatment\_type          | cases.diagnoses.treatments.treatment\_type            |                |
 | treatment\_outcome                  | file.cases.diagnoses.treatments.treatment\_outcome       | cases.diagnoses.treatments. treatment\_outcome        |                |
-| days\_to\_treatment\_start          | file.cases.diagnoses.treatments.days\_to\_treatment      | cases.diagnoses.treatments.days\_to\_treatment\_start |                |
+| days\_to\_treatment\_start          | file.cases.diagnoses.treatments.days\_to\_treatment\_start| cases.diagnoses.treatments.days\_to\_treatment\_start |                |
 | days\_to\_treatment\_end            | file.cases.diagnoses.treatments.days\_to\_treatment_end  | cases.diagnoses.treatments.days\_to\_treatment\_end   |                |
 | therapeutic\_agent	                 | file.cases.diagnoses.treatments.therapeutic\_agents	     | cases.diagnoses.treatments.therapeutic\_agents        |                |
 | treatment\_anatomic\_site	          | file.cases.diagnoses.treatments.treatment\_anatomic\_site|	cases.diagnoses.treatments.treatment\_anatomic\_site  |                |
