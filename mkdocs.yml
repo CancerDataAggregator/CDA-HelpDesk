@@ -1,0 +1,79 @@
+site_name: Cancer Data Aggregator
+site_description:
+
+
+
+
+theme:
+  name: material
+  palette:
+    #scheme: preference
+    primary: white
+    #accent: teal
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+#  favicon: images/CFDE-logo-white-outline.png
+#  logo: images/CFDE-logo.png
+  custom_dir: custom
+  docs_dir: docs
+
+
+plugins:
+  - search: # necessary for search to work
+      separator: '[\s\-\.]+'
+  - awesome-pages
+  - git-revision-date-localized
+  #- htmlproofer
+
+markdown_extensions:
+- admonition
+- def_list
+- pymdownx.critic
+- pymdownx.details
+- pymdownx.highlight
+- pymdownx.superfences
+- pymdownx.tabbed
+- pymdownx.emoji:
+     emoji_index: !!python/name:materialx.emoji.twemoji
+     emoji_generator: !!python/name:materialx.emoji.to_svg
+- pymdownx.tabbed
+- pymdownx.extra
+- pymdownx.superfences
+- pymdownx.extra
+- pymdownx.highlight
+- pymdownx.keys
+- pymdownx.inlinehilite
+
+
+
+- codehilite:
+    guess_lang: false
+- toc:
+    permalink: true
+extra:
+  hypothesis: true
+  social:
+    - icon: fontawesome/solid/bug
+      link: https://github.com/CancerDataAggregator/cda-python/issues/new?assignees=&labels=&template=bug_report.md&title=
+      name: Bug Report
+    - icon: fontawesome/regular/lightbulb
+      link: https://github.com/CancerDataAggregator/cda-python/issues/new?assignees=&labels=&template=feature_request.md&title=
+      name: Feature Request
+    - icon: fontawesome/brands/github
+      link: https://github.com/CancerDataAggregator/readthedocs
+      name: CDA Github
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/asciinema-player.css
+  - stylesheets/overrides.min.css
+extra_javascript:
+  - javascripts/medium-zoom.min.js
+  - javascripts/extra.js
+  - javascripts/asciinema-player.js
