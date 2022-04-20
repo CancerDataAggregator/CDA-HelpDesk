@@ -1,5 +1,8 @@
 site_name: Cancer Data Aggregator
 site_description:
+repo_url: https://github.com/CancerDataAggregator/readthedocs
+edit_uri: edit/main/docs/
+
 
 
 
@@ -9,26 +12,33 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: blue grey
+      accent: blue
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
+
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: blue grey
+      accent: blue
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+
   features:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.instant
     - navigation.tracking
     - navigation.sections
-    - navigation.indexes
+    - toc.integrate #- navigation.indexes
     - toc.follow
     - navigation.top
     - search.suggest
     - search.highlight
     - search.share
+    - content.code.annotate
 #  favicon: images/CFDE-logo-white-outline.png
 #  logo: images/CFDE-logo.png
   custom_dir: docs/custom
@@ -36,11 +46,14 @@ theme:
 
 
 plugins:
+  - mkdocs-jupyter:
+      include_source: True
+      execute: True
   - search: # necessary for search to work
       separator: '[\s\-\.]+'
   - awesome-pages
-  - git-revision-date-localized
-  #- htmlproofer
+  - git-revision-date
+
 
 markdown_extensions:
 - admonition
@@ -60,6 +73,10 @@ markdown_extensions:
 - pymdownx.highlight
 - pymdownx.keys
 - pymdownx.inlinehilite
+- abbr
+- pymdownx.snippets
+- attr_list
+
 
 
 
@@ -83,14 +100,9 @@ extra:
       name: CDA
   copyright: Copyright &copy; 2016 - 2020 Martin Donath
   generator: true
-  version:
-    provider: mike
+
 
 extra_css:
-  - stylesheets/extra.css
-  - stylesheets/asciinema-player.css
-  - stylesheets/overrides.min.css
+  - stylesheets/renderjson.css
 extra_javascript:
-  - javascripts/medium-zoom.min.js
-  - javascripts/extra.js
-  - javascripts/asciinema-player.js
+  - javascripts/renderjson.js
