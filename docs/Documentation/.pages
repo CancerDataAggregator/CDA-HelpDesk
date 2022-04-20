@@ -1,0 +1,7 @@
+title: CDA-python Docs
+collapse: true
+collapse_single_pages: true
+nav:
+ - installation.md
+ - usage.ipynb
+ - Schema.md

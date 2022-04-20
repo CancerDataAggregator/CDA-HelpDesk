@@ -1,0 +1,122 @@
+{
+    "$id": "https://example.org/cda-data-model/definitions#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "CodeableConcept": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "coding": {
+                "description": "A reference to a code defined by a terminology system",
+                "items": {
+                    "$ref": "#/definitions/Coding"
+                },
+                "type": "array"
+                },
+                "text": {
+                "description": "A human language representation of the concept represented by the Coding",
+                "type": "string"
+                }
+            },
+            "required": [],
+            "title": "CodeableConcept",
+            "type": "object"
+        },
+        "Coding": {
+            "additionalProperties": false,
+            "description": "A structured representation of a coded/enumerated data value, that includes additional metadata about the code and code system.",
+            "properties": {
+                "code": {
+                "description": "The value of the code itself.",
+                "type": "string"
+                },
+                "display": {
+                "description": "A human-readable name for the code.",
+                "type": "string"
+                },
+                "system": {
+                "description": "The code system where the code is defined.",
+                "type": "string"
+                },
+                "version": {
+                "description": "The version of the code system.",
+                "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Coding",
+            "type": "object"
+        },
+        "Identifier": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "system": {
+                "description": "The system or namespace that defines the identifier.",
+                "type": "string"
+                },
+                "type": {
+                "$ref": "#/definitions/CodeableConcept",
+                "description": "A code that defines the type of the identifier."
+                },
+                "value": {
+                "description": "The value of the identifier, as defined by the system.",
+                "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Identifier",
+            "type": "object"
+        },
+        "Quantity": {
+            "additionalProperties": false,
+            "description": "A structured object to represent an amount of something (e.g., weight, mass, length, duration of time) - including a value and unit.",
+            "properties": {
+                "comparator": {
+                "$ref": "#/definitions/Coding",
+                "description": "How to understand the value  . . .   < | <= | >= | >"
+                },
+                "unit": {
+                "$ref": "#/definitions/Coding",
+                "description": "Unit representation (e.g. mg, mL)"
+                },
+                "value": {
+                "description": "Numerical value (with implicit precision)",
+                "type": "number"
+                }
+            },
+            "required": [],
+            "title": "Quantity",
+            "type": "object"
+        },
+        "ExternalReference": {
+            "additionalProperties": false,
+            "description": "An external reference to an ontology, vocabulary or other system",
+            "properties": {
+                "term_id": {
+                    "description": "Term identifier with prefix or full url. For example, 9606 for NCBITAXON Human or phs",
+                    "type": "string"
+                }, 
+                "term_label": {
+                    "description": "Human-readable label for the term.  Maps to rdfs:label.",
+                    "type": "string"
+                },
+                "reference_url": {
+                    "description": "Ontology persistent URL. For example, http://purl.bioontology.org/ontology/NCBITAXON/ ",
+                    "type": "string"
+                },
+                "version": {
+                "description": "The version of the ontology or reference source.",
+                "type": "string"
+                }
+            },
+            "required": [
+            "term_id",
+            "reference_url",
+            "term_label"
+            ],
+            "title": "ExternalReference",
+            "type": "object"
+        }
+    }
+}
