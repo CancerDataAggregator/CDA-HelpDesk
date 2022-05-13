@@ -3,5 +3,5 @@ collapse: true
 collapse_single_pages: true
 nav:
  - installation.md
- - usage.ipynb
+ - ExampleNotebooks
  - Schema.md

@@ -5,4 +5,4 @@ mkdocs-awesome-pages-plugin
 mkdocs-htmlproofer-plugin
 ipython_genutils
 MkDocsJsonSchemaPlugin
-git+https://github.com/CancerDataAggregator/cda-python.git@integration
+git+https://github.com/CancerDataAggregator/cda-python.git@new-entity-endpoints
