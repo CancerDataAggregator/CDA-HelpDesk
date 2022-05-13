@@ -2,6 +2,8 @@
 ## Subjects Endpoint
 ### Full Schema
 
+![cdamodel](./cdamodel.png)
+
 The **Subject** entity is the outer most record in the Subjects endpoint. Within the **Subject** record are the fields for the **Subject** (demographic and other subject-specific information), a Files field which lists the id of all files associated with the **Subject**, as well as the record of all **ResearchSubject** records associated with that **Subject**. Each **ResearchSubject** record has fields associated with the **ResearchSubject**, as well as records for the **Diagnosis** and **Specimen** entities associated with that **ResearchSubject**, and so on.
 
 
@@ -243,6 +245,10 @@ The **File** entity is the outer most record in the Files endpoint. Within the *
 |         |                                             | derived\_from\_subject       |                            |
 
 ### Mapping
+
+![cdamodelmapping](./mapping.png)
+
+
 (File)=
 #### File
 | Common Data Format (present in CDA) | GDC field name                        | PDC field name                 | IDC field name                        |
