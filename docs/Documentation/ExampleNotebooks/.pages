@@ -2,3 +2,4 @@ nav:
  - SearchTerms.ipynb
  - BasicSearch.ipynb
  - AdvancedSearch-Chaining.ipynb
+ - AdvancedSearch-Merging.ipynb
