@@ -3,10 +3,6 @@ site_description:
 repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
-
-
-
-
 theme:
   name: material
   palette:
@@ -33,7 +29,6 @@ theme:
     - navigation.tracking
     - navigation.sections
     - toc.integrate #- navigation.indexes
-    - toc.follow
     - navigation.top
     - search.suggest
     - search.highlight
@@ -41,7 +36,7 @@ theme:
     - content.code.annotate
 #  favicon: images/CFDE-logo-white-outline.png
 #  logo: images/CFDE-logo.png
-  custom_dir: docs/custom
+  custom_dir: docs/overrides
   docs_dir: docs
 
 
@@ -56,34 +51,33 @@ plugins:
 
 
 markdown_extensions:
-- admonition
-- def_list
-- pymdownx.critic
-- pymdownx.details
-- pymdownx.highlight
-- pymdownx.superfences
-- pymdownx.tabbed
-- pymdownx.emoji:
-     emoji_index: !!python/name:materialx.emoji.twemoji
-     emoji_generator: !!python/name:materialx.emoji.to_svg
-- pymdownx.tabbed
-- pymdownx.extra
-- pymdownx.superfences
-- pymdownx.extra
-- pymdownx.highlight
-- pymdownx.keys
-- pymdownx.inlinehilite
-- abbr
-- pymdownx.snippets
-- attr_list
+  - admonition
+  - def_list
+  - pymdownx.critic
+  - pymdownx.highlight
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed
+  - pymdownx.extra
+  - pymdownx.superfences
+  - pymdownx.extra
+  - pymdownx.highlight
+  - pymdownx.keys
+  - pymdownx.inlinehilite
+  - abbr
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - meta
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
 
 
-
-
-- codehilite:
-    guess_lang: false
-- toc:
-    permalink: true
 extra:
   hypothesis: true
   social:
@@ -100,9 +94,15 @@ extra:
       name: CDA
   copyright: Copyright &copy; 2016 - 2020 Martin Donath
   generator: true
+  # consent:
+  #   title: Cookie consent
+  #   description: >-
+  #     We use cookies to recognize your repeated visits and preferences, as well
+  #     as to measure the effectiveness of our documentation and whether users
+  #     find what they're searching for. With your consent, you're helping us to
+  #     make our documentation better.
+
 
 
 extra_css:
-  - stylesheets/renderjson.css
-extra_javascript:
-  - javascripts/renderjson.js
+  - assets/stylesheets/home.css
