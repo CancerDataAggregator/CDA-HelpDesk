@@ -61,8 +61,11 @@
 
 /* Responsive layout - makes the columns stack on top of each other instead of next to each other */
 @media (max-width: 800px) {
-  .column {
+  .flex-container, .column, .flex-trio {
     flex: 100%;
     max-width: 100%;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 100%;
   }
 }
