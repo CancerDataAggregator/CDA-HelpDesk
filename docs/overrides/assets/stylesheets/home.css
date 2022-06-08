@@ -1,0 +1,68 @@
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-height: 600px;
+}
+
+.flex-trio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  max-height: 400px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* Create two unequal columns that sits next to each other */
+.introtext {
+  flex: 40%;
+  max-width: 100%;
+  padding: 0 8px;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.introimage{
+  flex: 60%;
+  max-width: 100%;
+  padding: 0 8px;
+  justify-content: center;
+  justify-content: space-between;
+}
+.introimage img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 8px;
+  justify-content: center;
+  justify-content: space-between;
+  background-color: var(--md-accent-fg-color--transparent);
+  overflow: auto;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+
+/* Responsive layout - makes the columns stack on top of each other instead of next to each other */
+@media (max-width: 800px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
