@@ -11,15 +11,15 @@ hide:
 
 <div class="introtext" markdown>
 
-Using the CDA and a harmonized data model developed by the NCI Cancer Research Data Commons (CRDC) Data Harmonization teams, users can discover, query, retrieve,
-and aggregate data according to a variety of search parameters, such as
-participant, sample, tissue, disease, or study.
+### Using the CDA and a harmonized data model developed by the NCI Cancer Research Data Commons (CRDC) Data Harmonization teams, users can discover, query, retrieve, and aggregate data according to a variety of search parameters, such as participant, sample, tissue, disease, or study.
+
+[Try it now](./QuickStart/QuickStart){ .md-button }
 
 </div>
 
 <div class="introimage" markdown>
 
-![Image title](assets/images/cda_graphic.png){ align=right }
+![Image title](assets/images/cda_graphic.png){img width="80%"}
 
 </div>
 </div>
