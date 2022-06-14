@@ -44,7 +44,7 @@ theme:
 plugins:
   - mkdocs-jupyter:
       include_source: True
-      execute: False #True
+      execute: True #True
   - search: # necessary for search to work
       separator: '[\s\-\.]+'
   - awesome-pages
