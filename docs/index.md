@@ -11,8 +11,7 @@ hide:
 
 <div class="introtext" markdown>
 
-Using the CDA and a harmonized data model developed by the Center for
-Cancer Data Harmonization (CCDH), users can discover, query, retrieve,
+Using the CDA and a harmonized data model developed by the NCI Cancer Research Data Commons (CRDC) Data Harmonization teams, users can discover, query, retrieve,
 and aggregate data according to a variety of search parameters, such as
 participant, sample, tissue, disease, or study.
 
@@ -37,9 +36,15 @@ The <a href="https://datascience.cancer.gov/data-commons" target="_blank" rel="n
 </div>
 
 <div class="column" markdown>
+### Our Data Partners
 
-### Social Media
-<a class="twitter-timeline" data-width="400" data-height="400" href="https://twitter.com/isb_cgc?ref_src=twsrc%5Etfw">Tweets by ISB-CDC</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<a href="https://gdc.cancer.gov/" target="_blank"> <img width="300px" src='assets/images/GDC.png' | url  title="Genomic Data Commons (GDC)"></a>
+
+<a href="https://datacommons.cancer.gov/repository/imaging-data-commons" target="_blank"> <img width="300px" src='assets/images/IDC.png' | url  title="Imaging Data Commons (IDC)"> </a>
+
+<a href="https://proteomic.datacommons.cancer.gov/pdc/" target="_blank" ><img width="300px" src='assets/images/PDC1.png' | url  title="Proteomic Data Commons (PDC)"> </a>
+
 </div>
 
 <div class="column" markdown>
