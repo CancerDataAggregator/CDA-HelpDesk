@@ -50,6 +50,8 @@ plugins:
       separator: '[\s\-\.]+'
   - awesome-pages
   - git-revision-date
+  - render_swagger
+
 
 
 markdown_extensions:
@@ -104,7 +106,7 @@ extra:
   #     find what they're searching for. With your consent, you're helping us to
   #     make our documentation better.
 
-
-
+extra_javascript:
+  - javascripts/renderjson.js
 extra_css:
   - assets/stylesheets/home.css

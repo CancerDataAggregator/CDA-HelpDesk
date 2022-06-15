@@ -1,4 +1,13 @@
-{
+---
+title: definitions
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/definitions#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
@@ -96,7 +105,7 @@
                 "term_id": {
                     "description": "Term identifier with prefix or full url. For example, 9606 for NCBITAXON Human or phs",
                     "type": "string"
-                }, 
+                },
                 "term_label": {
                     "description": "Human-readable label for the term.  Maps to rdfs:label.",
                     "type": "string"
@@ -119,4 +128,6 @@
             "type": "object"
         }
     }
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

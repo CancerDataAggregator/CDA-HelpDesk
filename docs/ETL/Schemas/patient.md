@@ -1,4 +1,14 @@
-{
+---
+title: patient
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
+
     "$id": "https://example.org/cda-data-model/Patient#",
     "$schema": "http://json-schema.org/draft-07/schema#",   
     "description": "A patient entity captures the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person to protect the subject\u2019s privacy.",
@@ -69,4 +79,6 @@
     ],
     "title": "Patient",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

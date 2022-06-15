@@ -4,5 +4,5 @@ mkdocs-git-revision-date-plugin
 mkdocs-awesome-pages-plugin
 mkdocs-htmlproofer-plugin
 ipython_genutils
-MkDocsJsonSchemaPlugin
+mkdocs-render-swagger-plugin
 git+https://github.com/CancerDataAggregator/cda-python.git@new-entity-endpoints

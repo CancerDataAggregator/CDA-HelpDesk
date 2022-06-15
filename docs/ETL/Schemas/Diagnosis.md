@@ -1,4 +1,13 @@
-{
+---
+title: diagnosis
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/Diagnosis#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "",
@@ -26,7 +35,7 @@
         },
         "grade": {
             "description": "",
-            "type": "string"       
+            "type": "string"
         },
         "harmonized_primary_diagnosis": {
             "description": "",
@@ -34,7 +43,7 @@
         },
         "morphology": {
             "description": "",
-            "type": "string"               
+            "type": "string"
         },
         "primary_diagnosis": {
             "description": "",
@@ -42,14 +51,14 @@
         },
         "stage": {
             "description": "",
-            "type": "string"                       
+            "type": "string"
         },
         "treatment": {
             "description": "",
             "type": "array",
             "items": {
                 "$ref": "https://example.org/cda-data-model/Treatment"
-            }          
+            }
         },
         "research_subject": {
             "description": "Reference to the ResearchSubject UUID.",
@@ -57,7 +66,7 @@
         },
         "specimen": {
             "description": "Reference to the Specimen used for this diagnosis.",
-            "type": "string"      
+            "type": "string"
         }
     },
     "required": [
@@ -66,4 +75,6 @@
     ],
     "title": "Diagnosis",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

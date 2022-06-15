@@ -1,4 +1,13 @@
-{
+---
+title: researchsubject
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/ResearchSubject#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "A research subject is the entity of interest in a specific research study or project, typically a human being or an animal, but can also be a device, group of humans or animals, or a tissue sample. Human research subjects are usually not traceable to a particular person to protect the subject\u2019s privacy.  This entity plays the role of the case_id in existing data.",
@@ -19,7 +28,7 @@
                 "oneOf" : [
                      {"$ref": "https://example.org/cda-data-model/definitions/Identifier"},
                      {"type": "string"}
-                 ]            
+                 ]
             },
             "type": "array"
          },
@@ -43,14 +52,14 @@
             "items": {
                 "$ref": "https://example.org/cda-data-model/Diagnosis"
             },
-            "type": "array"  
+            "type": "array"
         },
         "file": {
             "description": "",
             "items": {
                 "$ref": "https://example.org/cda-data-model/File"
             },
-            "type": "array"  
+            "type": "array"
         },
         "harmonized_disease_type": {
             "description": "Harmonized disease type based on CCDH model; for MVP, the ETL process will consult the table of harmonized disease_types provided by CCDH to set this value. GDC disease_type.  This may be removed from the model in future and replaced with an API call that determines this value based submitting the CodeableConcept to a vocabulary service which will return the canonical value to be used for search.  In future, CCDH will provide a vocabulary service, allowing us to request the canonical disease name for searching based on the CodeableConcept for disease_type submitted by the DCs.  This field will not appear in data submitted by the DCs.",
@@ -61,7 +70,7 @@
             "items": {
                 "$ref": "https://example.org/cda-data-model/Specimen"
             },
-            "type": "array"         
+            "type": "array"
         }
     },
     "required": [
@@ -71,4 +80,6 @@
     ],
     "title": "ResearchSubject",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

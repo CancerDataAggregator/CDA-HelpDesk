@@ -1,6 +1,13 @@
-#JsonSchema#
+---
+title: dataset
+---
 
-{
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/Dataset#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "An extension of DCAT:Dataset to support Data Use Ontology terms.  A collection of one or more entities submitted by a single responsible party or authorizing agent.",
@@ -62,3 +69,6 @@
     "title": "Dataset",
     "type": "object"
 }
+;
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

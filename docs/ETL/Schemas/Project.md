@@ -1,4 +1,13 @@
-{
+---
+title: project
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/Project#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Any specifically defined piece of work that is undertaken or attempted to meet a single requirement. (NCIt C47885)",
@@ -22,21 +31,21 @@
         },
         "label": {
             "description": "Short name or abbreviation for project. Maps to rdfs:label.",
-            "type": "string"  
+            "type": "string"
         },
         "disease_site": {
             "description": "A list of the text terms used to describe the primary site of disease.",
             "items": {
                 "type": "string"
                 },
-            "type": "array"  
+            "type": "array"
         },
         "disease_type": {
             "description": "A list of the text terms used to describe the type of malignant disease. ",
             "items": {
                 "type": "string"
                 },
-            "type": "array"  
+            "type": "array"
         },
         "dbgap_accession": {
             "description": "The link to the dbgap accession record for data associated with this Project. For MVP, will model this as a string, but this could be modeled as an external reference.",
@@ -82,4 +91,6 @@
     ],
     "title": "Project",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

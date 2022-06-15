@@ -1,4 +1,13 @@
-{
+---
+title: file
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/File#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "",
@@ -32,31 +41,31 @@
             "type": "string"
         },
         "byte_size":{
-            "description": "Size of the file in bytes. Maps to dcat:byteSize.",   
+            "description": "Size of the file in bytes. Maps to dcat:byteSize.",
             "type": "number"
         },
         "checksum": {
-            "description": " ",   
+            "description": " ",
             "type": "string"
         },
         "data_category": {
-            "description": " ",   
+            "description": " ",
             "type": "string"
         },
         "data_type": {
-            "description": " ",   
+            "description": " ",
             "type": "string"
         },
         "file_format": {
-            "description": "String to identify the full file extension including compression extensions.",   
+            "description": "String to identify the full file extension including compression extensions.",
             "type": "string"
         },
         "media_type": {
-            "description": "Specific media type according to the Internet Assigned Numbers Authority (IANA). String that captures dct:MediaType (https://www.iana.org/assignments/media-types/media-types.xhtml).",   
+            "description": "Specific media type according to the Internet Assigned Numbers Authority (IANA). String that captures dct:MediaType (https://www.iana.org/assignments/media-types/media-types.xhtml).",
             "type": "string"
         },
         "reference_assembly": {
-            "description": "URL or string representing the organism-specific reference assembly.",   
+            "description": "URL or string representing the organism-specific reference assembly.",
             "type": "string"
         }
     },
@@ -66,4 +75,6 @@
     ],
     "title": "File",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

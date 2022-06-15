@@ -1,4 +1,13 @@
-{
+---
+title: treatment
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/Treatment#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "",
@@ -19,22 +28,22 @@
                 "$ref": "https://example.org/cda-data-model/definitions/Identifier"
             },
             "type": "array"
-        },          
+        },
         "days_to_treatment_start": {
             "description": "The date and optionally time that the treatment was started in integer.",
-            "type": "string"                
-        },  
+            "type": "string"
+        },
         "days_treatment_end": {
             "description": "The date and optionally time that the treatment was terminated in integer format.",
-            "type": "string"                
+            "type": "string"
         },
         "treatment_outcome": {
             "description": "Text name for treatment outcome; this will ultimately be defined by a common vocabulary",
-            "type": "string"                
+            "type": "string"
         },
         "treatment_type": {
             "description": "Text name for treatment type; this will ultimately be defined by a common vocabulary",
-            "type": "string"                
+            "type": "string"
         }
     },
     "required": [
@@ -43,4 +52,6 @@
     ],
     "title": "Treatment",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>

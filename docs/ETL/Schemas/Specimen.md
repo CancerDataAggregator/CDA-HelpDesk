@@ -1,4 +1,13 @@
-{
+---
+title: specimen
+---
+
+
+<div id="test">
+<script type="text/javascript" src="../../../javascripts/renderjson.js"></script>
+<script>
+renderjson.set_show_to_level(1);
+var example = {
     "$id": "https://example.org/cda-data-model/Specimen#",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Any material taken as a sample from a biological entity (living or dead), or from a physical object or the environment. Specimens are usually collected as an example of their kind, often for use in some investigation.",
@@ -78,4 +87,6 @@
     ],
     "title": "Specimen",
     "type": "object"
-}
+};
+    document.getElementById("test").appendChild(renderjson(example));
+</script>
