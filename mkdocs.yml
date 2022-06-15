@@ -1,4 +1,4 @@
-site_name: Cancer Data taco
+site_name: Cancer Data Aggregator
 site_description: A python package for search across NCI datasets
 repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
