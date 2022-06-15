@@ -1,7 +1,5 @@
-title: Model and Mapping
+title: ETL
 nav:
- - files_schema.md
- - subjects_schema.md
  - ETL.md
  - limits.md
  - LearnMore.md
