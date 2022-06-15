@@ -80,7 +80,7 @@
 }
 
 .renderjson a              { text-decoration: none; }
-.renderjson .disclosure    { color: var(--md-default-fg-color);
+.renderjson .disclosure    { color: var(--md-code-hl-special-color);
                              font-size: 150%; }
 .renderjson .syntax        { color: grey; }
 .renderjson .string        { color: var(--md-default-fg-color); }

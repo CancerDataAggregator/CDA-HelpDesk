@@ -1,4 +1,7 @@
 title: Model and Mapping
 nav:
- - Schema: Dataset.md
- - ...
+ - files_schema.md
+ - subjects_schema.md
+ - ETL.md
+ - limits.md
+ - LearnMore.md
