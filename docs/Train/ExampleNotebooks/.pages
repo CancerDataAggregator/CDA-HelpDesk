@@ -1,8 +1,0 @@
-nav:
-- Feature Examples:
-   - SearchTerms.ipynb
-   - BasicSearch.ipynb
-   - AdvancedSearch-Chaining.ipynb
-   - AdvancedSearch-Merging.ipynb
-- Example Workflows:
-   - BuildingACohort.ipynb
