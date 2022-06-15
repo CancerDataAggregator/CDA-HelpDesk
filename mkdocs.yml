@@ -44,7 +44,7 @@ theme:
 plugins:
   - mkdocs-jupyter:
       include_source: True
-      #execute: True
+      execute: True
       #allow_errors: false
   - search: # necessary for search to work
       separator: '[\s\-\.]+'
