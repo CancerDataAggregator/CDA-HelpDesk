@@ -1,4 +1,6 @@
 
+
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -61,7 +63,7 @@
 
 /* Responsive layout - makes the columns stack on top of each other instead of next to each other */
 @media (max-width: 800px) {
-  .flex-container, .column, .flex-trio {
+  .flex-container, .column, .flex-trio, .container {
     flex: 100%;
     max-width: 100%;
     flex-direction: column;
@@ -69,3 +71,22 @@
     max-height: 100vh;
   }
 }
+
+.container {
+    display: flex;
+    width: 90%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.renderjson a              { text-decoration: none; }
+.renderjson .disclosure    { color: var(--md-default-fg-color);
+                             font-size: 150%; }
+.renderjson .syntax        { color: grey; }
+.renderjson .string        { color: var(--md-default-fg-color); }
+.renderjson .number        { color: var(--md-code-fg-color); }
+.renderjson .boolean       { color: plum; }
+.renderjson .key           { color: var(--md-default-fg-color--light); }
+.renderjson .keyword       { color: var(--md-default-bg-color--light); }
+.renderjson .object.syntax { color: var(--md-code-fg-color); }
+.renderjson .array.syntax  { color: var(--md-accent-fg-color); }

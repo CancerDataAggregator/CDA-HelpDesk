@@ -2,8 +2,9 @@
 title: dataset
 ---
 
-
+<div class="container">
 <div id="test">
+
 <script type="text/javascript" src="../../javascripts/renderjson.js"></script>
 <script>
 renderjson.set_show_to_level(2);
@@ -11,3 +12,4 @@ var example = [{"description": "The 'logical' identifier of the entity in the sy
 ;
     document.getElementById("test").appendChild(renderjson(example));
 </script>
+</div></div>
