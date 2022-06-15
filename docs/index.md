@@ -1,17 +1,25 @@
 ---
-title: Welcome to the Cancer Data Aggregator
+title: Cancer Data Aggregator
 hide:
   - navigation
   - toc
   - footer
 ---
 
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
 
 <div class="flex-container" markdown>
 
 <div class="introtext" markdown>
 
-### Using the CDA and a harmonized data model developed by the NCI Cancer Research Data Commons (CRDC) Data Harmonization teams, users can discover, query, retrieve, and aggregate data according to a variety of search parameters, such as participant, sample, tissue, disease, or study.
+## A python package for search across NCI datasets
+
+#### Using the Cancer Data Aggregator (CDA) and a harmonized data model developed by the NCI Cancer Research Data Commons (CRDC) Data Harmonization teams, users can discover, query, retrieve, and aggregate data according to a variety of search parameters, such as participant, sample, tissue, disease, or study.
 
 [Try it now](./QuickStart/QuickStart){ .md-button }
 

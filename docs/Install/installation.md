@@ -1,8 +1,11 @@
 # Installation Guide
 
-There are two methods for local installation: Docker or Conda + pip:
+There are two methods for local installation in virtual environments: Docker or Conda + pip.
 
-## Docker (Recommended)
+Installation without a virtual environment may have unexpected/unresolvable
+conflicts, and is not supported.
+
+## Docker
 
 !!! requirements
 
@@ -84,57 +87,7 @@ This will open a docker container with all the required packages for using the A
       ```
 
 ## Customizing your cda-python installation
-### Installing previous versions of the cda-python
 
-Versions Available:
-
-   - 2.0.0
-   - 2.1.0
-   - 3.0.0 (default)
-
-#### Docker
-
-1. Navigate to the cda-python folder
-
-2. Use a plain text editor (bbedit, textedit, vim, nano, emacs) to open the hidden file `.env`
-
-3. Edit line 6 to the desired version:
-```bash
-GIT_TAG_VERSION = 2.0.0
-```
-or
-```bash
-GIT_TAG_VERSION = 2.1.0
-```
-
-4. Rebuild docker container:
-```bash
-docker-compose up --build
-```
-
-#### Conda + Pip
-Specify the version in the pip install line for e.g.:
-
-`pip install git+https://github.com/CancerDataAggregator/cda-python.git@<version>`
-
-
-We recommend installing older versions in their own conda environments. For version 2.1.0:
-
-1. Open Terminal or PowerShell and create a new conda environment:
-  ```bash
-  conda create -n cda2.1.0 python=3.7
-  ```
-  type `y` when prompted
-
-2. Activate the environment:
-  ```bash
-  conda activate cda2.1.0
-  conda install jupyter
-  pip install git+https://github.com/CancerDataAggregator/cda-python.git@2.1.0
-  cd cda-python
-  jupyter notebook
-  ```
-  type `y` when prompted
 
 ### Modifying the localhost port in Docker
 

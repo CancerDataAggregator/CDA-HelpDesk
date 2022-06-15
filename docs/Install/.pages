@@ -1,7 +1,5 @@
-title: CDA-python Docs
+title: Installation
 collapse: true
 collapse_single_pages: true
 nav:
  - installation.md
- - ExampleNotebooks
- - Schema.md
