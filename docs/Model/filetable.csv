@@ -1,0 +1,78 @@
+column_name,description,data_type
+id,"The 'logical' identifier of the entity in the repository, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system.",STRING
+identifier,"A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). ","ARRAY<STRUCT<system STRING, value STRING>>"
+identifier.system,The system or namespace that defines the identifier.,STRING
+identifier.value,"The value of the identifier, as defined by the system.",STRING
+label,Short name or abbreviation for dataset. Maps to rdfs:label.,STRING
+data_category, ,STRING
+data_type, ,STRING
+file_format,String to identify the full file extension including compression extensions.,STRING
+associated_project,A reference to the Project(s) of which this ResearchSubject is a member. The associated_project may be embedded using the $ref definition or may be a reference to the id for the Project - or a URI expressed as a string to an existing entity.,STRING
+drs_uri,,STRING
+byte_size,Size of the file in bytes. Maps to dcat:byteSize.,INT64
+checksum, ,STRING
+data_modality,,STRING
+imaging_modality,,STRING
+dbgap_accession_number,,STRING
+crdc_series_uuid,,STRING
+Subject,A patient entity captures the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person to protect the subject’s privacy.,"ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, species STRING, sex STRING, race STRING, ethnicity STRING, days_to_birth INT64, subject_associated_project ARRAY<STRING>, vital_status STRING, age_at_death INT64, cause_of_death STRING>>"
+Subject.id,"The 'logical' identifier of the entity in the system of record, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system.",STRING
+Subject.identifier,"A 'business' identifier for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). Uses a specialized, complex 'Identifier' data type to capture information about the source of the business identifier - or a URI expressed as a string to an existing entity. ","ARRAY<STRUCT<system STRING, value STRING>>"
+Subject.identifier.system,The system or namespace that defines the identifier.,STRING
+Subject.identifier.value,"The value of the identifier, as defined by the system.",STRING
+Subject.species,,STRING
+Subject.sex,,STRING
+Subject.race,,STRING
+Subject.ethnicity,,STRING
+Subject.days_to_birth,"Per GDC Dictionary, number of days between the date used for index and the date from a person's date of birth represented as a calculated negative number of days.",INT64
+Subject.subject_associated_project,,ARRAY<STRING>
+Subject.vital_status,,STRING
+Subject.age_at_death,,INT64
+Subject.cause_of_death,,STRING
+ResearchSubject,"A research subject is the entity of interest in a specific research study or project, typically a human being or an animal, but can also be a device, group of humans or animals, or a tissue sample. Human research subjects are usually not traceable to a particular person to protect the subject’s privacy.  This entity plays the role of the case_id in existing data.","ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, member_of_research_project STRING, primary_diagnosis_condition STRING, primary_diagnosis_site STRING, Diagnosis ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, primary_diagnosis STRING, age_at_diagnosis INT64, morphology STRING, stage STRING, grade STRING, method_of_diagnosis STRING, Treatment ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, treatment_type STRING, treatment_outcome STRING, days_to_treatment_start INT64, days_to_treatment_end INT64, therapeutic_agent STRING, treatment_anatomic_site STRING, treatment_effect STRING, treatment_end_reason STRING, number_of_cycles INT64>>>>>>"
+ResearchSubject.id,"The 'logical' identifier of the entity in the system of record, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system. For CDA, this is case_id.",STRING
+ResearchSubject.identifier,"A 'business' identifier for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). Uses a specialized, complex 'Identifier' data type to capture information about the source of the business identifier - or a URI expressed as a string to an existing entity. ","ARRAY<STRUCT<system STRING, value STRING>>"
+ResearchSubject.identifier.system,The system or namespace that defines the identifier.,STRING
+ResearchSubject.identifier.value,"The value of the identifier, as defined by the system.",STRING
+ResearchSubject.member_of_research_project,,STRING
+ResearchSubject.primary_diagnosis_condition,,STRING
+ResearchSubject.primary_diagnosis_site,,STRING
+ResearchSubject.Diagnosis,,"ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, primary_diagnosis STRING, age_at_diagnosis INT64, morphology STRING, stage STRING, grade STRING, method_of_diagnosis STRING, Treatment ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, treatment_type STRING, treatment_outcome STRING, days_to_treatment_start INT64, days_to_treatment_end INT64, therapeutic_agent STRING, treatment_anatomic_site STRING, treatment_effect STRING, treatment_end_reason STRING, number_of_cycles INT64>>>>"
+ResearchSubject.Diagnosis.id,"The 'logical' identifier of the entity in the repository, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system.",STRING
+ResearchSubject.Diagnosis.identifier,"A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). ","ARRAY<STRUCT<system STRING, value STRING>>"
+ResearchSubject.Diagnosis.identifier.system,The system or namespace that defines the identifier.,STRING
+ResearchSubject.Diagnosis.identifier.value,"The value of the identifier, as defined by the system.",STRING
+ResearchSubject.Diagnosis.primary_diagnosis,,STRING
+ResearchSubject.Diagnosis.age_at_diagnosis,,INT64
+ResearchSubject.Diagnosis.morphology,,STRING
+ResearchSubject.Diagnosis.stage,,STRING
+ResearchSubject.Diagnosis.grade,,STRING
+ResearchSubject.Diagnosis.method_of_diagnosis,,STRING
+ResearchSubject.Diagnosis.Treatment,,"ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, treatment_type STRING, treatment_outcome STRING, days_to_treatment_start INT64, days_to_treatment_end INT64, therapeutic_agent STRING, treatment_anatomic_site STRING, treatment_effect STRING, treatment_end_reason STRING, number_of_cycles INT64>>"
+ResearchSubject.Diagnosis.Treatment.id,"The 'logical' identifier of the entity in the repository, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system.",STRING
+ResearchSubject.Diagnosis.Treatment.identifier,"A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). ","ARRAY<STRUCT<system STRING, value STRING>>"
+ResearchSubject.Diagnosis.Treatment.identifier.system,The system or namespace that defines the identifier.,STRING
+ResearchSubject.Diagnosis.Treatment.identifier.value,"The value of the identifier, as defined by the system.",STRING
+ResearchSubject.Diagnosis.Treatment.treatment_type,Text name for treatment type; this will ultimately be defined by a common vocabulary,STRING
+ResearchSubject.Diagnosis.Treatment.treatment_outcome,Text name for treatment outcome; this will ultimately be defined by a common vocabulary,STRING
+ResearchSubject.Diagnosis.Treatment.days_to_treatment_start,The date and optionally time that the treatment was started in integer.,INT64
+ResearchSubject.Diagnosis.Treatment.days_to_treatment_end,,INT64
+ResearchSubject.Diagnosis.Treatment.therapeutic_agent,,STRING
+ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site,,STRING
+ResearchSubject.Diagnosis.Treatment.treatment_effect,,STRING
+ResearchSubject.Diagnosis.Treatment.treatment_end_reason,,STRING
+ResearchSubject.Diagnosis.Treatment.number_of_cycles,,INT64
+Specimen,"Any material taken as a sample from a biological entity (living or dead), or from a physical object or the environment. Specimens are usually collected as an example of their kind, often for use in some investigation.","ARRAY<STRUCT<id STRING, identifier ARRAY<STRUCT<system STRING, value STRING>>, associated_project STRING, age_at_collection INT64, primary_disease_type STRING, anatomical_site STRING, source_material_type STRING, specimen_type STRING, derived_from_specimen STRING, derived_from_subject STRING>>"
+Specimen.id,"The 'logical' identifier of the entity in the system of record, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system.",STRING
+Specimen.identifier,"A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). ","ARRAY<STRUCT<system STRING, value STRING>>"
+Specimen.identifier.system,The system or namespace that defines the identifier.,STRING
+Specimen.identifier.value,"The value of the identifier, as defined by the system.",STRING
+Specimen.associated_project,,STRING
+Specimen.age_at_collection,The age of the Patient when this sample was taken.,INT64
+Specimen.primary_disease_type,,STRING
+Specimen.anatomical_site,"Per GDC Dictionary, the text term that represents the name of the primary disease site of the submitted tumor sample; recommend dropping tumor; biospecimen_anatomic_site.",STRING
+Specimen.source_material_type,"The general kind of material from which the specimen was derived, indicating the physical nature of the source material. ",STRING
+Specimen.specimen_type,"The high-level type of the specimen, based on its how it has been derived from the original extracted sample.
+",STRING
+Specimen.derived_from_specimen,A source/parent specimen from which this one was directly derived.,STRING
+Specimen.derived_from_subject,"The Patient/ResearchSubject, or Biologically Derived Materal (e.g. a cell line, tissue culture, organoid) from which the specimen was directly or indirectly derived.",STRING

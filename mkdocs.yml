@@ -48,9 +48,11 @@ plugins:
       #allow_errors: false
   - search: # necessary for search to work
       separator: '[\s\-\.]+'
-  - awesome-pages
+  - awesome-pages:
+      collapse_single_pages: true
   - git-revision-date
   - render_swagger
+  - table-reader
 
 
 

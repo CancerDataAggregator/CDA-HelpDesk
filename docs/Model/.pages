@@ -1,5 +1,11 @@
 title: Model and Mapping
 nav:
- - files_schema.md
- - subjects_schema.md
- - Mapping.md
+- index.md
+- subject endpoint:
+  - subject fields: subjecttable.md
+  - subject JSON schema: subjects_schema.md
+- file endpoint:
+  - file fields: filetable.md
+  - file JSON schema: files_schema.md
+- Mapping to data providers:
+  - Mapping.md
