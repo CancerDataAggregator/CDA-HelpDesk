@@ -1,0 +1,13 @@
+CDA,GDC,PDC,IDC
+id,case.submitter_id,cases.case.submitter_id,files.PatientID
+identifier.system,GDC,PDC,IDC
+identifier.value,id,id,id
+species,Homo sapiens,cases.taxon,files.tcia_species
+sex,case.demographic.gender,cases.demographics.gender,N/A
+race,case.demographic.race,cases.demographics.race,N/A
+ethnicity,case.demographic.ethnicity,cases.demographics.ethnicity,N/A
+days_to_birth,case.demographic.days_to_birth,cases.demographics.days_to_birth,N/A
+subject_associated_project,cases.project.project_id,cases.project_submitter_id,files.collection_id
+vital_status,case.demographic.vital_status,cases.demographic.vital_status,N/A
+age_at_death,case.demographic.days_to_death,cases.demographic.days_to_death,N/A
+cause_of_death,case.demographic.cause_of_death,cases.demographic.cause_of_death,N/A

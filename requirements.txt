@@ -6,3 +6,4 @@ mkdocs-htmlproofer-plugin
 ipython_genutils
 mkdocs-render-swagger-plugin
 git+https://github.com/CancerDataAggregator/cda-python.git@new-entity-endpoints
+mkdocs-table-reader-plugin

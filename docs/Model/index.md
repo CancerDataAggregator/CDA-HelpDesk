@@ -1,5 +1,5 @@
 ---
-title: CDA model
+title: CDA Model Overview
 ---
 
 The CDA uses a simple model to describe connections between metadata fields. Contents for the metadata fields are taken directly from our data partners and made searchable without transformation or harmonization.
