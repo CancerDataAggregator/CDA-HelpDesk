@@ -1,6 +1,3 @@
-
-
-
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -76,6 +73,7 @@
     display: flex;
     width: 90%;
     overflow-x: auto;
+    overflow-y: auto;
     white-space: nowrap;
 }
 
@@ -86,7 +84,10 @@
 .renderjson .string        { color: var(--md-default-fg-color); }
 .renderjson .number        { color: var(--md-code-fg-color); }
 .renderjson .boolean       { color: plum; }
-.renderjson .key           { color: var(--md-default-fg-color--light); }
 .renderjson .keyword       { color: var(--md-default-bg-color--light); }
 .renderjson .object.syntax { color: var(--md-code-fg-color); }
 .renderjson .array.syntax  { color: var(--md-accent-fg-color); }
+.renderjson .key{
+  color: var(--md-primary-fg-color--dark);
+  font-weight: bold;
+ }
