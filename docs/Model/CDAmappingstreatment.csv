@@ -1,13 +1,13 @@
 CDA,GDC,PDC,IDC
-id,cases.diagnoses.treatments.treatment_id,,N/A
+id,cases.diagnoses.treatments.treatment_id,,No Mapping Available
 identifier.system,GDC,PDC,IDC
 identifier.value,ResearchSubject.Diagnosis.Treatment.id,ResearchSubject.Diagnosis.Treatment.id,ResearchSubject.Diagnosis.Treatment.id
-treatment_type,cases.diagnoses.treatments.treatment_type,cases.diagnoses.treatments.treatment_type,N/A
-treatment_outcome,cases.diagnoses.treatments.treatment_outcome,cases.diagnoses.treatments.treatment_outcome,N/A
-days_to_treatment_start,cases.diagnoses.treatments.days_to_treatment_start,cases.diagnoses.treatments.days_to_treatment_start,N/A
-days_to_treatment_end,cases.diagnoses.treatments.days_to_treatment_end,cases.diagnoses.treatments.days_to_treatment_end,N/A
-therapeutic_agent,cases.diagnoses.treatments.therapeutic_agents,cases.diagnoses.treatments.therapeutic_agents,N/A
-treatment_anatomic_site,cases.diagnoses.treatments.treatment_anatomic_site,cases.diagnoses.treatments.treatment_anatomic_site,N/A
-treatment_effect,cases.diagnoses.treatments.treatment_effect,cases.diagnoses.treatments.treatment_effect,N/A
-treatment_end_reason,cases.diagnoses.treatments.reason_treatment_ended,cases.diagnoses.treatments.reason_treatment_ended,N/A
-number_of_cycles,cases.diagnoses.treatments.number_of_cycles,cases.diagnoses.treatments.number_of_cycles,N/A
+treatment_type,cases.diagnoses.treatments.treatment_type,cases.diagnoses.treatments.treatment_type,No Mapping Available
+treatment_outcome,cases.diagnoses.treatments.treatment_outcome,cases.diagnoses.treatments.treatment_outcome,No Mapping Available
+days_to_treatment_start,cases.diagnoses.treatments.days_to_treatment_start,cases.diagnoses.treatments.days_to_treatment_start,No Mapping Available
+days_to_treatment_end,cases.diagnoses.treatments.days_to_treatment_end,cases.diagnoses.treatments.days_to_treatment_end,No Mapping Available
+therapeutic_agent,cases.diagnoses.treatments.therapeutic_agents,cases.diagnoses.treatments.therapeutic_agents,No Mapping Available
+treatment_anatomic_site,cases.diagnoses.treatments.treatment_anatomic_site,cases.diagnoses.treatments.treatment_anatomic_site,No Mapping Available
+treatment_effect,cases.diagnoses.treatments.treatment_effect,cases.diagnoses.treatments.treatment_effect,No Mapping Available
+treatment_end_reason,cases.diagnoses.treatments.reason_treatment_ended,cases.diagnoses.treatments.reason_treatment_ended,No Mapping Available
+number_of_cycles,cases.diagnoses.treatments.number_of_cycles,cases.diagnoses.treatments.number_of_cycles,No Mapping Available

@@ -110,6 +110,8 @@ extra:
 
 extra_javascript:
   - javascripts/renderjson.js
-  - javascripts/zoom.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+
 extra_css:
   - assets/stylesheets/home.css

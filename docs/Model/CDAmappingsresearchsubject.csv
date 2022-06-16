@@ -1,7 +1,7 @@
 CDA,GDC,PDC,IDC
-id,cases.case_id,,N/A
+id,cases.case_id,,No Mapping Available
 identifier.system,GDC,PDC,IDC
 identifier.value,ResearchSubject.id,ResearchSubject.id,ResearchSubject.id
-member_of_research_project,cases.project.project_id,cases.project_submitter_id,N/A
-primary_diagnosis_condition,cases.disease_type,cases.disease_type,N/A
-primary_diagnosis_site,cases.primary_site,cases.primary_site,N/A
+member_of_research_project,cases.project.project_id,cases.project_submitter_id,No Mapping Available
+primary_diagnosis_condition,cases.disease_type,cases.disease_type,No Mapping Available
+primary_diagnosis_site,cases.primary_site,cases.primary_site,No Mapping Available
