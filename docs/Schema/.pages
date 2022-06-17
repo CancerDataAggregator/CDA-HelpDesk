@@ -1,6 +1,6 @@
 title: Model and Mapping
 nav:
-- overview_model.md
+- overview_schema.md
 - subject endpoint:
   - subject fields: fields_subject.md
   - subject JSON schema: schema_subject.md
