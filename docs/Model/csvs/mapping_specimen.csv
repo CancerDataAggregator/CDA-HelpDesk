@@ -1,6 +1,5 @@
 CDA,GDC,PDC,IDC
-id,"cases.samples.sample_id, cases.samples.portions.portion_id, cases.samples.portions.slide_id cases.samples.portions.analytes.analyte_id, cases.samples.portons.analytes.aliquotes.aliquot_id","cases.samples.sample_id,
-cases.samples.aliquots.aliquot_id",No Mapping Available
+id,"cases.samples.sample_id, cases.samples.portions.portion_id, cases.samples.portions.slide_id cases.samples.portions.analytes.analyte_id, cases.samples.portons.analytes.aliquotes.aliquot_id","cases.samples.sample_id, cases.samples.aliquots.aliquot_id",No Mapping Available
 identifier.system,GDC,PDC,IDC
 identifier.value,ResearchSubject.Specimen.id,ResearchSubject.Specimen.id,No Mapping Available
 associated_project,cases.project.project_id,cases.project_submitter_id,No Mapping Available
@@ -9,7 +8,5 @@ primary_disease_type,cases.disease_type,cases.disease_type,No Mapping Available
 anatomical_site,cases.samples.biospecimen_anatomic_site,cases.samples.biospecimen_anatomic_site,No Mapping Available
 source_material_type,cases.samples.sample_type,cases.samples.sample_type,No Mapping Available
 specimen_type,"sample, portion, slide, analyte, or aliquot",sample or aliquot,No Mapping Available
-derived_from_specimen,"cases.samples.sample_id,
-cases.samples.portions.portion_id,
-cases.samples.portions.analytes.analyte_id",cases.samples.sample_id,No Mapping Available
+derived_from_specimen,"cases.samples.sample_id, cases.samples.portions.portion_id, cases.samples.portions.analytes.analyte_id", cases.samples.sample_id,No Mapping Available
 derived_from_subject,cases.submitter_id,cases.case_submitter_id,No Mapping Available

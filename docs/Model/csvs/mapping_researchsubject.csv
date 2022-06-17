@@ -1,5 +1,5 @@
 CDA,GDC,PDC,IDC
-id,cases.case_id,,No Mapping Available
+id,cases.case_id,cases.case_id,No Mapping Available
 identifier.system,GDC,PDC,IDC
 identifier.value,ResearchSubject.id,ResearchSubject.id,ResearchSubject.id
 member_of_research_project,cases.project.project_id,cases.project_submitter_id,No Mapping Available

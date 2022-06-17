@@ -13,5 +13,4 @@ byte_size,files.file_size,files.file_size,No Mapping Available
 checksum,files.md5sum,files.md5sum,No Mapping Available
 data_modality,Genomic,Proteomic,Imaging
 imaging_modality,No Mapping Available,No Mapping Available,files.Modality
-dbgap_accession_number,"cases.project.dbgap_
-accession_number",files.dbgap_control_number,No Mapping Available
+dbgap_accession_number,"cases.project.dbgap_accession_number",files.dbgap_control_number,No Mapping Available

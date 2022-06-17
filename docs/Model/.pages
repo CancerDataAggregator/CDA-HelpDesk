@@ -1,17 +1,17 @@
 title: Model and Mapping
 nav:
-- index.md
+- overview_model.md
 - subject endpoint:
-  - subject fields: subjecttable.md
-  - subject JSON schema: subjects_schema.md
+  - subject fields: fields_subject.md
+  - subject JSON schema: schema_subject.md
 - file endpoint:
-  - file fields: filetable.md
-  - file JSON schema: files_schema.md
+  - file fields: fields_file.md
+  - file JSON schema: schema_file.md
 - Mapping:
-  - Mapping.md
-  - subjectmapping.md
-  - researchsubjectmapping.md
-  - diagnosismapping.md
-  - treatmentmapping.md
-  - specimenmapping.md
-  - filemapping.md
+  - overview_mapping.md
+  - mapping_subject.md
+  - mapping_researchsubject.md
+  - mapping_diagnosis.md
+  - mapping_treatment.md
+  - mapping_specimen.md
+  - mapping_file.md
