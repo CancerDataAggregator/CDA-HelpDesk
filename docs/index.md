@@ -1,9 +1,9 @@
 ---
 title: Cancer Data Aggregator
 hide:
+  - footer
   - navigation
   - toc
-  - footer
 ---
 
 <style>
