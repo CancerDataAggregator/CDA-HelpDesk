@@ -23,7 +23,7 @@ Which will produce the following output:
 The achievements for R3.0 are outlined as follows:
 * Previous table format now called Subjects endpoint
     * Replaced all File entities with Files - a list of file ids associated with the entity that the list is located in. e.g
-        * File -> Files 
+        * File -> Files
         * ResearchSubject.File -> ResearchSubject.Files
         * ResearchSubject.Specimen.File -> ResearchSubject.Specimen.Files
 * Files endpoint added:
@@ -49,7 +49,7 @@ The extraction and transformation process for GDC and PDC data are very similar.
 |:---:|
 | **Figure 2** |
 
-The extraction process for each node and endpoint implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 3 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from files to associated specimens and cases. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC, there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to. The data files created by the extraction process are written with one case/**ResearchSubject** or file/**File** per line. These extracted data files are then submitted to the transformation code. The code reads the extracted data files line by line, and transforms each line into the data structure expected in our BigQuery tables. 
+The extraction process for each node and endpoint implements the publicly available APIs exposed by the nodes. All the information that is used within CDA Release 3 for GDC has been obtained from the _cases_ and _files_ endpoints. Information from PDC is pulled from _cases_, _files_, _program_,  and _general_ endpoints. The majority of fields are coming from the _cases_ endpoint. The _files_ endpoint is used to get the files information and provide the link from files to associated specimens and cases. The resulting structure incorporates details about the case along with details about the files which are associated with the corresponding case, and specimens found within that case. In GDC, there are files that only link to cases, but any file that is linked to a specimen is also linked to the case that the specimen belongs to. The data files created by the extraction process are written with one case/**ResearchSubject** or file/**File** per line. These extracted data files are then submitted to the transformation code. The code reads the extracted data files line by line, and transforms each line into the data structure expected in our BigQuery tables.
 
 Since the extracted data file and the output of the transform code are written as one case/**ResearchSubject** per line, whereas our data structure is on a **Subject** by **Subject** basis, further aggregation of the data is needed for the Subjects endpoint. Aggregation of **Subject** entities in the **File** endpoint data file is also required. The aggregation code searches for any entries in the transformed data which have identical ids (**Subject** level id) and aggregates those entries together. Currently, for the **Subject** endpoint, the demographic information is coalesced between cases, whereas the **ResearchSubject** and **File** records from different cases are appended. For the **File** endpoint,the demographic information is coalesced between cases for the **Subject** entities. The error logs for the individual DC examine the demographic data of two or more correlating **Subject**/**ResearchSubject** records and logs any discrepancy.
 
@@ -78,7 +78,7 @@ The merging of data between GDC, PDC, and IDC is very similar to the aggregation
 All the fields that are currently available through the CDA Subjects endpoint are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
 <table>
-    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
+    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found [here](../Schema/overview_schema.md).</caption>
 <tr>
 <th>GDC Extract w/out File/Specimen Link</th>
 <th>GDC Extract with File/Specimen Link</th>
@@ -141,7 +141,7 @@ All the fields that are currently available through the CDA Subjects endpoint ar
                 {
                   ...
                   files: [...]
-                } 
+                }
               ]
             }
           ]
@@ -155,13 +155,13 @@ All the fields that are currently available through the CDA Subjects endpoint ar
 </pre>
 </td>
 </tr>
-    
+
 </table>
 
 To be able to associate files and specimen entities, the `file_id`, `cases.samples.sample_id`, `cases.samples.portions.portion_id`, `cases.samples.portions.slides.slide_id`, `cases.samples.portions.analytes.analyte_id`, and `cases.samples.portions.analytes.aliquots.aliquot_id` fields from the _files_ endpoint were used (see [GDC documentation for file fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields)).
 
 #### Files Endpoint Data
-All the fields that are currently available through the CDA Files endpoint are pulled from the [_files_ endpoint](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields). For extraction, no extra information or joining of data from the _cases_ endpoint is necessary. 
+All the fields that are currently available through the CDA Files endpoint are pulled from the [_files_ endpoint](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#file-fields). For extraction, no extra information or joining of data from the _cases_ endpoint is necessary.
 
 ### PDC Extraction
 
@@ -176,8 +176,8 @@ To get the PDC data, six graphQL queries were used:
 
 First the _files_ endpoint is queried to get all file information, as well as linkages from files to aliquots, samples, and cases. This information is saved in a _files_ cache file. Next, all case and specimen information is extracted using the remaining queries. During the extraction of the case information, file_id information is joined to the associated cases and specimens. After all case information has been gathered and saved, the _files_ cache file info is read through, and information about relevant cases, aliquots, and samples are added.
 
-#### Creating _Files_ Cache File 
-The only query used is filesMetadata. This query creates a the _files_ cache file that contains all of the _files_ endpoint information, indcluding all information about files, and the ids of associated cases, samples, and aliquots. 
+#### Creating _Files_ Cache File
+The only query used is filesMetadata. This query creates a the _files_ cache file that contains all of the _files_ endpoint information, indcluding all information about files, and the ids of associated cases, samples, and aliquots.
 
 #### Extract All _Cases_ Information
 
@@ -205,12 +205,12 @@ The next query – allPrograms – is used to get all the available Programs and
   files: [...]
 }
 ```
-The complete list of fields that are used can be found [here](./Schema.md).
+The complete list of fields that are used can be found [here](../Schema/overview_schema.md).
 
 #### Add Case and Specimen Info to _Files_ Cache File
 After all _cases_ information has been extracted, and _file_ information added where necessary, case and specimen data are added to the _files_ cache file.
 <table>
-    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
+    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found [here](../Schema/overview_schema.md).</caption>
 <tr>
 <th>PDC _Files_ Extract w/out _Cases_ and _Specimen_ info</th>
 <th>PDC _Files_ Extract with _Cases_ and _Specimen_ info</th>
@@ -273,9 +273,9 @@ After all _cases_ information has been extracted, and _file_ information added w
 
 Transformation in this section can for the most part be broken into two steps. The first transformation step has both structural and simple field name changes to the extracted data files. This first step implements mapping files for GDC _cases_/Subjects endpoint, GDC _files_/Files endpoint, PDC _cases_/Subjects endpoint, and PDC _files_/Files endpoint. The details of this process are slightly different for each DC and endpoint, however the end result is the same. Each entry in the resultant Subjects file still correlates to a case/**ResearchSubject**, but is in an equivalent structure to the final schema where each entry will correspond to a Subject. In this file, Subjects may correspond to multiple entries and must be aggregated together. Each entry in the resultant Files file correlates to a file/**File**, so no aggregation is required at the top level, but aggregation is needed in the **Subject** entities for the same reason aggregation is needed in the Subject file.
 
-The second step aggregates Subjects together from the same DC. In the Subjects file, for all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging. 
+The second step aggregates Subjects together from the same DC. In the Subjects file, for all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging.
 
-For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found [here](./Schema.md).
+For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found [here](../Schema/overview_mapping.md).
 
 
 ##### step 1: Transformation
@@ -377,7 +377,7 @@ Much like the Subjects file, the transformation of the Files file includes creat
 </tr>
 </table>
 
-##### step 2: Aggregation 
+##### step 2: Aggregation
 
 At this point for the transformed Subjects file, a list of Subjects and corresponding ResearchSubjects is made, and any **Subject** with multiple **ResearchSubject** records has the **ResearchSubject** and **File** records appended (with duplicates removed from **File** (and **ResearchSubject** in PDC)) under a single entry for the **Subject**. A simplified example of this aggregation can be seen in Table 5 below.
 
@@ -620,7 +620,7 @@ Due to the nature of the query, all fields desired in the CDA schema must be spe
 
 #### FROM and GROUP BY
 
-This statement selects which table from IDC to query from, as well as how to aggregate the data. It is grouped by `id` (**Subject** level `identifier`), then `species` and `collection_id` to keep with proper BigQuery formatting. 
+This statement selects which table from IDC to query from, as well as how to aggregate the data. It is grouped by `id` (**Subject** level `identifier`), then `species` and `collection_id` to keep with proper BigQuery formatting.
 
 ### Merge
 #### Subjects Endpoint Merger

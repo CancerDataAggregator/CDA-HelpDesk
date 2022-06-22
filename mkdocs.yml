@@ -46,7 +46,7 @@ plugins:
       include_source: True
       execute: True
       ignore: ["docs/Examples/AdvancedSearch-Merging.ipynb", "docs/Examples/scratch.ipynb"]
-      #allow_errors: false
+      allow_errors: false
   - search: # necessary for search to work
       separator: '[\s\-\.]+'
   - awesome-pages:
