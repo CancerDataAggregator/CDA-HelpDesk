@@ -1,16 +1,16 @@
-CDA,GDC,PDC,IDC
+CDA,GDC,PDC,drs://dg.4DFC:{files.gcs_url}
 id,files.file_id,files.file_id,files.crdc_instance_uuid
-identifier,identifier.GDC,identifier.PDC,identifier.IDC
 identifier.system,GDC,PDC,IDC
-identifier.value,File.id,File.id,File.id
+identifier.value,files.file_id,files.file_id,files.crdc_instance_uuid
 label,files.file_name,files.file_name,files.gcs_url
 data_category,files.data_catagory,files.data_catagory,Imaging
 data_type,files.data_type,files.file_type,No Mapping Available
 file_format,files.data_format,files.file_format,DICOM
 associated_project,cases.project.project_id,cases.project_submitter_id,files.collection_id
-drs_uri,drs://dg.4DFC:{files.file_id},drs://dg.4DFC:{files.file_id},No Mapping Available
+drs_uri,drs://dg.4DFC:{files.file_id},drs://dg.4DFC:{files.file_id},drs://dg.4DFC:{files.file_id}
 byte_size,files.file_size,files.file_size,No Mapping Available
 checksum,files.md5sum,files.md5sum,No Mapping Available
 data_modality,Genomic,Proteomic,Imaging
 imaging_modality,No Mapping Available,No Mapping Available,files.Modality
-dbgap_accession_number,"cases.project.dbgap_accession_number",files.dbgap_control_number,No Mapping Available
+dbgap_accession_number,"cases.project.dbgap_
+accession_number",files.dbgap_control_number,No Mapping Available

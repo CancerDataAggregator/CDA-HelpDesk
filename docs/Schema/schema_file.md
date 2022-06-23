@@ -2,7 +2,7 @@
 title: File schema
 ---
 
-This schema describes <strong style="color:red;">hey donovan please write something smart here</strong>
+The **File** entity is the outer most record in the Files endpoint. Within the **File** record are the fields for the **File** (file metadata), as well as the record of all **Subject**, **ResearchSubject**, and **Specimen** records associated with that **File**. Each of the entities previously mentioned has fields associated with those entities.
 
 Use the "+" and "-" icons to expand and collapse sections of the schema.
 

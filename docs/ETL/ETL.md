@@ -78,7 +78,7 @@ The merging of data between GDC, PDC, and IDC is very similar to the aggregation
 All the fields that are currently available through the CDA Subjects endpoint are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
 <table>
-    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found [here](../Schema/overview_schema.md).</caption>
+    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
 <tr>
 <th>GDC Extract w/out File/Specimen Link</th>
 <th>GDC Extract with File/Specimen Link</th>
@@ -205,12 +205,12 @@ The next query – allPrograms – is used to get all the available Programs and
   files: [...]
 }
 ```
-The complete list of fields that are used can be found [here](../Schema/overview_schema.md).
+The complete list of fields that are used can be found [here](./Schema.md).
 
 #### Add Case and Specimen Info to _Files_ Cache File
 After all _cases_ information has been extracted, and _file_ information added where necessary, case and specimen data are added to the _files_ cache file.
 <table>
-    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found [here](../Schema/overview_schema.md).</caption>
+    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
 <tr>
 <th>PDC _Files_ Extract w/out _Cases_ and _Specimen_ info</th>
 <th>PDC _Files_ Extract with _Cases_ and _Specimen_ info</th>
@@ -275,7 +275,7 @@ Transformation in this section can for the most part be broken into two steps. T
 
 The second step aggregates Subjects together from the same DC. In the Subjects file, for all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging.
 
-For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found [here](../Schema/overview_mapping.md).
+For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found [here](./Schema.md).
 
 
 ##### step 1: Transformation

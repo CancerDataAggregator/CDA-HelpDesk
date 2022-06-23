@@ -1,20 +1,28 @@
 
 
 ## Release 3.0 6/28/2022
+
+The Release 3.0 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services.
+
 ## Datasets & Fields
 
 * All datasets updated as follows
     * GDC: v31.0, 03/17/2022
     * PDC: v2.7, 03/18/2022
-    * IDC: v.4.0, 03/09/2022
+    * IDC: v.4.0, 03/09/2022[^1]
+
+[^1]:Information pulled from the PDC API may contain embargoed data.
 
 ## Enhanced query functionality
 
-* Added Docker for enabling quickstart
-* Enhanced Q functionality to more mimic natural language
-* Support for long queries
-* Added asynchronous hooks, ability to do searches in parallel
-* Unique values and columns return faster than in Release 1
+* Added support for IN and LIKE SQL statements
+* The Subjects query has been simplified to not return file information, instead the new files Q method can be used for files
+* Counts function added to Q that gives total counts for each Data Commons given a query
+* Filter flag added to Q's run method which allows horizontal filtering of results
+* Verbose flag added to Q's run method to hide/show Q actions when running a query
+* Query's on text fields are now case insensitive
+* Added to_dataframe to Q's Result object that converts the JSON structure to a pandas dataframe
+* Added paginator to Q's Result object that allows for pagination through result pages. This also has a flag for paginating as a dataframe.
 
 
 ## Metadata Changes
@@ -38,12 +46,8 @@
 
 ## Bug fixes
 
-* Fixed problem of unnested items would appear at the top level in the JSON response, resulting in duplication of elements
-* Fixed cda-service overwrites query columns with same name
-* Added support for the API queries to asynchronous calls.
-* Added a unique-values API endpoint for returning distinct values in the cda table
-* There is a new status endpoint which will verify that the cda_mvp tables are available.   Please let the dev team know if there is additional info that would be useful from this endpoint in the future.  "total table rows, size of schemas etc"
-* Support the ability to query development tables being used for integrating the IDC data with the existing PDC and GDC data. If your jupyter notebooks fail to execute, you will likely have to reload the cda-python into your python virtual environment.
+* Fixed issue where queries on list columns that were not lists of json objects (i.e. subject_associated_project) would fail
+* Duplicate files should no longer be returned
 
 
 ## Known bugs and issues
@@ -54,6 +58,3 @@
 * Docker jupyter notebook does not work if a notebook is already open in port 8888
 
 <!-- Footnotes themselves at the bottom. -->
-
-[^1]:
-     Information pulled from the PDC API may contain embargoed data.

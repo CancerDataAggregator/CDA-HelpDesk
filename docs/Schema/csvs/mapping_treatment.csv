@@ -1,7 +1,7 @@
 CDA,GDC,PDC,IDC
 id,cases.diagnoses.treatments.treatment_id,cases.diagnoses.treatments.treatment_id,No Mapping Available
 identifier.system,GDC,PDC,IDC
-identifier.value,ResearchSubject.Diagnosis.Treatment.id,ResearchSubject.Diagnosis.Treatment.id,ResearchSubject.Diagnosis.Treatment.id
+identifier.value,cases.diagnoses.treatments.treatment_id,cases.diagnoses.treatments.treatment_id,No Mapping Available
 treatment_type,cases.diagnoses.treatments.treatment_type,cases.diagnoses.treatments.treatment_type,No Mapping Available
 treatment_outcome,cases.diagnoses.treatments.treatment_outcome,cases.diagnoses.treatments.treatment_outcome,No Mapping Available
 days_to_treatment_start,cases.diagnoses.treatments.days_to_treatment_start,cases.diagnoses.treatments.days_to_treatment_start,No Mapping Available

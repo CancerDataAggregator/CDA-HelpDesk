@@ -79,6 +79,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - meta
+  - footnotes
   - codehilite:
       guess_lang: false
   - toc:
