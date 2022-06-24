@@ -18,8 +18,37 @@
   box-sizing: border-box;
 }
 
+.flex-foot {
+  display: flex;
+  max-height: 400px;
+  background-color: var(--md-footer-bg-color--dark);
+  color: var(--md-default-bg-color);
+  justify-content: center;
+}
 
-/* Create two unequal columns that sits next to each other */
+/* Create two equal columns that sits next to each other */
+.footlinks {
+  flex: 50%;
+  max-width: 100%;
+  padding: 0 20px;
+  justify-content: center;
+  padding-bottom: 1%;
+  line-height: 1.8;
+  text-decoration-line: underline;
+  font-size: 1.4em
+}
+
+.tagline {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 3%;
+  background-color: var(--md-footer-bg-color--dark);
+  color: var(--md-default-bg-color);
+  font-size: 1.6em
+
+}
+
+/* Create two equal columns that sits next to each other */
 .introtext {
   flex: 50%;
   max-width: 100%;

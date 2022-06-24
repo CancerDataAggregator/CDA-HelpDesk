@@ -1,7 +1,7 @@
 nav:
 - Tasks:
    - Available Search Terms: SearchTerms.ipynb
-   - Basic (single term) Search: BasicSearch.ipynb
+   - Basic Search: BasicSearch.ipynb
    - Summarize Search Results: DataSummaries.ipynb
    - Endpoint Chaining: AdvancedSearch-Chaining.ipynb
    - Advanced Search with Operators: AdvancedSearch-Operators.ipynb

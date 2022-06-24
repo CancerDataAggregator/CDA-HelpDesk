@@ -1,3 +1,7 @@
+---
+template: main.html
+---
+
 # Installation-free CDA-python Sandbox
 
 Try cda-python in your web browser, no installation required.

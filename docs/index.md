@@ -1,5 +1,6 @@
 ---
 title: Cancer Data Aggregator
+template: home.html
 hide:
   - footer
   - navigation
@@ -21,7 +22,7 @@ hide:
 
 #### Using the Cancer Data Aggregator (CDA) and a harmonized data model developed by the NCI Cancer Research Data Commons (CRDC) Data Harmonization teams, users can discover, query, retrieve, and aggregate data according to a variety of search parameters, such as participant, sample, tissue, disease, or study.
 
-[Try it now](./QuickStart/QuickStart){ .md-button }
+[Try it now](./QuickStart/QuickStart){ .md-button .md-button--primary}
 
 </div>
 
@@ -59,8 +60,8 @@ The <a href="https://datascience.cancer.gov/data-commons" target="_blank" rel="n
 
 
 ### Funding
-The <a href="https://github.com/CancerDataAggregator" target="_blank" rel="noopener" style="color:#336699;">Cancer Data Aggregator (CDA)</a> is funded by the NIH National Cancer Institute as a primary resource for the The NCI Cancer Research Data Commons (CRDC).
-<a href="https://datascience.cancer.gov/data-commons" target="_blank"><img width="350px" src='assets/images/CCR_54pxLogoCOLOR.png' | url  title="NIH National Cancer Institute"></a>
+
+This project has been funded in whole or in part with Federal funds from the National Cancer Institute, National Institutes of Health, Task Order No. 17X053 under Contract No. HHSN261200800001EThe
 
 </div>
 </div>

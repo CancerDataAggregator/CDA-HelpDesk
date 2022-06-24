@@ -5,24 +5,11 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: blue grey
-      accent: blue
-      toggle:
-        icon: material/lightbulb
-        name: Switch to dark mode
-
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: blue grey
-      accent: blue
-      toggle:
-        icon: material/lightbulb-outline
-        name: Switch to light mode
-
-
+  logo: overrides/assets/images/2012-logo.png
+  custom_dir: docs/overrides
+  font:
+    text: noto sans
+  docs_dir: docs
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -37,8 +24,7 @@ theme:
     - content.code.annotate
 #  favicon: images/CFDE-logo-white-outline.png
 #  logo: images/CFDE-logo.png
-  custom_dir: docs/overrides
-  docs_dir: docs
+
 
 
 plugins:
@@ -88,27 +74,16 @@ markdown_extensions:
 
 extra:
   hypothesis: true
-  social:
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:<cda-developers@broadinstitute.org>
-    - icon: fontawesome/solid/bug
-      link: https://github.com/CancerDataAggregator/cda-python/issues/new?assignees=&labels=&template=bug_report.md&title=
-      name: Bug Report
-    - icon: fontawesome/regular/lightbulb
-      link: https://github.com/CancerDataAggregator/cda-python/issues/new?assignees=&labels=&template=feature_request.md&title=
-      name: Feature Request
-    - icon: fontawesome/brands/github
-      link: https://github.com/CancerDataAggregator/readthedocs
-      name: CDA
   copyright: Copyright &copy; 2016 - 2020 Martin Donath
-  generator: true
-  # consent:
-  #   title: Cookie consent
-  #   description: >-
-  #     We use cookies to recognize your repeated visits and preferences, as well
-  #     as to measure the effectiveness of our documentation and whether users
-  #     find what they're searching for. With your consent, you're helping us to
-  #     make our documentation better.
+  generator: false
+  consent:
+    title: Cookie consent
+    description: >-
+      CDA uses cookies to enable the proper functioning and security of our website,
+      and to improve your experience. By clicking Agree or continuing to use our site,
+      you consent to the use of these functional cookies. If you do not wish to allow
+      use of these cookies, you may tell us that by clicking on Reject. As a result,
+      you will be unable to use our site. To find out more, read our [privacy policy](https://app.terra.bio/#privacy).
 
 extra_javascript:
   - javascripts/renderjson.js
@@ -117,3 +92,4 @@ extra_javascript:
 
 extra_css:
   - assets/stylesheets/home.css
+  - assets/stylesheets/extra.css
