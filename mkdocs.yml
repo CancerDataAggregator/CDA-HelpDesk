@@ -31,7 +31,7 @@ plugins:
   - mkdocs-jupyter:
       include_source: True
       execute: True
-      ignore: ["docs/Examples/AdvancedSearch-Merging.ipynb", "docs/Examples/scratch.ipynb"]
+      ignore: ["docs/Examples/AdvancedSearch-Merging.ipynb", "docs/Examples/scratch.ipynb", "docs/Examples/Welcome.ipynb"]
       allow_errors: false
   - search: # necessary for search to work
       separator: '[\s\-\.]+'
