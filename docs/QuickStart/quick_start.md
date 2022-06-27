@@ -6,7 +6,7 @@ template: main.html
 
 Try cda-python in your web browser, no installation required.
 
-Click this button to get started: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/CancerDataAggregator/cda-python/HEAD?labpath=notebooks%2Fexample.ipynb)
+Click this button to get started: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/CancerDataAggregator/readthedocs/HEAD?labpath=docs%2FExamples%2FWelcome.ipynb)
 
 This will launch a Jupyter Notebook with interactive, modifiable, example notebooks ready to run.
 You can preview static versions of the [example notebooks here](../Examples).

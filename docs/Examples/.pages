@@ -5,6 +5,6 @@ nav:
    - Summarize Search Results: DataSummaries.ipynb
    - Endpoint Chaining: AdvancedSearch-Chaining.ipynb
    - Advanced Search with Operators: AdvancedSearch-Operators.ipynb
-   - Merging Search Results: AdvancedSearch-Merging.ipynb
+   - Pagination: Pagination.ipynb
 - Workflows:
    - Build a Cohort: BuildingACohort.ipynb
