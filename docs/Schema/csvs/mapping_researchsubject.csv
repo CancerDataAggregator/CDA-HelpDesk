@@ -1,7 +1,7 @@
-CDA,GDC,PDC,IDC
-id,cases.case_id,cases.case_id,No Mapping Available
+field,GDC,PDC,IDC
+id,files.cases.case_id,files.cases.case_id,files.PatientID
 identifier.system,GDC,PDC,IDC
-identifier.value,cases.case_id,cases.case_id,No Mapping Available
-member_of_research_project,cases.project.project_id,cases.project_submitter_id,No Mapping Available
-primary_diagnosis_condition,cases.disease_type,cases.disease_type,No Mapping Available
-primary_diagnosis_site,cases.primary_site,cases.primary_site,No Mapping Available
+identifier.value,files.cases.case_id,files.cases.case_id,files.PatientID
+member_of_research_project,files.cases.project.project_id,files.cases.project_submitter_id,files.collection_id
+primary_diagnosis_condition,files.cases.disease_type,files.cases.disease_type,NOT CURRENTLY MAPPED
+primary_diagnosis_site,files.cases.primary_site,files.cases.primary_site,files.tcia_tumorLocation
