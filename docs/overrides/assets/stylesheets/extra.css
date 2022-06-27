@@ -1,0 +1,41 @@
+:root > * {
+  --md-primary-fg-color:        #1c5e86;
+  --md-primary-fg-color--light: #bbcfdb;
+  --md-primary-fg-color--dark:  #00314c;
+  --md-footer-bg-color--dark: #1c5e86;
+}
+// Headline on level 1
+h1 {
+  font-family: montserrat
+}
+
+// Headline on level 2
+h2 {
+  font-family: montserrat
+}
+
+// Headline on level 3
+h3 {
+  font-family: montserrat
+}
+
+// Headline on level 3 following level 2
+h2 + h3 {
+  font-family: montserrat
+}
+
+// Headline on level 4
+h4 {
+  font-family: montserrat
+}
+
+// Headline on level 5-6
+h5,
+h6 {
+  font-family: montserrat
+}
+
+// Headline on level 5
+h5 {
+  font-family: montserrat
+}

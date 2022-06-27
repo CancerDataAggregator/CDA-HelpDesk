@@ -1,0 +1,9 @@
+mkdocs-material==8.2.8
+mkdocs-jupyter
+mkdocs-git-revision-date-plugin
+mkdocs-awesome-pages-plugin
+mkdocs-htmlproofer-plugin
+ipython_genutils
+mkdocs-render-swagger-plugin
+git+https://github.com/CancerDataAggregator/cda-python.git@new-entity-endpoints
+mkdocs-table-reader-plugin

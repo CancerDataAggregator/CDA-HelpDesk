@@ -1,0 +1,126 @@
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-height: 600px;
+}
+
+.flex-trio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  max-height: 400px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex-foot {
+  display: flex;
+  max-height: 400px;
+  background-color: var(--md-footer-bg-color--dark);
+  color: var(--md-default-bg-color);
+  justify-content: center;
+}
+
+/* Create two equal columns that sits next to each other */
+.footlinks {
+  flex: 50%;
+  max-width: 100%;
+  padding: 0 20px;
+  justify-content: center;
+  padding-bottom: 1%;
+  line-height: 1.8;
+  text-decoration-line: underline;
+  font-size: 1.4em
+}
+
+.tagline {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 3%;
+  background-color: var(--md-footer-bg-color--dark);
+  color: var(--md-default-bg-color);
+  font-size: 1.6em
+
+}
+
+/* Create two equal columns that sits next to each other */
+.introtext {
+  flex: 50%;
+  max-width: 100%;
+  padding: 0 20px;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.introimage{
+  flex: 50%;
+  max-width: 100%;
+  padding-left: 20px;
+  justify-content: center;
+  justify-content: space-between;
+}
+.introimage img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 8px;
+  justify-content: center;
+  justify-content: space-between;
+  background-color: var(--md-accent-fg-color--transparent);
+  overflow: auto;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive layout - makes the columns stack on top of each other instead of next to each other */
+@media (max-width: 800px) {
+  .flex-container, .column, .flex-trio, .container {
+    flex: 100%;
+    max-width: 100%;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 100vh;
+  }
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.renderjson a              { text-decoration: none; }
+.renderjson .disclosure    { color: var(--md-code-hl-special-color);
+                             font-size: 150%; }
+.renderjson .syntax        { color: grey; }
+.renderjson .string        { color: var(--md-default-fg-color); }
+.renderjson .number        { color: var(--md-code-fg-color); }
+.renderjson .boolean       { color: plum; }
+.renderjson .keyword       { color: var(--md-default-bg-color--light); }
+.renderjson .object.syntax { color: var(--md-code-fg-color); }
+.renderjson .array.syntax  { color: var(--md-accent-fg-color); }
+.renderjson .key{
+  color: var(--md-primary-fg-color--dark);
+  font-weight: bold;
+ }

@@ -1,5 +1,0 @@
-Troubleshooting
-=======
-
-.. _troubleshooting:
-

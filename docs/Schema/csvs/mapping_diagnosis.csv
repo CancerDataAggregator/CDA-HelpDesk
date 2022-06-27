@@ -1,0 +1,10 @@
+CDA,GDC,PDC,IDC
+id,cases.diagnoses.diagnosis_id,cases.diagnoses.diagnosis_id,No Mapping Available
+identifier.system,GDC,PDC,IDC
+identifier.value,cases.diagnoses.diagnosis_id,cases.diagnoses.diagnosis_id,
+primary_diagnosis,cases.diagnoses.primary_diagnosis,cases.diagnoses.primary_diagnosis,No Mapping Available
+age_at_diagnosis,cases.diagnoses.age_at_diagnosis,cases.diagnoses.age_at_diagnosis,No Mapping Available
+morphology,cases.diagnoses.morphology,cases.diagnoses.morphology,No Mapping Available
+stage,cases.diagnoses.tumor_stage,cases.diagnoses.tumor_stage,No Mapping Available
+grade,cases.diagnoses.tumor_grade,cases.diagnoses.tumor_grade,No Mapping Available
+method_of_diagnosis,cases.diagnosis.method_of_diagnosis,cases.diagnosis.method_of_diagnosis,No Mapping Available
