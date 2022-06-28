@@ -2,7 +2,6 @@
 .jp-RenderedHTMLCommon{
   display: flex;
   justify-content: center;
-  max-height: 20%;
   overflow: auto;
 }
 
