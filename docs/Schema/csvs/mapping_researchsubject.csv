@@ -1,4 +1,4 @@
-field,GDC,PDC,IDC
+CDA,GDC,PDC,IDC
 id,files.cases.case_id,files.cases.case_id,files.PatientID
 identifier.system,GDC,PDC,IDC
 identifier.value,files.cases.case_id,files.cases.case_id,files.PatientID
