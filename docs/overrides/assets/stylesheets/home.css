@@ -1,12 +1,12 @@
-
-.jp-Cell{
-  display: flex;
-  flex-direction: row;
-  overflow: auto;
+.jupyter-wrapper .jp-OutputArea-child {
+    display: flex;
+    flex-direction: row;
+    max-height: 15em;
 }
 
 .md-typeset__scrollwrap{
   overflow: hidden;
+  display: flex;
 }
 
 .flex-container {
