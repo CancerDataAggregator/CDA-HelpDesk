@@ -24,7 +24,7 @@ var example = [
     },
     {
         "name": "identifier",
-        "description": "A 'business' identifier for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). Uses a specialized, complex 'Identifier' data type to capture information about the source of the business identifier - or a URI expressed as a string to an existing entity. ",
+        "description": "A 'business' identifier for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). Uses a specialized, complex 'Identifier' data type to capture information about the source of the business identifier - or a URI expressed as a string to an existing entity.",
         "fields": [
             {
                 "name": "system",
@@ -44,7 +44,7 @@ var example = [
     },
     {
         "name": "species",
-        "description": "The taxonomic group (e.g. species) of the patient. For MVP, since taxonomy vocabulary is consistent between GDC and PDC, using text.  Ultimately, this will be a term returned by the vocabulary service.",
+        "description": "The taxonomic group (e.g. species) of the subject. For MVP, since taxonomy vocabulary is consistent between GDC and PDC, using text.  Ultimately, this will be a term returned by the vocabulary service.",
         "mode": "NULLABLE",
         "type": "STRING"
     },
@@ -98,7 +98,7 @@ var example = [
     },
     {
         "name": "Files",
-        "description": "List of ids of File entities associated with the Patient",
+        "description": "List of ids of File entities associated with the subject.",
         "mode": "REPEATED",
         "type": "STRING"
     },
@@ -114,7 +114,7 @@ var example = [
             },
             {
                 "name": "identifier",
-                "description": "A 'business' identifier for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). Uses a specialized, complex 'Identifier' data type to capture information about the source of the business identifier - or a URI expressed as a string to an existing entity. ",
+                "description": "A 'business' identifier for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). Uses a specialized, complex 'Identifier' data type to capture information about the source of the business identifier - or a URI expressed as a string to an existing entity.",
                 "fields": [
                     {
                         "name": "system",
@@ -152,7 +152,7 @@ var example = [
             },
             {
                 "name": "Files",
-                "description": "List of ids of File entities associated with the ResearchSubject",
+                "description": "List of ids of File entities associated with the ResearchSubject.",
                 "mode": "REPEATED",
                 "type": "STRING"
             },
@@ -188,7 +188,7 @@ var example = [
                     },
                     {
                         "name": "primary_diagnosis",
-                        "description": "The diagnosis instance that qualified a subject for inclusion on a ResearchProject",
+                        "description": "The diagnosis instance that qualified a subject for inclusion on a ResearchProject.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
@@ -200,7 +200,7 @@ var example = [
                     },
                     {
                         "name": "morphology",
-                        "description": "Code that represents the histology of the disease using the third edition of the International Classification of Diseases for Oncology, published in 2000, used principally in tumor and cancer registri",
+                        "description": "Code that represents the histology of the disease using the third edition of the International Classification of Diseases for Oncology, published in 2000, used principally in tumor and cancer registries for coding the site (topography) and the histology (morphology) of neoplasms.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
@@ -218,7 +218,7 @@ var example = [
                     },
                     {
                         "name": "method_of_diagnosis",
-                        "description": "The method used to confirm the patients malignant diagnosis",
+                        "description": "The method used to confirm the subjects malignant diagnosis",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
@@ -234,7 +234,7 @@ var example = [
                             },
                             {
                                 "name": "identifier",
-                                "description": "A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). ",
+                                "description": "A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier).",
                                 "fields": [
                                     {
                                         "name": "system",
@@ -326,7 +326,7 @@ var example = [
                     },
                     {
                         "name": "identifier",
-                        "description": "A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier). ",
+                        "description": "A 'business' identifier  or accession number for the entity, typically as provided by an external system or authority, that persists across implementing systems  (i.e. a  'logical' identifier).",
                         "fields": [
                             {
                                 "name": "system",
@@ -352,7 +352,7 @@ var example = [
                     },
                     {
                         "name": "days_to_collection",
-                        "description": "The number of days from the index date to either the date a sample was collected for a specific study or project, or the date a patient underwent a procedure (e.g. surgical resection) yielding a sample that was eventually used for research.",
+                        "description": "The number of days from the index date to either the date a sample was collected for a specific study or project, or the date a subject underwent a procedure (e.g. surgical resection) yielding a sample that was eventually used for research.",
                         "mode": "NULLABLE",
                         "type": "INTEGER"
                     },
@@ -370,13 +370,13 @@ var example = [
                     },
                     {
                         "name": "source_material_type",
-                        "description": "The general kind of material from which the specimen was derived, indicating the physical nature of the source material. ",
+                        "description": "The general kind of material from which the specimen was derived, indicating the physical nature of the source material.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
                     {
                         "name": "specimen_type",
-                        "description": "The high-level type of the specimen, based on its how it has been derived from the original extracted sample. \n",
+                        "description": "The high-level type of the specimen, based on its how it has been derived from the original extracted sample.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
@@ -388,13 +388,13 @@ var example = [
                     },
                     {
                         "name": "derived_from_subject",
-                        "description": "The Patient/ResearchSubject, or Biologically Derived Materal (e.g. a cell line, tissue culture, organoid) from which the specimen was directly or indirectly derived.",
+                        "description": "The subject/ResearchSubject, or Biologically Derived Materal (e.g. a cell line, tissue culture, organoid) from which the specimen was directly or indirectly derived.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
                     {
                         "name": "Files",
-                        "description": "List of ids of File entities associated with the Specimen",
+                        "description": "List of ids of File entities associated with the Specimen.",
                         "mode": "REPEATED",
                         "type": "STRING"
                     }

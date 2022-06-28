@@ -16,7 +16,6 @@ renderjson.set_show_to_level(2).set_icons('+', '-');
 
 var example = [
 
-[
     {
         "name": "id",
         "description": "The 'logical' identifier of the entity in the repository, e.g. a UUID.  This 'id' is unique within a given system. The identified entity may have a different 'id' in a different system.",
@@ -117,7 +116,7 @@ var example = [
     },
     {
         "name": "Subject",
-        "description": "A patient entity captures the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person to protect the subject’s privacy.",
+        "description": "A subject entity captures the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person to protect the subject’s privacy.",
         "fields": [
             {
                 "name": "id",
@@ -147,7 +146,7 @@ var example = [
             },
             {
                 "name": "species",
-                "description": "The taxonomic group (e.g. species) of the patient. For MVP, since taxonomy vocabulary is consistent between GDC and PDC, using text.  Ultimately, this will be a term returned by the vocabulary service.",
+                "description": "The taxonomic group (e.g. species) of the subject. For MVP, since taxonomy vocabulary is consistent between GDC and PDC, using text.  Ultimately, this will be a term returned by the vocabulary service.",
                 "mode": "NULLABLE",
                 "type": "STRING"
             },
@@ -283,19 +282,19 @@ var example = [
                     },
                     {
                         "name": "primary_diagnosis",
-                        "description": "The diagnosis instance that qualified a subject for inclusion on a ResearchProject",
+                        "description": "The diagnosis instance that qualified a subject for inclusion on a ResearchProject.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
                     {
                         "name": "age_at_diagnosis",
-                        "description": "The age in days of the individual at the time of diagnosis",
+                        "description": "The age in days of the individual at the time of diagnosis.",
                         "mode": "NULLABLE",
                         "type": "INTEGER"
                     },
                     {
                         "name": "morphology",
-                        "description": "Code that represents the histology of the disease using the third edition of the International Classification of Diseases for Oncology, published in 2000, used principally in tumor and cancer registri",
+                        "description": "Code that represents the histology of the disease using the third edition of the International Classification of Diseases for Oncology, published in 2000, used principally in tumor and cancer registries for coding the site (topography) and the histology (morphology) of neoplasms.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
@@ -313,7 +312,7 @@ var example = [
                     },
                     {
                         "name": "method_of_diagnosis",
-                        "description": "The method used to confirm the patients malignant diagnosis",
+                        "description": "The method used to confirm the subjects malignant diagnosis.",
                         "mode": "NULLABLE",
                         "type": "STRING"
                     },
@@ -451,7 +450,7 @@ var example = [
             },
             {
                 "name": "days_to_collection",
-                "description": "The number of days from the index date to either the date a sample was collected for a specific study or project, or the date a patient underwent a procedure (e.g. surgical resection) yielding a sample that was eventually used for research.",
+                "description": "The number of days from the index date to either the date a sample was collected for a specific study or project, or the date a subject underwent a procedure (e.g. surgical resection) yielding a sample that was eventually used for research.",
                 "mode": "NULLABLE",
                 "type": "INTEGER"
             },
@@ -475,7 +474,7 @@ var example = [
             },
             {
                 "name": "specimen_type",
-                "description": "The high-level type of the specimen, based on its how it has been derived from the original extracted sample. \n",
+                "description": "The high-level type of the specimen, based on its how it has been derived from the original extracted sample.",
                 "mode": "NULLABLE",
                 "type": "STRING"
             },
@@ -487,7 +486,7 @@ var example = [
             },
             {
                 "name": "derived_from_subject",
-                "description": "The Patient/ResearchSubject, or Biologically Derived Materal (e.g. a cell line, tissue culture, organoid) from which the specimen was directly or indirectly derived.",
+                "description": "The subject/ResearchSubject, or Biologically Derived Materal (e.g. a cell line, tissue culture, organoid) from which the specimen was directly or indirectly derived.",
                 "mode": "NULLABLE",
                 "type": "STRING"
             }
@@ -495,7 +494,6 @@ var example = [
         "mode": "REPEATED",
         "type": "RECORD"
     }
-]
 
 
 
