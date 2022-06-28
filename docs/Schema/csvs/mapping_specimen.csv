@@ -1,16 +1,12 @@
-CDA,GDC,PDC,IDC
-id,"cases.samples.sample_id, cases.samples.portions.portion_id, cases.samples.portions.slide_id cases.samples.portions.analytes.analyte_id, cases.samples.portons.analytes.aliquotes.aliquot_id","cases.samples.sample_id,
-cases.samples.aliquots.aliquot_id",No Mapping Available
-identifier.system,GDC,PDC,IDC
-identifier.value,"cases.samples.sample_id, cases.samples.portions.portion_id, cases.samples.portions.slide_id cases.samples.portions.analytes.analyte_id, cases.samples.portons.analytes.aliquotes.aliquot_id","cases.samples.sample_id,
-cases.samples.aliquots.aliquot_id",No Mapping Available
-associated_project,cases.project.project_id,cases.project_submitter_id,No Mapping Available
-age_at_collection,cases.demographics.days_to_birth,cases.demographics.days_to_birth,No Mapping Available
-primary_disease_type,cases.disease_type,cases.disease_type,No Mapping Available
-anatomical_site,cases.samples.biospecimen_anatomic_site,cases.samples.biospecimen_anatomic_site,No Mapping Available
-source_material_type,cases.samples.sample_type,cases.samples.sample_type,No Mapping Available
-specimen_type,"sample, portion, slide, analyte, or aliquot",sample or aliquot,No Mapping Available
-derived_from_specimen,"cases.samples.sample_id,
-cases.samples.portions.portion_id,
-cases.samples.portions.analytes.analyte_id",cases.samples.sample_id,No Mapping Available
-derived_from_subject,cases.submitter_id,cases.case_submitter_id,No Mapping Available
+field,GDC,PDC,IDC
+id,"{'samples': 'files.cases.samples.sample_id', 'portions': 'files.cases.samples.portions.portion_id', 'slides': 'files.cases.samples.portions.slides.slide_id', 'analytes': 'files.cases.samples.portions.analytes.analyte_id', 'aliquots': 'files.cases.samples.portions.analytes.aliquots.aliquot_id'}","{'samples': 'files.cases.samples.sample_id', 'aliquots': 'files.cases.samples.aliquots.aliquot_id'}",NOT CURRENTLY MAPPED
+identifier.system,GDC,PDC,NOT CURRENTLY MAPPED
+identifier.value,"{'samples': 'files.cases.samples.sample_id', 'portions': 'files.cases.samples.portions.portion_id', 'slides': 'files.cases.samples.portions.slides.slide_id', 'analytes': 'files.cases.samples.portions.analytes.analyte_id', 'aliquots': 'files.cases.samples.portions.analytes.aliquots.aliquot_id'}","{'samples': 'files.cases.samples.sample_id', 'aliquots': 'files.cases.samples.aliquots.aliquot_id'}",NOT CURRENTLY MAPPED
+associated_project,files.cases.project.project_id,files.cases.project_submitter_id,NOT CURRENTLY MAPPED
+days_to_collection,files.cases.samples.days_to_sample_procurement,files.cases.samples.days_to_sample_procurement,NOT CURRENTLY MAPPED
+primary_disease_type,files.cases.disease_type,files.cases.disease_type,NOT CURRENTLY MAPPED
+anatomical_site,files.cases.samples.biospecimen_anatomic_site,files.cases.samples.biospecimen_anatomic_site,NOT CURRENTLY MAPPED
+source_material_type,files.cases.samples.sample_type,files.cases.samples.sample_type,NOT CURRENTLY MAPPED
+specimen_type,"{'samples': 'sample', 'portions': 'portion', 'slides': 'slide', 'analytes': 'analyte', 'aliquots': 'aliquot'}","{'samples': 'sample', 'aliquots': 'aliquot'}",NOT CURRENTLY MAPPED
+derived_from_specimen,"{'samples': 'initial specimen', 'portions': 'files.cases.samples.sample_id', 'slides': 'files.cases.samples.portions.portion_id', 'analytes': 'files.cases.samples.portions.portion_id', 'aliquots': 'files.cases.samples.portions.analytes.analyte_id'}","{'samples': 'initial specimen', 'aliquots': 'files.cases.samples.sample_id'}",NOT CURRENTLY MAPPED
+derived_from_subject,files.cases.submitter_id,files.cases.case_submitter_id,NOT CURRENTLY MAPPED

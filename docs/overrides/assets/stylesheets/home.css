@@ -1,3 +1,13 @@
+.jupyter-wrapper .jp-OutputArea-child {
+    display: flex;
+    flex-direction: row;
+    max-height: 20em;
+}
+
+.md-typeset__scrollwrap{
+  display: flex;
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
