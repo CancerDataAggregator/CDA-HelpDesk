@@ -3,8 +3,8 @@ nav:
    - Available Search Terms: SearchTerms.ipynb
    - Basic Search: BasicSearch.ipynb
    - Summarize Search Results: DataSummaries.ipynb
-   - Endpoint Chaining: AdvancedSearch-Chaining.ipynb
-   - Advanced Search with Operators: AdvancedSearch-Operators.ipynb
+   - Endpoint Chaining: Chaining.ipynb
+   - Advanced Search with Operators: Operators.ipynb
    - Pagination: Pagination.ipynb
 - Workflows:
    - Build a Cohort: BuildingACohort.ipynb
