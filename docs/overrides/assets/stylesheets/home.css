@@ -1,6 +1,8 @@
 
 .md-typeset__table{
   display: flex;
+  flex-direction: row;
+  flex: 25%;
   justify-content: center;
   overflow: auto;
 }
