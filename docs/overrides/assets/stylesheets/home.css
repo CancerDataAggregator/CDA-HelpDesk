@@ -1,12 +1,4 @@
-.jupyter-wrapper .jp-OutputArea-child {
-    display: flex;
-    flex-direction: row;
-    max-height: 20em;
-}
 
-.md-typeset__scrollwrap{
-  display: flex;
-}
 
 .flex-container {
   display: flex;
@@ -28,24 +20,23 @@
   box-sizing: border-box;
 }
 
-.flex-foot {
+.flex-foot-container {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   max-height: 400px;
   background-color: var(--md-footer-bg-color--dark);
   color: var(--md-default-bg-color);
-  justify-content: center;
 }
 
-/* Create two equal columns that sits next to each other */
+/* Create four equal columns that sits next to each other */
 .footlinks {
-  flex: 50%;
-  max-width: 100%;
   padding: 0 20px;
-  justify-content: center;
+  justify-content: space-between;
   padding-bottom: 1%;
   line-height: 1.8;
   text-decoration-line: underline;
-  font-size: 1.4em
+  font-size: 1.4em;
 }
 
 .tagline {
@@ -103,7 +94,7 @@
 
 /* Responsive layout - makes the columns stack on top of each other instead of next to each other */
 @media (max-width: 800px) {
-  .flex-container, .column, .flex-trio, .container {
+  .flex-container, .column, .flex-trio, .container, .flex-foot-container {
     flex: 100%;
     max-width: 100%;
     flex-direction: column;
@@ -119,18 +110,3 @@
     overflow-y: auto;
     white-space: nowrap;
 }
-
-.renderjson a              { text-decoration: none; }
-.renderjson .disclosure    { color: var(--md-code-hl-special-color);
-                             font-size: 150%; }
-.renderjson .syntax        { color: grey; }
-.renderjson .string        { color: var(--md-default-fg-color); }
-.renderjson .number        { color: var(--md-code-fg-color); }
-.renderjson .boolean       { color: plum; }
-.renderjson .keyword       { color: var(--md-default-bg-color--light); }
-.renderjson .object.syntax { color: var(--md-code-fg-color); }
-.renderjson .array.syntax  { color: var(--md-accent-fg-color); }
-.renderjson .key{
-  color: var(--md-primary-fg-color--dark);
-  font-weight: bold;
- }
