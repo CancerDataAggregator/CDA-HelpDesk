@@ -57,4 +57,9 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 * Days_to_birth should be reformatted (currently negative) or have an example query
 * Docker jupyter notebook does not work if a notebook is already open in port 8888
 
+## Previous Versions
+
+Version 3.0 is a full rewrite of our code and older versions of cda-python are no longer maintained or supported.
+If you'd like to see how the project has evolved, you can still access our [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html) and [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html) release notes.
+
 <!-- Footnotes themselves at the bottom. -->
