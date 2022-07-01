@@ -3,24 +3,15 @@
 The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data tables which the API layer queries. A brief overview of the process to generate an endpoint table is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the CCDH model. [IDC](https://portal.imaging.datacommons.cancer.gov/) data is queried and transformed using a single BigQuery query. The results of this query are saved and merged with the transformed GDC and PDC data and uploaded to BigQuery as a table that is queried by the CDA API.
 
 ## Data extraction and release information
-To identify the current version and release dates for each of the database, you can run the following command:
+The current version and release dates for each of the database are:
 
-```
-r = Q.sql("SELECT option_value FROM `gdc-bq-sample.integration.INFORMATION_SCHEMA.TABLE_OPTIONS` WHERE table_name = 'all_v3_0_Subjects'")
-strings = r[0]['option_value'].split('\\n')
-new_strings = []
-
-for string in strings:
-    new_string = string.replace('\"', '')
-    new_strings.append(new_string)
-print(new_strings)
-```
-
-Which will produce the following output:
-[GDC data version - v31.0, GDC extraction date - 03/17/2022, PDC data version - v2.7, PDC extraction date - 03/18/2022, IDC data version - v.4.0, IDC extraction date - 03/09/2022]
+* GDC data version - v33.1, GDC extraction date - 06/23/2022
+* PDC data version - v2.7, PDC extraction date - 06/23/2022
+* IDC data version - v.9.0, IDC extraction date - 06/24/2022
 
 ## R3.0 ETL Achievements
 The achievements for R3.0 are outlined as follows:
+
 * Previous table format now called Subjects endpoint
     * Replaced all File entities with Files - a list of file ids associated with the entity that the list is located in. e.g
         * File -> Files
@@ -29,7 +20,7 @@ The achievements for R3.0 are outlined as follows:
 * Files endpoint added:
     * Endpoint oriented around File information
     * Includes all information regarding the file's associated entities(Subject, ResearchSubject, and Specimen)
-* Updated PDC to data version 2.4 from data version 2.3
+* Updated all DC data to latest versions available as of 06/23/2022
 
 ## R3.0 ETL Process Overview
 
@@ -78,7 +69,7 @@ The merging of data between GDC, PDC, and IDC is very similar to the aggregation
 All the fields that are currently available through the CDA Subjects endpoint are pulled from the _cases_ endpoint. Since files information can be also obtained through the _cases_ endpoint (see files record under [GDC documentation for case fields](https://docs.gdc.cancer.gov/API/Users_Guide/Appendix_A_Available_Fields/#case-fields)), but only as a record that is linked to the case entity, GDC Extract step utilizes _files_ endpoint to enable linking files with specimens:
 
 <table>
-    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found <a href="https://cda.readthedocs.io/en/latest/Schema.html">here</a>.</caption>
+    <caption><b>Table 1</b>. JSON on the left represents raw data that is pulled from the GDC API using _cases_ endpoint. On the right, we can see the final, processed JSON that includes <b>files</b> records under all specimen type entities. The complete list of fields that are used can be found <a href="../../Schema/overview_mapping">here</a>.</caption>
 <tr>
 <th>GDC Extract w/out File/Specimen Link</th>
 <th>GDC Extract with File/Specimen Link</th>
@@ -205,12 +196,12 @@ The next query – allPrograms – is used to get all the available Programs and
   files: [...]
 }
 ```
-The complete list of fields that are used can be found [here](../Schema/overview_mapping).
+The complete list of fields that are used can be found <a href="../../Schema/overview_mapping">here</a>.
 
 #### Add Case and Specimen Info to _Files_ Cache File
 After all _cases_ information has been extracted, and _file_ information added where necessary, case and specimen data are added to the _files_ cache file.
 <table>
-    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found [here](../Schema/overview_mapping).</caption>
+    <caption><b>Table 2</b>. JSON on the left represents raw data that is pulled from the PDC API using the _files_ endpoint. On the right, we can see the final, processed JSON that includes cases, samples, and aliquots records under all file entities. The complete list of fields that are used can be found [<a href="../../Schema/overview_mapping">here</a>.</caption>
 <tr>
 <th>PDC _Files_ Extract w/out _Cases_ and _Specimen_ info</th>
 <th>PDC _Files_ Extract with _Cases_ and _Specimen_ info</th>
@@ -275,7 +266,7 @@ Transformation in this section can for the most part be broken into two steps. T
 
 The second step aggregates Subjects together from the same DC. In the Subjects file, for all entries that belong to the same **Subject**, the **ResearchSubject** records are appended underneath the same **Subject** entity. After this step, the data from each DC is in a common data format and ready for merging.
 
-For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found [here](../Schema/overview_mapping).
+For this section, the DC’s are similar enough that the differences can be shown with the aforementioned mapping from GDC/PDC fields to the common data format found <a href="../../Schema/overview_mapping">here</a>.
 
 
 ##### step 1: Transformation

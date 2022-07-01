@@ -1,10 +1,10 @@
-CDA,GDC,PDC,IDC
-id,cases.diagnoses.diagnosis_id,cases.diagnoses.diagnosis_id,No Mapping Available
-identifier.system,GDC,PDC,IDC
-identifier.value,cases.diagnoses.diagnosis_id,cases.diagnoses.diagnosis_id,
-primary_diagnosis,cases.diagnoses.primary_diagnosis,cases.diagnoses.primary_diagnosis,No Mapping Available
-age_at_diagnosis,cases.diagnoses.age_at_diagnosis,cases.diagnoses.age_at_diagnosis,No Mapping Available
-morphology,cases.diagnoses.morphology,cases.diagnoses.morphology,No Mapping Available
-stage,cases.diagnoses.tumor_stage,cases.diagnoses.tumor_stage,No Mapping Available
-grade,cases.diagnoses.tumor_grade,cases.diagnoses.tumor_grade,No Mapping Available
-method_of_diagnosis,cases.diagnosis.method_of_diagnosis,cases.diagnosis.method_of_diagnosis,No Mapping Available
+field,GDC,PDC,IDC
+id,files.cases.diagnoses.diagnosis_id,files.cases.diagnoses.diagnosis_id,NOT CURRENTLY MAPPED
+identifier.system,GDC,PDC,NOT CURRENTLY MAPPED
+identifier.value,files.cases.diagnoses.diagnosis_id,files.cases.diagnoses.diagnosis_id,NOT CURRENTLY MAPPED
+primary_diagnosis,files.cases.diagnoses.primary_diagnosis,files.cases.diagnoses.primary_diagnosis,NOT CURRENTLY MAPPED
+age_at_diagnosis,files.cases.diagnoses.age_at_diagnosis,files.cases.diagnoses.age_at_diagnosis,NOT CURRENTLY MAPPED
+morphology,files.cases.diagnoses.morphology,files.cases.diagnoses.morphology,NOT CURRENTLY MAPPED
+stage,files.cases.diagnoses.tumor_stage,files.cases.diagnoses.tumor_stage,NOT CURRENTLY MAPPED
+grade,files.cases.diagnoses.tumor_grade,files.cases.diagnoses.tumor_grade,NOT CURRENTLY MAPPED
+method_of_diagnosis,files.cases.diagnoses.method_of_diagnosis,files.cases.diagnoses.method_of_diagnosis,NOT CURRENTLY MAPPED

@@ -1,13 +1,13 @@
 
 
-## Release 3.0 6/28/2022
+## Release 3.0-beta 6/28/2022
 
-The Release 3.0 of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). CDA leverages the work and data model that is concurrently being developed by the [Center for Cancer Data Harmonization](https://datascience.cancer.gov/data-commons/center-cancer-data-harmonization-ccdh) (CCDH). CCDH will provide a single data model that harmonizes syntax and semantics across the CRDC systems and services.
+The beta 3.0 release of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). 
 
 ## Datasets & Fields
 
 * All datasets updated as follows
-    * GDC: v33.0, 06/23/2022
+    * GDC: v33.1, 06/23/2022
     * PDC: v2.7, 06/23/2022[^1]
     * IDC: v.9.0, 06/24/2022
 
@@ -65,5 +65,10 @@ The Release 3.0 of CDA searches across data from the Genomics Data Commons (GDC)
 * tumor stages are not harmonized, there are redundant terms (complicates query)
 * Days_to_birth should be reformatted (currently negative) or have an example query
 * Docker jupyter notebook does not work if a notebook is already open in port 8888
+
+## Previous Versions
+
+Version 3.0 is a full rewrite of our code and older versions of cda-python are no longer maintained or supported.
+If you'd like to see how the project has evolved, you can still access our [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html) and [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html) release notes.
 
 <!-- Footnotes themselves at the bottom. -->
