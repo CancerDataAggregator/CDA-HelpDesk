@@ -48,9 +48,25 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
         * Endpoint oriented around File information
         * Includes all information regarding the file's associated entities(Subject, ResearchSubject, and Specimen)
     * Newly available fields:
-        * None
+        * vital_status
+        * days_to_death
+        * cause_of_death
+        * ResearchSubject.Diagnosis.morphology
+        * ResearchSubject.Diagnosis.method_of_diagnosis
+        * File.data_modality
+        * File.dbgap_accession_number
+        * File.imaging_modality
+        * File.imaging_series
+        * ResearchSubject.Diagnosis.Treatment.therapeutic_agent
+        * ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site
+        * ResearchSubject.Diagnosis.Treatment.treatment_effect
+        * ResearchSubject.Diagnosis.Treatment.treatment_end_reason
+        * ResearchSubject.Diagnosis.Treatment.number_of_cycles
     * Renamed fields (old -> new):
-        * None
+        * ResearchSubject.associated_project -> ResearchSubject.member_of_research_project
+        * ResearchSubject.primary_disease_site -> ResearchSubject.primary_diagnosis_site
+        * ResearchSubject.primary_disease_type -> ResearchSubject.primary_disease_type
+        * ResearchSubject.Specimen.age_at_collection -> ResearchSubject.Specimen.days_to_collection
 
 
 ## Bug fixes
