@@ -7,7 +7,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 ## Datasets & Fields
 
 * All datasets updated as follows
-    * GDC: v33.0, 06/23/2022
+    * GDC: v33.1, 06/23/2022
     * PDC: v2.7, 06/23/2022[^1]
     * IDC: v.9.0, 06/24/2022
 
