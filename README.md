@@ -2,7 +2,7 @@
 
 This repository contains all of the documentation for [CDA python](https://github.com/CancerDataAggregator/cda-python)
 
-It is designed using the [Material template by Martin Donath](https://squidfunk.github.io/mkdocs-material/) and build using [readthedocs](https://readthedocs.org/)
+It is designed using the [Material template by Martin Donath](https://squidfunk.github.io/mkdocs-material/) and built using [readthedocs](https://readthedocs.org/)
 
 ## Accessing Example Notebooks
 
