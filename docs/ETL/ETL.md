@@ -507,20 +507,25 @@ For the transformed Files file, a list of Subjects and ResearchSubjects is made,
 
 For Release 3, the IDC extraction and transformation process are executed using one query. This is possible due to IDC making their data available on BigQuery, as well as other features of BigQuery including temporary functions, array aggregation of structured data, and grouping data by particular fields (id, species, etc.). The queries currently used for the Subjects and Files endpoints are:
 ```
-# Subjects Endpoint Query
+# Subject Endpoint Query
 CREATE TEMP FUNCTION
   idc_species_mapping(x STRING)
   RETURNS STRING AS (CASE x
-      WHEN 'Human' THEN 'Homo sapiens'
-      WHEN 'Canine' THEN 'Canis familiaris'
-      WHEN 'Mouse' THEN 'Mus musculus'
+      WHEN 'Human' THEN 'homo sapiens'
+      WHEN 'Canine' THEN 'canis familiaris'
+      WHEN 'Mouse' THEN 'mus musculus'
     ELSE
     ''
   END
     );
 CREATE TEMP FUNCTION
-  idc_SUBSTR(x STRING)
-  RETURNS STRING AS (SUBSTR(x, 15));
+  idc_researchsubject_id(x STRING,
+    y STRING)
+  RETURNS STRING AS (CONCAT(x, "__", y));
+CREATE TEMP FUNCTION
+  idc_SUBSTR(x STRING,
+    y INT)
+  RETURNS STRING AS (SUBSTR(x, y));
 CREATE TEMP FUNCTION
   idc_drs_uri(x STRING)
   RETURNS STRING AS (CONCAT("drs://dg.4DFC:", x));
@@ -535,31 +540,46 @@ SELECT
   NULL AS days_to_birth,
   [collection_id] AS subject_associated_project,
   STRING(NULL) AS vital_status,
-  NULL AS age_at_death,
+  NULL AS days_to_death,
   STRING(NULL) AS cause_of_death,
+  [STRUCT(idc_researchsubject_id(PatientID,
+      collection_id) AS id,
+    [STRUCT('IDC' AS system,
+      idc_researchsubject_id(PatientID,
+        collection_id) AS value)] AS identifier,
+    collection_id AS member_of_research_project,
+    STRING(NULL) AS primary_diagnosis_condition,
+    tcia_tumorLocation AS primary_diagnosis_site,
+    ARRAY_AGG(crdc_instance_uuid) AS Files)] AS ResearchSubject,
   ARRAY_AGG(crdc_instance_uuid) AS Files
 FROM
-  `canceridc-data.idc_v4.dicom_pivot_v4`
+  `bigquery-public-data.idc_v9.dicom_pivot_v9`
 GROUP BY
   id,
   species,
-  collection_id
+  collection_id,
+  tcia_tumorLocation
 ```
 ```
-# Files Endpoint Query
+# File Endpoint Query
 CREATE TEMP FUNCTION
   idc_species_mapping(x STRING)
   RETURNS STRING AS (CASE x
-      WHEN 'Human' THEN 'Homo sapiens'
-      WHEN 'Canine' THEN 'Canis familiaris'
-      WHEN 'Mouse' THEN 'Mus musculus'
+      WHEN 'Human' THEN 'homo sapiens'
+      WHEN 'Canine' THEN 'canis familiaris'
+      WHEN 'Mouse' THEN 'mus musculus'
     ELSE
     ''
   END
     );
 CREATE TEMP FUNCTION
-  idc_SUBSTR(x STRING)
-  RETURNS STRING AS (SUBSTR(x, 15));
+  idc_researchsubject_id(x STRING,
+    y STRING)
+  RETURNS STRING AS (CONCAT(x, "__", y));
+CREATE TEMP FUNCTION
+  idc_SUBSTR(x STRING,
+    y INT)
+  RETURNS STRING AS (SUBSTR(x, y));
 CREATE TEMP FUNCTION
   idc_drs_uri(x STRING)
   RETURNS STRING AS (CONCAT("drs://dg.4DFC:", x));
@@ -567,7 +587,8 @@ SELECT
   crdc_instance_uuid AS id,
   [STRUCT('IDC' AS system,
     crdc_instance_uuid AS value)] AS identifier,
-  idc_SUBSTR(gcs_url) AS label,
+  idc_SUBSTR(gcs_url,
+    15) AS label,
   'Imaging' AS data_category,
   STRING(NULL) AS data_type,
   'DICOM' AS file_format,
@@ -578,6 +599,7 @@ SELECT
   'Imaging' AS data_modality,
   Modality AS imaging_modality,
   STRING(NULL) AS dbgap_accession_number,
+  crdc_series_uuid AS imaging_series,
   [STRUCT(PatientID AS id,
     [STRUCT('IDC' AS system,
       PatientID AS value)] AS identifier,
@@ -588,17 +610,27 @@ SELECT
     NULL AS days_to_birth,
     [collection_id] AS subject_associated_project,
     STRING(NULL) AS vital_status,
-    NULL AS age_at_death,
-    STRING(NULL) AS cause_of_death)] AS Subject
+    NULL AS days_to_death,
+    STRING(NULL) AS cause_of_death)] AS Subject,
+  [STRUCT(idc_researchsubject_id(PatientID,
+      collection_id) AS id,
+    [STRUCT('IDC' AS system,
+      idc_researchsubject_id(PatientID,
+        collection_id) AS value)] AS identifier,
+    collection_id AS member_of_research_project,
+    STRING(NULL) AS primary_diagnosis_condition,
+    tcia_tumorLocation AS primary_diagnosis_site)] AS ResearchSubject
 FROM
-  `canceridc-data.idc_v4.dicom_pivot_v4`
+  `bigquery-public-data.idc_v9.dicom_pivot_v9`
 GROUP BY
   id,
   gcs_url,
   Modality,
   collection_id,
   PatientID,
-  tcia_species
+  tcia_species,
+  tcia_tumorLocation,
+  crdc_series_uuid
 ```
 
 #### Temp Functions
