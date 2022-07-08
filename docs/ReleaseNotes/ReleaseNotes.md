@@ -2,7 +2,7 @@
 
 ## Release 3.0-beta 6/28/2022
 
-The beta 3.0 release of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API). 
+The beta 3.0 release of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API).
 
 ## Datasets & Fields
 
@@ -75,12 +75,14 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 * Fixed issue where integer fields were being returned as strings
 
 
-## Known bugs and issues
+## Known bugs and issues - these will be fixed in an upcoming release
 
 * `unique_terms` are not sorted when they return
 * tumor stages are not harmonized, there are redundant terms (complicates query)
 * Days_to_birth should be reformatted (currently negative) or have an example query
 * Docker jupyter notebook does not work if a notebook is already open in port 8888
+* Searches on the subject endpoint incorrectly count files. Please use the file counts for the same query from the files endpoint
+* Some PDC files are incorrectly labeled at the specimen level, for e.g. a file may be inappropriately labeled as both cancer and normal.
 
 ## Previous Versions
 
