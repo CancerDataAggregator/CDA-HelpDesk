@@ -15,9 +15,7 @@ If you would like to bulk download the notebooks without the website, they are i
 
 # Contributing
 
-If you have comments, questions, or feature requests for CDA python, please make an issue in the [cda-python repo](https://github.com/CancerDataAggregator/cda-python/issues/new/choose)
-
-If you have comments or questions about the documentation site, please make an issue in [this repository](https://github.com/CancerDataAggregator/readthedocs/issues)
+If you have comments, questions, or feature requests for CDA python or the documentation site,, please make an issue in [this repository](https://github.com/CancerDataAggregator/readthedocs/issues)
 
 If you have used CDA python in your work and want to be featured as a use case, please [contact us](mailto:amanda.charbonneau@gdit.com)
 
