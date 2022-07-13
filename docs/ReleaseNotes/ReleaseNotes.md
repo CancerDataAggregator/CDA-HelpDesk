@@ -1,6 +1,8 @@
 
 
-## Release 3.0-beta 6/28/2022
+## Release 3.0-beta
+
+Available as of 7/11/22
 
 The beta 3.0 release of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API).
 
@@ -87,6 +89,9 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 ## Previous Versions
 
 Version 3.0 is a full rewrite of our code and older versions of cda-python are no longer maintained or supported.
-If you'd like to see how the project has evolved, you can still access our [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html) and [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html) release notes.
+If you'd like to see how the project has evolved, you can still access the their documentation here:
+
+- [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html)
+- [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html)
 
 <!-- Footnotes themselves at the bottom. -->
