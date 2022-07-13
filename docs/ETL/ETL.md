@@ -1,6 +1,6 @@
 # CDA Extraction Transfer and Load (ETL) Documentation
 ## Introduction
-The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data tables which the API layer queries. A brief overview of the process to generate an endpoint table is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the CCDH model. [IDC](https://portal.imaging.datacommons.cancer.gov/) data is queried and transformed using a single BigQuery query. The results of this query are saved and merged with the transformed GDC and PDC data and uploaded to BigQuery as a table that is queried by the CDA API.
+The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data tables which the API layer queries. A brief overview of the process to generate an endpoint table is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the [CDA model](../Schema/overview_mapping.md). [IDC](https://portal.imaging.datacommons.cancer.gov/) data is queried and transformed using a single BigQuery query. The results of this query are saved and merged with the transformed GDC and PDC data and uploaded to BigQuery as a table that is queried by the CDA API.
 
 ## Data extraction and release information
 The current version and release dates for each of the database are:
@@ -32,7 +32,7 @@ Data from each DC (GDC, PDC, and IDC) is extracted and transformed independently
 
 ### Current Flow of ETL
 
-The extraction and transformation process for GDC and PDC data are very similar. They can be broken into two sub-processes. The first includes extraction of the data from their cases and files endpoints, and transforming the data from the individual DC into the CCDH inspired data format. The second step merges the transformed data from both DCs into our Subjects and Files endpoints data formats.
+The extraction and transformation process for GDC and PDC data are very similar. They can be broken into two sub-processes. The first includes extraction of the data from their cases and files endpoints, and transforming the data from the individual DC into the CDA data model format. The second step merges the transformed data from both DCs into our Subjects and Files endpoints data formats.
 
 #### GDC/PDC Cases and Files Extraction and Transformation
 
@@ -271,7 +271,7 @@ For this section, the DC’s are similar enough that the differences can be show
 
 ##### step 1: Transformation
 
-For GDC and PDC, we iterate over every entry from the extracted data files and make specific changes to that entry. For the Subjects file, these include creating a top **Subject** level of data which correlates to the **Subject** entity as defined by the CCDH model. From there, the specific case information is recorded in a **ResearchSubject** entity, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information. A simplified example of an entry is given below in Table 3.
+For GDC and PDC, we iterate over every entry from the extracted data files and make specific changes to that entry. For the Subjects file, these include creating a top **Subject** level of data which correlates to the **Subject** entity. From there, the specific case information is recorded in a **ResearchSubject** entity, and transformations to the fields are changed to align best with the [CDA model](../Schema/overview_mapping.md). At the end of this transformation step, each entry is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information. A simplified example of an entry is given below in Table 3.
 
 <table>
     <caption><b>Table 3</b></caption>
@@ -320,7 +320,7 @@ For GDC and PDC, we iterate over every entry from the extracted data files and m
 </tr>
 </table>
 
-Much like the Subjects file, the transformation of the Files file includes creating a top **File** level of data which correlates to the **File** entity as defined by the CCDH model. From there, the case information is used to create **Subject** entities as well as **ResearchSubject** entities, and transformations to the fields are changed to align best with the CCDH model. At the end of this transformation step, each entry within the **Subject** is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information (just like in the Subjects file transformation). A simplified example of an entry is given below in Table 4.
+Much like the Subjects file, the transformation of the Files file includes creating a top **File** level of data which correlates to the **File** entity as defined by the [CDA model](../Schema/overview_mapping.md). From there, the case information is used to create **Subject** entities as well as **ResearchSubject** entities, and transformations to the fields are changed to align best with the CDA model. At the end of this transformation step, each entry within the **Subject** is still representative of a case, now known as a **ResearchSubject**, but has **Subject** level information (just like in the Subjects file transformation). A simplified example of an entry is given below in Table 4.
 
 <table>
     <caption><b>Table 4</b></caption>
