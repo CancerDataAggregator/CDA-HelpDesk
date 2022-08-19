@@ -1,4 +1,50 @@
 
+CDA python has a new release the ~second week of each month
+
+
+## Release 3.1-beta
+
+Available September 2022. We recommend updating to take advantage of improvements to our query language
+
+The beta 3.1 release of CDA now includes limited for genes.
+
+## Datasets & Fields
+
+* All datasets updated as follows
+    * GDC: 
+    * PDC: [^1]
+    * IDC: 
+
+[^1]:Information pulled from the PDC API may contain embargoed data.
+
+## Enhanced query functionality
+
+- New `join_as_str` function allows users to use results from one Q search as input to another
+- New option for `filter` allows users to dynamically rename columns in search results
+- New `auto_paginator` function has been added that does not require the user to loop through results
+- Paginator now displays a progress bar 
+- Query return details has been simplified
+- `to_list` can now do both fuzzy and exact matching
+- `unique_terms` can now optionally show counts of term usage
+- Code optimization to improve search speed and performance
+
+## Metadata Changes
+
+* See [CDA Schema Field Mapping](../Schema/overview_mapping.md)
+
+## Bug fixes
+
+- Files associated with cancer or normal tissue specimens are now properly attributed as cancer or normal
+- `filters` option in `to_list` function is now case-insensitive
+- Various error message and handling improvements
+
+
+## Known bugs and issues - these will be fixed in an upcoming release
+
+
+
+# Previous Versions
+
 
 ## Release 3.0-beta
 
@@ -86,7 +132,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 * Searches on the subject endpoint incorrectly count files. Please use the file counts for the same query from the files endpoint
 * Some PDC files are incorrectly labeled at the specimen level, for e.g. a file may be inappropriately labeled as both cancer and normal.
 
-## Previous Versions
+## 2.X
 
 Version 3.0 is a full rewrite of our code and older versions of cda-python are no longer maintained or supported.
 If you'd like to see how the project has evolved, you can still access the their documentation here:

@@ -1,9 +1,14 @@
 # Installation Guide
 
+CDA python runs on:
+
+Mac OS python versions: 3.7, 3.8, 3.9, 3.10
+Ubuntu python versions 3.7, 3.8, 3.9, 3.10
+Windows python versions: 3.7, 3.8, 3.9, 3.10
+
 There are two methods for local installation in virtual environments: Docker or Conda + pip.
 
-Installation without a virtual environment may have unexpected/unresolvable
-conflicts, and is not supported.
+**Installation without a virtual environment may have unexpected/unresolvable conflicts, and is not supported.**
 
 ## Docker
 
