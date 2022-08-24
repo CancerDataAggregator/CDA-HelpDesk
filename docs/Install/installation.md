@@ -88,7 +88,7 @@ This will open a docker container with all the required packages for using the A
       - To return to the notebook in conda, open a terminal and type:
       ```bash
       conda activate cda
-      jupyter notebooks
+      jupyter notebook
       ```
 
 ## Customizing your cda-python installation
