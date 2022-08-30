@@ -19,13 +19,16 @@ The beta 3.1 release of CDA now includes limited for genes.
 
 ## Enhanced query functionality
 
+- Searches no longer require full path names for columns, e.g. 'ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site' is now 'treatment_anatomic_site'
+- 'id' columns have been made unique, e.g. ''ResearchSubject.Diagnosis.Treatment.id' is now 'treatment_id'
 - New `join_as_str` function allows users to use results from one Q search as input to another
 - New option for `filter` allows users to dynamically rename columns in search results
 - New `auto_paginator` function has been added that does not require the user to loop through results
-- Paginator now displays a progress bar 
+- `paginator` and `auto_paginator` now display a progress bar 
 - Query return details has been simplified
 - `to_list` can now do both fuzzy and exact matching
 - `unique_terms` can now optionally show counts of term usage
+- `columns` can now display descriptions
 - Code optimization to improve search speed and performance
 
 ## Metadata Changes
@@ -41,7 +44,9 @@ The beta 3.1 release of CDA now includes limited for genes.
 
 ## Known bugs and issues - these will be fixed in an upcoming release
 
-
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- math is broken?
 
 # Previous Versions
 
