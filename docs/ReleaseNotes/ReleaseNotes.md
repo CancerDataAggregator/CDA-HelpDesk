@@ -19,6 +19,7 @@ The beta 3.1 release of CDA now includes search for a limited set of genes with 
 
 ## Enhanced query functionality
 
+- New `mutation` endpoint allows search for gene and mutation information by HUGO gene name, subject, specimen and file
 - Searches no longer require full path names for columns, e.g. 'ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site' is now 'treatment_anatomic_site'
 - 'id' columns have been made unique, e.g. ''ResearchSubject.Diagnosis.Treatment.id' is now 'treatment_id'
 - New `join_as_str` function allows users to use results from one Q search as input to another
