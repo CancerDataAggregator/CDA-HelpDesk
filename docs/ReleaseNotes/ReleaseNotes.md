@@ -10,10 +10,10 @@ The beta 3.1 release of CDA now includes search for a limited set of genes.
 
 ## Datasets & Fields
 
-* All datasets updated as follows
-    * GDC: 
-    * PDC: [^1]
-    * IDC: 
+* Versions:
+    * GDC: v33.1, 06/23/2022
+    * PDC: v2.7, 06/23/2022[^1]
+    * IDC: v.9.0, 06/24/2022
 
 [^1]:Information pulled from the PDC API may contain embargoed data.
 
@@ -22,13 +22,17 @@ The beta 3.1 release of CDA now includes search for a limited set of genes.
 - Searches no longer require full path names for columns, e.g. 'ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site' is now 'treatment_anatomic_site'
 - 'id' columns have been made unique, e.g. ''ResearchSubject.Diagnosis.Treatment.id' is now 'treatment_id'
 - New `join_as_str` function allows users to use results from one Q search as input to another
-- New option for `filter` allows users to dynamically rename columns in search results
+- `filter` function in `run` renamed to `include` and now includes flag to allow users to dynamically rename columns in search results
 - New `auto_paginator` function has been added that does not require the user to loop through results
-- `paginator` and `auto_paginator` now display a progress bar 
+- `paginator` and `auto_paginator` now display a progress bar
+-  `limit` flag in paginators renamed to `page_size`
 - Query return details has been simplified
 - `to_list` can now do both fuzzy and exact matching
 - `unique_terms` can now optionally show counts of term usage
 - `columns` can now display descriptions
+- `Q` can now accept arbitraily complex math as part of a query, e.g.: 
+ 
+         Q('days_to_birth >= 50 * -365 AND days_to_birth <= 20 + -365').specimen.run().to_dataframe()
 - Code optimization to improve search speed and performance
 
 ## Metadata Changes
@@ -47,6 +51,8 @@ The beta 3.1 release of CDA now includes search for a limited set of genes.
 - paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
 - adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
 - math is broken?
+
+---
 
 # Previous Versions
 
