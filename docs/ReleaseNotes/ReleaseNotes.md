@@ -31,7 +31,7 @@ The beta 3.1 release of CDA now includes search for a limited set of genes with 
 - `to_list` can now do both fuzzy and exact matching
 - `unique_terms` can now optionally show counts of term usage
 - `columns` can now display descriptions
-- `Q` can now accept arbitraily complex math as part of a query, e.g.: 
+- `Q` can now accept arbitrarily complex math as part of a query, e.g.: 
  
          Q('days_to_birth >= 50 * -365 AND days_to_birth <= 20 + -365').specimen.run().to_dataframe()
 - Code optimization to improve search speed and performance
