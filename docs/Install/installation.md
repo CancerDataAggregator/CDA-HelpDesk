@@ -1,9 +1,14 @@
 # Installation Guide
 
+CDA python runs on:
+
+Mac OS python versions: 3.7, 3.8, 3.9, 3.10
+Ubuntu python versions 3.7, 3.8, 3.9, 3.10
+Windows python versions: 3.7, 3.8, 3.9, 3.10
+
 There are two methods for local installation in virtual environments: Docker or Conda + pip.
 
-Installation without a virtual environment may have unexpected/unresolvable
-conflicts, and is not supported.
+**Installation without a virtual environment may have unexpected/unresolvable conflicts, and is not supported.**
 
 ## Docker
 
@@ -63,7 +68,7 @@ This will open a docker container with all the required packages for using the A
   ```bash
   conda activate cda
   conda install jupyter
-  pip install git+https://github.com/CancerDataAggregator/cda-python.git@3.0.0
+  pip install git+https://github.com/CancerDataAggregator/cda-python.git
   cd cda-python
   jupyter notebook
   ```
@@ -83,7 +88,7 @@ This will open a docker container with all the required packages for using the A
       - To return to the notebook in conda, open a terminal and type:
       ```bash
       conda activate cda
-      jupyter notebooks
+      jupyter notebook
       ```
 
 ## Customizing your cda-python installation
