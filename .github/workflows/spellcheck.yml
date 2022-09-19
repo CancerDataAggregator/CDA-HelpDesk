@@ -25,7 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install codespell
-          if codespell; then
+          if codespell --uri-ignore-words-list *; then
           echo "everything is fine"
           else
           codespell -w
