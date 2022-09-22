@@ -6,7 +6,7 @@ CDA python has a new release the ~second week of each month
 
 Available September 2022. We recommend updating to take advantage of improvements to our query language
 
-The beta 3.1 release of CDA now includes search for a limited set of genes with mutation information
+The beta 3.1 release of CDA now includes search for a gene and mutation information from TCGA
 
 ## Datasets & Fields
 
