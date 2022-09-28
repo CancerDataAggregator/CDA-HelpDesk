@@ -4,6 +4,8 @@ title: File schema
 
 The **File** entity is the outer most record in the Files endpoint. Within the **File** record are the fields for the **File** (file metadata), as well as the record of all **Subject**, **ResearchSubject**, and **Specimen** records associated with that **File**. Each of the entities previously mentioned has fields associated with those entities.
 
+You can download this JSON directly on our [Github page.](https://raw.githubusercontent.com/CancerDataAggregator/readthedocs/main/docs/Schema/schema_file.md)
+
 Use the "+" and "-" icons to expand and collapse sections of the schema.
 
 <div class="container">

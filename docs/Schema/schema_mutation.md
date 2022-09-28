@@ -4,6 +4,9 @@ title: Mutation schema
 
 The **mutation** entity is a stand alone endpoint that is not yet harmonized with other CDA endpoints. Within the **mutation** record are data from TCGA tumor mutation studies.
 
+You can download this JSON directly on our [Github page.](https://raw.githubusercontent.com/CancerDataAggregator/readthedocs/main/docs/Schema/schema_mutation.md)
+
+
 Use the "+" and "-" icons to expand and collapse sections of the schema.
 
 <div class="container">
