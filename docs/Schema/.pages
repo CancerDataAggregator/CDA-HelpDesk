@@ -7,6 +7,9 @@ nav:
 - file endpoint:
   - file fields: fields_file.md
   - file JSON schema: schema_file.md
+- mutation endpoint:
+  - mutation fields: fields_mutation.md
+  - mutation JSON schema: schema_mutation.md
 - Mapping:
   - overview_mapping.md
   - mapping_subject.md
