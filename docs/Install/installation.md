@@ -68,6 +68,7 @@ This will open a docker container with all the required packages for using the A
   ```bash
   conda activate cda
   conda install jupyter
+  conda install pip
   pip install git+https://github.com/CancerDataAggregator/cda-python.git
   cd cda-python
   jupyter notebook
