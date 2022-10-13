@@ -5,5 +5,5 @@ mkdocs-awesome-pages-plugin
 mkdocs-htmlproofer-plugin
 ipython_genutils
 mkdocs-render-swagger-plugin
-git+https://github.com/CancerDataAggregator/cda-python.git@integration
+git+https://github.com/CancerDataAggregator/cda-python.git
 mkdocs-table-reader-plugin
