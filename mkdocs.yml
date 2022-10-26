@@ -73,7 +73,7 @@ markdown_extensions:
 
 
 extra:
-  hypothesis: true
+  giscus: true
   copyright: Copyright &copy; 2016 - 2020 Martin Donath
   generator: false
   consent:
