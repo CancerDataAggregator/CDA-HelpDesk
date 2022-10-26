@@ -1,3 +1,6 @@
+---
+comments: true
+---
 
 CDA python has a new release the ~second week of each month
 
