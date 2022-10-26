@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # CDA Extraction Transfer and Load (ETL) Documentation
 ## Introduction
 The goal of this document is to record in greater detail the ETL process which the CDA uses to create the aggregated data tables which the API layer queries. A brief overview of the process to generate an endpoint table is seen below in Fig.1. Data from the Data Commons (DC), [GDC](https://portal.gdc.cancer.gov/) and [PDC](https://pdc.cancer.gov/pdc/), undergo a similar process including extraction using publicly available API’s, and transformation into a structure based on the [CDA model](../Schema/overview_mapping.md). [IDC](https://portal.imaging.datacommons.cancer.gov/) data is queried and transformed using a single BigQuery query. The results of this query are saved and merged with the transformed GDC and PDC data and uploaded to BigQuery as a table that is queried by the CDA API.
