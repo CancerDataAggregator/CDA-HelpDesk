@@ -1,5 +1,6 @@
 ---
 template: main.html
+comments: true
 ---
 
 # Installation-free CDA-python Sandbox
