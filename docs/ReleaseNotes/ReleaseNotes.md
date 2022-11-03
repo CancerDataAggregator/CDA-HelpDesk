@@ -1,8 +1,8 @@
 
-CDA python has a new release the ~second week of each month
 
 
-## Release 3.1.1-beta
+
+## Release 3.2-beta
 
 Available November 3, 2022.
 
@@ -16,6 +16,7 @@ The current version and release dates for each of the database are:
 * IDC data version - v.10.0, IDC extraction date - 09/29/2022
 
 #### ETL Achievements
+
 The achievements for R3.0 are outlined as follows:
 
 * Previous table format now called Subjects endpoint
@@ -28,13 +29,18 @@ The achievements for R3.0 are outlined as follows:
 * Updated all DC data to latest versions available as of 09/29/2022
 
 
-### Enhanced query functionality
+### Q updates
 
 - users can now search for subjects that have data from multiple data centers using the `FROM` function
 - users can search within dataframes
 - dataframe results can be ordered by any column
 - `columns` now has information about what endpoint each column lives in, as well as what type of data it is (number, word, etc) and whether it's a required field
 
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- mutation endpoint is not harmonized to other endpoints
 
 ## Release 3.1-beta
 
@@ -51,7 +57,7 @@ The beta 3.1 release of CDA now includes search for a gene and mutation informat
 
 [^1]:Information pulled from the PDC API may contain embargoed data.
 
-### Enhanced query functionality
+### Q updates
 
 - New `mutation` endpoint allows search for gene and mutation information by HUGO gene name, subject, specimen and file
 - Searches no longer require full path names for columns, e.g. 'ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site' is now 'treatment_anatomic_site'
@@ -85,7 +91,7 @@ The beta 3.1 release of CDA now includes search for a gene and mutation informat
 
 - paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
 - adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
-- math is broken?
+
 
 ---
 
@@ -107,7 +113,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 
 [^1]:Information pulled from the PDC API may contain embargoed data.
 
-## Enhanced query functionality
+## Q updates
 
 * Added support for the following SQL operators: IN, LIKE, NOT IN, IS NOT, IS
 * Q now comes with a better query parser that allows for writing full AND/OR logic into a single Q object
