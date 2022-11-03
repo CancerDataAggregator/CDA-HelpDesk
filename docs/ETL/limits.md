@@ -23,4 +23,4 @@ print(new_strings)
 ```
 
 Which will produce the following output:
-['GDC extraction date - 09/27/2021', 'GDC data release - v30.0', 'PDC extraction date - 09/27/2021', 'PDC data release - v2.1', 'IDC extraction date - 09/27/2021', 'IDC data release - Version 3.0']
+[GDC data version - v34.0, GDC extraction date - 09/29/2022, PDC data version - v2.10, PDC extraction date - 09/29/2022, IDC data version - v.10.0, IDC extraction date - 09/29/2022  ]

@@ -1,6 +1,46 @@
 
-CDA python has a new release the ~second week of each month
 
+
+
+## Release 3.2-beta
+
+Available November 3, 2022.
+
+### Datasets & Fields
+
+#### Data extraction and release information
+The current version and release dates for each of the database are:
+
+* GDC data version - v34.0, GDC extraction date - 09/29/2022
+* PDC data version - v2.10, PDC extraction date - 09/29/2022
+* IDC data version - v.10.0, IDC extraction date - 09/29/2022
+
+#### ETL Achievements
+
+The achievements for R3.0 are outlined as follows:
+
+* Previous table format now called Subjects endpoint
+    * Removed all Files lists
+* Files endpoint added:
+    * Subjects - list of Subject ids associated with the File
+    * ResearchSubjects - list of ResearchSubject ids associated with the File
+    * Specimens - list of Specimen ids associated with the File
+    * PDC files now include some files exclusively available from filesPerStudy query
+* Updated all DC data to latest versions available as of 09/29/2022
+
+
+### Q updates
+
+- users can now search for subjects that have data from multiple data centers using the `FROM` function
+- users can search within dataframes
+- dataframe results can be ordered by any column
+- `columns` now has information about what endpoint each column lives in, as well as what type of data it is (number, word, etc) and whether it's a required field
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- mutation endpoint is not harmonized to other endpoints
 
 ## Release 3.1-beta
 
@@ -8,7 +48,7 @@ Available September 2022. We recommend updating to take advantage of improvement
 
 The beta 3.1 release of CDA now includes search for a gene and mutation information from TCGA
 
-## Datasets & Fields
+### Datasets & Fields
 
 * Versions:
     * GDC: v33.1, 06/23/2022
@@ -17,7 +57,7 @@ The beta 3.1 release of CDA now includes search for a gene and mutation informat
 
 [^1]:Information pulled from the PDC API may contain embargoed data.
 
-## Enhanced query functionality
+### Q updates
 
 - New `mutation` endpoint allows search for gene and mutation information by HUGO gene name, subject, specimen and file
 - Searches no longer require full path names for columns, e.g. 'ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site' is now 'treatment_anatomic_site'
@@ -36,22 +76,22 @@ The beta 3.1 release of CDA now includes search for a gene and mutation informat
          Q('days_to_birth >= 50 * -365 AND days_to_birth <= 20 + -365').specimen.run().to_dataframe()
 - Code optimization to improve search speed and performance
 
-## Metadata Changes
+### Metadata Changes
 
 * See [CDA Schema Field Mapping](../Schema/overview_mapping.md)
 
-## Bug fixes
+### Bug fixes
 
 - Files associated with cancer or normal tissue specimens are now properly attributed as cancer or normal
 - `filters` option in `to_list` function is now case-insensitive
 - Various error message and handling improvements
 
 
-## Known bugs and issues - these will be fixed in an upcoming release
+### Known bugs and issues - these will be fixed in an upcoming release
 
 - paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
 - adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
-- math is broken?
+
 
 ---
 
@@ -73,7 +113,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 
 [^1]:Information pulled from the PDC API may contain embargoed data.
 
-## Enhanced query functionality
+## Q updates
 
 * Added support for the following SQL operators: IN, LIKE, NOT IN, IS NOT, IS
 * Q now comes with a better query parser that allows for writing full AND/OR logic into a single Q object
