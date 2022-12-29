@@ -13,7 +13,7 @@ Interactive versions of those notebooks can be used at this MyBinder link:
 
 If you would like to bulk download the notebooks without the website, they are in [this folder](https://github.com/CancerDataAggregator/readthedocs/tree/main/docs/Examples)
 
-# Contributing
+## Contributing
 
 If you have comments, questions, or feature requests for CDA python or the documentation site, please tell us at our [Discussions page](https://github.com/CancerDataAggregator/readthedocs/discussions)
 
