@@ -3,6 +3,7 @@ nav:
    - SearchTerms.ipynb
    - BasicSearch.ipynb
    - DataSummaries.ipynb
+   - SearchFromFile.ipynb
    - Chaining.ipynb
    - Operators.ipynb
    - Pagination.ipynb
