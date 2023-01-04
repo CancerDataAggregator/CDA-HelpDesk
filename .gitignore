@@ -157,3 +157,5 @@ cython_debug/
 
 #Mac files
 .DS_Store
+
+docs/Examples/*.csv

@@ -1,4 +1,23 @@
 
+## Release 3.3-beta
+
+Available December 21, 2022.
+
+### Q updates
+
+- cdapython can now take subject/patient identifier lists from txt, csv, and tsv files as input for search
+- The unique_terms function now returns a count of null values along with the term counts
+
+### Bug fixes
+- Fixed error where / character was causing some urls to break
+- Fixed error where some columns could be counted, but not enumerated
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- 'treatment_anatomic_site', 'treatment_type', and 'method_of_diagnosis' are missing data
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- mutation endpoint is not harmonized to other endpoints
 
 
 

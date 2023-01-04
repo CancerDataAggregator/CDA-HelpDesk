@@ -4,7 +4,7 @@ This repository contains all of the documentation for [CDA python](https://githu
 
 It is designed using the [Material template by Martin Donath](https://squidfunk.github.io/mkdocs-material/) and built using [readthedocs](https://readthedocs.org/)
 
-## Accessing Example Notebooks
+## Example Notebooks
 
 All example notebooks are dynamically built when the site is rendered for viewing on the web, and can be downloaded from the website.
 Interactive versions of those notebooks can be used at this MyBinder link:
@@ -13,7 +13,7 @@ Interactive versions of those notebooks can be used at this MyBinder link:
 
 If you would like to bulk download the notebooks without the website, they are in [this folder](https://github.com/CancerDataAggregator/readthedocs/tree/main/docs/Examples)
 
-# Contributing
+## Contributing
 
 If you have comments, questions, or feature requests for CDA python or the documentation site, please tell us at our [Discussions page](https://github.com/CancerDataAggregator/readthedocs/discussions)
 
