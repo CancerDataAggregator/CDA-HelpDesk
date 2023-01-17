@@ -36,7 +36,7 @@ hide:
 <div class="flex-trio" markdown>
 <div class="column" markdown>
 
-### About the CDRC
+### About the CRDC
 
 The <a href="http://datacommons.cancer.gov/" target="_blank" rel="noopener" style="color:#336699;">Cancer Research Data Commons (CRDC)</a> is a cloud-based data science infrastructure that provides secure access to a large, comprehensive, and expanding collection of cancer research data. Users can explore and use analytical and visualization tools for data analysis in the cloud.</br>
 
