@@ -17,7 +17,6 @@ Use the "+" and "-" icons to expand and collapse sections of the schema.
 renderjson.set_show_to_level(2).set_icons('+', '-');
 
 var example = [
-[
   {
     "name": "id",
     "mode": "REQUIRED",
@@ -475,7 +474,6 @@ var example = [
       }
     ]
   }
-]
 ];
     document.getElementById("test").appendChild(renderjson(example));
 </script>

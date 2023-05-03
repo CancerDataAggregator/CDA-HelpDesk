@@ -18,7 +18,6 @@ renderjson.set_show_to_level(2).set_icons('+', '-');
 
 
 var example = [
-[
   {
     "name": "project_short_name",
     "mode": "NULLABLE",
@@ -1090,7 +1089,6 @@ var example = [
     "description": "TCGA aliquot barcode for the normal control, eg TCGA-12-1089-01A-01D-0517-01]",
     "fields": []
   }
-]
 ];
     document.getElementById("test").appendChild(renderjson(example));
 </script>

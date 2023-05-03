@@ -17,7 +17,6 @@ renderjson.set_show_to_level(2).set_icons('+', '-');
 
 
 var example = [
-[
   {
     "name": "id",
     "mode": "REQUIRED",
@@ -159,7 +158,6 @@ var example = [
     "description": "List of ids of Specimen entities associated with the File",
     "fields": []
   }
-]
 ];
     document.getElementById("test").appendChild(renderjson(example));
 </script>
