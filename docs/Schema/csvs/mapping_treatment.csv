@@ -1,13 +1,17 @@
-field,GDC,PDC,IDC
-id,files.cases.diagnoses.treatments.treatment_id,files.cases.diagnoses.treatments.treatment_id,NOT CURRENTLY MAPPED
-identifier.system,GDC,PDC,NOT CURRENTLY MAPPED
-identifier.value,files.cases.diagnoses.treatments.treatment_id,files.cases.diagnoses.treatments.treatment_id,NOT CURRENTLY MAPPED
-treatment_type,files.cases.diagnoses.treatments.treatment_type,files.cases.diagnoses.treatments.treatment_type,NOT CURRENTLY MAPPED
-treatment_outcome,files.cases.diagnoses.treatments.treatment_outcome,files.cases.diagnoses.treatments.treatment_outcome,NOT CURRENTLY MAPPED
-days_to_treatment_start,files.cases.diagnoses.treatments.days_to_treatment_start,files.cases.diagnoses.treatments.days_to_treatment_start,NOT CURRENTLY MAPPED
-days_to_treatment_end,files.cases.diagnoses.treatments.days_to_treatment_end,files.cases.diagnoses.treatments.days_to_treatment_end,NOT CURRENTLY MAPPED
-therapeutic_agent,files.cases.diagnoses.treatments.therapeutic_agents,files.cases.diagnoses.treatments.therapeutic_agents,NOT CURRENTLY MAPPED
-treatment_anatomic_site,files.cases.diagnoses.treatments.treatment_anatomic_site,files.cases.diagnoses.treatments.treatment_anatomic_site,NOT CURRENTLY MAPPED
-treatment_effect,files.cases.diagnoses.treatments.treatment_effect,files.cases.diagnoses.treatments.treatment_effect,NOT CURRENTLY MAPPED
-treatment_end_reason,files.cases.diagnoses.treatments.reason_treatment_ended,files.cases.diagnoses.treatments.reason_treatment_ended,NOT CURRENTLY MAPPED
-number_of_cycles,files.cases.diagnoses.treatments.number_of_cycles,files.cases.diagnoses.treatments.number_of_cycles,NOT CURRENTLY MAPPED
+CDA field,GDC source endpoint,GDC source fields and/or constant values,PDC source entities,PDC source fields and/or constant values,IDC source tables,IDC source fields and/or constant values
+id,case,ResearchSubject.id + '.' + (diagnoses.treatments.submitter_id if not null; otherwise diagnoses.treatments.treatment_id),-,-,-,-
+identifier.system,-,'GDC',-,-,-,-
+identifier.field_name,-,'case.diagnoses.treatments.treatment_id',-,-,-,-
+identifier.value,case,diagnoses.treatments.treatment_id,-,-,-,-
+identifier.system,-,'GDC',-,-,-,-
+identifier.field_name,-,'case.diagnoses.treatments.submitter_id',-,-,-,-
+identifier.value,case,if not null: diagnoses.treatments.submitter_id,-,-,-,-
+treatment_type,case,diagnoses.treatments.treatment_type,-,-,-,-
+treatment_outcome,case,diagnoses.treatments.treatment_outcome,-,-,-,-
+days_to_treatment_start,case,diagnoses.treatments.days_to_treatment_start,-,-,-,-
+days_to_treatment_end,case,diagnoses.treatments.days_to_treatment_end,-,-,-,-
+therapeutic_agent,case,diagnoses.treatments.therapeutic_agents,-,-,-,-
+treatment_anatomic_site,case,diagnoses.treatments.treatment_anatomic_site,-,-,-,-
+treatment_effect,case,diagnoses.treatments.treatment_effect,-,-,-,-
+treatment_end_reason,case,diagnoses.treatments.reason_treatment_ended,-,-,-,-
+number_of_cycles,case,diagnoses.treatments.number_of_cycles,-,-,-,-
