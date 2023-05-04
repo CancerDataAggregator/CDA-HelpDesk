@@ -5,6 +5,7 @@ Available May 4, 2023.
 ### Datasets & Fields
 
 #### Data extraction and release information
+
 The current version and release dates for each of the database are:
 
 * GDC data version 37, extraction date - 4/5/2023
@@ -14,17 +15,22 @@ The current version and release dates for each of the database are:
 
 ### Q updates
 
-- 
+- Data extraction process completely rewritten with improved mappings
+- Parsing language completely rewritten to increase query speed and flexibility
+- `get_all` function replaces `auto_paginator`
+- New `.offset()` operator
+- New `.limit()` operator 
+- Dropped support for python 3.7
 
 ### Bug fixes
+
 - 'treatment_anatomic_site', 'treatment_type', 'method_of_diagnosis' and others are now properly filled
 
 ### Known bugs and issues - these will be fixed in an upcoming release
 
 - adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
 - mutation endpoint is not harmonized to other endpoints
-- progress bars have been removed until the next release
-
+- progress bars are duplicated
 
 
 

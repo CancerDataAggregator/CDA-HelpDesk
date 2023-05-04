@@ -2,11 +2,11 @@
 
 CDA python runs on:
 
-Mac OS python versions: 3.7, 3.8, 3.9, 3.10
+Mac OS python versions: 3.8, 3.9, 3.10
 
-Ubuntu python versions 3.7, 3.8, 3.9, 3.10
+Ubuntu python versions 3.8, 3.9, 3.10
 
-Windows python versions: 3.7, 3.8, 3.9, 3.10
+Windows python versions: 3.8, 3.9, 3.10
 
 There are two methods for local installation in virtual environments: Docker or Conda + pip.
 
@@ -57,16 +57,18 @@ This will open a docker container with all the required packages for using the A
 !!! requirements
 
     - terminal/command line
-    - python version >= 3.7 [(Install)](https://www.python.org/downloads/)
+    - python version >= 3.8 [(Install)](https://www.python.org/downloads/)
     - conda [Install](https://docs.conda.io/en/latest/miniconda.html)
 
 1. Open Terminal or PowerShell and create a new conda environment:
+
   ```bash
-  conda create -n cda python=3.7
+  conda create -n cda python=3.8
   ```
   type `y` when prompted
 
 2. Activate the environment:
+
   ```bash
   conda activate cda
   conda install jupyter

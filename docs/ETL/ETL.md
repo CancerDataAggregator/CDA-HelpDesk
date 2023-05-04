@@ -1,6 +1,6 @@
-# CDA Extraction Transfer and Load (ETL) Documentation
+# ETL
 
-## Overview
+## Overview of Extraction Transfer and Load (ETL)
 
 CDA extracts essential research metadata from public APIs at three CRDC Data Commons:
 GDC (via their REST API), PDC (via their GraphQL API) and IDC (via the Google BigQuery API).
@@ -22,6 +22,7 @@ Code and accompanying documents [can be found on our github](https://github.com/
 # Data sources
 
 CDA currently collects data from 3 sources:
+
 - [GDC](https://portal.gdc.cancer.gov/)
 - [PDC](https://pdc.cancer.gov/pdc/)
 - [IDC](https://portal.imaging.datacommons.cancer.gov/)
@@ -29,7 +30,8 @@ CDA currently collects data from 3 sources:
 
 
 ## Near future enhancements
-   	* CDA to add CRDC CDS and HTAN to list of data sources
-   	* Harmonization and QC transformations on incoming data to be expanded (policies to be developed in close coordination with CRDC DSS)
-   	* CDA to begin merging specimen metadata across multiple DCs, as is currently done with subjects
-	* CDA model upgrades (to be developed in close coordination with CRDC DSS)
+
+- CDA to add CRDC CDS as a data source
+- Harmonization and QC transformations on incoming data to be expanded (policies to be developed in close coordination with CRDC DSS)
+- CDA to begin merging specimen metadata across multiple DCs, as is currently done with subjects
+- CDA model upgrades (to be developed in close coordination with CRDC DSS)
