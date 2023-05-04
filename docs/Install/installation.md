@@ -12,45 +12,6 @@ There are two methods for local installation in virtual environments: Docker or 
 
 **Installation without a virtual environment may have unexpected/unresolvable conflicts, and is not supported.**
 
-## Docker
-
-!!! requirements
-
-    - git [(Install)](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-    - terminal/command line
-
-
-1. [Download and install docker](https://www.docker.com/products/docker-desktop/){ .md-button .md-button--primary}
-
-2. Open Terminal or PowerShell and run:
-```bash
-git clone https://github.com/CancerDataAggregator/cda-python.git
-```
-
-3.  Navigate to the cda-python folder:
-```bash
-cd cda-python
-```
-
-4. Build the docker container:
-```bash
-docker-compose up --build
-```
-
-5. Open a Browser to [http://localhost:8888](http://localhost:8888).
-This will open a docker container with all the required packages for using the API in ipython notebook.
-
-!!! notes
-
-    - To stop the container from running, return to the terminal window (from step 2), and type **Control C to stop** the container.
-
-!!! notes
-
-    To delete the container from your machine, use this command in the cda-python project directory.
-
-    ```bash
-    docker compose down
-    ```
 
 ## Conda + Pip install
 
@@ -96,8 +57,45 @@ This will open a docker container with all the required packages for using the A
       jupyter notebook
       ```
 
-## Customizing your cda-python installation
+## Docker
 
+!!! requirements
+
+    - git [(Install)](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+    - terminal/command line
+
+
+1. [Download and install docker](https://www.docker.com/products/docker-desktop/){ .md-button .md-button--primary}
+
+2. Open Terminal or PowerShell and run:
+```bash
+git clone https://github.com/CancerDataAggregator/cda-python.git
+```
+
+3.  Navigate to the cda-python folder:
+```bash
+cd cda-python
+```
+
+4. Build the docker container:
+```bash
+docker-compose up --build
+```
+
+5. Open a Browser to [http://localhost:8888](http://localhost:8888).
+This will open a docker container with all the required packages for using the API in ipython notebook.
+
+!!! notes
+
+    - To stop the container from running, return to the terminal window (from step 2), and type **Control C to stop** the container.
+
+!!! notes
+
+    To delete the container from your machine, use this command in the cda-python project directory.
+
+    ```bash
+    docker compose down
+    ```
 
 ### Modifying the localhost port in Docker
 
