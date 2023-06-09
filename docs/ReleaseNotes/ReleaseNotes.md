@@ -1,4 +1,16 @@
-## Release 3.4-beta
+## Data Only Release
+
+Available June 13, 2023.
+
+#### Data extraction and release information
+
+- GDC data version 37.0 (extraction date 6/1/2023)
+- PDC data version 3.0 (extraction date 6/5/2023)
+- IDC data version 14 (extraction date 6/7/2023)
+
+IDC data now contains ethnicity data
+
+## CDA-python and Data Release 3.4-beta
 
 Available May 4, 2023.
 
