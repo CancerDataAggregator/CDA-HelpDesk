@@ -1,3 +1,21 @@
+## CDA-python Release 3.5-beta
+
+Available August 22, 2023.
+
+### Q updates
+
+- get_all has been expanded to work on unique_terms
+
+### Bug fixes
+
+- A visual bug where get_all was displaying multiple progress bars has been fixed
+- A bug in the code base model relationships has been fixed that was causing some queries to fail, or to not return all related results.
+- Improved linking between mutation table and everything else
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+
 ## Data Only Release
 
 Available June 13, 2023.
