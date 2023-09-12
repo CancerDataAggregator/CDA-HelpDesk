@@ -1,4 +1,4 @@
-## Data Only Release
+## CDA-python and Data Release 3.5.1-beta
 
 Available September, 12 2023.
 
