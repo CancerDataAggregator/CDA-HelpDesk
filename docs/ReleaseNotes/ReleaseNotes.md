@@ -1,3 +1,18 @@
+## Data Only Release
+
+Available September, 12 2023.
+
+#### Data extraction and release information
+
+
+- GDC data version 38.0 (extraction date 9/1/2023)
+- PDC data version 3.4 (extraction date 8/24/2023)
+- IDC data version 15 (extraction date 7/19/2023)
+- CDS data version 3.0 (extraction date 8/31/2023)
+
+Data from Cancer Data Services (CDS) is now available!
+
+
 ## CDA-python Release 3.5-beta
 
 Available August 22, 2023.
