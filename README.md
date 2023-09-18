@@ -1,3 +1,7 @@
+# Access the Help Desk
+
+To ask questions, submit bugs, or request features [click here](https://github.com/CancerDataAggregator/CDA-HelpDesk/discussions) or on the `Discussions` tab at the top of this page.
+
 # About
 
 This repository contains all of the documentation for [CDA python](https://github.com/CancerDataAggregator/cda-python)
