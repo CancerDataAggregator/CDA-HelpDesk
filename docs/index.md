@@ -54,6 +54,8 @@ The <a href="http://datacommons.cancer.gov/" target="_blank" rel="noopener" styl
 
 <a href="https://proteomic.datacommons.cancer.gov/pdc/" target="_blank" ><img width="300px" src='assets/images/PDC1.png' | url  title="Proteomic Data Commons (PDC)"> </a>
 
+<a href="https://dataservice.datacommons.cancer.gov/#/home" target="_blank" ><img width="300px" src='assets/images/CDS.png' | url  title="Cancer Data Services (CDS)"> </a>
+
 </div>
 
 <div class="column" markdown>
