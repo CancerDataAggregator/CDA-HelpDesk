@@ -1,3 +1,33 @@
+## CDA-python and Data First Public Release
+
+Available November ... 2023.
+
+
+#### Data extraction and release information
+
+
+- GDC data version 38.0 (extraction date 9/1/2023)
+- PDC data version 3.4 (extraction date 8/24/2023)
+- IDC data version 15 (extraction date 7/19/2023)
+- CDS data version 3.0 (extraction date 8/31/2023)
+
+### Q updates
+
+- `unique_terms` now uses the `run()` function to execute, and can use all `run()` flags
+
+
+### Bug fixes
+
+- A visual bug where get_all was displaying multiple progress bars has been fixed
+- A bug in the code base model relationships has been fixed that was causing some queries to fail, or to not return all related results.
+- Improved linking between mutation table and everything else
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+
+
+
 ## CDA-python and Data Release 3.5.1-beta
 
 Available September, 12 2023.
