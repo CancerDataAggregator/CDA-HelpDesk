@@ -22,7 +22,7 @@ hide:
 
 #### Using the Cancer Data Aggregator (CDA) and users can discover, query, retrieve, and aggregate data according to a variety of search parameters, such as participant, sample, tissue, disease, or study.
 
-[Try it now](https://mybinder.org/v2/gh/CancerDataAggregator/readthedocs/HEAD?labpath=docs%2FTutorials%2FWelcome.ipynb){ .md-button .md-button--primary}
+[Try it now](https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb){ .md-button .md-button--primary}
 
 </div>
 
