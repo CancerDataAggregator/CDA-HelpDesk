@@ -1,0 +1,26 @@
+name: basicsearchtest
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/20 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: ckrepo
+        name: repo checkout
+        uses: actions/checkout@v2
+      - id: installreqs
+        name: install requirements
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install git+https://github.com/CancerDataAggregator/cda-python.git@integration
+      - id: jupyter
+        name: run notebook
+        run: jupyter execute /docs/Tutorials/BasicSearch.ipynb
+        shell: bash
+        
+      
