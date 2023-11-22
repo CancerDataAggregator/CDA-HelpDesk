@@ -30,7 +30,7 @@ theme:
 plugins:
   - mkdocs-jupyter:
       include_source: True
-      execute: True
+      execute: False
       ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
       allow_errors: false
   - search: # necessary for search to work
