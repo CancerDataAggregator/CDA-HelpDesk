@@ -4,24 +4,24 @@ repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
 theme:
-  name: material
+  name: readthedocs
   logo: overrides/assets/images/2012-logo.png
   custom_dir: docs/overrides
   font:
     text: noto sans
   docs_dir: docs
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.instant
-    - navigation.tracking
-    - navigation.sections
-    - toc.integrate #- navigation.indexes
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - search.share
-    - content.code.annotate
+   # - navigation.tabs
+   # - navigation.tabs.sticky
+   # - navigation.instant
+   # - navigation.tracking
+   # - navigation.sections
+ #   - toc.integrate #- navigation.indexes
+  #  - navigation.top
+ #   - search.suggest
+ #   - search.highlight
+ #   - search.share
+ #   - content.code.annotate
 #  favicon: images/CFDE-logo-white-outline.png
 #  logo: images/CFDE-logo.png
 
@@ -30,7 +30,7 @@ theme:
 plugins:
   - mkdocs-jupyter:
       include_source: True
-      execute: True
+      execute: False
       ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
       allow_errors: false
   - search: # necessary for search to work
