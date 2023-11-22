@@ -46,22 +46,22 @@ plugins:
 markdown_extensions:
   - admonition
   - def_list
-  - pymdownx.critic
-  - pymdownx.highlight
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.tabbed
-  - pymdownx.extra
-  - pymdownx.superfences
-  - pymdownx.extra
-  - pymdownx.highlight
-  - pymdownx.keys
-  - pymdownx.inlinehilite
+ # - pymdownx.critic
+ # - pymdownx.highlight
+ # - pymdownx.tabbed:
+  #    alternate_style: true
+ # - pymdownx.emoji:
+ #     emoji_index: !!python/name:materialx.emoji.twemoji
+ #     emoji_generator: !!python/name:materialx.emoji.to_svg
+ # - pymdownx.tabbed
+ # - pymdownx.extra
+ # - pymdownx.superfences
+ # - pymdownx.extra
+ # - pymdownx.highlight
+ # - pymdownx.keys
+ # - pymdownx.inlinehilite
   - abbr
-  - pymdownx.snippets
+ # - pymdownx.snippets
   - attr_list
   - md_in_html
   - meta
