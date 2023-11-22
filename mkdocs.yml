@@ -6,7 +6,7 @@ edit_uri: edit/main/docs/
 theme:
   name: readthedocs
   logo: overrides/assets/images/2012-logo.png
-  #custom_dir: docs/overrides
+  custom_dir: docs/overrides
   #font:
   #  text: noto sans
   docs_dir: docs
@@ -66,10 +66,10 @@ markdown_extensions:
   - md_in_html
   - meta
   - footnotes
-  - codehilite:
-      guess_lang: false
-  - toc:
-      permalink: true
+  #- codehilite:
+  #    guess_lang: false
+  #- toc:
+  #    permalink: true
 
 
 extra:
