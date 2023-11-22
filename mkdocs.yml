@@ -6,11 +6,11 @@ edit_uri: edit/main/docs/
 theme:
   name: readthedocs
   logo: overrides/assets/images/2012-logo.png
-  custom_dir: docs/overrides
-  font:
-    text: noto sans
+  #custom_dir: docs/overrides
+  #font:
+  #  text: noto sans
   docs_dir: docs
-  features:
+ # features:
    # - navigation.tabs
    # - navigation.tabs.sticky
    # - navigation.instant
