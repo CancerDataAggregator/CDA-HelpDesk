@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if page.nb_url %}
+    <a href="{{ page.nb_url }}" title="Download Notebook" class="md-content__button md-icon">
+        {% include "./images/2012-logo.png" %}
+    </a>
+{% endif %}
+
+{{ super() }}
+{% endblock content %}

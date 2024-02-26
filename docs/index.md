@@ -1,6 +1,5 @@
 ---
 title: Cancer Data Aggregator
-template: home.html
 hide:
   - footer
   - navigation

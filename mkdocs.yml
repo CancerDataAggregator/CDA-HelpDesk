@@ -4,7 +4,7 @@ repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
 theme:
-  name: material
+  name: kpn
   logo: overrides/assets/images/2012-logo.png
   custom_dir: docs/overrides
   font:
@@ -30,7 +30,7 @@ theme:
 plugins:
   - mkdocs-jupyter:
       include_source: True
-      execute: True
+      execute: False
       ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
       allow_errors: false
   - search: # necessary for search to work
@@ -50,9 +50,9 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  #- pymdownx.emoji:
+  #    emoji_index: !!python/name:material.extensions.emoji.twemoji
+ #     emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed
   - pymdownx.extra
   - pymdownx.superfences
@@ -93,6 +93,7 @@ extra_javascript:
 extra_css:
   - assets/stylesheets/home.css
   - assets/stylesheets/extra.css
+  - assets/stylesheets/colors.css
  
 extra:
  analytics:
