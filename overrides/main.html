@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block announce %}
+  This is an announcement 
+{% endblock %}
+
+{% block content %} 
+{% if page.nb_url %} {% include ".icons/material/download.svg" %} 
+{% endif %} {{ super() }} 
+{% endblock content %}
