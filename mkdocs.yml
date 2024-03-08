@@ -28,6 +28,8 @@ theme:
     - search.share
     - content.code.annotate
 plugins:
+  - awesome-pages:
+      collapse_single_pages: true
   - search
 
 markdown_extensions:

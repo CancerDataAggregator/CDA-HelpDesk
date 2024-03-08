@@ -6,16 +6,11 @@ hide:
   - toc
 ---
 
-<style>
-  .md-typeset h1,
-  .md-content__button {
-    display: none;
-  }
-</style>
 
-# A python package for search across NCI datasets
+## A python package for search across NCI datasets
 
-Using the Cancer Data Aggregator (CDA) researchers can discover, query, retrieve, and aggregate data according to a variety of search parameters, such as participant, sample, tissue, disease, or study.
+Quickly search data across multiple National Cancer Institute data repositories by 
+participant, tissue, disease, genotype, study and more!
 
 [Try it now](https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb){ .md-button .md-button--primary }
 
