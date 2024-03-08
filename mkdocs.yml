@@ -4,99 +4,44 @@ repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
 theme:
-  name: kpn
-  logo: overrides/assets/images/2012-logo.png
-  custom_dir: docs/overrides
+  logo: assets/INF-CDA.svg
+  name: material
+  custom_dir: overrides
   font:
     text: noto sans
   docs_dir: docs
+  palette:
+    primary: custom
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
+    - navigation.indexes
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.sections
-    - toc.integrate #- navigation.indexes
+   # - toc.integrate 
+    - navigation.indexes
+    - toc.follow
     - navigation.top
     - search.suggest
     - search.highlight
     - search.share
     - content.code.annotate
-#  favicon: images/CFDE-logo-white-outline.png
-#  logo: images/CFDE-logo.png
-
-
-
 plugins:
-  - mkdocs-jupyter:
-      include_source: True
-      execute: False
-      ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
-      allow_errors: false
-  - search: # necessary for search to work
-      separator: '[\s\-\.]+'
-  - awesome-pages:
-      collapse_single_pages: true
-  - git-revision-date
-  - render_swagger
-  - table-reader
-
-
+  - search
 
 markdown_extensions:
-  - admonition
-  - def_list
-  - pymdownx.critic
-  - pymdownx.highlight
+  - attr_list
+  - pymdownx.details
+  - pymdownx.betterem
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
-  #- pymdownx.emoji:
-  #    emoji_index: !!python/name:material.extensions.emoji.twemoji
- #     emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.tabbed
-  - pymdownx.extra
-  - pymdownx.superfences
-  - pymdownx.extra
-  - pymdownx.highlight
-  - pymdownx.keys
-  - pymdownx.inlinehilite
-  - abbr
-  - pymdownx.snippets
-  - attr_list
-  - md_in_html
-  - meta
-  - footnotes
-  - codehilite:
-      guess_lang: false
-  - toc:
-      permalink: true
-
-
-extra:
-  hypothesis: true
-  copyright: Copyright &copy; 2016 - 2020 Martin Donath
-  generator: false
-  consent:
-    title: Cookie consent
-    description: >-
-      CDA uses cookies to enable the proper functioning and security of our website,
-      and to improve your experience. By clicking Agree or continuing to use our site,
-      you consent to the use of these functional cookies. If you do not wish to allow
-      use of these cookies, you may tell us that by clicking on Reject. As a result,
-      you will be unable to use our site. To find out more, read our [privacy policy](https://app.terra.bio/#privacy).
-
-extra_javascript:
-  - javascripts/renderjson.js
-  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
-  - javascripts/tablesort.js
-
 extra_css:
-  - assets/stylesheets/home.css
-  - assets/stylesheets/extra.css
-  - assets/stylesheets/colors.css
- 
-extra:
- analytics:
-   provider: google
-   property: G-8N8HJZRK7Q
-
+  - stylesheets/extra.css

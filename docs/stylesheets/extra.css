@@ -1,0 +1,92 @@
+:root {
+  --md-primary-fg-color:        #1c5e86;
+  --md-primary-fg-color--light: #bbcfdb;
+  --md-primary-fg-color--dark:  #00314c;
+  --md-footer-bg-color--dark: #1c5e86;
+}
+
+.renderjson a              { text-decoration: none; }
+.renderjson .disclosure    { color: var(--md-code-hl-special-color);
+                             font-size: 150%; }
+.renderjson .syntax        { color: grey; }
+.renderjson .string        { color: var(--md-default-fg-color); }
+.renderjson .number        { color: var(--md-code-fg-color); }
+.renderjson .boolean       { color: plum; }
+.renderjson .keyword       { color: var(--md-default-bg-color--light); }
+.renderjson .object.syntax { color: var(--md-code-fg-color); }
+.renderjson .array.syntax  { color: var(--md-accent-fg-color); }
+.renderjson .key{
+  color: var(--md-primary-fg-color--dark);
+  font-weight: bold;
+ }
+
+// Headline on level 1
+h1 {
+  font-family: montserrat
+}
+
+// Headline on level 2
+h2 {
+  font-family: montserrat
+}
+
+// Headline on level 3
+h3 {
+  font-family: montserrat
+}
+
+// Headline on level 3 following level 2
+h2 + h3 {
+  font-family: montserrat
+}
+
+// Headline on level 4
+h4 {
+  font-family: montserrat
+}
+
+// Headline on level 5-6
+h5,
+h6 {
+  font-family: montserrat
+}
+
+// Headline on level 5
+h5 {
+  font-family: montserrat
+}
+
+.jupyter-wrapper .jp-OutputArea-child {
+    display: flex;
+    flex-direction: row;
+    max-height: 20em;
+}
+
+.md-typeset__scrollwrap{
+  display: flex;
+}
+
+.cdadefine{
+  background-color:#add9e5;
+  color:black;
+  padding:20px;
+  font-size: 0.875em;
+}
+
+.cdanote{
+  background-color:#b3e5d5;
+  color:black;
+  padding:20px;
+  font-size: 0.875em;
+}
+
+.cdawarn{
+  background-color:#f9cfbf;
+  color:black;
+  padding:20px;
+  font-size: 0.875em;
+}
+
+.md-grid {
+  max-width: 1440px; 
+}
