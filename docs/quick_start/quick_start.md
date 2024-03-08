@@ -1,8 +1,7 @@
 ---
-title:  No install sandbox
+title:  No installation sandbox
 ---
 
-# Quick start
 
 ## Launch Google Colab
 

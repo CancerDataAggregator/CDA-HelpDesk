@@ -27,10 +27,17 @@ theme:
     - search.highlight
     - search.share
     - content.code.annotate
+
+extra:
+  status:
+    new: Recently added
+    deprecated: Deprecated
+
 plugins:
   - awesome-pages:
       collapse_single_pages: true
   - search
+
 
 markdown_extensions:
   - attr_list
