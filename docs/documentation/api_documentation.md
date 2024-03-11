@@ -1,5 +1,5 @@
 ---
-title:  API documentation
+title:  For Developers
 ---
 
 words and stuff

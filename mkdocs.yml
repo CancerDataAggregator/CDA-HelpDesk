@@ -28,6 +28,8 @@ theme:
     - search.share
     - content.code.annotate
     - announce.dismiss
+    - content.code.copy
+    
 
 extra:
   status:
@@ -38,6 +40,16 @@ plugins:
   - awesome-pages:
       collapse_single_pages: true
   - search
+  - mkdocs-jupyter:
+      remove_tag_config:
+          remove_input_tags:
+              - hide_code
+      include_source: True
+      execute: True
+      allow_errors: True
+      #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
+      
+
 
 
 markdown_extensions:

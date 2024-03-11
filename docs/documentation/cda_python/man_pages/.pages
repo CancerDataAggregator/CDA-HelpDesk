@@ -1,0 +1,9 @@
+title: manual pages
+nav:
+  - tables(): tables.ipynb
+  - columns(): columns.ipynb
+  - column_values(): column_values.ipynb
+  - summary_counts(): summary_counts.ipynb
+  - fetch_rows(): fetch_rows.ipynb
+  - column_data_types(): column_data_types.ipynb
+

@@ -1,6 +1,6 @@
-title: CDA python
+title: For Users
 nav:
-  - command_quickref.md
+  - man_pages
   - cda_python_documentation.md
-  - cda_python_examples.md
+  - cda_python_examples.ipynb
 
