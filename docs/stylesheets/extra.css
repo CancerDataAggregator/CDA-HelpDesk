@@ -1,9 +1,3 @@
-:root {
-  --md-primary-fg-color:        #1c5e86;
-  --md-primary-fg-color--light: #bbcfdb;
-  --md-primary-fg-color--dark:  #00314c;
-  --md-footer-bg-color--dark: #1c5e86;
-}
 
 .renderjson a              { text-decoration: none; }
 .renderjson .disclosure    { color: var(--md-code-hl-special-color);

@@ -1,5 +1,5 @@
 site_name: Cancer Data Aggregator
-site_description: A python package for search across NCI datasets
+site_description: Run powerful cross-data repository searches right from your browser, or install locally to integrate into your existing data workflows
 repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
@@ -11,7 +11,7 @@ theme:
     text: noto sans
   docs_dir: docs
   palette:
-    primary: custom
+    primary: indigo
   features:
     - navigation.tabs
     - navigation.indexes
@@ -37,8 +37,6 @@ extra:
     deprecated: Deprecated
 
 plugins:
-  - awesome-pages:
-      collapse_single_pages: true
   - search
   - mkdocs-jupyter:
       remove_tag_config:
@@ -67,3 +65,32 @@ markdown_extensions:
       alternate_style: true
 extra_css:
   - stylesheets/extra.css
+
+
+nav:
+  - Home: index.md
+  - Getting started:
+    - getting_started/index.md
+    - getting_started/no-install.md
+    - getting_started/install.md
+  - Documentation: 
+    - documentation/index.md
+    - User Guides:
+      - documentation/cda_python/cda_python_examples.ipynb
+      - documentation/cda_python/cda_python_documentation.md
+    - Quick Reference:
+      - documentation/cda_python/man_pages/index.md
+      - tables(): documentation/cda_python/man_pages/tables.ipynb
+      - columns(): documentation/cda_python/man_pages/columns.ipynb
+      - column_values(): documentation/cda_python/man_pages/column_values.ipynb
+      - summary_counts(): documentation/cda_python/man_pages/summary_counts.ipynb
+      - fetch_rows(): documentation/cda_python/man_pages/fetch_rows.ipynb
+      - column_data_types(): documentation/cda_python/man_pages/column_data_types.ipynb
+    - Developer Docs:
+      - index.md
+      - documentation/developers/api_documentation.md
+  - About Us:
+    - about_us/about_us.md
+  - About Our Data:
+    - about_our_data/index.md
+    - about_our_data/how_we_etl.md

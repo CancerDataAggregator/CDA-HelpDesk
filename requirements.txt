@@ -1,2 +1,2 @@
-git+https://github.com/CancerDataAggregator/cdapython_mvp_sandbox.git
+#git+https://github.com/CancerDataAggregator/cdapython_mvp_sandbox.git
 mkdocs-jupyter

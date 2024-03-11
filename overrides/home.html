@@ -1,0 +1,31 @@
+
+  {% extends "main.html" %}
+  {% block tabs %}
+    {{ super() }}
+    <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:50em){.md-sidebar--primary{display:none}}</style>
+    <section class="mdx-container">
+      <div class="md-grid md-typeset">
+        <div class="mdx-hero">
+            <div class="mdx-hero__content">
+                <h2>A tool to search across National Cancer Institute datasets</h2>
+                <h3>{{ config.site_description }}. </h3>
+                </div>
+                <div class="mdx-hero__image">
+                <img src="assets/CRDCoverviewDEC2023small.jpeg" alt="" width="1000" height="500" draggable="false">
+                </div>
+                <div class="mdx-hero__content">
+            <h2>Get started now!</h2>
+                <a href="https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button--primary">
+                  Run CDA in a webpage
+                </a>
+                <a href="quick_start/install.md" title="{{ page.next_page.title | e }}" class="md-button">
+                  Install locally 
+                </a>
+               </div> 
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endblock %}
+  {% block content %}{% endblock %}
+  {% block footer %}{% endblock %}
