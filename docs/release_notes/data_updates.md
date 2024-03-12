@@ -1,5 +1,5 @@
 ---
-title:  Data Updates
+title:  data releases
 status: new
 ---
 
@@ -97,7 +97,6 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 
 ### Metadata Changes
 
-* See [CDA Schema Field Mapping](../Schema/overview_mapping.md)
 
 * Summary
     * Previous table format now called Subjects endpoint
@@ -139,7 +138,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 
 ## 2.X
 
-Version 3.0 is a full rewrite of our code and older versions of cda-python are no longer maintained or supported.
+Version 3.0 is a full rewrite of our code and older versions of cdapython are no longer maintained or supported.
 If you'd like to see how the project has evolved, you can still access the their documentation here:
 
 - [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html)

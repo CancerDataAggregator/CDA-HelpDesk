@@ -85,24 +85,30 @@ nav:
     - getting_started/index.md
     - getting_started/no-install.md
     - getting_started/install.md
+    - Developer Tools: documentation/developers/index.md
   - Documentation: 
     - documentation/index.md
     - User Guides:
-      - documentation/cda_python/cda_python_examples.ipynb
-      - documentation/cda_python/cda_python_documentation.md
+      - cdapython examples: documentation/cdapython/cdapython_examples.ipynb
+      - documentation/cdapython/cdapython_documentation.md
     - Quick Reference:
-      - documentation/cda_python/man_pages/index.md
-      - tables(): documentation/cda_python/man_pages/tables.ipynb
-      - columns(): documentation/cda_python/man_pages/columns.ipynb
-      - column_values(): documentation/cda_python/man_pages/column_values.ipynb
-      - summary_counts(): documentation/cda_python/man_pages/summary_counts.ipynb
-      - fetch_rows(): documentation/cda_python/man_pages/fetch_rows.ipynb
-      - column_data_types(): documentation/cda_python/man_pages/column_data_types.ipynb
-    - Developer Docs:
-      - index.md
+      - documentation/cdapython/man_pages/index.md
+      - tables(): documentation/cdapython/man_pages/tables.md
+      - columns(): documentation/cdapython/man_pages/columns.md
+      - column_values(): documentation/cdapython/man_pages/column_values.md
+      - summary_counts(): documentation/cdapython/man_pages/summary_counts.md
+      - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
+      - column_data_types(): documentation/cdapython/man_pages/column_data_types.md
+    - Developer Tools:
+      - documentation/developers/index.md
       - documentation/developers/api_documentation.md
+      - documentation/developers/swagger.md
   - About Us:
-    - about_us/about_us.md
-  - About Our Data:
-    - about_our_data/index.md
-    - about_our_data/how_we_etl.md
+    - about_us/index.md
+    - About Our Data:
+      - about_our_data/index.md
+      - about_our_data/how_we_etl.md
+    - Release Notes:
+      - release_notes/index.md
+      - release_notes/cdapython.md
+      - release_notes/data_updates.md

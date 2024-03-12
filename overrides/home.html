@@ -2,7 +2,38 @@
   {% extends "main.html" %}
   {% block tabs %}
     {{ super() }}
-    <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:50em){.md-sidebar--primary{display:none}}</style>
+    <style>
+
+      /* Application header should be static for the landing page */
+      .md-header {
+        position: initial;
+      }
+  
+      /* Remove spacing, as we cannot hide it completely */
+      .md-main__inner {
+        margin: 0;
+      }
+  
+      /* Hide main content for now */
+      .md-content {
+        display: none;
+      }
+  
+      /* Hide table of contents */
+      @media screen and (min-width: 60em) {
+        .md-sidebar--secondary {
+          display: none;
+        }
+      }
+  
+      /* Hide navigation */
+      @media screen and (min-width: 76.25em) {
+        .md-sidebar--primary {
+          display: none;
+        }
+      }
+    </style>
+    
     <section class="mdx-container">
       <div class="md-grid md-typeset">
         <div class="mdx-hero">
@@ -14,12 +45,8 @@
                 <img src="assets/CRDCoverviewDEC2023small.jpeg" alt="" width="1000" height="500" draggable="false">
                 </div>
                 <div class="mdx-hero__content">
-            <h2>Get started now!</h2>
-                <a href="https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button--primary">
-                  Run CDA in a webpage
-                </a>
-                <a href="quick_start/install.md" title="{{ page.next_page.title | e }}" class="md-button">
-                  Install locally 
+                <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
+                  Get Started!
                 </a>
                </div> 
           </div>

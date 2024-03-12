@@ -1,5 +1,6 @@
 ---
-title:  CDA python Updates
+title:  cdapython releases
+status: new
 ---
 
 # Public releases
@@ -110,9 +111,6 @@ The beta 3.1 release of CDA now includes search for a gene and mutation informat
          Q('days_to_birth >= 50 * -365 AND days_to_birth <= 20 + -365').specimen.run().to_dataframe()
 - Code optimization to improve search speed and performance
 
-### Metadata Changes
-
-* See [CDA Schema Field Mapping](../Schema/overview_mapping.md)
 
 ### Bug fixes
 
@@ -173,7 +171,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 
 ## 2.X
 
-Version 3.0 is a full rewrite of our code and older versions of cda-python are no longer maintained or supported.
+Version 3.0 is a full rewrite of our code and older versions of cdapython are no longer maintained or supported.
 If you'd like to see how the project has evolved, you can still access the their documentation here:
 
 - [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html)
