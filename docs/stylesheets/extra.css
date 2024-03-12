@@ -8,5 +8,5 @@
 }
 
 [data-md-color-scheme=default] {
-  --md-primary-fg-color: hsla(var(--md-hue), 70%, 22%, 1);
+  --md-primary-fg-color: hsla(var(--md-hue), 70%, 36%, 1);
 }
