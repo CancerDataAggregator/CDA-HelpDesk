@@ -10,9 +10,19 @@ theme:
   font:
     text: noto sans
   docs_dir: docs
-  palette:
-    primary: blue grey
-    accent: deep orange
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.indexes
@@ -44,7 +54,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: True
+      execute: False #True
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
       
@@ -66,6 +76,7 @@ markdown_extensions:
       alternate_style: true
 extra_css:
   - stylesheets/extra.css
+
 
 
 nav:

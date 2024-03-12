@@ -4,7 +4,7 @@ title:  Getting started
 
 Cancer Data Aggregator (CDA) is designed to give you quick and easy access to metadata from multiple data centers across the National Cancer Institute (NCI) all from one standardized interface. 
 
-## Don't know python? No problem!
+## Don't code? No problem!
 
 In CDA, you search by common language terms, not acronyms or codes. With this simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, or upload to your favorite cloud resource. By combining our [**no-installation sandbox**](./quick_start.md) with the Broad Institute FireCloud or Velsera Cancer Genomics Cloud you can find the data you need, fetch all the files, and run your favorite bioinformatics pipeline without ever leaving your web browser.
 
