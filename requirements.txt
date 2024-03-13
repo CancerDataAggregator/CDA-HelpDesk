@@ -1,3 +1,4 @@
+mkdocs-material
 #git+https://github.com/CancerDataAggregator/cdapython_mvp_sandbox.git
 mkdocs-jupyter
 itables

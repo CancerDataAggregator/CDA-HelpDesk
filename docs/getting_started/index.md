@@ -4,16 +4,52 @@ title:  Getting started
 
 With CDA you search by common language terms, not acronyms or codes. Using simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, integrate into a pipeline or upload to your favorite cloud resource.
 
-## Don't code? No problem!
+<div class="grid cards" markdown>
 
- By combining our [**no-installation sandbox**](./no-install.md) with the [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} you can find the data you need, fetch all the files, and run your favorite bioinformatics pipeline without ever leaving your web browser.
-<a href="https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button--primary">Run CDA in your browser
-</a>
+-   :material-clock-fast:{ .lg .middle } __Don't code? No problem!__
 
-## Power users
+    ---
 
-Looking for something a bit more hands-on? A [**local install**](./install.md) of cdapython will give you the compute you need for even the most complicated search. Take your file list to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.appspot.com/){:target="_blank"} to instantly access the file data for input into your own processing pipelines, locally or using their free cloud credit program to build your own custom cloud architecture.
+    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. You can find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
+<a href="https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
+</a></p>
 
-## Developers
 
-Are you building a metadata micro-service? Connecting even more databases? Hosting a computational resource? Whatever your use case, CDA can help. Check out our [**swagger documentation**](../documentation/developers/api_documentation.md) to get started. Need even more data? Contact us to discuss your needs. We currently offer custom data ingest flows for ISB-CGC and are actively seeking more partners.
+
+-   :fontawesome-brands-python:{ .lg .middle } __Power users__
+
+    ---
+
+    Install `cdapython` with `pip` and get up
+    and running in no time
+
+    ```bash
+    pip install cdapython
+    python3
+    ```
+
+    ```python
+    from cdapython.data_exploration import tables, columns, column_values, column_data_types
+    from cdapython.fetch import fetch_rows
+    from cdapython.query import summary_counts
+    ```
+
+-   :simple-swagger:{ .lg .middle } __Developers__
+
+    ---
+
+    Are you building a metadata micro-service? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
+
+    [:octicons-arrow-right-24:**swagger documentation**](../documentation/developers/api_documentation.md)
+
+-   :simple-mysql:{ .lg .middle } __Need even more data?__
+
+    ---
+
+    Do you dream of having a CDA database instance of your very own? Or CDA but bigger somehow?
+    We can make those dreams come true. Lets chat!
+
+    :material-email: cancerdataaggregator `@` gmail
+
+</div>
+

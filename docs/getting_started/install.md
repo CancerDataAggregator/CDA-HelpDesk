@@ -1,5 +1,5 @@
 ---
-title:  Local installation
+title:  Local installation details
 comments: true
 ---
 
@@ -27,4 +27,34 @@ Windows python versions: 3.8, 3.9, 3.10
   ```bash
   pip install cdapython
   ```
+## Terminal/Command line
+
+cdapython is a python package, to run on the command line, start python
+
+```bash
+python3
+```
+and import the cdapython modules:
+
+```python
+from cdapython.data_exploration import tables, columns, column_values, column_data_types
+from cdapython.fetch import fetch_rows
+from cdapython.query import summary_counts
+```
+## Interactive notebook
+
+cdapython comes with jupyter notebook installed, and our documentation is all available as jupyter notebooks. To start a notebook server, go to your command line/terminal and type:
+
+```bash
+jupyter notebook
+```
+This will launch an interactive notebook in your webbrowser. Be sure to import the cdapython modules in your first notebook block:
+
+```python
+from cdapython.data_exploration import tables, columns, column_values, column_data_types
+from cdapython.fetch import fetch_rows
+from cdapython.query import summary_counts
+```
+
+
 

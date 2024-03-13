@@ -57,12 +57,12 @@ plugins:
       execute: False #True
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
-      
 
 
 
 markdown_extensions:
   - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.betterem
   - pymdownx.emoji:
@@ -103,6 +103,8 @@ nav:
       - documentation/developers/index.md
       - documentation/developers/api_documentation.md
       - documentation/developers/swagger.md
+  - Helpdesk:
+    - helpdesk/index.md
   - About Us:
     - about_us/index.md
     - About Our Data:

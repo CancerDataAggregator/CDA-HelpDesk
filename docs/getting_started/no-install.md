@@ -1,7 +1,8 @@
 ---
-title:  No installation sandbox
+title:  No installation details
 comments: true
 ---
+
 
 
 ## Launch Google Colab
