@@ -54,7 +54,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: False #True
+      execute: True
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
@@ -87,10 +87,7 @@ nav:
     - getting_started/install.md
     - Developer Tools: documentation/developers/index.md
   - Documentation: 
-    - documentation/index.md
-    - User Guides:
-      - cdapython examples: documentation/cdapython/cdapython_examples.ipynb
-      - documentation/cdapython/cdapython_documentation.md
+    - Code examples: documentation/index.ipynb
     - Quick Reference:
       - documentation/cdapython/man_pages/index.md
       - tables(): documentation/cdapython/man_pages/tables.md
