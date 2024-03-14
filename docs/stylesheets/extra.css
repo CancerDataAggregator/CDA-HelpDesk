@@ -19,3 +19,8 @@
 .mdx-container {
   margin: auto;
 }
+
+.center {
+  max-width: 90%;
+  margin: auto;
+}

@@ -1,8 +1,10 @@
 ---
-title:  Getting started
+title:  Search made simple
+comments: true
 ---
 
-With CDA you search by harmonized, common language terms. Using simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, integrate into a pipeline or upload to your favorite cloud resource.
+<div class="center" markdown> <p>With CDA you search by harmonized, common language terms. Using simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, integrate into a pipeline or upload to your favorite cloud resource.</p></div>
+
 
 <div class="grid cards" markdown>
 
@@ -10,7 +12,7 @@ With CDA you search by harmonized, common language terms. Using simple language 
 
     ---
 
-    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. You can find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
+    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
 <a href="https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
 </a></p>
 

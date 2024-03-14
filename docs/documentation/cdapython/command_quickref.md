@@ -1,3 +1,0 @@
----
-title:  Command Quick Reference
----
