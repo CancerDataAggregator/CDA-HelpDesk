@@ -4,21 +4,6 @@
     {{ super() }}
     <style>
 
-      /* Application header should be static for the landing page */
-      .md-header {
-        position: initial;
-      }
-  
-      /* Remove spacing, as we cannot hide it completely */
-      .md-main__inner {
-        margin: 0;
-      }
-  
-      /* Hide main content for now */
-      .md-content {
-        display: none;
-      }
-  
       /* Hide table of contents */
       @media screen and (min-width: 60em) {
         .md-sidebar--secondary {
@@ -31,28 +16,50 @@
         .md-sidebar--primary {
           display: none;
         }
-      }
+        #container {
+          display: grid;
+          grid-template-columns: fit-content(1000px) 1fr;
+          grid-gap: 5px;
+          box-sizing: border-box;
+          height: 100%;
+          width: 100%;
+          padding: 10px;
+        }
+
+        #container > div {
+          background-color: --md-primary-bg-color;
+          padding: 5px;
+        }
+        .left {
+          left: 10px;
+        }
     </style>
-    
-    <section class="mdx-container">
-      <div class="md-grid md-typeset">
-        <div class="mdx-hero">
-            <div class="mdx-hero__content">
-                <h2>A tool to search across National Cancer Institute datasets</h2>
+    <div class="homepage">
+    <h2>A tool to search across National Cancer Institute datasets</h2>
                 <h3>{{ config.site_description }}. </h3>
-                </div>
-                <div class="mdx-hero__image">
-                <img src="assets/zoomed_official_image.jpg" alt="" width="1000" height="500" draggable="false">
-                </div>
-                <div class="mdx-hero__content">
-                <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
-                  Get Started!
-                </a>
-               </div> 
-          </div>
-        </div>
+
+
+    <div id="container">
+      <div>
+        
+   <figure>
+    <img src="/about_us/arthur.png" width="100" height="100" alt="Dr. Arthur Brady">
+    <figcaption>Dr. Arthur Brady<p>Data wrangling & Developer</figcaption>
+    </figure>
+      
       </div>
-    </section>
+      <div>
+        <img src="assets/zoomed_official_image.jpg" alt="" width="800" height="400" draggable="false">
+      </div>
+      </div>
+
+      <div class="left">
+        <div class="md-grid md-typeset">
+      
+  <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
+                  Get Started! </a>
+              </div></div>
+            </div>
   {% endblock %}
   {% block content %}{% endblock %}
   {% block footer %}{% endblock %}

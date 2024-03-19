@@ -1,5 +1,5 @@
 ---
-title:  No installation details
+title:  No installation docs
 comments: true
 ---
 

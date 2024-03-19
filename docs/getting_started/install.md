@@ -1,5 +1,5 @@
 ---
-title:  Local installation details
+title:  Local installation docs
 comments: true
 ---
 
