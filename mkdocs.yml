@@ -30,7 +30,6 @@ theme:
     - navigation.instant.progress
     - navigation.tracking
     - navigation.sections
-   # - toc.integrate 
     - navigation.indexes
     - toc.follow
     - navigation.top
@@ -67,7 +66,6 @@ markdown_extensions:
   - def_list
   - footnotes
   - md_in_html
-  - material.extensions
   - toc:
       permalink: true
 
