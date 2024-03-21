@@ -104,6 +104,7 @@ nav:
     - getting_started/index.md
     - getting_started/no-install.md
     - getting_started/install.md
+    - interactive: interactive/index.ipynb
     - Developer Tools: documentation/developers/index.md
   - Documentation:
     - cda-python Vignettes:
