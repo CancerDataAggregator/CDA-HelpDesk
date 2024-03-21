@@ -10,10 +10,7 @@ build:
   os: ubuntu-20.04
   tools:
     python: "3.10"
-  jobs:
-    post_build:
-      - JUPYTER_PLATFORM_DIRS=1
-      - jupyter --paths
+
 
 mkdocs:
   configuration: mkdocs.yml
