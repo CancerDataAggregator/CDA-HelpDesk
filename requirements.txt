@@ -1,4 +1,5 @@
 mkdocs-material
+pymdown-extensions
 git+https://github.com/CancerDataAggregator/cda-python.git@develop
 mkdocs-jupyter
 itables
