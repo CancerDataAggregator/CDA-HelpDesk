@@ -100,9 +100,8 @@ extra_css:
 nav:
   - Home: index.md
   - Getting Started:
-    - Interactive Search: interactive/index.ipynb
-    - Alternate Interactive Search: interactive/interactdrop.ipynb
     - getting_started/index.md
+    - Interactive Search: interactive/index.ipynb
     - getting_started/no-install.md
     - getting_started/install.md
     - Developer Tools: documentation/developers/index.md
