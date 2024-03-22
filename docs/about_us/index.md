@@ -22,54 +22,69 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 <div class="grid cards" markdown>
 
 -   <figure>
-    <img src="/about_us/arthur.png" width="100" height="100"
-         alt="Dr. Arthur Brady">
-    <figcaption>Dr. Arthur Brady<p>Data wrangling & Developer</figcaption>
+    <img src="./arthur.png" width="100" height="100"
+         alt="Arthur Brady">
+    <figcaption>Arthur Brady<p>Data wrangling & Developer</figcaption>
 </figure>
 
 
 -   <figure>
-    <img src="/about_us/amanda.png" width="100" height="100"
-         alt="Dr. Amanda Charbonneau">
-    <figcaption>Dr. Amanda Charbonneau <p>Testing & Directing</figcaption>
+    <img src="./amanda.png" width="100" height="100"
+         alt="Amanda Charbonneau">
+    <figcaption>Amanda Charbonneau <p>Testing & Directing</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/about_us/david.png" width="100" height="100"
-         alt="Dr. David Pot">
-    <figcaption>Dr. David Pot<p>Principle Investigator - GDIT</figcaption>
+    <img src="./david.JPG" width="100" height="100"
+         alt="David Pot">
+    <figcaption>David Pot<p>Principle Investigator - GDIT</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/about_us/tanner.png" width="100" height="100"
+    <img src="./tanner.png" width="100" height="100"
          alt="Tanner Coon">
     <figcaption>Tanner Coon <p>Developer</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/about_us/finny.png" width="100" height="100"
+    <img src="./finny.png" width="100" height="100"
          alt="Finny Thomas">
     <figcaption>Finny Thomas <p>Developer</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/about_us/rachel.png" width="100" height="100"
+    <img src="./rachel.png" width="100" height="100"
          alt="Rachel Kutner">
     <figcaption>Rachel Kutner <p>Developer & Project Management</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/about_us/kat.png" width="100" height="100"
+    <img src="./kat.png" width="100" height="100"
          alt="Kat Thayer">
     <figcaption>Kat Thayer <p>Project Management</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/about_us/alex.png" width="100" height="100"
+    <img src="./alex.png" width="100" height="100"
          alt="Alex Baumann">
     <figcaption>Alex Baumann <p>Principle Investigator - Broad</figcaption>
 </figure>
+
+
+-   <figure>
+    <img src="./surya.png" width="100" height="100"
+         alt="Surya Saha">
+    <figcaption>Surya Saha <p>Project Manager - Velsera</figcaption>
+</figure>
+
+
+-   <figure>
+    <img src="./jack.png" width="100" height="100"
+         alt="Jack DiGiovanna">
+    <figcaption>Jack DiGiovanna <p>Principle Investigator - Velsera</figcaption>
+</figure>
 </div>
+
 
 ## Funding
 
