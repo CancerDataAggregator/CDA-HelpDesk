@@ -104,8 +104,8 @@ nav:
     - getting_started/no-install.md
     - getting_started/install.md
     - interactive: interactive/index.ipynb
-    - interactive small: interactsmall.ipynb
-    - interactive drop: interactdrop.ipynb
+    - interactive small: interactive/interactsmall.ipynb
+    - interactive drop: interactive/interactdrop.ipynb
     - Developer Tools: documentation/developers/index.md
   - Documentation:
     - cda-python Vignettes:
