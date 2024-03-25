@@ -14,10 +14,3 @@
 {{ super() }}
 {% endblock content %}
 
-{% block scripts %}
-  {{ super() }}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script>
-  $("#newshere").load('/release_notes/cdapython #fornews');
-</script>
-  {% endblock %}
