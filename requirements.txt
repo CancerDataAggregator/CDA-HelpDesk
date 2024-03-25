@@ -4,3 +4,4 @@ mkdocs-material-extensions
 mkdocs-jupyter
 itables
 git+https://github.com/CancerDataAggregator/cdapython.git@develop
+git+https://github.com/bih/jquery.markdown.js

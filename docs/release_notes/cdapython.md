@@ -4,10 +4,11 @@ status: new
 ---
 
 # Public releases
+<div markdown="1">
 
 ## Available March 31, 2024
 
-
+</div>
 # beta versions
 
 ## Available August 22, 2023.

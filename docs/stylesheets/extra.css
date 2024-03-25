@@ -24,3 +24,18 @@
   max-width: 90%;
   margin: auto;
 }
+
+.news {  
+  min-width: 200px;
+  max-width: 400px;
+  min-height: 300px;
+  border: 10px solid var(--md-primary-fg-color);
+  background-color: var(--md-primary-bg-color);
+} 
+iframe:focus {
+  outline: none;
+}
+
+iframe[seamless] {
+  display: block;
+}

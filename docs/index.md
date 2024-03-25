@@ -32,7 +32,7 @@ hide: toc
 
 
 -   <figure>
-        <img src="./zoomed_official_image.jpg" 
+        <img src="/images/zoomed_official_image.jpg" 
              alt="Dr. Amanda Charbonneau">
         <figcaption>Dr. Amanda Charbonneau <p>Testing & Directing</figcaption>
     </figure>

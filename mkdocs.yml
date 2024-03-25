@@ -4,7 +4,7 @@ repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
 theme:
-  logo: assets/lazycdalogo.png
+  logo: /images/lazycdalogo.png
   name: material
   custom_dir: overrides
   font:
@@ -53,7 +53,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: True
+      execute: False
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
@@ -76,9 +76,12 @@ markdown_extensions:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.details
-  - pymdownx.emoji
-  #    emoji_index: !!python/name:material.extensions.emoji.twemoji
-  #    emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
