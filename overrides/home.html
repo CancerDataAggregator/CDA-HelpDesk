@@ -51,7 +51,12 @@
     <div id="container">
       <div class="news">
         <h1> News and Events </h1>
-       <div id="newshere">this text</div>
+        <hr>
+        <ul>
+        <li>Are you an existing user looking to update your code? Click here see what has changed</li>
+        <li><div id="newshere"> replace this text </div></li>
+
+      </ul>
       </div>
       <div>
         <img src="/images/zoomed_official_image.jpg" alt="" width="800" height="400" draggable="false">
@@ -72,6 +77,8 @@
   {{ super() }}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
-  $("#newshere").load('/release_notes/cdapython #fornews');
+  $(document).ready(function(){
+    $("#newshere").load('https://cda.readthedocs.io/en/latest/ReleaseNotes/ReleaseNotes/ #cda-python-and-data-release-351-beta');
+  });
 </script>
   {% endblock %}
