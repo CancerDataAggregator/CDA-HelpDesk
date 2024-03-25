@@ -12,11 +12,17 @@ comments: true
 
     ---
 
+    Browse through a curated dataset of all subjects that have data at multiple data centers using an intuitive filtering tool right in this website. 
+<a href="../interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.
+</a></p>
+
+-   :material-clock-fast:{ .lg .middle } __Low code, no install__
+
+    ---
+
     Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
 <a href="https://colab.research.google.com/github/CancerDataAggregator/CDA-HelpDesk/blob/main/docs/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
 </a></p>
-
-
 
 -   :fontawesome-brands-python:{ .lg .middle } __Power users__
 

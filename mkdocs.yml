@@ -53,7 +53,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: True
+      execute: False
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
@@ -134,9 +134,8 @@ nav:
     - helpdesk/index.md
   - About Us:
     - about_us/index.md
-    - About Our Data:
-      - about_our_data/index.md
-      - about_our_data/how_we_etl.md
+    - about_us/ourdata.md
+    - about_us/how_we_etal.md
     - Release Notes:
       - release_notes/index.md
       - release_notes/cdapython.md
