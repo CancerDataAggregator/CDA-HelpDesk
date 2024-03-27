@@ -119,7 +119,7 @@ nav:
       - Use a manifest to access data through ISB-CGC: documentation/cdapython/vignettes/005_isbcgc.ipynb
       - Use a manifest to move data into the Velsera CGC: documentation/cdapython/vignettes/006_velsera.ipynb
       - Use a manifest to move data into Terra: documentation/cdapython/vignettes/007_terra.ipynb
-
+      - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/008_multidc.ipynb
     - cda-python Quick Reference:
       - documentation/cdapython/man_pages/index.md
       - tables(): documentation/cdapython/man_pages/tables.md
@@ -127,6 +127,7 @@ nav:
       - column_values(): documentation/cdapython/man_pages/column_values.md
       - summary_counts(): documentation/cdapython/man_pages/summary_counts.md
       - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
+      - update code from cdapython beta: documentation/cdapython/code_update.md
     - Developer Tools:
       - documentation/developers/index.md
   - Helpdesk:
