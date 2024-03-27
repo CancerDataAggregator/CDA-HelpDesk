@@ -9,6 +9,8 @@ The Cancer Data Aggregator is a service of the National Cancer Institutes' (NCI)
 
 To learn more about how we make metadata ready for search, head to our [about our data](./ourdata.md) page.
 
+To learn more about how to access and work with data you find using CDA, visit the CRDC [Cloud Resources](https://datacommons.cancer.gov/analyze/analytical-tools) page
+
 
 ## About the Cancer Research Data Commons
 

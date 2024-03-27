@@ -1,6 +1,7 @@
 
 :root {
   --md-hue: 260
+  --md-status--wip: 🚧
 }
 
 [data-md-color-scheme=slate] {
@@ -31,3 +32,9 @@
   min-height: 300px;
   border: 10px solid var(--md-primary-fg-color);
   
+
+  
+.md-status--wip::after {
+  mask-image: var(--md-status--wip);
+  -webkit-mask-image: var(--md-status--wip);
+}

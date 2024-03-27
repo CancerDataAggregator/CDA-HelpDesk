@@ -45,6 +45,7 @@ extra:
   status:
     new: Recently added
     deprecated: Deprecated
+    wip: Under Construction
 
 plugins:
   - search
@@ -128,8 +129,6 @@ nav:
       - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
     - Developer Tools:
       - documentation/developers/index.md
-      - documentation/developers/api_documentation.md
-      - documentation/developers/swagger.md
   - Helpdesk:
     - helpdesk/index.md
   - About Us:
