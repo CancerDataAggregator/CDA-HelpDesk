@@ -54,7 +54,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: True
+      execute: False
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
@@ -114,11 +114,8 @@ nav:
       - Basic cda-python functions: documentation/index.ipynb
       - Get a manifest of all CPTAC data: documentation/cdapython/vignettes/001_cptac.ipynb
       - View a summary of available .bam files: documentation/cdapython/vignettes/002_sum_bams.ipynb
-      - Get a manifest of .vcf files for patients under 20 years old: documentation/cdapython/vignettes/003_vcf_young.ipynb
+      - Get a manifest of patients with both vcf and image files: documentation/cdapython/vignettes/003_vcf_young.ipynb
       - View the cancer types for subjects over 50 at diagnosis: documentation/cdapython/vignettes/004_over50.ipynb
-      - Use a manifest to access data through ISB-CGC: documentation/cdapython/vignettes/005_isbcgc.ipynb
-      - Use a manifest to move data into the Velsera CGC: documentation/cdapython/vignettes/006_velsera.ipynb
-      - Use a manifest to move data into Terra: documentation/cdapython/vignettes/007_terra.ipynb
       - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/008_multidc.ipynb
     - cda-python Quick Reference:
       - documentation/cdapython/man_pages/index.md

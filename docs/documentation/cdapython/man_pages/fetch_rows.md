@@ -7,7 +7,7 @@ Get CDA data records ('result rows') from `table` that match user-specified crit
 
 
 ```
-fetch_rows(table=None, *, match_all=[], match_some=[], link_to_table='', add_columns=[], data_source=[], count_only=False, debug=False)
+fetch_rows(table=None, *, match_all=[], match_any=[], data_source=[], add_columns=[], link_to_table='', provenance=False, count_only=False, return_data_as='dataframe', output_file='', debug=False)
 ```
 
 ## Arguments
@@ -21,33 +21,57 @@ function to get a list.)
 One or more conditions, expressed as filter strings (see below),
 ALL of which must be met by all result rows.
 
-### match_some 
+### match_any 
 ( string or list of strings; optional ):
 One or more conditions, expressed as filter strings (see below),
 AT LEAST ONE of which must be met by all result rows.
 
-### link_to_table 
-( string; optional ):
-A second table from which to fetch rows related to the row results
-from `table` that this function produces. `link_to_table` results
-will be appended to `table` rows to which they're related:
-any `table` row related to more than one `link_to_table` row will
-be repeated in the returned data, with one distinct `link_to_table` row
-appended to each repeated copy of its related `table` row.
-Note: if `link_to_table` is specified, the `add_columns` parameter will be
-overridden and ignored.
+### data_source 
+( string or list of strings; optional ):
+Restrict results to those deriving from the given upstream
+data source(s). Current valid values are 'GDC', 'IDC', 'PDC',
+'CDS' and 'ICDC'. (Default: no filter.)
 
 ### add_columns 
 ( string or list of strings; optional ):
 One or more columns from a second table to add to result data from `table`.
 If multiple values from an added column are all associated with a single
 `table` row, that row will be repeated once for each distinct value, with
-the added data appended to each row.
+the added data appended to each row
 
-### data_source 
-( string or list of strings; optional ):
-Restrict results to those deriving from the given upstream data source(s), such
-as 'GDC', 'IDC', 'PDC', or 'CDS'. (Default: no filter.)
+### link_to_table 
+( string; optional ):
+A second table from which to fetch entire rows related to the row results
+from `table` that this function produces. `link_to_table` results
+will be appended to `table` rows to which they're related:
+any `table` row related to more than one `link_to_table` row will
+be repeated in the returned data, with one distinct `link_to_table` row
+appended to each repeated copy of its related `table` row.
+If `link_to_table` is specified, `add_columns` cannot be used.
+
+### provenance
+( boolean; optional ):
+If True, fetch_rows() will attach cross-reference information
+to each row result describing the upstream data sources from
+which it was derived. Rows deriving from more than one upstream
+source will be repeated in the output, once per data source, as
+with `link_to_table` and `add_columns` (except with provenance
+metadata attached, instead of information from other CDA tables).
+If `provenance` is set to True, `link_to_table` and `add_columns`
+cannot be used.
+
+### return_data_as
+( string; optional: 'dataframe' or 'tsv' ):
+Specify how fetch_rows() should return results: as a pandas DataFrame,
+or as output written to a TSV file named by the user. If this
+argument is omitted, fetch_rows() will default to returning
+results as a DataFrame.
+    
+### output_file
+( string; optional ):
+If return_data_as='tsv' is specified, `output_file` should contain a
+resolvable path to a file into which fetch_rows() will write
+tab-delimited results.
 
 ### count_only 
 ( boolean; optional ):
@@ -103,13 +127,20 @@ is missing data, we can write:
 `fetch_rows( table='researchsubject', match_all=[ 'primary_diagnosis_site = NULL' ] )`
 
 ## Returns
-integer representing the total number of CDA `table` rows matching the given
-filters (if count_only=True)
-
-OR
-
-pandas.DataFrame containing CDA `table` rows matching the user-specified
+(Default) A pandas.DataFrame containing CDA `table` rows matching the user-specified
 filter criteria. The DataFrame's named columns will match columns in `table`,
 and each row in the DataFrame will contain one CDA `table` row (possibly
 with related data from a second table appended to it, according to user
 directives).
+
+OR 
+
+two integers representing the total number of CDA `table` rows matching the given
+filters and the total number of result rows. These two counts will generally
+differ if extra data from non-`table` sources is joined to result rows using
+`link_to_table` or `add_columns`, because `table` rows will be repeated for any
+one-to-many associations that are returned; otherwise they will be the same.
+
+OR
+
+returns nothing, but writes results to a user-specified TSV file

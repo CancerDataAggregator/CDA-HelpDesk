@@ -4,9 +4,12 @@ status: new
 ---
 
 # Public releases
-<div markdown="1">
+<div id="fornews" markdown="1">
 
 ## Available March 31, 2024
+
+Words and stuff
+are you getting this?
 
 </div>
 # beta versions

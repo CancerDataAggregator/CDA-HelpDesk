@@ -37,9 +37,7 @@ comments: true
     ```
 
     ```python
-    from cdapython.data_exploration import tables, columns, column_values, column_data_types
-    from cdapython.fetch import fetch_rows
-    from cdapython.query import summary_counts
+    from cdapython import tables, columns, column_values, fetch_rows, summary_counts
     ```
 
 -   :simple-swagger:{ .lg .middle } __Developers__

@@ -92,6 +92,10 @@ searchable CDA column and is comprised of the following fields:
 `nullable` (boolean: if True, this column can contain null values)
 `description` (string: prose description of this column)
 
-OR list of column names
+OR 
 
-OR returns nothing, but writes results to a user-specified TSV file
+list of column names
+
+OR 
+
+returns nothing, but writes results to a user-specified TSV file

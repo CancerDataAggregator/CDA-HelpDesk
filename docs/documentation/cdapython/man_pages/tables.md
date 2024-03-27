@@ -8,5 +8,6 @@ Get a list of all searchable CDA data tables.
 `tables()`
     
     
-##Returns
+## Returns
+
 list of strings: names of searchable CDA tables.
