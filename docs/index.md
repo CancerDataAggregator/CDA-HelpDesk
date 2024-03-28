@@ -46,7 +46,7 @@ comments: true
 
     Are you building a metadata micro-service? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
-    [:octicons-arrow-right-24:**swagger documentation**](../documentation/developers/index.md)
+    [:octicons-arrow-right-24:**swagger documentation**](./documentation/developers/index.md)
 
 -   :simple-mysql:{ .lg .middle } __Need even more data?__
 
