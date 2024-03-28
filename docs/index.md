@@ -13,7 +13,7 @@ comments: true
     ---
 
     Browse through a curated dataset of all subjects that have data at multiple data centers using an intuitive filtering tool right in this website. 
-<a href="../interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.
+<a href="./interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.
 </a></p>
 
 -   :material-clock-fast:{ .lg .middle } __Low code, no install__
@@ -46,7 +46,7 @@ comments: true
 
     Are you building a metadata micro-service? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
-    [:octicons-arrow-right-24:**swagger documentation**](./documentation/developers/index.md)
+    [:octicons-arrow-right-24:**swagger documentation**](./documentation/developers/)
 
 -   :simple-mysql:{ .lg .middle } __Need even more data?__
 
