@@ -21,7 +21,7 @@ comments: true
     ---
 
     Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
-<a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
+<a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
 </a></p>
 
 -   :fontawesome-brands-python:{ .lg .middle } __Power users__
