@@ -16,7 +16,7 @@ To learn more about how to access and work with data you find using CDA, visit t
 
 The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommons.cancer.gov/){:target="_blank"} (CRDC) is a cloud-based data science infrastructure that provides secure access to a large, comprehensive, and expanding collection of cancer research data. Users can explore and use analytical and visualization tools for data analysis in the cloud.
 
-![CRDC image](/images/CRDCoverviewDEC2023small.jpeg)
+![CRDC image](../images/CRDCoverviewDEC2023small.jpeg)
 
 
 ## Our team
@@ -24,64 +24,64 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 <div class="grid cards" markdown>
 
 -   <figure>
-    <img src="/images/arthur.png" width="100" height="100"
+    <img src="../images/arthur.png" width="100" height="100"
          alt="Arthur Brady">
     <figcaption>Arthur Brady<p>Data wrangling & Developer</figcaption>
 </figure>
 
 
 -   <figure>
-    <img src="/images/amanda.png" width="100" height="100"
+    <img src="../images/amanda.png" width="100" height="100"
          alt="Amanda Charbonneau">
     <figcaption>Amanda Charbonneau <p>Testing & Directing</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/images/david.JPG" width="100" height="100"
+    <img src="../images/david.JPG" width="100" height="100"
          alt="David Pot">
     <figcaption>David Pot<p>Principle Investigator - GDIT</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/images/tanner.png" width="100" height="100"
+    <img src="../images/tanner.png" width="100" height="100"
          alt="Tanner Coon">
     <figcaption>Tanner Coon <p>Developer</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/images/finny.jpg" width="100" height="100"
+    <img src="../images/finny.jpg" width="100" height="100"
          alt="Finny Thomas">
     <figcaption>Finny Thomas <p>Developer</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/images/rachel.png" width="100" height="100"
+    <img src="../images/rachel.png" width="100" height="100"
          alt="Rachel Kutner">
     <figcaption>Rachel Kutner <p>Developer & Project Management</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/images/kat.png" width="100" height="100"
+    <img src="../images/kat.png" width="100" height="100"
          alt="Kat Thayer">
     <figcaption>Kat Thayer <p>Project Management</figcaption>
 </figure>
 
 -   <figure>
-    <img src="/images/alex.jpeg" width="100" height="100"
+    <img src="../images/alex.jpeg" width="100" height="100"
          alt="Alex Baumann">
     <figcaption>Alex Baumann <p>Principle Investigator - Broad</figcaption>
 </figure>
 
 
 -   <figure>
-    <img src="/images/surya.jpeg" width="100" height="100"
+    <img src="../images/surya.jpeg" width="100" height="100"
          alt="Surya Saha">
     <figcaption>Surya Saha <p>Project Manager - Velsera</figcaption>
 </figure>
 
 
 -   <figure>
-    <img src="/images/jack.png" width="100" height="100"
+    <img src="../images/jack.png" width="100" height="100"
          alt="Jack DiGiovanna">
     <figcaption>Jack DiGiovanna <p>Principle Investigator - Velsera</figcaption>
 </figure>

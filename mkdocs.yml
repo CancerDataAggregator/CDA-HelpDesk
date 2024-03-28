@@ -54,7 +54,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: False
+      execute: True
       allow_errors: True
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
@@ -102,7 +102,6 @@ extra_css:
 
 
 nav:
-  - Home: index.md
   - Getting Started:
     - getting_started/index.md
     - Interactive Search: interactive/index.ipynb
@@ -110,23 +109,22 @@ nav:
     - getting_started/install.md
     - Developer Tools: documentation/developers/index.md
   - Documentation:
-    - cda-python Vignettes:
-      - Basic cda-python functions: documentation/index.ipynb
-      - Get a manifest of all CPTAC data: documentation/cdapython/vignettes/001_cptac.ipynb
-      - View a summary of available .bam files: documentation/cdapython/vignettes/002_sum_bams.ipynb
-      - Get a manifest of patients with both vcf and image files: documentation/cdapython/vignettes/003_vcf_young.ipynb
-      - View the cancer types for subjects over 50 at diagnosis: documentation/cdapython/vignettes/004_over50.ipynb
-      - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/008_multidc.ipynb
-    - cda-python Quick Reference:
-      - documentation/cdapython/man_pages/index.md
-      - tables(): documentation/cdapython/man_pages/tables.md
-      - columns(): documentation/cdapython/man_pages/columns.md
-      - column_values(): documentation/cdapython/man_pages/column_values.md
-      - summary_counts(): documentation/cdapython/man_pages/summary_counts.md
-      - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
-      - update code from cdapython beta: documentation/cdapython/code_update.md
+    - Quick Reference: documentation/cdapython/man_pages/index.ipynb
+    - tables(): documentation/cdapython/man_pages/tables.md
+    - columns(): documentation/cdapython/man_pages/columns.md
+    - column_values(): documentation/cdapython/man_pages/column_values.md
+    - summary_counts(): documentation/cdapython/man_pages/summary_counts.md
+    - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
+    - update code from cdapython beta: documentation/cdapython/code_update.md
     - Developer Tools:
       - documentation/developers/index.md
+  - Vignettes:
+    - Conceptual Overview: documentation/index.md
+    - Get a manifest of all CPTAC data: documentation/cdapython/vignettes/001_cptac.ipynb
+    - View a summary of available .bam files: documentation/cdapython/vignettes/002_sum_bams.ipynb
+    - Get a manifest of patients with both vcf and image files: documentation/cdapython/vignettes/003_vcf_image.ipynb
+    - View the cancer types for subjects over 50 at diagnosis: documentation/cdapython/vignettes/004_over50.ipynb
+    - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/008_multidc.ipynb
   - Helpdesk:
     - helpdesk/index.md
   - About Us:

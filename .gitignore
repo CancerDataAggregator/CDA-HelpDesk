@@ -158,4 +158,8 @@ cython_debug/
 #Mac files
 .DS_Store
 
-docs/Examples/*.csv
+# data files
+
+*.csv
+*.tsv
+*.xlsx
