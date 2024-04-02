@@ -61,7 +61,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 </figure>
 
 -   <figure>
-    <img src="../images/kat.png" width="100" height="100"
+    <img src="../images/kat.jpg" width="100" height="100"
          alt="Kat Thayer">
     <figcaption>Kat Thayer <p>Project Management</figcaption>
 </figure>
