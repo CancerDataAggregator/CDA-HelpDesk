@@ -6,10 +6,49 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
-## Available March 31, 2024
+## Available April 4, 2024
 
-Words and stuff
-are you getting this?
+
+
+Known Issues:
+[cdapython; Arthur fixing today] future warning in fetch.py line 1657
+check null dataframe before concat
+[cdapython; Arthur investigating today] (ex.) fetch_rows( table='subject', link_to_table='subject' ) does fun things
+[cdapython; Arthur creating today] need a pypi package for cdapython
+[API] joins that transit through intermediate entity tables can come back from the API with phantom missing data
+am attaching example query in subthread; look for diagnosis_id: null for an example of missing result data
+i'm handling this client-side so i didn't bother anyone with it pre-release
+it is, however, messing up anticipatory counts of result sets in a fraction of cases
+[cdapython] debug messages are ugly, sporadic and crafted inline
+standardize and maybe make a subroutine or a handler object
+[cdapython] error messages are helpful and customized with pretty good coverage of the possible error space, but are crafted inline and are fragile as a result
+also fragile because they just return instead of leveraging any actual exception handling
+standardize and abstract using Python's exception handling support
+[API] API can break is not queried with cdapython's restricted query structure
+ex.: data_source-style filters on foreign tables, like asking subject_from_gdc=true at the researchsubject endpoint
+was this recently solved?
+ex.: file_associated_project and subject_associated_project currently only work as filters when applied from their home-entity endpoint
+queries on these are currently disabled on the front end pending (follow Amanda's preference)
+our planned CRDC Common Model upgrade making these accessors obsolete, OR
+a decision to fix the current infrastructure after release
+the actual paged query seems to generate just fine, but the includeCount query doesn't
+ex.: using SELECTVALUES at the mutations endpoint without including the case_barcode column will break
+culprit is a hard-coded ORDER BY subclause in the generated SQL
+[cdapython] help text for individual functions (and an error message, if you try to use an unavailable value) is currently the only way to obtain a valid list of data_source labels (DC names) for queries
+post-release update: make dynamically and explicitly queryable
+[API] unique_values endpoint won't process more than one system (i.e. data_source/DC) filter per query
+[cda-service] previous (brittle, pre-coded-SQL-query-based) tests are presently disabled
+need to design & build robust componentwise test infrastructure
+how much should we do before overhaul?
+[cdapython] need to design & build robust componentwise test infrastructure
+how much should we do before overhaul?
+[DB; Finny to experiment] see if we can find a partitioning scheme for file that can speed up searches at the source
+[API] the mutations endpoint gives wrong counts (but correct results)
+ex.: filtering by hugo_symbol='DOK1' reports 85 results, when the correct number of matching records (and the number of records that is actually returned) is 95
+[API] the mutations endpoint exposes internal record alias info in its results (attaching example)
+front end presently strips them out
+[API] Using the API directly (not through cdapython), it is possible to max out the Java heap space with certain queries.
+[API] Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab & readthedocs
 
 </div>
 # beta versions
