@@ -21,7 +21,7 @@ title: Getting Help
 
     ---
 
-    Help us, help you. What can we do to make CDA better?
+    Help us help you. What can we do to make CDA better?
 
    
 
