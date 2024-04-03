@@ -5,7 +5,7 @@ title:  About Us
 
 # About us
 
-The Cancer Data Aggregator is a service of the National Cancer Institutes' (NCI) Cancer Research Data Commons. We pull metadata for thousands of studies hosted at multiple data repositories across NCI, and make it available for search from a single tool so researchers can more easily find and reuse existing cancer research data. In between pulling and publishing, we throughly clean, harmonize, and cross-reference the metadata so you can easily do things like find subjects that have participated in multiple studies, discover data from a disease that was originally described in different ways at each repository, and compile all the data from your favorite program such as CPTAC - no matter where it ended up. 
+The Cancer Data Aggregator is a service of the National Cancer Institutes' (NCI) Cancer Research Data Commons. We pull metadata for thousands of studies hosted at multiple data repositories across NCI, and make it available for search from a single tool so researchers can more easily find and reuse existing cancer research data. In between pulling and publishing, we thoroughly clean, harmonize, and cross-reference the metadata so you can easily do things like find subjects that have participated in multiple studies, discover data from a disease that was originally described in different ways at each repository, and compile all the data from your favorite program such as CPTAC - no matter where it ended up. 
 
 To learn more about how we make metadata ready for search, head to our [about our data](./ourdata.md) page.
 
