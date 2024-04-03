@@ -47,7 +47,7 @@ cdapython comes with jupyter notebook installed, and our documentation is all av
 ```bash
 jupyter notebook
 ```
-This will launch an interactive notebook in your webbrowser. Be sure to import the cdapython modules in your first notebook block:
+This will launch an interactive notebook in your browser. Be sure to import the cdapython modules in your first notebook block:
 
 ```python
 from cdapython.data_exploration import tables, columns, column_values, column_data_types
