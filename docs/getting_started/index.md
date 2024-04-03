@@ -47,6 +47,14 @@ title:  Search made simple
 
     [:octicons-arrow-right-24:**swagger documentation**](../documentation/developers/)
 
+-   :material-bell-alert-outline:{ .lg .middle } __What's new?__
+
+    ---
+
+    Recently Updated Pages:
+    - [Data Release](../release_notes/data_updates.md)
+    - [Code Release](../release_notes/cdapython.md)
+
 -   :simple-mysql:{ .lg .middle } __Need even more data?__
 
     ---
@@ -55,6 +63,8 @@ title:  Search made simple
     We can make those dreams come true. Let's chat!
 
     :material-email: cancerdataaggregator `@` gmail
+
+
 
 </div>
 

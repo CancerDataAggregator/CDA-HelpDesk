@@ -16,7 +16,7 @@ CDA is now harmonizing terms as they are incorporated into the CRDC Data Element
 - race
 - species
 - therapeutic_agent
-- tissue_type (cancer/normal)
+- source_material_type (cancer/normal)
 - treatment_type
 - vital_status
 
@@ -29,12 +29,10 @@ PDC data version 3.8 (extraction date 3/27/2024)
 IDC data version v17 (extraction date 3/27/2024)
 CDS data version 8.0 (extraction date 3/27/2024)
 
-#### Extraction and Harmonization notes
+#### Known Issues
 
 - DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
 
-
-#### Known Issues
 
 
 
