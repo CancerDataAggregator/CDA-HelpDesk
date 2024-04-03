@@ -1,6 +1,5 @@
 ---
 title: column_values()
-comments: true
 ---
 
 Show all distinct values present in `column`, along with a count

@@ -1,6 +1,5 @@
 ---
 title: columns()
-comments: true
 ---
 
 Get structured metadata describing searchable CDA columns.

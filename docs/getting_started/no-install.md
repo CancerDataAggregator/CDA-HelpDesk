@@ -1,6 +1,5 @@
 ---
 title:  No installation docs
-comments: true
 ---
 
 

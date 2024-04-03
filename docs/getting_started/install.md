@@ -1,6 +1,5 @@
 ---
 title:  Local installation docs
-comments: true
 ---
 
 # Installation Guide

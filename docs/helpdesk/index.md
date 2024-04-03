@@ -1,6 +1,5 @@
 ---
 title: Getting Help
-comments: true
 ---
 
 <div class="grid cards" markdown>
@@ -43,6 +42,6 @@ comments: true
 
     ---
 
-    Need something we didn't list yet? We still want to hear from you! email us at cancerdataaggregator `@` gmail or tell us below
+    Need something we didn't list yet? We still want to hear from you! email us at cancerdataaggregator `@` gmail
 
 </div>

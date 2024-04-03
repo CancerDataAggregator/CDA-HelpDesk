@@ -1,6 +1,5 @@
 ---
 title: summary_counts_()
-comments: true
 ---
 
 For a set of rows in a user-specified table that all match a user-specified set of filters, get

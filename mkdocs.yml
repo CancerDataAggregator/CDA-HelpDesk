@@ -56,7 +56,7 @@ plugins:
               - hide_code
       include_source: True
       execute: True
-      allow_errors: True
+      allow_errors: False
       #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
 markdown_extensions:

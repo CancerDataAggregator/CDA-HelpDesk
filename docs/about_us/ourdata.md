@@ -1,6 +1,5 @@
 ---
 title:  Our data sources
-comments: true
 ---
 
 - ![](../images/genomic-data-commons-gdc_0.png)[Genomics Data Commons:octicons-link-external-16:](https://datacommons.cancer.gov/repository/genomic-data-commons){:target="_blank"}

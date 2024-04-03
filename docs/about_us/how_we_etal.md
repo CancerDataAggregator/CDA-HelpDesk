@@ -1,6 +1,5 @@
 ---
 title:  Extract, Translate, Aggregate, Load
-comments: true
 ---
 
 

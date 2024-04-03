@@ -1,6 +1,5 @@
 ---
 title: fetch_rows()
-comments: true
 ---
 
 Get CDA data records ('result rows') from `table` that match user-specified criteria.
