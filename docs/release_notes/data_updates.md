@@ -5,14 +5,42 @@ status: new
 
 # Public releases
 
-## Available March 31, 2024
+## Available April 4, 2024
+
+CDA is now harmonizing terms as they are incorporated into the CRDC Data Element list. In this release we have included harmonized the values for:
+
+- ethnicity
+- file_format
+- morphology
+- primary_diagnosis
+- race
+- species
+- therapeutic_agent
+- tissue_type (cancer/normal)
+- treatment_type
+- vital_status
+
+In future releases, we expect the harmonization to both broaden and improve. Additionally, in an upcoming release we will provide both the harmonized and original values to make finding the original data easier.
+
+### Data extraction and release information
+
+GDC data version 39.0 (extraction date 3/27/2024)
+PDC data version 3.8 (extraction date 3/27/2024)
+IDC data version v17 (extraction date 3/27/2024)
+CDS data version 8.0 (extraction date 3/27/2024)
+
+#### Extraction and Harmonization notes
+
+- DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
+
+
+#### Known Issues
+
 
 
 # beta versions
 
 ## Available September, 12 2023.
-
-
 
 #### Data extraction and release information
 
