@@ -83,7 +83,7 @@ be ignored.
 
 ## Returns
 pandas.DataFrame where each row is a metadata record describing one
-searchable CDA column and is comprised of the following fields:
+searchable CDA column comprising the following fields:
 
 `table` (string: name of the CDA table containing this column)
 `column` (string: name of this column)
