@@ -43,7 +43,7 @@ title:  Search made simple
 
     ---
 
-    Are you building a metadata micro-service? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
+    Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
     [:octicons-arrow-right-24:**swagger documentation**](./documentation/developers/)
 
@@ -52,7 +52,7 @@ title:  Search made simple
     ---
 
     Do you dream of having a CDA database instance of your very own? Or CDA but bigger somehow?
-    We can make those dreams come true. Lets chat!
+    We can make those dreams come true. Let's chat!
 
     :material-email: cancerdataaggregator `@` gmail
 
