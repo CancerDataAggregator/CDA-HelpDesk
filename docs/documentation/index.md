@@ -1,5 +1,5 @@
 
-You can think of the CDA as a really, really enormous spreadsheet full of data. To search this enormous spreadsheets, you'd want select columns that have data you're interested in, and then filter the rows to only the values you care about. 
+You can think of the CDA as a really, really enormous spreadsheet full of data. To search this enormous spreadsheet, you'd want to select columns that have data you're interested in, and then filter the rows to only the values you care about. 
 
 <div class="cdanote" style="background-color:#b3e5d5;color:black;padding:20px;">
     
