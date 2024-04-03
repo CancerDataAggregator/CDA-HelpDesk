@@ -24,10 +24,10 @@ In future releases, we expect the harmonization to both broaden and improve. Add
 
 ### Data extraction and release information
 
-GDC data version 39.0 (extraction date 3/27/2024)
-PDC data version 3.8 (extraction date 3/27/2024)
-IDC data version v17 (extraction date 3/27/2024)
-CDS data version 8.0 (extraction date 3/27/2024)
+- GDC data version 39.0 (extraction date 3/27/2024)
+- PDC data version 3.8 (extraction date 3/27/2024)
+- IDC data version v17 (extraction date 3/27/2024)
+- CDS data version 8.0 (extraction date 3/27/2024)
 
 #### Known Issues
 
