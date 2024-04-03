@@ -32,7 +32,9 @@ CDS data version 8.0 (extraction date 3/27/2024)
 #### Known Issues
 
 - DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
-
+- CDS data includes clashing integer IDs. We included that data with the following changes:
+    - Ensured that any integer IDs are well-wrapped by project qualifiers to make them unique within CDS
+    - In instances where the same ID was attached to multiple, conflicting metadata the resulting records will be clobbered copies of one instance. A record of the effected data is [available here](./warning_log.txt)
 
 
 
