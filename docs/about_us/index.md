@@ -39,7 +39,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 -   <figure>
     <img src="../images/david.JPG" width="100" height="100"
          alt="David Pot">
-    <figcaption>David Pot<p>Principle Investigator - GDIT</figcaption>
+    <figcaption>David Pot<p>Principal Investigator - GDIT</figcaption>
 </figure>
 
 -   <figure>
@@ -69,7 +69,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 -   <figure>
     <img src="../images/alex.jpeg" width="100" height="100"
          alt="Alex Baumann">
-    <figcaption>Alex Baumann <p>Principle Investigator - Broad</figcaption>
+    <figcaption>Alex Baumann <p>Principal Investigator - Broad</figcaption>
 </figure>
 
 
@@ -83,7 +83,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 -   <figure>
     <img src="../images/jack.png" width="100" height="100"
          alt="Jack DiGiovanna">
-    <figcaption>Jack DiGiovanna <p>Principle Investigator - Velsera</figcaption>
+    <figcaption>Jack DiGiovanna <p>Principal Investigator - Velsera</figcaption>
 </figure>
 </div>
 
