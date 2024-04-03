@@ -1,23 +1,24 @@
 ---
 title:  Updating your code from cdapython beta
 ---
+
 # Updating your code from cdapython beta
 
 We've added a few features while also simplifying the cdapython interface to make search faster and easier. This page provides a one-to-one mapping for all of the previous functions of cda-python to their new forms. If you need more help updating your code base, please contact us cancerdataaggregator `@` gmail.com
 
-# Global changes
+## Global changes
 
-## Install
+### Install
 
 - old: install from github
 - new: `pip install cdapython` install from pypi 
 
-## Import
+### Import
 
 - old: `from cdapython import Q, columns, unique_terms`
 - new: `from cdapython import tables, columns, column_values, fetch_rows, summary_counts`
 
-## See help text
+### See help text
 
 - old: N/A
 - new: `help(<functionname>)`
@@ -25,23 +26,23 @@ We've added a few features while also simplifying the cdapython interface to mak
 - old: N/A
 - new: in any function, add a `debug=True` parameter to get detailed error information
 
-## Output Type
+### Output Type
 
 - old: some functions could have `to_dataframe()`, `to_list`, or `to_csv` appended, others had a parameter
 - new: all functions that return matrix-like data (columns, column_values, and fetch_rows) take the two parameters `return_data_as` and `output_file`. `return_data_as` can be set to dataframe, list or tsv. When tsv is specified, use `output_file` to supply a path/to/filename.tsv
 
-## List all tables
+### List all tables
 
 - old: N/A
 - new: `tables()` simple function that returns a list of currently queryable table names
 
-# Specific function updates
+## Specific function updates
 
-## List all columns
+### List all columns
 
 function is still `columns()`
 
-### columns flags
+#### columns flags
 
 - old: `page_size`, `limit`, and `description` parameters have been removed
 - new: columns always returns all unique values and their counts by default, however there are several new parameters
@@ -52,12 +53,12 @@ function is still `columns()`
 
 See [columns](./man_pages/columns/) for more details
 
-## See all unique values for a given column
+### See all unique values for a given column
 
 - old: `unique_terms()`
 - new: `column_values()` 
 
-### parameters
+#### parameters
 
 - old: `page_size`, `limit`, and `count` parameters have been removed
 - new: column_values always returns all unique values and their counts by default, however there are several new parameters
@@ -75,7 +76,7 @@ See [column_values](./man_pages/column_values/) for more details
 - old: `<queryobject>.<table>.count.run()`
 - new: `summary_counts(table=<table>, <optional parameters>)` running this command with no parameters will return counts for the entire table.
 
-### parameters
+#### parameters
 
 - new: `match_all=<filter or list of filters>`. This is effectively `AND` for all of the listed filters, any of which can take a `*` wildcard e.g. `match_all=["sex = male", "data_type = *sv"]`
 
@@ -85,12 +86,12 @@ See [column_values](./man_pages/column_values/) for more details
 
 See [summary_counts](./man_pages/summary_counts/) for more details
 
-## Returning a matrix of results
+### Returning a matrix of results
 
 - old: all of the functions previously used with, or chained onto `Q()...run()` have been replaced with the single function `fetch_rows()`
 - new: `fetch_rows(table=<table>, <optional parameters>)
 
-### parameters
+#### parameters
 
 - new: `match_all=<filter or list of filters>`. This is effectively `AND` for all of the listed filters, any of which can take a `*` wildcard e.g. `match_all=["sex = male", "data_type = *sv"]`
 
