@@ -6,14 +6,9 @@ title:  Local installation docs
 
 cdapython runs on:
 
-Mac OS python versions: 3.8, 3.9, 3.10
+python versions: 3.8, 3.9, 3.10
 
-Ubuntu python versions 3.8, 3.9, 3.10
-
-Windows python versions: 3.8, 3.9, 3.10
-
-
-## Conda + Pip install
+## Pip install
 
 !!! requirements
 
@@ -36,9 +31,7 @@ python3
 and import the cdapython modules:
 
 ```python
-from cdapython.data_exploration import tables, columns, column_values, column_data_types
-from cdapython.fetch import fetch_rows
-from cdapython.query import summary_counts
+from cdapython import tables, columns, column_values,  fetch_rows, summary_counts
 ```
 ## Interactive notebook
 
@@ -50,9 +43,7 @@ jupyter notebook
 This will launch an interactive notebook in your browser. Be sure to import the cdapython modules in your first notebook block:
 
 ```python
-from cdapython.data_exploration import tables, columns, column_values, column_data_types
-from cdapython.fetch import fetch_rows
-from cdapython.query import summary_counts
+from cdapython import tables, columns, column_values,  fetch_rows, summary_counts
 ```
 
 
