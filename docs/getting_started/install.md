@@ -6,14 +6,14 @@ title:  Local installation docs
 
 cdapython runs on:
 
-python versions: 3.8, 3.9, 3.10
+python versions >= 3.9
 
 ## Pip install
 
 !!! requirements
 
     - terminal/command line
-    - python version >= 3.8 [(Install)](https://www.python.org/downloads/)
+    - python version >= 3.9 [(Install)](https://www.python.org/downloads/)
     - pip version >= 
 
 1. In your terminal type:
