@@ -51,7 +51,7 @@ function is still `columns()`
 
 - new: `filters=<variable or list of variables>` You can now filter out any column(s) entirely, or apply filters by row to any column(s). [Full filter list.](#filter-arguments)
 
-See [columns](/man_pages/columns/) for more details
+See [columns](../man_pages/columns/) for more details
 
 ### See all unique values for a given column
 
@@ -69,7 +69,7 @@ See [columns](/man_pages/columns/) for more details
 - new: `sort_by=<column:asc/desc>` sort results by any column
 - new: `force=<True/False>` For columns with an extremely large number of unique values, such as filename, the query will fail with a large data warning. You can override the warning with `Force=True`
 
-See [column_values](/man_pages/column_values/) for more details
+See [column_values](../man_pages/column_values/) for more details
 
 ### Summarize results
 
@@ -84,7 +84,7 @@ See [column_values](/man_pages/column_values/) for more details
 
 - new: `data_source` restrict the results to a data_source(s), e.g. `data_source=['GDC', 'IDC']`
 
-See [summary_counts](/man_pages/summary_counts/) for more details
+See [summary_counts](../man_pages/summary_counts/) for more details
 
 ### Returning a matrix of results
 
@@ -105,4 +105,4 @@ See [summary_counts](/man_pages/summary_counts/) for more details
 
 - new: `count_only=<True/False>` will return a simple row count for your results rather than the results themselves
 
-See [fetch_rows](/man_pages/fetch_rows/) for more details
+See [fetch_rows](../man_pages/fetch_rows/) for more details
