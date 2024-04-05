@@ -1,101 +1,138 @@
 site_name: Cancer Data Aggregator
-site_description: A python package for search across NCI datasets
+site_description: Run powerful cross-data repository searches right from your browser, or install locally to integrate into your existing data workflows
 repo_url: https://github.com/CancerDataAggregator/readthedocs
 edit_uri: edit/main/docs/
 
 theme:
+  logo: assets/lazycdalogo.png
   name: material
-  logo: overrides/assets/images/2012-logo.png
-  custom_dir: docs/overrides
+  custom_dir: overrides
   font:
     text: noto sans
   docs_dir: docs
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.indexes
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.sections
-    - toc.integrate #- navigation.indexes
+    - navigation.indexes
+    - toc.follow
     - navigation.top
     - search.suggest
     - search.highlight
     - search.share
     - content.code.annotate
-#  favicon: images/CFDE-logo-white-outline.png
-#  logo: images/CFDE-logo.png
+    - announce.dismiss
+    - content.code.copy
+    
 
-
+extra:
+  status:
+    new: Recently added
+    deprecated: Deprecated
+    wip: Under Construction
 
 plugins:
+  - search
   - mkdocs-jupyter:
+      remove_tag_config:
+          remove_input_tags:
+              - hide_code
       include_source: True
       execute: True
-      ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
-      allow_errors: false
-  - search: # necessary for search to work
-      separator: '[\s\-\.]+'
-  - awesome-pages:
-      collapse_single_pages: true
-  - git-revision-date
-  - render_swagger
-  - table-reader
-
-
+      allow_errors: False
+      #ignore: ["docs/Tutorials/Merging.ipynb", "docs/Tutorials/scratch.ipynb", "docs/Tutorials/Welcome.ipynb", "docs/Tutorials/CDA_MadLibs.ipynb"]
 
 markdown_extensions:
-  - admonition
-  - def_list
-  - pymdownx.critic
-  - pymdownx.highlight
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.tabbed
-  - pymdownx.extra
-  - pymdownx.superfences
-  - pymdownx.extra
-  - pymdownx.highlight
-  - pymdownx.keys
-  - pymdownx.inlinehilite
+
+  # Python Markdown
   - abbr
-  - pymdownx.snippets
+  - admonition
   - attr_list
-  - md_in_html
-  - meta
+  - def_list
   - footnotes
-  - codehilite:
-      guess_lang: false
+  - md_in_html
   - toc:
       permalink: true
 
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
-extra:
-  hypothesis: true
-  copyright: Copyright &copy; 2016 - 2020 Martin Donath
-  generator: false
-  consent:
-    title: Cookie consent
-    description: >-
-      CDA uses cookies to enable the proper functioning and security of our website,
-      and to improve your experience. By clicking Agree or continuing to use our site,
-      you consent to the use of these functional cookies. If you do not wish to allow
-      use of these cookies, you may tell us that by clicking on Reject. As a result,
-      you will be unable to use our site. To find out more, read our [privacy policy](https://app.terra.bio/#privacy).
-
-extra_javascript:
-  - javascripts/renderjson.js
-  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
-  - javascripts/tablesort.js
 
 extra_css:
-  - assets/stylesheets/home.css
-  - assets/stylesheets/extra.css
- 
-extra:
- analytics:
-   provider: google
-   property: G-8N8HJZRK7Q
+  - stylesheets/extra.css
 
+
+
+nav:
+  - Getting Started:
+    - getting_started/index.md
+    - Interactive Search: interactive/index.ipynb
+    - getting_started/no-install.md
+    - getting_started/install.md
+    - Developer Tools: documentation/developers/index.md
+  - Documentation:
+    - Quick Reference: documentation/cdapython/man_pages/index.ipynb
+    - tables(): documentation/cdapython/man_pages/tables.md
+    - columns(): documentation/cdapython/man_pages/columns.md
+    - column_values(): documentation/cdapython/man_pages/column_values.md
+    - summary_counts(): documentation/cdapython/man_pages/summary_counts.md
+    - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
+    - update code from cdapython beta: documentation/cdapython/code_update.md
+    - Developer Tools:
+      - documentation/developers/index.md
+  - Vignettes:
+    - Conceptual Overview: index.md
+    - Get a manifest of all CPTAC data: documentation/cdapython/vignettes/001_cptac.ipynb
+    - View a summary of available .bam files: documentation/cdapython/vignettes/002_sum_bams.ipynb
+    - Get a manifest of patients with both vcf and image files: documentation/cdapython/vignettes/003_vcf_image.ipynb
+    - View the cancer types for subjects over 50 at diagnosis: documentation/cdapython/vignettes/004_over50.ipynb
+    - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/008_multidc.ipynb
+  - Helpdesk:
+    - helpdesk/index.md
+  - About Us:
+    - about_us/index.md
+    - about_us/ourdata.md
+    - about_us/how_we_etal.md
+    - Release Notes:
+      - release_notes/index.md
+      - release_notes/cdapython.md
+      - release_notes/data_updates.md
