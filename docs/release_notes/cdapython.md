@@ -6,7 +6,7 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
-## Available April 4, 2024
+## Available April 5, 2024
 
 cdapython has had a complete rewrite to simplify the code. If you are an existing user [we have a guide for updating your existing code](../documentation/cdapython/code_update.md)
 

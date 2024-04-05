@@ -5,7 +5,7 @@ status: new
 
 # Public releases
 
-## Available April 4, 2024
+## Available April 5, 2024
 
 CDA is now harmonizing terms as they are incorporated into the CRDC Data Element list. In this release we have included harmonized the values for:
 
