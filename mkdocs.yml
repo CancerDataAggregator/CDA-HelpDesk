@@ -120,7 +120,7 @@ nav:
     - Developer Tools:
       - documentation/developers/index.md
   - Vignettes:
-    - Conceptual Overview: documentation/index.md
+    - Conceptual Overview: index.md
     - Get a manifest of all CPTAC data: documentation/cdapython/vignettes/001_cptac.ipynb
     - View a summary of available .bam files: documentation/cdapython/vignettes/002_sum_bams.ipynb
     - Get a manifest of patients with both vcf and image files: documentation/cdapython/vignettes/003_vcf_image.ipynb
