@@ -13,6 +13,6 @@ It is designed using the [Material template by Martin Donath](https://squidfunk.
 All example notebooks are dynamically built when the site is rendered for viewing on the web, and can be downloaded from the website.
 Interactive versions of those notebooks can be used at this link:
 
-[Google Colab Notebooks](https://mybinder.org/v2/gh/CancerDataAggregator/readthedocs/HEAD?labpath=docs%2FTutorials%2FWelcome.ipynb)
+[Google Colab Notebooks](https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb)
 
 
