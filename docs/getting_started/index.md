@@ -31,7 +31,7 @@ title:  Search made simple
     and running in no time
 
     ```bash
-    pip install cdapython
+    pip install git+https://github.com/CancerDataAggregator/cdapython.git
     python3
     ```
 
@@ -52,7 +52,7 @@ title:  Search made simple
     ---
 
     Recently Updated Pages:
-    
+
     - [Data Release](../release_notes/data_updates.md)
     - [Code Release](../release_notes/cdapython.md)
 

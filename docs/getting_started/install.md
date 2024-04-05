@@ -19,7 +19,7 @@ python versions >= 3.9
 1. In your terminal type:
 
   ```bash
-  pip install cdapython
+  pip install git+https://github.com/CancerDataAggregator/cdapython.git
   ```
 ## Terminal/Command line
 

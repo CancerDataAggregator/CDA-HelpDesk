@@ -11,7 +11,7 @@ We've added a few features while also simplifying the cdapython interface to mak
 ### Install
 
 - old: install from github
-- new: `pip install cdapython` install from pypi 
+- new: `pip install git+https://github.com/CancerDataAggregator/cdapython.git`
 
 ### Import
 

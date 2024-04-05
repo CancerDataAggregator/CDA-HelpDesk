@@ -8,9 +8,11 @@ status: new
 
 ## Available April 4, 2024
 
-
+cdapython has had a complete rewrite to simplify the code. If you are an existing user [we have a guide for updating your existing code](../documentation/cdapython/code_update.md)
 
 ### Known Issues:
+
+- the cdapython update is not currently available in pypi, please install using `pip install git+https://github.com/CancerDataAggregator/cdapython.git`. It should be available in pypi soon.
 
 - Impossible joins need better error handling, e.g. `fetch_rows( table='subject', link_to_table='subject' )`.
 
