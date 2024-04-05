@@ -31,7 +31,7 @@ title:  Search made simple
     and running in no time
 
     ```bash
-    pip install cdapython
+    pip install git+https://github.com/CancerDataAggregator/cdapython.git
     python3
     ```
 
@@ -46,6 +46,15 @@ title:  Search made simple
     Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
     [:octicons-arrow-right-24:**swagger documentation**](./documentation/developers/)
+
+-   :material-bell-alert-outline:{ .lg .middle } __What's new?__
+
+    ---
+
+    Recently Updated Pages:
+
+    - [Data Release](./release_notes/data_updates.md)
+    - [Code Release](./release_notes/cdapython.md)
 
 -   :simple-mysql:{ .lg .middle } __Need even more data?__
 
