@@ -15,12 +15,25 @@ pre-selected columns.
 The table whose rows are to be filtered and counted. (Run the tables()
 function to get a list.)
 
+### return_data_as
+( string; optional: 'dataframe_list' or 'dict' or 'json' ):
+Specify how summary_counts() should return results: as a list
+of pandas DataFrames, as a Python dictionary, or as output written to a
+JSON file named by the user.  If this argument is omitted,
+summary_counts() will default to returning results as a list of DataFrames.
+
+### output_file
+( string; optional ):
+If return_data_as='json' is specified, output_file should contain a
+resolvable path to a file into which summary_counts() will write
+JSON-formatted results.
+
 ### match_all
 ( string or list of strings; optional ):
 One or more conditions, expressed as filter strings (see below),
 ALL of which must be met by all result rows.
 
-### match_some
+### match_any
 ( string or list of strings; optional ):
 One or more conditions, expressed as filter strings (see below),
 AT LEAST ONE of which must be met by all result rows.
