@@ -72,7 +72,19 @@ we can write:
 `summary_counts( table='subject', match_all=[ 'sex = NULL' ] )`
 
 ## Returns
-Python dictionary enumerating counts of all data values (from a small set of pre-selected columns)
+        
+list of pandas DataFrames, with one DataFrame for each of a small set of
+pre-selected columns, enumerating counts of all of that column's data values
+appearing in any of the rows of the user-specified `table` that match the
+user-specified filter critera (the 'result rows'). One or two DataFrames
+in this list -- titled 'total_`table`_matches' and sometimes also
+'total_related_files', where appropriate -- will contain integers representing
+the number of result rows and the number of files related to those rows,
+respectively. All other DataFrames in the list will each be titled with
+a CDA column name and contain counts for all observed values from that
+column in the result row set.
+
+OR Python dictionary enumerating counts of all data values (from a small set of pre-selected columns)
 appearing in any of the rows of the user-specified `table` that match the user-specified filter criteria
 (the 'result rows'). One or two summary keys in this dictionary -- 'total_`table`_matches', and
 sometimes 'total_related_files', where appropriate -- will point to integers representing
@@ -82,4 +94,7 @@ dictionary enumerating all the specific values appearing in the result rows for 
 named in the key. Each value in that (sub-)dictionary will represent the total number of times
 that its corresponding key appears in the result rows.
 
-And yes, we know how that paragraph looks. We apologize to the entire English language.
+OR JSON-formatted text representing the same structure as the `return_data_as='dict'`
+option, written to `output_file`.
+
+And yes, we know how those first two paragraphs look. We apologize to the entire English language.
