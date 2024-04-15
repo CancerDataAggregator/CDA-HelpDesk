@@ -21,16 +21,14 @@ Our API will be undergoing large structural changes in the spring/summer, and we
 <script>
   const swaggerUrl = "https://raw.githubusercontent.com/CancerDataAggregator/cda-service/develop/src/main/resources/api/service_openapi.yaml"
   const apiUrl = "https://cancerdata.dsde-prod.broadinstitute.org/api/swagger-ui.html"
-window.onload = function() {
-  const ui = SwaggerUIBundle({
-    url: "./service_openapi.yaml",
-    dom_id: '#swagger-ui',
-    presets: [
-      SwaggerUIBundle.presets.apis,
-      SwaggerUIStandalonePreset
-    ]
-  })
-
-  window.ui = ui
-}
+  window.onload = () => {
+    let swaggerJson = fetch(swaggerUrl).then(r => r.text().then(t => {
+      let j = jsyaml.load(t);
+      j.servers[0].url = apiUrl;
+      window.ui = SwaggerUIBundle({
+        spec: j,
+        dom_id: '#swagger-ui',
+      });
+    }));
+  };
 </script>
