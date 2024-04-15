@@ -19,9 +19,11 @@ Our API will be undergoing large structural changes in the spring/summer, and we
 <script src="swagger-ui-standalone-preset.js"></script>
 
 <script>
+  const swaggerUrl = "https://cancerdata.dsde-prod.broadinstitute.org/api/swagger-ui.html"
+  const apiUrl = "http://cancerdata.dsde-prod.broadinstitute.org/v1/"
 window.onload = function() {
   const ui = SwaggerUIBundle({
-    url: "./service_openapi.yaml",
+    url: "https://raw.githubusercontent.com/CancerDataAggregator/cda-service/develop/src/main/resources/api/service_openapi.yaml",
     dom_id: '#swagger-ui',
     presets: [
       SwaggerUIBundle.presets.apis,
