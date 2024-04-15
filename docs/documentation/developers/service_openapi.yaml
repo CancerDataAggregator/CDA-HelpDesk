@@ -8,8 +8,8 @@ info:
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 
 # testing only
-#servers:
-#  - url: https://cancerdata.dsde-dev.broadinstitute.org
+servers:
+  - url: https://cancerdata.dsde-prod.broadinstitute.org
 #  - url: https://cda.cda-dev.broadinstitute.org
 #  - url: http://localhost:8080
 #  - url: http://35.192.60.10:8080
