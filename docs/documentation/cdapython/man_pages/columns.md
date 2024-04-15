@@ -67,7 +67,7 @@ If set to True, restrict returned data to columns whose values are
 allowed to be empty; if False, return data only for columns
 requiring nonempty values.
 
-### description_contains
+### description
 ( string or list of strings; optional ):
 Restrict returned data to columns whose `description` field matches
 any of the given strings. Wildcards will be automatically applied
