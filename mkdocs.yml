@@ -24,6 +24,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
+    - toc.integrate
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.indexes
