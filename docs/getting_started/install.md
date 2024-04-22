@@ -14,7 +14,8 @@ python versions >= 3.9
 
     - terminal/command line
     - python version >= 3.9 [(Install)](https://www.python.org/downloads/)
-    - pip version >= 
+
+*** If you previously installed cdapython in a VM, discard that VM and install in a fresh one. The new cdapython has dependency conflicts with the old version and will not install properly over the older version ***
 
 1. In your terminal type:
 
