@@ -13,6 +13,8 @@ We've added a few features while also simplifying the cdapython interface to mak
 - old: install from github
 - new: `pip install git+https://github.com/CancerDataAggregator/cdapython.git`
 
+*** If you previously installed cdapython in a VM, discard that VM and install in a fresh one. The new cdapython has dependency conflicts with the old version and will not install properly over the older version ***
+
 ### Import
 
 - old: `from cdapython import Q, columns, unique_terms`
