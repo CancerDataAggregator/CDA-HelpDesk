@@ -6,6 +6,11 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
+## Available May 29, 2024
+
+- Summary value data has been reformatted for easier reading
+- null data has been disambiguated
+
 ## Available April 5, 2024
 
 cdapython has had a complete rewrite to simplify the code. If you are an existing user [we have a guide for updating your existing code](../documentation/cdapython/code_update.md)
