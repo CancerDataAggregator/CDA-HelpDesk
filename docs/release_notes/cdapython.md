@@ -206,7 +206,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
     - `Q("ResearchSubject.primary_diagnosis_site = 'kidney'").subject.file.count.run()` would give a breakdown of distinct fields for subject files such as `data_type` or `file_format`
 * Filter flag added to Q's run method which allows horizontal filtering of results
 * Verbose flag added to Q's run method to hide/show Q actions when running a query
-* Queries on text fields are now case insensitive
+* Queries on text fields are now case-insensitive
 * Added to_dataframe to Q's Result object that converts the JSON structure to a pandas dataframe
 * Added paginator to Q's Result object that allows for pagination through result pages. This also has a flag for paginating as a dataframe.
 * Added table formatting to count results objects for easier reading
