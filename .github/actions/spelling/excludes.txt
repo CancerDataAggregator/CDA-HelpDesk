@@ -1,2 +1,3 @@
 ^\Qdocs/documentation/cdapython/vignettes/mydatafile.tsv\E$
-^docs/images/[^\.].*\..+$
+^docs\/images\/[^\.].*\..+$
+^(.+\/)?[^\.].*\.(jpg|jpeg|gif|png|svg)$
