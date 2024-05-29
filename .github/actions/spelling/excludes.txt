@@ -1,3 +1,4 @@
+[^/]\.ipynb$
+^(.+\/)?[^\.].*\.(jpg|jpeg|gif|png|svg)$
 ^\Qdocs/documentation/cdapython/vignettes/mydatafile.tsv\E$
 ^docs\/images\/[^\.].*\..+$
-^(.+\/)?[^\.].*\.(jpg|jpeg|gif|png|svg)$
