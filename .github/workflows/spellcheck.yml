@@ -112,6 +112,11 @@ jobs:
           cspell:npm/dict/npm.txt
           cspell:css/dict/css.txt
           cspell:php/dict/php.txt
+          cspell:filetypes/filetypes.txt
+          cspell:python/src/python/python.txt
+          cspell:django/dict/django.txt
+          cspell:fullstack/dict/fullstack.txt
+          cspell:node/dict/node.txt
 
   comment-push:
     name: Report (Push)
