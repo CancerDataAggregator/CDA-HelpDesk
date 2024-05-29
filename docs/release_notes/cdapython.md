@@ -12,7 +12,7 @@ status: new
   
 - null data has been disambiguated
   
-- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See this vignette for an example.
+- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/008_multidc-from-file.ipynb) for an example.
 
 ### Known issues
 
