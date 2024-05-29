@@ -1,0 +1,2 @@
+^\Qdocs/documentation/cdapython/vignettes/mydatafile.tsv\E$
+^\Qdocs/images/[^\.].*\..+\E$
