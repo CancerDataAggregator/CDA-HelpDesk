@@ -117,6 +117,11 @@ jobs:
           cspell:django/dict/django.txt
           cspell:fullstack/dict/fullstack.txt
           cspell:node/dict/node.txt
+          cspell:python/src/common/extra.txt
+          cspell:dotnet/dict/dotnet.txt
+          cspell:java/src/java-terms.txt
+          cspell:python/src/python/python-lib.txt
+          cspell:java/src/java.txt
 
   comment-push:
     name: Report (Push)
