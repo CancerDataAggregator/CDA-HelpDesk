@@ -26,3 +26,8 @@ The CDS provides data storage and sharing capabilities for NCI-funded studies th
 •    Studies with data that do not fit current data type criteria and/or the minimum metadata standards for a CRDC data commons. 
 
 CDS currently hosts a variety of data types from NCI projects such as the Human Tumor Atlas Network (HTAN), Division of Cancer Control and Population Sciences (DCCPS), and Childhood Cancer Data Initiative (CCDI) as well as data from independent research projects. The CDS is home to both open and controlled access data.
+
+
+- [Data Standards Services (DSS)](https://datascience.cancer.gov/data-commons/data-standards-services)
+  The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for:
+   ethnicity, file_format, morphology,primary_diagnosis, race, species, therapeutic_agent, source_material_type (cancer/normal), treatment_type, and vital_status.

@@ -5,6 +5,20 @@ status: new
 
 # Public releases
 
+## Available May 29, 2024
+
+### Data extraction and release information
+
+GDC data version 40.0
+PDC data version 4.1
+IDC data version v18
+CDS data version 9.0
+
+#### Known Issues
+
+- DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
+
+
 ## Available April 5, 2024
 
 CDA is now harmonizing terms as they are incorporated into the CRDC Data Element list. In this release we have included harmonized the values for:
@@ -35,7 +49,6 @@ In future releases, we expect the harmonization to both broaden and improve. Add
 - CDS data includes clashing integer IDs. We included that data with the following changes:
     - Ensured that any integer IDs are well-wrapped by project qualifiers to make them unique within CDS
     - In instances where the same ID was attached to multiple, conflicting metadata the resulting records will be clobbered copies of one instance. A record of the effected data is [available here](./warning_log.txt)
-
 
 
 # beta versions

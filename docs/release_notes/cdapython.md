@@ -6,6 +6,34 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
+## Available May 29, 2024
+
+- Summary value data has been reformatted for easier reading
+  
+- null data has been disambiguated
+  
+- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/008_multidc-from-file.ipynb) for an example.
+
+### Known issues
+
+- `match_from_file` cannot handle very large lists of values (greater than ~10,000)
+
+- the cdapython update is not currently available in pypi, please install using `pip install git+https://github.com/CancerDataAggregator/cdapython.git`. It should be available in pypi soon.
+
+- Some complex joins will return more data than `summary_counts` or the `count_only` parameter report. This is due to miscounting of the join structure.
+
+- Not all errors are handled gracefully, as we haven't found them all yet. If you experience one, please let us know.
+
+- help text for individual functions (and an error message, if you try to use an unavailable value) is currently the only way to obtain a valid list of data_source labels (DC names) for queries. Current list is GDC, PDC, IDC, and CDS.
+
+- column_values endpoint won't process more than one system (i.e. data_source/DC) filter per query.
+
+- the mutations endpoint gives wrong counts (but correct results)
+ex.: filtering by hugo_symbol='DOK1' reports 85 results, when the correct number of matching records (and the number of records that is actually returned) is 95.
+
+-Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab, mybinder, and other low-memory systems.
+
+
 ## Available April 5, 2024
 
 cdapython has had a complete rewrite to simplify the code. If you are an existing user [we have a guide for updating your existing code](../documentation/cdapython/code_update.md)
@@ -178,7 +206,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
     - `Q("ResearchSubject.primary_diagnosis_site = 'kidney'").subject.file.count.run()` would give a breakdown of distinct fields for subject files such as `data_type` or `file_format`
 * Filter flag added to Q's run method which allows horizontal filtering of results
 * Verbose flag added to Q's run method to hide/show Q actions when running a query
-* Queries on text fields are now case insensitive
+* Queries on text fields are now case-insensitive
 * Added to_dataframe to Q's Result object that converts the JSON structure to a pandas dataframe
 * Added paginator to Q's Result object that allows for pagination through result pages. This also has a flag for paginating as a dataframe.
 * Added table formatting to count results objects for easier reading
