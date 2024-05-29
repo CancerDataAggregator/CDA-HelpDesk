@@ -9,7 +9,30 @@ status: new
 ## Available May 29, 2024
 
 - Summary value data has been reformatted for easier reading
+  
 - null data has been disambiguated
+  
+- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See this vignette for an example.
+
+### Known issues
+
+- `match_from_file` cannot handle very large lists of values (greater than ~10,000)
+
+- the cdapython update is not currently available in pypi, please install using `pip install git+https://github.com/CancerDataAggregator/cdapython.git`. It should be available in pypi soon.
+
+- Some complex joins will return more data than `summary_counts` or the `count_only` parameter report. This is due to miscounting of the join structure.
+
+- Not all errors are handled gracefully, as we haven't found them all yet. If you experience one, please let us know.
+
+- help text for individual functions (and an error message, if you try to use an unavailable value) is currently the only way to obtain a valid list of data_source labels (DC names) for queries. Current list is GDC, PDC, IDC, and CDS.
+
+- column_values endpoint won't process more than one system (i.e. data_source/DC) filter per query.
+
+- the mutations endpoint gives wrong counts (but correct results)
+ex.: filtering by hugo_symbol='DOK1' reports 85 results, when the correct number of matching records (and the number of records that is actually returned) is 95.
+
+-Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab, mybinder, and other low-memory systems.
+
 
 ## Available April 5, 2024
 

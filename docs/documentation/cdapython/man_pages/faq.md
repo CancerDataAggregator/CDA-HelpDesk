@@ -3,7 +3,7 @@ title: Frequently Asked Questions
 
 ## CDA Python Usage
 
-1. Why do I get different answers if I switch which table is the 'table' and which is linked? For example, why do these two queries give different answers? And which one is correct?
+### 1. Why do I get different answers if I switch which table is the 'table' and which is linked? For example, why do these two queries give different answers? And which one is correct?
 
 `fetch_rows(table='subject', link_to_table='file', match_all=['subject_id = "TCGA.TCGA-E2-A10A"'])`
 
@@ -36,9 +36,12 @@ The query `fetch_rows(table='file', link_to_table='subject', match_all=['subject
 
 Both of these results are correct, in that they give back true information, but which you should use depends on your use case. If you really just care about Jane, then you should search by subject and join other tables to that. If you want to replicate some analysis that Jane was part of, you'll need the data for all of the other subjects as well, and would search by file, then join to subject.
 
-2. How do I merge/join together data from multiple searches?
+### 2. How do I merge/join together data from multiple searches?
 
-This depends on both what data you're joining. If you just want to join any two tables, cda-python will do that for you:
+This depends on both what data you're joining. 
+
+#### join two tables
+If you just want to join any two tables, cda-python will do that for you:
 
 `fetch_rows(table='subject', link_to_table='diagnosis')` will return a joint table of subject and diagnosis data, put any two table names in, and whatever search terms you want to add to get your desired result.
 
@@ -46,13 +49,15 @@ Similarly, if you just want to get data about where we got the data, you can hav
 
 `fetch_rows(table='subject', provenance = True)` will return the subject table joined to a table of provenance info (original data center, IDs, etc)
 
-If you want to join information from more than two tables, you will need to do that outside of cda-python. We have constrained the number of automatic joins cda-python can provide because multi-table joins require more supervision to provide accurate answers. Depending on what specific data you have searched, it can be very easy to introduce false joins. However, supervised joins are relatively easy to do using Pandas. If you are joining three or more tables, we recommend running a search for the most specific table joined to each of your less specific tables in turn, and then using pandas to join in the appropriate directions using as many overlapping variables as possible. For instance, to build the data for our [interactive table](../../../interactive/) we join data from subject, researchsubject, diagnosis, provenance, and specimen. 
+#### join more than two tables
+
+If you want to join information from more than two tables, you will need to do that outside of cda-python. We have constrained the number of automatic joins cda-python can provide because multi-table joins require more supervision to provide accurate answers. Depending on what specific data you have searched, it can be very easy to introduce false joins. However, supervised joins are relatively easy to do using Pandas. If you are joining three or more tables, we recommend running a search for the most specific table joined to each of your less specific tables in turn, and then using pandas to join in the appropriate directions using as many overlapping variables as possible. For instance, to join researchsubject, specimen, and file run:
 
 ```
-fetch_rows(table='subject', link_to_table="researchsubject", output_file="subjectresearchsubject.tsv", return_data_as='tsv')
-fetch_rows(table='researchsubject', provenance=True, output_file="rsprov.tsv", return_data_as='tsv')
-fetch_rows(table='researchsubject', link_to_table = 'diagnosis',  output_file="rsdiagnosis.tsv", return_data_as='tsv')
-fetch_rows(table='researchsubject', link_to_table="specimen", output_file="rsspecimen.tsv", return_data_as='tsv')
+myspecimens = fetch_rows(table='researchsubject', ... , link_to_table='specimen')
+myfiles = fetch_rows(table='researchsubject', ... , link_to_table='file')
 ```
+and join using all of the researchsubject columns `myspecimens.join(myfiles, how='left', validate = 
+
 
 3. 
