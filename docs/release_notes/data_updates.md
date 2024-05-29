@@ -9,10 +9,10 @@ status: new
 
 ### Data extraction and release information
 
-GDC data version 40.0
-PDC data version 4.1
-IDC data version v18
-CDS data version 9.0
+- GDC data version 40.0
+- PDC data version 4.1
+- IDC data version v18
+- CDS data version 9.0
 
 #### Known Issues
 
