@@ -101,7 +101,7 @@ See [summary_counts](../man_pages/summary_counts/) for more details
 
 - new: `data_source` restrict the results to a data_source(s), e.g. `data_source=['GDC', 'IDC']`
 
-- new: `link_to_table=<table>` will return your results joined to the specifed table
+- new: `link_to_table=<table>` will return your results joined to the specified table
 
 - new: `provenance=<True/False>` will return your results expanded to show which data_source each row came from, and the accompanying identifiers
 

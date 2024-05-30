@@ -668,7 +668,7 @@ components:
       name: count
       schema:
         type: boolean
-      description: Show the number of occurances for each value
+      description: Show the number of occurrences for each value
     IncludeResultsCount:
       in: query
       name: includeCount
