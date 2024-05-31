@@ -51,13 +51,4 @@ Similarly, if you just want to get data about where we got the data, you can hav
 
 #### join more than two tables
 
-If you want to join information from more than two tables, you will need to do that outside of cda-python. We have constrained the number of automatic joins cda-python can provide because multi-table joins require more supervision to provide accurate answers. Depending on what specific data you have searched, it can be very easy to introduce false joins. However, supervised joins are relatively easy to do using Pandas. If you are joining three or more tables, we recommend running a search for the most specific table joined to each of your less specific tables in turn, and then using pandas to join in the appropriate directions using as many overlapping variables as possible. For instance, to join researchsubject, specimen, and file run:
-
-```
-myspecimens = fetch_rows(table='researchsubject', ... , link_to_table='specimen')
-myfiles = fetch_rows(table='researchsubject', ... , link_to_table='file')
-```
-and join using all of the researchsubject columns `myspecimens.join(myfiles, how='left', validate = 
-
-
-3. 
+If you want to join information from more than two tables, you will need to do that outside of cda-python. We have constrained the number of automatic joins cda-python can provide because multi-table joins require more supervision to provide accurate answers. Depending on what specific data you have searched, it can be very easy to introduce false joins. However, supervised joins are relatively easy to do using Pandas. If you are joining three or more tables, we recommend running a search for the most specific table joined to each of your less specific tables in turn, and then using pandas to join in the appropriate directions using as many overlapping variables as possible. 
