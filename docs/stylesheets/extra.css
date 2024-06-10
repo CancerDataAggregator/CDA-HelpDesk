@@ -19,11 +19,13 @@
 .dt-container {
   --dt-html-background: #ddd;
   --background-color: #ddd;
+  --color-scheme: light;
 }
 
 .dtsb-searchBuilder {
   --dt-html-background: #ddd;
   --background-color: #ddd;
+  --color-scheme: light;
 }
 
 /* Maximum space for text block */
