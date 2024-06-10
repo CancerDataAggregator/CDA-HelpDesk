@@ -29,7 +29,7 @@
 }
 
 
-.html.dark div.dtsb-searchBuilder button.dtsb-button, html.dark div.dtsb-searchBuilder select.dtsb-dropDown, html.dark div.dtsb-searchBuilder input.dtsb-input {
+html.dark div.dtsb-searchBuilder button.dtsb-button, html.dark div.dtsb-searchBuilder select.dtsb-dropDown, html.dark div.dtsb-searchBuilder input.dtsb-input {
   --background-color: #ddd;
 }
 
