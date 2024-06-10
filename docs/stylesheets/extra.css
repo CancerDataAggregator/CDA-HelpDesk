@@ -25,7 +25,7 @@ div.dtsb-searchBuilder {
   --dt-html-background: #3a20e4;
   --background-color: #c81d1d;
   select.dtsb-dropDown {
-    --background-color: #e6f513;  
+    --dt-html-background: #e6f513;  
 
   }
 }
