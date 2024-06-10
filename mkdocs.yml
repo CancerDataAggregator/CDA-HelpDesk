@@ -58,6 +58,8 @@ plugins:
       include_source: True
       execute: True
       allow_errors: False
+      execute_ignore:
+          - "documentation/cdapython/vignettes/*.ipynb"
 
 markdown_extensions:
 
