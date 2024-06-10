@@ -17,8 +17,8 @@
 }
 
 .dt-container {
-  --dt-html-background: #ddd
-  --background-color: #ddd
+  --dt-html-background: #ddd;
+  --background-color: #ddd;
 }
 
 /* Maximum space for text block */
