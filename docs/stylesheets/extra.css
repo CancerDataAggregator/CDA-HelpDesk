@@ -17,18 +17,17 @@
 }
 
 .dt-container {
-  --dt-html-background: #ddd;
-  --background-color: #ddd;
+  --dt-html-background: #bc0f94;
+  --background-color: #19ec0e;
 }
 
-.dtsb-criteria {
-  --dt-html-background: #ddd;
-  --background-color: #ddd;
-}
+div.dtsb-searchBuilder {
+  --dt-html-background: #3a20e4;
+  --background-color: #c81d1d;
+  select.dtsb-dropDown {
+    --background-color: #e6f513;  
 
-
-html.dark div.dtsb-searchBuilder button.dtsb-button, html.dark div.dtsb-searchBuilder select.dtsb-dropDown, html.dark div.dtsb-searchBuilder input.dtsb-input {
-  --background-color: #ddd;
+  }
 }
 
 
