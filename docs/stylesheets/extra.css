@@ -16,6 +16,24 @@
   --md-primary-fg-color: hsla(var(--md-hue), 70%, 36%, 1);
 }
 
+.dt-container {
+  --dt-html-background: #ddd;
+  --background-color: #ddd;
+  --color-scheme: light;
+}
+
+.dtsb-searchBuilder {
+  --dt-html-background: #ddd;
+  --background-color: #ddd;
+  --color-scheme: light;
+}
+
+
+html.dark div.dtsb-searchBuilder button.dtsb-button, html.dark div.dtsb-searchBuilder select.dtsb-dropDown, html.dark div.dtsb-searchBuilder input.dtsb-input {
+  --background-color: #ddd;
+}
+
+
 /* Maximum space for text block */
 .md-grid {
   max-width: 100%; /* or 100%, if you want to stretch to full-width */
