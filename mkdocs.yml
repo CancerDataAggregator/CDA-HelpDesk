@@ -10,19 +10,7 @@ theme:
   font:
     text: noto sans
   docs_dir: docs
-  palette: 
-
-    # Palette toggle for light mode
-    - scheme: default
-      toggle:
-        icon: material/brightness-7 
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+  palette: slate
   features:
     - toc.integrate
     - navigation.tabs
@@ -58,6 +46,8 @@ plugins:
       include_source: True
       execute: True
       allow_errors: False
+      execute_ignore:
+          - "documentation/cdapython/vignettes/00[2-9]*.ipynb"
 
 markdown_extensions:
 
