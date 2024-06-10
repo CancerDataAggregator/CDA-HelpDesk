@@ -137,6 +137,5 @@ nav:
     - about_us/ourdata.md
     - about_us/how_we_etal.md
     - Release Notes:
-      - release_notes/index.md
       - release_notes/cdapython.md
       - release_notes/data_updates.md

@@ -1,6 +1,7 @@
 
 :root {
   --md-hue: 260
+  --dt-html-background: #ddd
 }
 
 :root {
@@ -41,3 +42,4 @@
   mask-image: var(--md-status--wip);
   -webkit-mask-image: var(--md-status--wip);
 }
+
