@@ -1,7 +1,6 @@
 
 :root {
   --md-hue: 260
-  --dt-html-background: #ddd
 }
 
 :root {
@@ -18,19 +17,47 @@
 
 .dt-container {
   --dt-html-background: #ddd;
-  --background-color: #ddd;
-  --color-scheme: light;
+}
+.dt-container {
+  --dt-html-background: #ddd !important;
+
 }
 
-.dtsb-searchBuilder {
-  --dt-html-background: #ddd;
-  --background-color: #ddd;
-  --color-scheme: light;
-}
-
-
-html.dark div.dtsb-searchBuilder button.dtsb-button, html.dark div.dtsb-searchBuilder select.dtsb-dropDown, html.dark div.dtsb-searchBuilder input.dtsb-input {
-  --background-color: #ddd;
+div.dtsb-searchBuilder{
+  div.dtsb-titleRow {
+    button.dtsb-clearAll.dtsb-button {
+      background-color: #ddd !important
+    }
+  }
+  div.dtsb-group {
+    div.dtsb-logicContainer{
+      button.dtsb-logic{
+        background-color: #ddd !important
+      }
+      button.dtsb-clearGroup {
+        background-color: #ddd !important
+      }
+    }
+    
+    div.dtsb-criteria {
+      select.dtsb-data {
+        background-color: #ddd !important
+      }
+      select.dtsb-condition {
+        background-color: #ddd !important
+      }
+      div.dtsb-inputCont > input.dtsb-value {
+        background-color: #ddd !important
+      }
+      div.dtsb-buttonContainer > button.dtsb-delete {
+        background-color: #ddd !important
+      }
+    }
+    
+    button.dtsb-add.dtsb-button {
+      background-color: #ddd !important
+    }
+  }
 }
 
 
