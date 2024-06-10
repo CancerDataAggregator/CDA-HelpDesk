@@ -16,6 +16,11 @@
   --md-primary-fg-color: hsla(var(--md-hue), 70%, 36%, 1);
 }
 
+.dt-container {
+  --dt-html-background: #ddd
+  --background-color: #ddd
+}
+
 /* Maximum space for text block */
 .md-grid {
   max-width: 100%; /* or 100%, if you want to stretch to full-width */
