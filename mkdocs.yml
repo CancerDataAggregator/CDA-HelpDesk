@@ -47,7 +47,7 @@ plugins:
       execute: True
       allow_errors: False
       execute_ignore:
-          - "documentation/cdapython/vignettes/*.ipynb"
+          - "documentation/cdapython/vignettes/00[2-9]*.ipynb"
 
 markdown_extensions:
 
