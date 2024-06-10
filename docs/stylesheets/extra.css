@@ -16,47 +16,46 @@
 }
 
 .dt-container {
-  --dt-html-background: #bc0f94;
-  --background-color: #19ec0e;
+  --dt-html-background: #ddd;
 }
 .dt-container {
-  --dt-html-background: #ff0000 !important;
+  --dt-html-background: #ddd !important;
 
 }
 
 div.dtsb-searchBuilder{
   div.dtsb-titleRow {
     button.dtsb-clearAll.dtsb-button {
-      background-color: red !important
+      background-color: #ddd !important
     }
   }
   div.dtsb-group {
     div.dtsb-logicContainer{
       button.dtsb-logic{
-        background-color: red !important
+        background-color: #ddd !important
       }
       button.dtsb-clearGroup {
-        background-color: red !important
+        background-color: #ddd !important
       }
     }
     
     div.dtsb-criteria {
       select.dtsb-data {
-        background-color: red !important
+        background-color: #ddd !important
       }
       select.dtsb-condition {
-        background-color: red !important
+        background-color: #ddd !important
       }
       div.dtsb-inputCont > input.dtsb-value {
-        background-color: red !important
+        background-color: #ddd !important
       }
       div.dtsb-buttonContainer > button.dtsb-delete {
-        background-color: red !important
+        background-color: #ddd !important
       }
     }
     
     button.dtsb-add.dtsb-button {
-      background-color: red !important
+      background-color: #ddd !important
     }
   }
 }
