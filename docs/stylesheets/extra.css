@@ -19,13 +19,11 @@
 .dt-container {
   --dt-html-background: #ddd;
   --background-color: #ddd;
-  --color-scheme: light;
 }
 
-.dtsb-searchBuilder {
+.dtsb-criteria {
   --dt-html-background: #ddd;
   --background-color: #ddd;
-  --color-scheme: light;
 }
 
 
