@@ -35,6 +35,7 @@ The Integrated Canine Data Commons (ICDC) is a cloud-based repository of spontan
 
 The ISB Cancer Gateway in the Cloud (ISB-CGC) is one of three National Cancer Institute (NCI) Cloud Resources tasked with bringing cancer data and computation power together through cloud platforms. ISB-CGC enables a wide range of users to bring their analysis tools to the data in the cloud, eliminating the need to download and store large data sets. ISB-CGC hosts open access derived data from GDC and PDC such as TCGA, CPTAC, and TARGET in Google BigQuery tabular formatted data tables that can be accessed programmatically and through interactive web-based applications.
 
-- [Data Standards Services (DSS)](https://datascience.cancer.gov/data-commons/data-standards-services)
-  The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for:
-   ethnicity, file_format, morphology,primary_diagnosis, race, species, therapeutic_agent, source_material_type (cancer/normal), treatment_type, and vital_status.
+- [Data Standards Services (DSS):octicons-link-external-16:](https://datascience.cancer.gov/data-commons/data-standards-services)
+The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for: ethnicity, file_format, morphology, primary_diagnosis, race, species, therapeutic_agent, source_material_type (cancer/normal), treatment_type, and vital_status.
+
+
