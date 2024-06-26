@@ -6,6 +6,21 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
+## Available June 26, 2024
+
+cdapython version 2024.1.3
+API version 2024.1.1
+
+### Highlights:
+
+- Fixed issue where somatic_mutation query was returning incorrect results
+- Fixed some performance issues with somatic_mutation queries
+- Renamed somatic_mutation table to mutation
+
+
+We discovered incorrect results coming from queries involving the somatic_mutation table. This was caused by the table not having its own id/primary key, instead relying on the subject_alias. This was a deviation from how every other data table was structured, therefore certain queries would fall apart. Changes were made to the data model to structure the newly named "mutation" table to mirror every other table. Due to this change, we needed to simply remove certain code from the API that was added in an attempt handle quirks with the original somatic_mutation table as well as update a few things within the cdapython client.
+
+
 ## Available May 29, 2024
 
 - Summary value data has been reformatted for easier reading
@@ -231,7 +246,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 Version 3.0 is a full rewrite of our code and older versions of cdapython are no longer maintained or supported.
 If you'd like to see how the project has evolved, you can still access the their documentation here:
 
-- [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html)
-- [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html)
+- [2.0](https://github.com/CancerDataAggregator/CDA-HelpDesk/blob/2.0/docs/source/ReleaseNotes.md)
+- [2.1](https://github.com/CancerDataAggregator/CDA-HelpDesk/blob/2.1/docs/source/ReleaseNotes.md)
 
 <!-- Footnotes themselves at the bottom. -->

@@ -39,6 +39,13 @@ title:  Search made simple
     from cdapython import tables, columns, column_values, fetch_rows, summary_counts
     ```
 
+-   :fontawesome-brands-python:{ .lg .middle } __Code in the Cloud__
+
+    ---
+
+    Bring lists of files or subjects found with CDA to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
+
+
 -   :simple-swagger:{ .lg .middle } __Developers__
 
     ---

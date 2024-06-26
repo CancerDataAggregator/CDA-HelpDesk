@@ -27,7 +27,15 @@ The CDS provides data storage and sharing capabilities for NCI-funded studies th
 
 CDS currently hosts a variety of data types from NCI projects such as the Human Tumor Atlas Network (HTAN), Division of Cancer Control and Population Sciences (DCCPS), and Childhood Cancer Data Initiative (CCDI) as well as data from independent research projects. The CDS is home to both open and controlled access data.
 
+- ![](../images/integrated-canine-data-commons-icdc_0.png)[Integrated Canine Data Commons:octicons-link-external-16:](https://caninecommons.cancer.gov/#/explore){:target="_blank"}
 
-- [Data Standards Services (DSS)](https://datascience.cancer.gov/data-commons/data-standards-services)
-  The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for:
-   ethnicity, file_format, morphology,primary_diagnosis, race, species, therapeutic_agent, source_material_type (cancer/normal), treatment_type, and vital_status.
+The Integrated Canine Data Commons (ICDC) is a cloud-based repository of spontaneously-arising canine cancer data. ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. The data in the ICDC is sourced from multiple different programs and projects; all focused on canine subjects. The data is harmonized into an integrated data model and then made available to the research community. 
+
+- ![](../images/isb-cancer-gateway-in-the-cloud.png)[ISB Cancer Gateway in the Cloud:octicons-link-external-16:](https://www.isb-cgc.org/){:target="_blank"}
+
+The ISB Cancer Gateway in the Cloud (ISB-CGC) is one of three National Cancer Institute (NCI) Cloud Resources tasked with enabling researchers to combine cancer data and cloud computation. The ISB-CGC cloud resource hosts data from a variety of sources such as HTAN and TCGA, CPTAC, and TARGET from the GDC and PDC in Google BigQuery columnar data tables. This includes file, case, clinical, and open access derived data that can be accessed both programmatically and through interactive web applications, eliminating the need to download and store large data sets.
+
+- [Data Standards Services (DSS):octicons-link-external-16:](https://datascience.cancer.gov/data-commons/data-standards-services)
+The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for: ethnicity, file_format, morphology, primary_diagnosis, race, species, therapeutic_agent, source_material_type (cancer/normal), treatment_type, and vital_status.
+
+

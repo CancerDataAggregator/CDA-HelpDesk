@@ -5,6 +5,19 @@ status: new
 
 # Public releases
 
+## Available June 26, 2024
+
+### Data extraction and release information
+
+CDA data version 2024-06
+Extracted Fri June 21 2024 :
+
+- CDS v10.0
+- GDC v40.0
+- ICDC v4.0.0
+- IDC v18
+- PDC v4.1
+
 ## Available May 29, 2024
 
 ### Data extraction and release information

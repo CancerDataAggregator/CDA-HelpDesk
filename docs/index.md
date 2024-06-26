@@ -19,7 +19,7 @@ title:  Search made simple
 
     ---
 
-    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
+    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} to run pre-built pipelines and analyze your data in simple point and click interfaces. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever touching the command line.*<p>
 <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
 </a></p>
 
@@ -38,6 +38,14 @@ title:  Search made simple
     ```python
     from cdapython import tables, columns, column_values, fetch_rows, summary_counts
     ```
+
+-   :fontawesome-brands-python:{ .lg .middle } __Code in the Cloud__
+
+    ---
+
+    Bring lists of files or subjects found with CDA to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
+
+
 
 -   :simple-swagger:{ .lg .middle } __Developers__
 

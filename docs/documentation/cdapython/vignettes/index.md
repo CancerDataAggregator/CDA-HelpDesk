@@ -3,12 +3,14 @@ You can think of the CDA as a really, really enormous spreadsheet full of data. 
 
 <div class="cdanote" style="background-color:#b3e5d5;color:black;padding:20px;">
     
-CDA data comes from four sources:
+CDA data comes from six sources:
 <ul>
 <li><b>The <a href="https://proteomic.datacommons.cancer.gov/pdc/"> Proteomic Data Commons</a> (PDC)</b></li>
 <li><b>The <a href="https://gdc.cancer.gov/">Genomic Data Commons</a> (GDC)</b></li>
 <li><b>The <a href="https://datacommons.cancer.gov/repository/imaging-data-commons">Imaging Data Commons</a> (IDC)</b></li>
-<li><b>The <a href="https://dataservice.datacommons.cancer.gov/#/home">Cancer Data Service</a> (CDS)</b></li> 
+<li><b>The <a href="https://dataservice.datacommons.cancer.gov/#/home">Cancer Data Service</a> (CDS)</b></li>
+<li><b>The <a href="https://caninecommons.cancer.gov/#/explore">Integrated Canine Data Commons</a> (ICDC)</b></li>
+<li><b>The <a href="https://www.isb-cgc.org/">ISB Cancer Gateway in the Cloud</a> (ISB-CGC)</b></li>
 </ul> 
     
 The CDA makes this data searchable in five main endpoints:
