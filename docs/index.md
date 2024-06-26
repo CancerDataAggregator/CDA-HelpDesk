@@ -43,7 +43,7 @@ title:  Search made simple
 
     ---
 
-    Take your file list or cohort of identifiers from cdapython to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access the file data for input into your own processing pipelines, locally or using their free cloud credit program to build your own custom cloud architecture.
+    Take your file list or cohort of identifiers from cdapython to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access the file data for input into your own processing pipelines to be run on the cloud, or use their open access derived tabular data to kickstart your analysis. ISB-CGC offers a free cloud credit program to fund your compute, or you can use your own Google Cloud Platform account.
 
 
 
