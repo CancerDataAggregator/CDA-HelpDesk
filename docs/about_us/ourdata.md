@@ -27,6 +27,13 @@ The CDS provides data storage and sharing capabilities for NCI-funded studies th
 
 CDS currently hosts a variety of data types from NCI projects such as the Human Tumor Atlas Network (HTAN), Division of Cancer Control and Population Sciences (DCCPS), and Childhood Cancer Data Initiative (CCDI) as well as data from independent research projects. The CDS is home to both open and controlled access data.
 
+- ![](../images/integrated-canine-data-commons-icdc_0.png)[Integrated Canine Data Commons:octicons-link-external-16:](https://caninecommons.cancer.gov/#/explore){:target="_blank"}
+
+The Integrated Canine Data Commons (ICDC) is a cloud-based repository of spontaneously-arising canine cancer data. ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. The data in the ICDC is sourced from multiple different programs and projects; all focused on canine subjects. The data is harmonized into an integrated data model and then made available to the research community. 
+
+- ![](../images/isb-cancer-gateway-in-the-cloud.png)[ISB Cancer Gateway in the Cloud:octicons-link-external-16:](https://www.isb-cgc.org/){:target="_blank"}
+
+The ISB Cancer Gateway in the Cloud (ISB-CGC) is one of three National Cancer Institute (NCI) Cloud Resources tasked with bringing cancer data and computation power together through cloud platforms. ISB-CGC enables a wide range of users to bring their analysis tools to the data in the cloud, eliminating the need to download and store large data sets. ISB-CGC hosts data from GDC and PDC such as TCGA, CPTAC, and TARGET in Google BigQuery tables that can be accessed programmatically and through interactive web-based applications.
 
 - [Data Standards Services (DSS)](https://datascience.cancer.gov/data-commons/data-standards-services)
   The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for:
