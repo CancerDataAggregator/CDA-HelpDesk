@@ -18,7 +18,7 @@ API version 2024.1.1
 - Renamed somatic_mutation table to mutation
 
 
-We discovered incorrect results coming from queries involving the somatic_mutation table. This was caused by the table not having it's own id/primary key, instead relying on the subject_alias. This was a deviation from how every other data table was structured, therefore certain queries would fall apart. Changes were made to the data model to structure the newly named "mutation" table to mirror every other table. Due to this change, we needed to simply remove certain code from the API that was added in an attempt handle quirks with the original somatic_mutation table as well as update a few things within the cdapython client.
+We discovered incorrect results coming from queries involving the somatic_mutation table. This was caused by the table not having its own id/primary key, instead relying on the subject_alias. This was a deviation from how every other data table was structured, therefore certain queries would fall apart. Changes were made to the data model to structure the newly named "mutation" table to mirror every other table. Due to this change, we needed to simply remove certain code from the API that was added in an attempt handle quirks with the original somatic_mutation table as well as update a few things within the cdapython client.
 
 
 ## Available May 29, 2024
