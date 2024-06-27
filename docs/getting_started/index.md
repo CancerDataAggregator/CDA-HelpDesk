@@ -44,7 +44,8 @@ title:  Search made simple
     ---
 
     Bring lists of files or subjects found with CDA to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
-
+    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/005_isbcgc.ipynb" title="isbcgcusecase" class="md-button md-button">Test it out on Google Colab
+</a></p>
 
 -   :simple-swagger:{ .lg .middle } __Developers__
 
