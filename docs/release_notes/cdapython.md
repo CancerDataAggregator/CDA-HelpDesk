@@ -6,6 +6,19 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
+## Available July 11, 2024
+
+cdapython version 2024.1.4
+API version 2024.1.1
+
+### Highlights:
+
+- Hotfix to resolve issues when using the summary_counts() function with the mutation table
+
+
+We discovered a problem when attempting to use the summary_counts() function with the mutation table. Attempting this would always result in an error. This was caused by an oversight in the code when we made the change from somatic_mutation to mutation in the previous release. The issue has been resolved.
+
+
 ## Available June 26, 2024
 
 cdapython version 2024.1.3
