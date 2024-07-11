@@ -16,7 +16,7 @@ API version 2024.1.1
 - Hotfix to resolve issues when using the summary_counts() function with the mutation table
 
 
-We discovered a problem when attempting to use the summary_counts() function with the mutation table. Attempting this would always result in an error. This was caused by an oversite in the code when we made the change from somatic_mutation to mutation in the previous release. The issue has been resolved.
+We discovered a problem when attempting to use the summary_counts() function with the mutation table. Attempting this would always result in an error. This was caused by an oversight in the code when we made the change from somatic_mutation to mutation in the previous release. The issue has been resolved.
 
 
 ## Available June 26, 2024
