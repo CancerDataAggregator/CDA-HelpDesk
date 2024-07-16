@@ -6,7 +6,7 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
-## Available July 11, 2024
+## Available July 16, 2024
 
 cdapython version 2024.1.4
 API version 2024.1.2
