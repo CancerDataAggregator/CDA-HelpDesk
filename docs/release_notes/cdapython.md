@@ -6,6 +6,23 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
+## Available July 16, 2024
+
+cdapython version 2024.1.4
+API version 2024.1.2
+
+### Highlights:
+
+- Hotfix to resolve issues when querying against BIGINT typed columns. 
+
+
+We discovered a problem when attempting to apply filters against BIGINT typed columns (ex. file byte_size). This was resolved and all queries not noted in the previous known issues should be runnable. 
+
+### Known Issues
+
+- The generated query string returned from the API will always show the filter value in quotes even if it is not a quoted value (ex. " byte_size > 20 " will be presented as " byte_size < '20' "). This is just an issue presenting the values in the query as a string and not what is actually queried to the database.
+
+
 ## Available July 11, 2024
 
 cdapython version 2024.1.4
