@@ -1,4 +1,5 @@
 [^/]\.ipynb$
 ^(.+\/)?[^\.].*\.(jpg|jpeg|gif|png|svg)$
+^\Q.github/actions/spelling/expect.txt\E$
 ^\Qdocs/documentation/cdapython/vignettes/mydatafile.tsv\E$
 ^docs\/images\/[^\.].*\..+$
