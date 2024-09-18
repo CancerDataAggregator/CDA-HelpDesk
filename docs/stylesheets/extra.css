@@ -80,7 +80,7 @@ div.dtsb-searchBuilder{
   max-width: 400px;
   min-height: 300px;
   border: 10px solid var(--md-primary-fg-color);
-  
+}
 
   
 .md-status--wip::after {
@@ -88,3 +88,6 @@ div.dtsb-searchBuilder{
   -webkit-mask-image: var(--md-status--wip);
 }
 
+.md-banner {
+  color: #c22020;
+}

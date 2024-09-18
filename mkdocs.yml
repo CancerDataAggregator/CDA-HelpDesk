@@ -44,7 +44,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: True
+      execute: False
       allow_errors: False
 
 markdown_extensions:
