@@ -88,8 +88,6 @@ div.dtsb-searchBuilder{
   -webkit-mask-image: var(--md-status--wip);
 }
 
-.block {
-  .announce {
-    background-color: #c51313;
-  };
+.md-banner {
+  color: #c22020;
 }
