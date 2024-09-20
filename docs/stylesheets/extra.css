@@ -87,7 +87,3 @@ div.dtsb-searchBuilder{
   mask-image: var(--md-status--wip);
   -webkit-mask-image: var(--md-status--wip);
 }
-
-.md-banner {
-  color: #c22020;
-}
