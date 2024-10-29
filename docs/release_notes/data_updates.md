@@ -5,6 +5,18 @@ status: new
 
 # Public releases
 
+## Available August 27, 2024
+
+### Data extraction and release information
+
+CDA data version 2024-08
+
+- GDC data release 40.0 extracted 2024-08-18
+- PDC data release 4.3 extracted 2024-08-18
+- IDC data release v18 extracted 2024-08-18
+- CDS data release 12.0 extracted 2024-08-14
+- ICDC data release 2023-10-16 extracted 2024-08-18
+
 ## Available July 23, 2024
 
 ### Data extraction and release information
@@ -12,11 +24,11 @@ status: new
 CDA data version 2024-07
 Extracted July 18, 2024:
 
-GDC data release 40.0; API version 4.0.0 tag 7.3
-PDC data release 4.2; API version 3.0.4.1
-IDC data release v18
-CDS data release 11.0; front-end version 4.2.0.269
-ICDC data release 2023-10-16; front-end version 4.0.0.181
+- GDC data release 40.0; API version 4.0.0 tag 7.3
+- PDC data release 4.2; API version 3.0.4.1
+- IDC data release v18
+- CDS data release 11.0; front-end version 4.2.0.269
+- ICDC data release 2023-10-16; front-end version 4.0.0.181
 
 ## Available June 26, 2024
 
