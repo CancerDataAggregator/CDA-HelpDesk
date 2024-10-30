@@ -5,7 +5,7 @@ status: new
 
 # Public releases
 
-## Avaliable October 29, 2024
+## Available October 29, 2024
 
 ### Data extraction and release information
 
