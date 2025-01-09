@@ -7,11 +7,10 @@ status: new
 
 ## Available December 20, 2024
 - GDC data release [41.0](https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/); API version [7.5.1](https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes) (extracted 2024-11-19)
-  - GDC introduced breaking changes into its data model between our November extraction and our mid-December extraction attempt
-  - 18 diagnosis fields were removed
-  - [release notes](https://docs.gdc.cancer.gov/Data_Portal/Release_Notes/Data_Portal_Release_Notes/#release-231) may not give full field list; complete changelog estimate currently under way
-  - GDC data in CDA's December release is thus based on the extracted instance of v41.0 from November, while we adjust our ETL
-
+    - GDC introduced breaking changes into its data model between our November extraction and our mid-December extraction attempt
+    - 18 diagnosis fields were removed
+    - [release notes](https://docs.gdc.cancer.gov/Data_Portal/Release_Notes/Data_Portal_Release_Notes/#release-231) may not give full field list; complete changelog estimate currently under way
+    - GDC data in CDA's December release is thus based on the extracted instance of v41.0 from November, while we adjust our ETL
 - PDC data release [4.4](https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm); API version [3.0.15](https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm) (extracted 2024-12-17)
 - IDC data release [v20](https://learn.canceridc.dev/data/data-release-notes) (extracted 2024-12-17)
 - CDS data release [15.0](https://dataservice.datacommons.cancer.gov/#/releases) (from most recent dump file provided to us by CDS -- received 2024-12-18)
