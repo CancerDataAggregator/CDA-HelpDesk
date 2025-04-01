@@ -1,6 +1,8 @@
 ---
-title:  Welcome AACR attendees!
+title:  Welcome
 ---
+
+# Welcome AACR Attendees
 
 Thank you for coming to check out the Cancer Data Aggregator. Use the links below to get started:
 
