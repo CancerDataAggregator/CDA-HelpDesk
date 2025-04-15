@@ -24,7 +24,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 <div class="grid cards" markdown>
     
 -   <figure>
-    <img src="BingxingHuo-bio.png" width="100" height="100"
+    <img src="../images/BingxingHuo-bio.png" width="100" height="100"
          alt="Bing-Xing Huo">
     <figcaption>Bing-Xing Huo<p>Principal Investigator - Broad</figcaption>
 </figure>
