@@ -22,7 +22,13 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 ## Our team
 
 <div class="grid cards" markdown>
-
+    
+-   <figure>
+    <img src="../images/BingxingHuo-bio.png" width="100" height="100"
+         alt="Bing-Xing Huo">
+    <figcaption>Bing-Xing Huo<p>Principal Investigator - Broad</figcaption>
+</figure>
+    
 -   <figure>
     <img src="../images/arthur.png" width="100" height="100"
          alt="Arthur Brady">
@@ -48,6 +54,24 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
     <figcaption>Tanner Coon <p>Developer</figcaption>
 </figure>
 
+
+-   <figure>
+    <img src="../images/surya.jpeg" width="100" height="100"
+         alt="Surya Saha">
+    <figcaption>Surya Saha <p>Project Manager - Velsera</figcaption>
+</figure>
+
+
+-   <figure>
+    <img src="../images/jack.png" width="100" height="100"
+         alt="Jack DiGiovanna">
+    <figcaption>Jack DiGiovanna <p>Principal Investigator - Velsera</figcaption>
+</figure>
+</div>
+
+## Alumni
+
+<div class="grid cards" markdown>
 -   <figure>
     <img src="../images/finny.jpg" width="100" height="100"
          alt="Finny Thomas">
@@ -71,22 +95,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
          alt="Alex Baumann">
     <figcaption>Alex Baumann <p>Principal Investigator - Broad</figcaption>
 </figure>
-
-
--   <figure>
-    <img src="../images/surya.jpeg" width="100" height="100"
-         alt="Surya Saha">
-    <figcaption>Surya Saha <p>Project Manager - Velsera</figcaption>
-</figure>
-
-
--   <figure>
-    <img src="../images/jack.png" width="100" height="100"
-         alt="Jack DiGiovanna">
-    <figcaption>Jack DiGiovanna <p>Principal Investigator - Velsera</figcaption>
-</figure>
 </div>
-
 
 ## Funding
 
