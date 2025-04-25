@@ -15,4 +15,3 @@ Interactive versions of those notebooks can be used at this link:
 
 [Google Colab Notebooks](https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb)
 
-
