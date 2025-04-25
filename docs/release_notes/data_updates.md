@@ -5,9 +5,9 @@ status: new
 
 # Public releases
 
-## Available April
+## Available April 25, 2025
 
-p>CDA April 2025 release notes:</p>
+<p>CDA April 2025 release notes:</p>
 <ul>
     <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">42.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.8.5</a>&nbsp;(extracted 2025-04-22)</li>
     <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.9</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.22</a>&nbsp;(extracted 2025-04-22)</li>
