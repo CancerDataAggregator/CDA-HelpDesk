@@ -7,7 +7,7 @@ title:  Search made simple
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Don't code? No problem!__
+-   :material-clock-fast:{ .lg .middle } __Don't code? No problem!__ 
 
     ---
 
