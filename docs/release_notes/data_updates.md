@@ -5,6 +5,17 @@ status: new
 
 # Public releases
 
+## Available June 24, 2025
+
+<p>CDA June 2025 release notes:</p>
+<ul>
+    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">43</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.9.1</a>&nbsp;(extracted 2025-06-19)</li>
+    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.11</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.26</a>&nbsp;(extracted 2025-06-19)</li>
+    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v21</a>&nbsp;(extracted 2025-05-20)</li>
+    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">17.0</a>&nbsp;(from most recent dump file provided to us by CDS -- received 2025-06-12)</li>
+    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0.361</a>&nbsp;(extracted 2025-06-19)</li>
+</ul>
+
 ## Available May 29, 2025
 
 <p>CDA May 2025 release notes:</p>
