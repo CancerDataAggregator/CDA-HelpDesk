@@ -27,9 +27,9 @@ theme:
     - search.highlight
     - search.share
     - content.code.annotate
-    - announce.dismiss
     - content.code.copy
     
+#    - announce.dismiss
 
 extra:
   status:
