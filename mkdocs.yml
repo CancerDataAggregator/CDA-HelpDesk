@@ -45,7 +45,7 @@ plugins:
               - hide_code
       include_source: True
       execute: True
-      allow_errors: True
+      allow_errors: False
 
 markdown_extensions:
 
