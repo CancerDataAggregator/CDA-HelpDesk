@@ -4,4 +4,3 @@ mkdocs-material-extensions
 mkdocs-jupyter
 itables
 git+https://github.com/CancerDataAggregator/cdapython.git
-git+https://github.com/CancerDataAggregator/cda-service-python-client.git
