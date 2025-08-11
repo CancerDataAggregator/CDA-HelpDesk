@@ -46,6 +46,7 @@ plugins:
       include_source: True
       execute: True
       allow_errors: False
+      ignore: ["documentation/cdapython/vignettes/005_TCIA.ipynb"]
 
 markdown_extensions:
 
