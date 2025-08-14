@@ -21,7 +21,8 @@ The column to fetch values from.
 ( string; optional:'dataframe'(default) or 'list' or 'tsv' ):
 Specify how `column_values()` should return results: as a pandas
 DataFrame, a Python list, or as output written to a TSV file named
-by the user.
+by the user. If this argument is omitted, column_values() will default
+to returning results as a DataFrame.
 
 ### output_file
 ( string; optional ):
@@ -60,18 +61,12 @@ filter string '' to match and count missing (null) values.
 
 ( string; optional ):
 Restrict returned values to the given upstream data source, such
-as 'GDC', 'IDC', 'PDC', or 'CDS'. Defaults to `''` (no filter).
+as 'GDC', 'PDC', 'IDC', 'CDS' and 'ICDC'. Defaults to `''` (no filter).
 
 ### force
 ( boolean; optional ): 
 Force execution of high-overhead queries on columns (like IDs)
-flagged as having large numbers of values. Defaults to False, in which case attempts
-to retrieve values for flagged columns will result in a warning.
-
-### debug
-( boolean; optional ): 
-If set to True, print internal process
-details to the standard error stream.
+flagged as having large numbers of values. Defaults to False, in which case attempts to retrieve values for flagged columns will result in a warning.
 
 ## Returns
 pandas.DataFrame 
