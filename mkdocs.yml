@@ -86,8 +86,20 @@ markdown_extensions:
   - pymdownx.tilde
 
 
+# CSS from DataTables + SearchBuilder via CDN
 extra_css:
-  - stylesheets/extra.css
+  - https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css
+  - https://cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css
+  - https://cdn.datatables.net/searchbuilder/1.4.0/css/searchBuilder.dataTables.min.css
+  - css/extra.css   
+
+# JavaScript from jQuery + DataTables + SearchBuilder via CDN
+extra_javascript:
+  - https://code.jquery.com/jquery-3.6.0.min.js
+  - https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js
+  - https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js
+  - https://cdn.datatables.net/searchbuilder/1.4.0/js/dataTables.searchBuilder.min.js
+  - js/script.js     
 
 
 
