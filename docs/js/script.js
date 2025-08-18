@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const table = document.querySelector("#interactiveTable");
+  const table = document.querySelector("#cdaaug2025");
   if (table) {
     $('#cdaaug2025').DataTable({
       layout: {
