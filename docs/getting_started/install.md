@@ -20,7 +20,7 @@ python versions >= 3.9
 1. In your terminal type:
 
   ```bash
-  pip install git+https://github.com/CancerDataAggregator/cdapython.git
+  pip install cdapython
   ```
 ## Terminal/Command line
 
@@ -32,7 +32,7 @@ python3
 and import the cdapython modules:
 
 ```python
-from cdapython import tables, columns, column_values,  fetch_rows, summary_counts
+from cdapython import *
 ```
 ## Interactive notebook
 
@@ -44,7 +44,7 @@ jupyter notebook
 This will launch an interactive notebook in your browser. Be sure to import the cdapython modules in your first notebook block:
 
 ```python
-from cdapython import tables, columns, column_values,  fetch_rows, summary_counts
+from cdapython import *
 ```
 
 

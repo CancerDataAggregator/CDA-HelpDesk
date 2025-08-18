@@ -6,6 +6,12 @@ status: new
 # Public releases
 <div id="fornews" markdown="1">
 
+## Available August 18, 2025
+
+New API: Streamlined, object-based query API that supports complex filter sets
+Improved cdapython with easier to read, subject and file based results tables, more intuitive query language, and support for joining data across multiple results
+
+
 ## Available July 16, 2024
 
 cdapython version 2024.1.4
