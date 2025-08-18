@@ -1,15 +1,14 @@
-// script.js
-$(document).ready(function () {
-  $('#cdaaug2025').DataTable({
-    layout: {
-      topStart: {
-        buttons: [
-          {
-            extend: 'searchBuilder',
-            text: 'Advanced Search'
-          }
-        ]
+document.addEventListener("DOMContentLoaded", function () {
+  const table = document.querySelector("#interactiveTable");
+  if (table) {
+    $('#cdaaug2025').DataTable({
+      layout: {
+        topStart: {
+          buttons: [
+            { extend: 'searchBuilder', text: 'Search / Filter' }
+          ]
+        }
       }
-    }
-  });
+    });
+  }
 });
