@@ -46,6 +46,7 @@ plugins:
       include_source: True
       execute: True
       allow_errors: False
+      ignore: ["documentation/cdapython/vignettes/005_TCIA.ipynb"]
 
 markdown_extensions:
 
@@ -86,8 +87,7 @@ markdown_extensions:
 
 
 extra_css:
-  - stylesheets/extra.css
-
+  - css/extra.css   
 
 
 nav:
@@ -99,18 +99,18 @@ nav:
     - Developer Tools: documentation/developers/index.md
   - Documentation:
     - Quick Reference: documentation/cdapython/man_pages/index.ipynb
+    - cda_functions(): documentation/cdapython/man_pages/cda_functions.md
     - tables(): documentation/cdapython/man_pages/tables.md
     - columns(): documentation/cdapython/man_pages/columns.md
     - column_values(): documentation/cdapython/man_pages/column_values.md
-    - summary_counts(): documentation/cdapython/man_pages/summary_counts.md
-    - fetch_rows(): documentation/cdapython/man_pages/fetch_rows.md
-    - update code from cdapython beta: documentation/cdapython/code_update.md
-    - FAQ: documentation/cdapython/man_pages/faq.md
+    - summarize_subjects(): documentation/cdapython/man_pages/summarize_subjects.md
+    - summarize_files(): documentation/cdapython/man_pages/summarize_files.md
+    - get_subject_data(): documentation/cdapython/man_pages/get_subject_data.md
+    - get_file_data(): documentation/cdapython/man_pages/get_file_data.md
     - Developer Tools:
       - documentation/developers/index.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
-    - FAQ: documentation/cdapython/man_pages/faq.md
     - Get a manifest of all CPTAC data: documentation/cdapython/vignettes/001_cptac.ipynb
     - View a summary of available .bam files: documentation/cdapython/vignettes/002_sum_bams.ipynb
     - Get a manifest of patients with both vcf and image files: documentation/cdapython/vignettes/003_vcf_image.ipynb
@@ -119,7 +119,6 @@ nav:
     - Find subjects using a file as search input: documentation/cdapython/vignettes/008_multidc-from-file.ipynb
   - Helpdesk:
     - helpdesk/index.md
-    - FAQ: documentation/cdapython/man_pages/faq.md
   - About Us:
     - about_us/index.md
     - about_us/ourdata.md
