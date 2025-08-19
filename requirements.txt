@@ -3,5 +3,4 @@ pymdown-extensions
 mkdocs-material-extensions
 mkdocs-jupyter
 itables
-git+https://github.com/CancerDataAggregator/cdapython.git@cda-new-api
-git+https://github.com/CancerDataAggregator/cda-service-python-client.git@fast_api
+cdapython
