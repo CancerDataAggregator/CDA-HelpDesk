@@ -1,5 +1,5 @@
 ---
-title:  Search made simple
+title:  Re-Search made simple
 ---
 
 <div class="center" markdown> <p>With CDA you search by harmonized, common language terms. Using simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, integrate into a pipeline or upload to your favorite cloud resource.</p></div>
@@ -31,12 +31,12 @@ title:  Search made simple
     and running in no time
 
     ```bash
-    pip install git+https://github.com/CancerDataAggregator/cdapython.git
+    pip install cdapython
     python3
     ```
 
     ```python
-    from cdapython import tables, columns, column_values, fetch_rows, summary_counts
+    from cdapython import *
     ```
 
 -   :fontawesome-brands-python:{ .lg .middle } __Code in the Cloud__
