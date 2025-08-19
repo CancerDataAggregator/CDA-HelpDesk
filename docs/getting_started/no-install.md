@@ -13,7 +13,7 @@ Launch a Jupyter Notebook with interactive, modifiable, example notebooks ready 
 Click this button to get started: [Try it now](https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb){ .md-button .md-button--primary}
 
 
-You can preview static versions of the [example notebooks here](../documentation/cdapython/vignettes/).
+You can preview static versions of the [example notebooks here](../documentation/cdapython/vignettes/index.md).
 
 
 ## About Google Colaboratory

@@ -53,7 +53,7 @@ title:  Re-Search made simple
 
     Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
-    [:octicons-arrow-right-24:**swagger documentation**](../documentation/developers/)
+    [:octicons-arrow-right-24:**swagger documentation**](../documentation/developers/index.md)
 
 -   :material-bell-alert-outline:{ .lg .middle } __What's new?__
 

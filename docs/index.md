@@ -53,7 +53,7 @@ title:  Re-Search made simple
 
     Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
-    [:octicons-arrow-right-24:**swagger documentation**](../documentation/developers/)
+    [:octicons-arrow-right-24:**swagger documentation**](documentation/developers/)
 
 -   :material-bell-alert-outline:{ .lg .middle } __What's new?__
 
@@ -61,8 +61,8 @@ title:  Re-Search made simple
 
     Recently Updated Pages:
 
-    - [Data Release](../release_notes/data_updates.md)
-    - [Code Release](../release_notes/cdapython.md)
+    - [Data Release](release_notes/data_updates.md)
+    - [Code Release](release_notes/cdapython.md)
 
 -   :simple-mysql:{ .lg .middle } __Need even more data?__
 
