@@ -11,6 +11,10 @@ status: new
 New API: Streamlined, object-based query API that supports complex filter sets
 Improved cdapython with easier to read, subject and file based results tables, more intuitive query language, and support for joining data across multiple results
 
+### Known Issues
+
+- `upstream_source` results are incorrectly linking some records. We recommend not using this field until the fix is implemented in our next code release
+
 
 ## Available July 16, 2024
 
