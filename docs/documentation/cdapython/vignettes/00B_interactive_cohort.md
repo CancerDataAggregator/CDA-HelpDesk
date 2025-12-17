@@ -1,7 +1,11 @@
----
-title: Video: Interactive Cohort Building
----
 
-# An introduction to building a cohort using the [CDA Interactive tool](../../../interactive/index.ipynb)
+ 
+<html> 
+<body> 
+<h1>A six minute overview of the Cancer Data Aggregator</h1>
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/364YoMFkoZgautoplay=0&mute=1">
+</iframe>
+</body>
+</html>
 
-[![Cohort Building part 1](https://img.youtube.com/vi/364YoMFkoZg/0.jpg)](https://www.youtube.com/watch?v=364YoMFkoZg)
