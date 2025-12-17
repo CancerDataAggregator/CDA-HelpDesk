@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+ 
 <html> 
 <body> 
 <h1>A six minute overview of the Cancer Data Aggregator</h1>
