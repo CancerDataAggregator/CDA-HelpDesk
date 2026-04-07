@@ -7,7 +7,7 @@ Get CDA file rows ('result rows') that match user-specified criteria.
 
 ```
 get_file_data(
-    *,
+    *search_terms,
     match_all=None,
     match_any=None,
     match_from_file={'input_file': '', 'input_column': '', 'cda_column_to_match': ''},
@@ -15,13 +15,20 @@ get_file_data(
     add_columns=None,
     exclude_columns=None,
     collate_results=False,
-    include_external_refs=False,
     return_data_as='dataframe',
     output_file=''
 )
 ```
 
 ## Arguments
+
+### search_terms
+( zero or more strings; optional: ):
+One or more search terms (including phrases), all of which must be
+associated with each result row. Users can add a wildcard character * to
+either or both ends of each search term to enable partial matches
+to longer values. Example:
+    get_file_data( 'kidney', 'adeno*', 'latino' )
 
 ### match_all 
 ( string or list of strings; optional ):
