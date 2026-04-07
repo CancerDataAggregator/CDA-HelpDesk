@@ -111,6 +111,7 @@ nav:
       - documentation/developers/index.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
+    - Global keyword search: documentation/cdapython/vignettes/011_global_search.ipynb
     - Video Intro to CDA: documentation/cdapython/vignettes/00A_intro_to_cda.md
     - Video Build a cohort interactively: documentation/cdapython/vignettes/00B_interactive_cohort.md
     - Video Cohort Building with cdapytho: documentation/cdapython/vignettes/00C_lowcode_cohort.md
@@ -120,6 +121,7 @@ nav:
     - View the cancer types for subjects over 50 at diagnosis: documentation/cdapython/vignettes/004_over50.ipynb
     - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/009_multidcsubject.ipynb
     - Find subjects using a file as search input: documentation/cdapython/vignettes/008_multidc-from-file.ipynb
+
   - Helpdesk:
     - helpdesk/index.md
   - About Us:
