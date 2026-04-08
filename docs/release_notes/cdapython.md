@@ -4,7 +4,11 @@ status: new
 ---
 
 # Public releases
-<div id="fornews" markdown="1">
+
+## Available April 7, 2026
+
+Global keyword search is now available on 'summarize_subjects', 'summarize_files', 'get_subject_data',
+and 'get_file_data'. See documentation/cdapython/vignettes/011_global_search.ipynb
 
 ## Available August 18, 2025
 
@@ -119,7 +123,7 @@ front end presently strips them out.
 
 -Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab, readthedocs, and low-memory systems.
 
-</div>
+
 # beta versions
 
 ## Available August 22, 2023.

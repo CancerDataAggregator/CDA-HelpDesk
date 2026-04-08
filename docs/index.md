@@ -31,7 +31,7 @@ title:  Re-Search made simple
     and running in no time
 
     ```bash
-    pip install cdapython
+    pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
     python3
     ```
 
