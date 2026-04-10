@@ -8,6 +8,10 @@ assignees: 'ACharbonneau'
 ---
 
 body:
+- type: markdown
+  attributes:
+    x: "a random key!"
+    value: "Thanks for taking the time to fill out this bug!"
 - type: textarea
   attributes:
     label: Name
