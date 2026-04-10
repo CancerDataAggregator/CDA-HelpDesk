@@ -7,7 +7,7 @@
 async function searchCDA() {
   const query = document.getElementById("searchBox").value;
 
-  const response = await fetch("https://cda.datacommons.cancer.gov/api/v1/subjects", {
+  const response = await fetch("https://cda.datacommons.cancer.gov/summary/subject", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
