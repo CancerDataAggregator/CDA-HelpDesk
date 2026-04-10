@@ -7,15 +7,19 @@ assignees: 'ACharbonneau'
 
 ---
 
-body:
-- type: markdown
-  attributes:
-    x: "a random key!"
-    value: "Thanks for taking the time to fill out this bug!"
-- type: textarea
-  attributes:
-    label: Name
-- type: checkboxes
-  attributes:
-    options:
-    - label: Your name
+## Have you checked all of these?
+
+### Data Only release
+- [ ] Update data release notes
+- [ ] Add new vignettes
+- [ ] Edit hardcoded vignette counts
+  
+### Code release
+- [ ] Update code release notes
+- [ ] Add new vignettes
+- [ ] Edit Man pages
+- [ ] Update API page
+   
+### Other
+- [ ] Personnel list
+- [ ] ETL image
