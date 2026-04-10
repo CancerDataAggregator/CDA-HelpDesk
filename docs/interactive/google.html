@@ -1,0 +1,19 @@
+<input
+  type="text"
+  id="cda-search"
+  placeholder="Search cancer data (e.g. adenocarcinoma)"
+  style="width: 100%; padding: 10px; font-size: 16px;"
+/>
+
+<script>
+document.getElementById("cda-search").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    const query = e.target.value.trim();
+
+    // VERY simple mapping (expand this later)
+    const url = `/en/latest/interactive.html?search=${encodeURIComponent(query)}`;
+
+    window.location.href = url;
+  }
+});
+</script>
