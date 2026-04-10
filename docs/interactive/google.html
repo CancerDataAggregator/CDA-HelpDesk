@@ -1,19 +1,24 @@
-<input
-  type="text"
-  id="cda-search"
-  placeholder="Search cancer data (e.g. adenocarcinoma)"
-  style="width: 100%; padding: 10px; font-size: 16px;"
-/>
+<input id="searchBox" placeholder="Search cancer data (e.g. lung cancer)" />
+<button onclick="searchCDA()">Search</button>
+
+<pre id="results"></pre>
 
 <script>
-document.getElementById("cda-search").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    const query = e.target.value.trim();
+async function searchCDA() {
+  const query = document.getElementById("searchBox").value;
 
-    // VERY simple mapping (expand this later)
-    const url = `/en/latest/interactive.html?search=${encodeURIComponent(query)}`;
+  const response = await fetch("https://cda.datacommons.cancer.gov/api/v1/subjects", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      search_list: [query]
+    })
+  });
 
-    window.location.href = url;
-  }
-});
+  const data = await response.json();
+  document.getElementById("results").textContent =
+    JSON.stringify(data, null, 2);
+}
 </script>
