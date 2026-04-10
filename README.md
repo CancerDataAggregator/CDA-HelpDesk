@@ -4,7 +4,6 @@ To ask questions, submit bugs, or request features [click here](https://github.c
 
 # About
 
-This repository contains all of the documentation for [CDA python](https://github.com/CancerDataAggregator/cdapython)
 
 It is designed using the [Material template by Martin Donath](https://squidfunk.github.io/mkdocs-material/) and built using [readthedocs](https://readthedocs.org/)
 
