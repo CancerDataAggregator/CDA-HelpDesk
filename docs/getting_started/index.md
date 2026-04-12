@@ -1,79 +1,86 @@
 ---
 title:  Re-Search made simple
 ---
+# Find the Cancer Data You Need—No Coding Required
 
-<div class="center" markdown> <p>With CDA you search by harmonized, common language terms. Using simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, integrate into a pipeline or upload to your favorite cloud resource.</p></div>
+The **Cancer Data Aggregator (CDA)** connects you to subjects, files, and specimens across **GDC**, **PDC**, and **IDC** through one simple interface. Filter by common clinical terms and export results directly to Excel or the Cloud.
 
+!!! abstract "Start Here"
+    If you want to browse data visually without writing any code, our interactive tool is the best place to begin.
+    
+    [🚀 Start Searching Interactively](https://cda.readthedocs.io/en/latest/interactive_search.html){ .md-button .md-button--primary }
+    *(No installation or account needed)*
 
-<div class="grid cards" markdown>
+---
 
--   :material-clock-fast:{ .lg .middle } __Don't code? No problem!__
+## Choose Your Research Path
 
-    ---
+Whether you prefer a visual interface, cloud-based notebooks, or a full Python environment, the CDA meets you where you are.
 
-    Browse through a curated dataset of all subjects that have data at multiple data centers using an intuitive filtering tool right in this website. 
-<a href="../interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.
-</a></p>
+=== "No Code (Interactive)"
 
--   :material-clock-fast:{ .lg .middle } __Low code, no install__
+    ### Explore Data Visually
+    Perfect for clinical researchers and building cohorts quickly.
+    
+    * **No Install:** Works entirely in your browser.
+    * **Intuitive Filtering:** Search by harmonized terms (age, diagnosis, project).
+    * **Export:** Download your cohort as a `.tsv` to open in Excel.
 
-    ---
+    [Try the Interactive Search →](https://cda.readthedocs.io/en/latest/interactive_search.html){ .md-button }
 
-    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
-<a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
-</a></p>
+=== "Low Code (Cloud)"
 
--   :fontawesome-brands-python:{ .lg .middle } __Power users__
+    ### Analyze in the Cloud
+    Fill in the blanks in our pre-built queries to find and process data without local setup.
+    
+    * **Connected:** Send results directly to [Broad Institute FireCloud](https://cda.readthedocs.io/en/latest/) or [Velsera Cancer Genomics Cloud](https://cda.readthedocs.io/en/latest/).
+    * **Scalable:** Run bioinformatics pipelines on the data you find without leaving your browser.
 
-    ---
+    [Launch CDA in the Cloud →](https://cda.readthedocs.io/en/latest/#low-code-no-install){ .md-button }
 
-    Install `cdapython` with `pip` and get up
-    and running in no time
+=== "Power Users (Python)"
 
+    ### Integrate with Python
+    For bioinformaticians building automated pipelines.
+    
     ```bash
-    pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
-    python3
+    pip install cdapython
     ```
 
     ```python
-    from cdapython import *
+    from cdapython import Q
+    # Example: Find subjects with specific diagnosis
+    r = Q('primary_diagnosis = "Adenocarcinoma"').run()
+    print(r)
     ```
 
--   :fontawesome-brands-python:{ .lg .middle } __Code in the Cloud__
+    [View Developer Tools →](https://cda.readthedocs.io/en/latest/developer_tools.html){ .md-button }
 
-    ---
+---
 
-    Bring lists of files or subjects found with CDA to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
-    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/010_isbcgc.ipynb" title="isbcgcusecase" class="md-button md-button">Test it out on Google Colab
-</a></p>
+## Master the CDA in Minutes
 
--   :simple-swagger:{ .lg .middle } __Developers__
+Check out our video guides to see how the CDA simplifies complex data cross-referencing.
 
-    ---
+* [📺 Video: Intro to CDA](https://cda.readthedocs.io/en/latest/vignettes/video_intro.html)
+* [📺 Video: Build a Cohort Interactively](https://cda.readthedocs.io/en/latest/vignettes/video_build_a_cohort_interactively.html)
+* [📺 Video: Cohort Building with Python](https://cda.readthedocs.io/en/latest/vignettes/video_cohort_building_with_cdapython.html)
 
-    Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
+---
 
-    [:octicons-arrow-right-24:**API documentation**](../documentation/developers/index.md)
+## Why Use the CDA?
 
--   :material-bell-alert-outline:{ .lg .middle } __What's new?__
+| Feature | The CDA Advantage |
+| :--- | :--- |
+| **Harmonization** | We translate different data center terms into one common language. |
+| **Cross-Center** | Find subjects that have data in GDC, PDC, and IDC simultaneously. |
+| **Versatility** | Move from a simple search to a massive cloud pipeline in the same ecosystem. |
 
-    ---
+---
 
-    Recently Updated Pages:
+### Stay Updated
+* [Latest Data Releases](https://cda.readthedocs.io/en/latest/)
+* [CDA Python Library Updates](https://cda.readthedocs.io/en/latest/release_notes/cdapython_releases.html)
 
-    - [Data Release](../release_notes/data_updates.md)
-    - [Code Release](../release_notes/cdapython.md)
-
--   :simple-mysql:{ .lg .middle } __Need even more data?__
-
-    ---
-
-    Do you dream of having a CDA database instance of your very own? Or CDA but bigger somehow?
-    We can make those dreams come true. Let's chat!
-
-    :material-email: cancerdataaggregator `@` gmail
-
-
-
-</div>
-
+---
+[Back to top]
