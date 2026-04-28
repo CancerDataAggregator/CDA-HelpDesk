@@ -121,6 +121,7 @@ nav:
     - View the cancer types for subjects over 50 at diagnosis: documentation/cdapython/vignettes/004_over50.ipynb
     - Find subjects with data at multiple data centers: documentation/cdapython/vignettes/009_multidcsubject.ipynb
     - Find subjects using a file as search input: documentation/cdapython/vignettes/008_multidc-from-file.ipynb
+    - Multi-omics Cohort Analysis: documentation/cdapython/vignettes/010_isbcgc.ipynb
 
   - Helpdesk:
     - helpdesk/index.md
