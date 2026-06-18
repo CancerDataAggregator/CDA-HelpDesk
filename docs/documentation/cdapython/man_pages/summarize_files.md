@@ -7,7 +7,7 @@ set of rows, profiled across (user-modifiable) columns of interest.
 
 ```
 summarize_files(
-    *,
+    *search_terms,
     match_all=None,
     match_any=None,
     match_from_file={'input_file': '', 'input_column': '', 'cda_column_to_match': ''},
@@ -21,6 +21,14 @@ summarize_files(
 
 
 ## Arguments
+
+### search_terms
+( zero or more strings; optional: ):
+One or more search terms (including phrases), all of which must be
+associated with each result row. Users can add a wildcard character * to
+either or both ends of each search term to enable partial matches
+to longer values. Example:
+    summarize_files( 'kidney', 'adeno*', 'latino' )
 
 ### match_all
 ( string or list of strings; optional ):
@@ -45,7 +53,7 @@ in the given TSV file.
 ### data_source
 ( string or list of strings; optional ):
 Restrict results to those deriving from the given upstream data source(s). Current valid values are 'GDC', 'IDC', 'PDC',
-'CDS' and 'ICDC'. (Default: no filter.)
+'GC' and 'ICDC'. (Default: no filter.)
 
 ### add_columns
 ( string or list of strings; optional ):

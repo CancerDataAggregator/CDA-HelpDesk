@@ -4,12 +4,20 @@ status: new
 ---
 
 # Public releases
-<div id="fornews" markdown="1">
+
+## Available April 7, 2026
+
+Global keyword search is now available on 'summarize_subjects', 'summarize_files', 'get_subject_data',
+and 'get_file_data'. See documentation/cdapython/vignettes/011_global_search.ipynb
 
 ## Available August 18, 2025
 
 New API: Streamlined, object-based query API that supports complex filter sets
 Improved cdapython with easier to read, subject and file based results tables, more intuitive query language, and support for joining data across multiple results
+
+### Known Issues
+
+- `upstream_source` results are incorrectly linking some records. We recommend not using this field until the fix is implemented in our next code release
 
 
 ## Available July 16, 2024
@@ -115,7 +123,7 @@ front end presently strips them out.
 
 -Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab, readthedocs, and low-memory systems.
 
-</div>
+
 # beta versions
 
 ## Available August 22, 2023.

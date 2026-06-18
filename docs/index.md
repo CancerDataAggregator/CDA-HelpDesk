@@ -31,7 +31,7 @@ title:  Re-Search made simple
     and running in no time
 
     ```bash
-    pip install cdapython
+    pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
     python3
     ```
 
@@ -44,7 +44,7 @@ title:  Re-Search made simple
     ---
 
     Bring lists of files or subjects found with CDA to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
-    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/005_isbcgc.ipynb" title="isbcgcusecase" class="md-button md-button">Test it out on Google Colab
+    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/010_isbcgc.ipynb" title="isbcgcusecase" class="md-button md-button">Test it out on Google Colab
 </a></p>
 
 -   :simple-swagger:{ .lg .middle } __Developers__
@@ -53,7 +53,7 @@ title:  Re-Search made simple
 
     Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
 
-    [:octicons-arrow-right-24:**swagger documentation**](documentation/developers/)
+    [:octicons-arrow-right-24:**API documentation**](documentation/developers/)
 
 -   :material-bell-alert-outline:{ .lg .middle } __What's new?__
 

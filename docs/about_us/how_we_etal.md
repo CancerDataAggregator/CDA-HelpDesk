@@ -7,4 +7,4 @@ title:  Extract, Translate, Aggregate, Load
 
 # Overview
 
-![](../images/cdainfrastructure_databaseupdate.png)
+![](../images/infrastructure.png)

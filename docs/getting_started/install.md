@@ -13,7 +13,7 @@ title:  Local installation docs
 1. In your terminal type:
 
   ```bash
-  pip install cdapython
+  pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
   ```
 ## Terminal/Command line
 
