@@ -7,6 +7,7 @@ status: new
 
 ## Available April 7, 2026
 
+cdapython version 2.1.0
 Global keyword search is now available on 'summarize_subjects', 'summarize_files', 'get_subject_data',
 and 'get_file_data'. See documentation/cdapython/vignettes/011_global_search.ipynb
 
