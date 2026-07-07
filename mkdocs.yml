@@ -44,7 +44,7 @@ plugins:
           remove_input_tags:
               - hide_code
       include_source: True
-      execute: True
+      execute: False
       allow_errors: False
       ignore: ["documentation/cdapython/vignettes/005_TCIA.ipynb"]
 
@@ -93,6 +93,7 @@ extra_css:
 nav:
   - Getting Started:
     - getting_started/index.md
+    - google search: interactive/google.html
     - Interactive Search: interactive/index.ipynb
     - getting_started/no-install.md
     - getting_started/install.md
