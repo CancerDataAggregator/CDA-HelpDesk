@@ -8,7 +8,7 @@ CDA data comes from six sources:
 <li><b>The <a href="https://proteomic.datacommons.cancer.gov/pdc/"> Proteomic Data Commons</a> (PDC)</b></li>
 <li><b>The <a href="https://gdc.cancer.gov/">Genomic Data Commons</a> (GDC)</b></li>
 <li><b>The <a href="https://datacommons.cancer.gov/repository/imaging-data-commons">Imaging Data Commons</a> (IDC)</b></li>
-<li><b>The <a href="https://dataservice.datacommons.cancer.gov/#/home">Cancer Data Service</a> (CDS)</b></li>
+<li><b>The <a href="https://general.datacommons.cancer.gov/#/">General Commons</a> (GC)</b></li>
 <li><b>The <a href="https://caninecommons.cancer.gov/#/explore">Integrated Canine Data Commons</a> (ICDC)</b></li>
 <li><b>The <a href="https://www.isb-cgc.org/">ISB Cancer Gateway in the Cloud</a> (ISB-CGC)</b></li>
 </ul> 

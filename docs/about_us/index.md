@@ -23,11 +23,7 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
 
 <div class="grid cards" markdown>
     
--   <figure>
-    <img src="../images/BingxingHuo-bio.png" width="100" height="100"
-         alt="Bing-Xing Huo">
-    <figcaption>Bing-Xing Huo<p>Principal Investigator - Broad</figcaption>
-</figure>
+
     
 -   <figure>
     <img src="../images/arthur.png" width="100" height="100"
@@ -35,49 +31,51 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
     <figcaption>Arthur Brady<p>Data wrangling & Developer</figcaption>
 </figure>
 
-
 -   <figure>
     <img src="../images/amanda.png" width="100" height="100"
          alt="Amanda Charbonneau">
     <figcaption>Amanda Charbonneau <p>Testing & Directing</figcaption>
 </figure>
-
--   <figure>
-    <img src="../images/david.JPG" width="100" height="100"
-         alt="David Pot">
-    <figcaption>David Pot<p>Principal Investigator - GDIT</figcaption>
-</figure>
-
 -   <figure>
     <img src="../images/tanner.png" width="100" height="100"
          alt="Tanner Coon">
     <figcaption>Tanner Coon <p>Developer</figcaption>
 </figure>
-
-
 -   <figure>
-    <img src="../images/surya.jpeg" width="100" height="100"
-         alt="Surya Saha">
-    <figcaption>Surya Saha <p>Project Manager - Velsera</figcaption>
+    <img src="../images/david.JPG" width="100" height="100"
+         alt="David Pot">
+    <figcaption>David Pot<p>Principal Investigator</figcaption>
 </figure>
 
 
--   <figure>
-    <img src="../images/jack.png" width="100" height="100"
-         alt="Jack DiGiovanna">
-    <figcaption>Jack DiGiovanna <p>Principal Investigator - Velsera</figcaption>
-</figure>
+
+
+
 </div>
 
 ## Alumni
 
 <div class="grid cards" markdown>
 -   <figure>
+    <img src="../images/BingxingHuo-bio.png" width="100" height="100"
+         alt="Bing-Xing Huo">
+    <figcaption>Bing-Xing Huo<p>Principal Investigator - Broad</figcaption>
+</figure>
+-   <figure>
     <img src="../images/finny.jpg" width="100" height="100"
          alt="Finny Thomas">
     <figcaption>Finny Thomas <p>Developer</figcaption>
 </figure>
-
+-   <figure>
+    <img src="../images/surya.jpeg" width="100" height="100"
+         alt="Surya Saha">
+    <figcaption>Surya Saha <p>Project Manager - Velsera</figcaption>
+</figure>
+-   <figure>
+    <img src="../images/jack.png" width="100" height="100"
+         alt="Jack DiGiovanna">
+    <figcaption>Jack DiGiovanna <p>Principal Investigator - Velsera</figcaption>
+</figure>
 -   <figure>
     <img src="../images/rachel.png" width="100" height="100"
          alt="Rachel Kutner">

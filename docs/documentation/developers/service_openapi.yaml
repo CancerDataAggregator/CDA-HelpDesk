@@ -1,32 +1,23 @@
----
 openapi: 3.1.0
 info:
   title: FastAPI
   version: 0.1.0
 paths:
-  "/data/file":
+  /data/file:
     post:
       tags:
       - data
       summary: File Fetch Rows Endpoint
-      description: |-
-        File data endpoint that returns json formatted row data based on input query
-
-        Args:
-            request (Request): HTTP request object
-            request_body (DataRequestBody): JSON input query
-            limit (int, optional): Limit for paged results. Defaults to 100.
-            offset (int, optional): Offset for paged results. Defaults to 0.
-            db (Session, optional): Database session object. Defaults to Depends(get_db).
-
-        Returns:
-            PagedResponseObj:
-            {
-                'result': [{'column': 'data'}],
-                'query_sql': 'SQL statement used to generate result',
-                'total_row_count': 'total rows of data for query generated (not paged)',
-                'next_url': 'URL to acquire next paged result'
-            }
+      description: "File data endpoint that returns json formatted row data based\
+        \ on input query\n\nArgs:\n    request (Request): HTTP request object\n  \
+        \  request_body (DataRequestBody): JSON input query\n    limit (int, optional):\
+        \ Limit for paged results. Defaults to 100.\n    offset (int, optional): Offset\
+        \ for paged results. Defaults to 0.\n    db (Session, optional): Database\
+        \ session object. Defaults to Depends(get_db).\n\nReturns:\n    PagedResponseObj:\n\
+        \    {\n        'result': [{'column': 'data'}],\n        'query_sql': 'SQL\
+        \ statement used to generate result',\n        'total_row_count': 'total rows\
+        \ of data for query generated (not paged)',\n        'next_url': 'URL to acquire\
+        \ next paged result'\n    }"
       operationId: file_fetch_rows_endpoint_data_file_post
       parameters:
       - name: limit
@@ -48,55 +39,47 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/DataRequestBody"
+              $ref: '#/components/schemas/DataRequestBody'
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/PagedResponseObj"
+                $ref: '#/components/schemas/PagedResponseObj'
         '400':
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
+                $ref: '#/components/schemas/ClientError'
           description: Bad Request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+          description: Internal Server Error
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/HTTPValidationError"
-        '500':
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/InternalError"
-          description: Internal Server Error
-  "/data/subject":
+                $ref: '#/components/schemas/HTTPValidationError'
+  /data/subject:
     post:
       tags:
       - data
       summary: Subject Fetch Rows Endpoint
-      description: |-
-        Subject data endpoint that returns json formatted row data based on input query
-
-        Args:
-            request (Request): HTTP request object
-            request_body (DataRequestBody): JSON input query
-            limit (int, optional): Limit for paged results. Defaults to 100.
-            offset (int, optional): Offset for paged results. Defaults to 0.
-            db (Session, optional): Database session object. Defaults to Depends(get_db).
-
-        Returns:
-            PagedResponseObj:
-            {
-                'result': [{'column': 'data'}],
-                'query_sql': 'SQL statement used to generate result',
-                'total_row_count': 'total rows of data for query generated (not paged)',
-                'next_url': 'URL to acquire next paged result'
-            }
+      description: "Subject data endpoint that returns json formatted row data based\
+        \ on input query\n\nArgs:\n    request (Request): HTTP request object\n  \
+        \  request_body (DataRequestBody): JSON input query\n    limit (int, optional):\
+        \ Limit for paged results. Defaults to 100.\n    offset (int, optional): Offset\
+        \ for paged results. Defaults to 0.\n    db (Session, optional): Database\
+        \ session object. Defaults to Depends(get_db).\n\nReturns:\n    PagedResponseObj:\n\
+        \    {\n        'result': [{'column': 'data'}],\n        'query_sql': 'SQL\
+        \ statement used to generate result',\n        'total_row_count': 'total rows\
+        \ of data for query generated (not paged)',\n        'next_url': 'URL to acquire\
+        \ next paged result'\n    }"
       operationId: subject_fetch_rows_endpoint_data_subject_post
       parameters:
       - name: limit
@@ -118,53 +101,47 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/DataRequestBody"
+              $ref: '#/components/schemas/DataRequestBody'
       responses:
         '200':
           description: Successful Response
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/PagedResponseObj"
+                $ref: '#/components/schemas/PagedResponseObj'
         '400':
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
+                $ref: '#/components/schemas/ClientError'
           description: Bad Request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+          description: Internal Server Error
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/HTTPValidationError"
-        '500':
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/InternalError"
-          description: Internal Server Error
-  "/summary/file":
+                $ref: '#/components/schemas/HTTPValidationError'
+  /summary/file:
     post:
       tags:
       - summary
       summary: File Summary Endpoint
-      description: |-
-        _summary_
-
-        Args:
-            request (Request): _description_
-            request_body (SummaryRequestBody): _description_
-            db (Session, optional): _description_. Defaults to Depends(get_db).
-
-        Returns:
-            SummaryResponseObj: _description_
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ request_body (SummaryRequestBody): _description_\n    db (Session, optional):\
+        \ _description_. Defaults to Depends(get_db).\n\nReturns:\n    SummaryResponseObj:\
+        \ _description_"
       operationId: file_summary_endpoint_summary_file_post
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/SummaryRequestBody"
+              $ref: '#/components/schemas/SummaryRequestBody'
         required: true
       responses:
         '200':
@@ -172,46 +149,40 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/SummaryResponseObj"
+                $ref: '#/components/schemas/SummaryResponseObj'
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/HTTPValidationError"
+                $ref: '#/components/schemas/ClientError'
         '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/InternalError"
-  "/summary/subject":
+                $ref: '#/components/schemas/InternalError'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /summary/subject:
     post:
       tags:
       - summary
       summary: Subject Summary Endpoint
-      description: |-
-        _summary_
-
-        Args:
-            request (Request): _description_
-            request_body (SummaryRequestBody): _description_
-            db (Session, optional): _description_. Defaults to Depends(get_db).
-
-        Returns:
-            SummaryResponseObj: _description_
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ request_body (SummaryRequestBody): _description_\n    db (Session, optional):\
+        \ _description_. Defaults to Depends(get_db).\n\nReturns:\n    SummaryResponseObj:\
+        \ _description_"
       operationId: subject_summary_endpoint_summary_subject_post
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/SummaryRequestBody"
+              $ref: '#/components/schemas/SummaryRequestBody'
         required: true
       responses:
         '200':
@@ -219,41 +190,34 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/SummaryResponseObj"
+                $ref: '#/components/schemas/SummaryResponseObj'
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/HTTPValidationError"
+                $ref: '#/components/schemas/ClientError'
         '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/InternalError"
-  "/column_values/{column}":
+                $ref: '#/components/schemas/InternalError'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /column_values/{column}:
     post:
       tags:
       - column_values
       summary: Column Values Endpoint
-      description: |-
-        _summary_
-
-        Args:
-            request (Request): _description_
-            column (str): _description_
-            data_source (str): _description_
-            db (Session, optional): _description_. Defaults to Depends(get_db).
-
-        Returns:
-            ColumnValuesResponseObj: _description_
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ column (str): _description_\n    data_source (str): _description_\n    db\
+        \ (Session, optional): _description_. Defaults to Depends(get_db).\n\nReturns:\n\
+        \    ColumnValuesResponseObj: _description_"
       operationId: column_values_endpoint_column_values__column__post
       parameters:
       - name: column
@@ -287,39 +251,33 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ColumnValuesResponseObj"
+                $ref: '#/components/schemas/ColumnValuesResponseObj'
         '400':
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
+                $ref: '#/components/schemas/ClientError'
           description: Bad Request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+          description: Internal Server Error
         '422':
           description: Validation Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/HTTPValidationError"
-        '500':
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/InternalError"
-          description: Internal Server Error
-  "/release_metadata/":
+                $ref: '#/components/schemas/HTTPValidationError'
+  /release_metadata/:
     get:
       tags:
       - release_metadata
       summary: Release Metadata Endpoint
-      description: |-
-        _summary_
-
-        Args:
-            request (Request): _description_
-            db (Session, optional): _description_. Defaults to Depends(get_db).
-
-        Returns:
-            ReleaseMetadataObj: _description_
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ db (Session, optional): _description_. Defaults to Depends(get_db).\n\n\
+        Returns:\n    ReleaseMetadataObj: _description_"
       operationId: release_metadata_endpoint_release_metadata__get
       responses:
         '200':
@@ -327,33 +285,27 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ReleaseMetadataObj"
+                $ref: '#/components/schemas/ReleaseMetadataObj'
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
+                $ref: '#/components/schemas/ClientError'
         '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/InternalError"
-  "/columns/":
+                $ref: '#/components/schemas/InternalError'
+  /columns/:
     get:
       tags:
       - columns
       summary: Columns Endpoint
-      description: |-
-        _summary_
-
-        Args:
-            request (Request): _description_
-            db (Session, optional): _description_. Defaults to Depends(get_db).
-
-        Returns:
-            ColumnResponseObj: _description_
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ db (Session, optional): _description_. Defaults to Depends(get_db).\n\n\
+        Returns:\n    ColumnResponseObj: _description_"
       operationId: columns_endpoint_columns__get
       responses:
         '200':
@@ -361,19 +313,19 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ColumnResponseObj"
+                $ref: '#/components/schemas/ColumnResponseObj'
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/ClientError"
+                $ref: '#/components/schemas/ClientError'
         '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/InternalError"
+                $ref: '#/components/schemas/InternalError'
 components:
   schemas:
     ClientError:
@@ -440,6 +392,14 @@ components:
       title: ColumnValuesResponseObj
     DataRequestBody:
       properties:
+        SEARCH_LIST:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Search List
+          default: []
         MATCH_ALL:
           anyOf:
           - items:
@@ -490,7 +450,7 @@ components:
       properties:
         detail:
           items:
-            "$ref": "#/components/schemas/ValidationError"
+            $ref: '#/components/schemas/ValidationError'
           type: array
           title: Detail
       type: object
@@ -558,6 +518,14 @@ components:
       title: ReleaseMetadataObj
     SummaryRequestBody:
       properties:
+        SEARCH_LIST:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Search List
+          default: []
         MATCH_ALL:
           anyOf:
           - items:
@@ -629,6 +597,11 @@ components:
         type:
           type: string
           title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
       - loc

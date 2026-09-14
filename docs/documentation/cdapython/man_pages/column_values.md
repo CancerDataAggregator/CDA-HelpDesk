@@ -61,7 +61,7 @@ filter string '' to match and count missing (null) values.
 
 ( string; optional ):
 Restrict returned values to the given upstream data source, such
-as 'GDC', 'PDC', 'IDC', 'CDS' and 'ICDC'. Defaults to `''` (no filter).
+as 'GDC', 'PDC', 'IDC', 'GC' and 'ICDC'. Defaults to `''` (no filter).
 
 ### force
 ( boolean; optional ): 
