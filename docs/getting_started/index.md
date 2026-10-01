@@ -1,0 +1,21 @@
+---
+title: Getting Started
+---
+
+<div class="center" markdown>
+<p>CDA is one really, really enormous spreadsheet spanning six data centers — GDC, PDC, IDC, GC, ICDC, and CTDC. Every path below gets you to the same data; the difference is how much setup and flexibility you want.</p>
+</div>
+
+--8<-- "_snippets/main_cards.md"
+
+## Not sure which one fits?
+
+- Just want to look around? → **No installation, no code** (top-left card above)
+- Know roughly what you're searching for, comfortable with a notebook? → **Low code, no install**
+- Running the same kinds of searches repeatedly, or need full flexibility? → **Power users**
+- Already have a CDA result set and want to do heavier analysis? → **Code in the Cloud**
+
+## What's new
+
+- [Data Release Notes](../release_notes/data_updates.md)
+- [Code Release Notes](../release_notes/cdapython.md)
