@@ -1,0 +1,75 @@
+site_name: Cancer Data Aggregator (Minimal Preview)
+site_description: Minimal build to validate Read the Docs rendering
+
+theme:
+  name: material
+  font:
+    text: noto sans
+  palette: slate
+  features:
+    - toc.integrate
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: true
+      allow_errors: false
+      include_source: true
+  - macros:
+      module_name: main
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.snippets:
+      base_path: docs
+      check_paths: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting_started/index.md
+  - Vignettes:
+    - Conceptual Overview: documentation/cdapython/vignettes/index.md
+    - "1. Cross-Source Value Discovery": documentation/cdapython/vignettes/01_cross_source_value_discovery.ipynb
+    - "2. Harmonized Vocabulary Querying": documentation/cdapython/vignettes/02_harmonized_vocabulary_querying.ipynb
+    - "3. Flagship Cross-Source Pull": documentation/cdapython/vignettes/03_flagship_cross_source_pull.ipynb
+  - Prototypes:
+    - prototypes/index.md
+  - Helpdesk: helpdesk/index.md
+  - Release Notes:
+    - release_notes/cdapython.md
+    - release_notes/data_updates.md
