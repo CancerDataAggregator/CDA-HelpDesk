@@ -1,0 +1,39 @@
+# Single source of truth for data-source freshness.
+# Edit ONLY this file each release -- both the homepage widget and the
+# full Release Notes page render from this automatically.
+#
+# extracted: YYYY-MM-DD, the date this source's data was pulled into CDA
+# release / api: whatever your source calls its own version; use "—" if not applicable
+# link: the source's own release-notes page, for the "release" value to link out to
+
+sources:
+  - name: GDC
+    release: "46.0"
+    api: "8.5.0"
+    extracted: "2026-09-23"
+    link: "https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/"
+  - name: PDC
+    release: "6.3"
+    api: "4.0.19"
+    extracted: "2026-09-23"
+    link: "https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm"
+  - name: IDC
+    release: "v24"
+    api: "—"
+    extracted: "2026-05-28"
+    link: "https://learn.canceridc.dev/data/data-release-notes"
+  - name: GC
+    release: "30.0"
+    api: "—"
+    extracted: "2026-08-20"
+    link: "https://dataservice.datacommons.cancer.gov/#/releases"
+  - name: ICDC
+    release: "2025-09-21"
+    api: "4.3.0"
+    extracted: "2026-05-28"
+    link: "https://caninecommons.cancer.gov/#/news"
+  - name: CTDC
+    release: "unassigned"
+    api: "—"
+    extracted: "2026-09-23"
+    link: "https://datacommons.cancer.gov/repository/clinical-and-translational-data-commons"
