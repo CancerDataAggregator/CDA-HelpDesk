@@ -4,3 +4,4 @@ mkdocs-macros-plugin
 pyyaml
 ipykernel
 cdapython
+itables
