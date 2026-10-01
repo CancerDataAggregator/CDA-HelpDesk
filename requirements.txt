@@ -1,0 +1,6 @@
+mkdocs-material>=9.5
+mkdocs-jupyter
+mkdocs-macros-plugin
+pyyaml
+ipykernel
+cdapython
