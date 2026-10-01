@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #1a1a2e; }
+  h1 { font-size: 1.4rem; }
+  .config-note { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; margin-bottom: 20px; }
+  .row { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+  select, input, button { padding: 8px 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.9rem; }
+  button { background: #6c3ce9; color: white; border: none; cursor: pointer; font-weight: 600; }
+  button:hover { background: #5a2fd0; }
+  button:disabled { background: #aaa; cursor: not-allowed; }
+  .sources { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sources label { font-size: 0.85rem; display: flex; align-items: center; gap: 4px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 16px; font-size: 0.85rem; }
+  th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; }
+  th { background: #f4f2fb; }
+  .source-tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; color: white; }
+  .status { margin-top: 12px; font-size: 0.85rem; }
+  .error { color: #c0392b; }
+  code { background: #f4f2fb; padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>CDA Dropdown Query — Prototype</h1>
+
+<div class="config-note">
+  <strong>Prototype status:</strong> endpoint, body keys, filter-string syntax (unquoted values), and
+  <code>data_source</code>-via-<code>MATCH_SOME</code> handling are now based on confirmed <code>cdapython</code>
+  docs, not guesses. Still worth verifying: that the raw REST API's internal filter-string parser accepts
+  exactly the same syntax cdapython constructs for you — these are close but not necessarily byte-identical layers.
+</div>
+
+<div class="row">
+  <label>Field:</label>
+  <select id="field">
+    <option value="sex">sex (loading real columns...)</option>
+  </select>
+
+  <label>Operator:</label>
+  <select id="operator">
+    <option value="=">=</option>
+    <option value="!=">!=</option>
+    <option value="LIKE">LIKE</option>
+  </select>
+
+  <label>Value:</label>
+  <input id="value" type="text" placeholder="e.g. female" value="female">
+</div>
+
+<div class="sources">
+  <strong style="font-size:0.85rem;">Data sources:</strong>
+  <label><input type="checkbox" value="GDC" checked> GDC</label>
+  <label><input type="checkbox" value="PDC" checked> PDC</label>
+  <label><input type="checkbox" value="IDC"> IDC</label>
+  <label><input type="checkbox" value="GC"> GC</label>
+  <label><input type="checkbox" value="ICDC"> ICDC</label>
+</div>
+
+<button id="runBtn">Run query</button>
+<div class="status" id="status"></div>
+
+<div id="results"></div>
+
+<script>
+// ============================================================
+// CONFIG — adjust this block once the real schema is confirmed
+// ============================================================
+const CONFIG = {
+  baseUrl: 'https://cda.datacommons.cancer.gov',
+  endpointPath: '/data/subject',
+  // Confirmed from cdapython docs: get_subject_data()'s data_source param
+  // is NOT a field in the raw DataRequestBody schema, so cdapython must
+  // translate it into filter strings under the hood. Per the docs, string
+  // values in filter strings are UNQUOTED ('sex = F*', not 'sex = "F"').
+  // Multiple sources = OR logic = MATCH_SOME (not MATCH_ALL/IN, which was
+  // the earlier incorrect guess).
+  buildBody: (queryString, sources) => {
+    const body = { MATCH_ALL: [queryString] };
+    if (sources && sources.length > 0) {
+      body.MATCH_SOME = sources.map(s => `data_source = ${s}`);
+    }
+    return body;
+  }
+};
+// ============================================================
+
+const sourceColors = { GDC: '#2980b9', PDC: '#8e44ad', IDC: '#16a085', GC: '#d35400', ICDC: '#c0392b' };
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Load the real column list from /columns/ so the dropdown reflects actual fields.
+(async () => {
+  const fieldSelect = document.getElementById('field');
+  try {
+    const resp = await fetch(CONFIG.baseUrl + '/columns/');
+    const rawText = await resp.text();
+    if (!resp.ok) {
+      fieldSelect.innerHTML = `<option value="">Could not load columns (HTTP ${resp.status})</option>`;
+      console.error('Columns load failed:', rawText);
+      return;
+    }
+    const data = JSON.parse(rawText);
+    const cols = data.result || [];
+    if (cols.length === 0) {
+      fieldSelect.innerHTML = `<option value="">No columns returned</option>`;
+      return;
+    }
+    // Column objects' exact shape is unconfirmed — try common key names.
+    fieldSelect.innerHTML = cols.map(c => {
+      const name = typeof c === 'string' ? c : (c.column_name || c.name || c.column || JSON.stringify(c));
+      return `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`;
+    }).join('');
+  } catch (err) {
+    fieldSelect.innerHTML = `<option value="">Could not load columns: ${escapeHtml(err.message || String(err))}</option>`;
+    console.error('Columns load error:', err);
+  }
+})();
+
+document.getElementById('runBtn').addEventListener('click', async () => {
+  const field = document.getElementById('field').value;
+  const operator = document.getElementById('operator').value;
+  const value = document.getElementById('value').value.trim();
+  const sources = Array.from(document.querySelectorAll('.sources input:checked')).map(cb => cb.value);
+  const statusEl = document.getElementById('status');
+  const resultsEl = document.getElementById('results');
+  const btn = document.getElementById('runBtn');
+
+  resultsEl.innerHTML = '';
+  statusEl.className = 'status';
+
+  if (!value) {
+    statusEl.textContent = 'Enter a value to search for.';
+    return;
+  }
+  if (sources.length === 0) {
+    statusEl.textContent = 'Select at least one data source.';
+    return;
+  }
+
+  const queryString = `${field} ${operator} ${value}`;
+  statusEl.textContent = `Querying: ${queryString} across ${sources.join(', ')}...`;
+  btn.disabled = true;
+
+  try {
+    const body = CONFIG.buildBody(queryString, sources);
+    const resp = await fetch(CONFIG.baseUrl + CONFIG.endpointPath + '?limit=25&offset=0', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    const rawText = await resp.text();
+
+    if (!resp.ok) {
+      statusEl.className = 'status error';
+      statusEl.innerHTML = `<strong>HTTP ${resp.status} ${resp.statusText}</strong>`;
+      resultsEl.innerHTML = `<pre style="background:#fdecea;border:1px solid #f5c2c0;padding:12px;border-radius:6px;white-space:pre-wrap;font-size:0.8rem;">${escapeHtml(rawText || '(empty response body)')}</pre>`;
+      btn.disabled = false;
+      return;
+    }
+
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (parseErr) {
+      statusEl.className = 'status error';
+      statusEl.innerHTML = `<strong>Response was not valid JSON</strong>`;
+      resultsEl.innerHTML = `<pre style="background:#fdecea;border:1px solid #f5c2c0;padding:12px;border-radius:6px;white-space:pre-wrap;font-size:0.8rem;">${escapeHtml(rawText)}</pre>`;
+      btn.disabled = false;
+      return;
+    }
+
+    const rows = Array.isArray(data) ? data : (data.result || []);
+
+    if (rows.length === 0) {
+      statusEl.textContent = 'Query succeeded (200 OK) but returned no rows.';
+      resultsEl.innerHTML = `<pre style="background:#f4f2fb;padding:12px;border-radius:6px;white-space:pre-wrap;font-size:0.8rem;">${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
+      btn.disabled = false;
+      return;
+    }
+
+    statusEl.textContent = `${rows.length} result(s) returned.`;
+    renderTable(rows, resultsEl);
+
+  } catch (err) {
+    statusEl.className = 'status error';
+    statusEl.innerHTML = `<strong>${escapeHtml(err.name || 'Error')}: ${escapeHtml(err.message || '(no message)')}</strong>`;
+    const stackText = err.stack ? `\n\nStack:\n${err.stack}` : '';
+    resultsEl.innerHTML = `<pre style="background:#fdecea;border:1px solid #f5c2c0;padding:12px;border-radius:6px;white-space:pre-wrap;font-size:0.8rem;">${escapeHtml((err.message || String(err)) + stackText)}</pre>`;
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+function renderTable(rows, container) {
+  const cols = Array.from(new Set(rows.flatMap(r => Object.keys(r))));
+  let html = '<table><thead><tr>';
+  cols.forEach(c => html += `<th>${c}</th>`);
+  html += '</tr></thead><tbody>';
+  rows.slice(0, 25).forEach(r => {
+    html += '<tr>';
+    cols.forEach(c => {
+      let cell = r[c] ?? '';
+      if (c.toLowerCase().includes('source') && sourceColors[cell]) {
+        cell = `<span class="source-tag" style="background:${sourceColors[cell]}">${cell}</span>`;
+      }
+      html += `<td>${cell}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  if (rows.length > 25) html += `<p style="font-size:0.8rem;color:#666;">Showing first 25 of ${rows.length} rows.</p>`;
+  container.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
