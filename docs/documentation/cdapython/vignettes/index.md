@@ -1,26 +1,15 @@
+---
+title: Vignette Conceptual Overview
+---
 
-You can think of the CDA as a really, really enormous spreadsheet full of data. To search this enormous spreadsheet, you'd want to select columns that have data you're interested in, and then filter the rows to only the values you care about. 
+# Vignette Conceptual Overview
 
-<div class="cdanote" style="background-color:#b3e5d5;color:black;padding:20px;">
-    
-CDA data comes from six sources:
-<ul>
-<li><b>The <a href="https://proteomic.datacommons.cancer.gov/pdc/"> Proteomic Data Commons</a> (PDC)</b></li>
-<li><b>The <a href="https://gdc.cancer.gov/">Genomic Data Commons</a> (GDC)</b></li>
-<li><b>The <a href="https://datacommons.cancer.gov/repository/imaging-data-commons">Imaging Data Commons</a> (IDC)</b></li>
-<li><b>The <a href="https://general.datacommons.cancer.gov/#/">General Commons</a> (GC)</b></li>
-<li><b>The <a href="https://caninecommons.cancer.gov/#/explore">Integrated Canine Data Commons</a> (ICDC)</b></li>
-<li><b>The <a href="https://www.isb-cgc.org/">ISB Cancer Gateway in the Cloud</a> (ISB-CGC)</b></li>
-</ul> 
-    
-The CDA makes this data searchable in two main endpoints:
+*(Placeholder for the minimal build. The real page explains the spreadsheet metaphor, tables, columns, and endpoints before diving into individual vignettes.)*
 
-<ul>
-<li><b>subject:</b> A patient entity captures the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person to protect the subjects privacy.</li>
+This minimal build includes the first 3 of 10 planned vignettes — a running example in 3 parts:
 
-<li><b>file:</b> A unit of data about subjects, researchsubjects, specimens, or their associated information.</li>
+1. [Checking what a field says before searching](01_cross_source_value_discovery.ipynb)
+2. [Finding tumors across the circulatory system](02_harmonized_vocabulary_querying.ipynb)
+3. [Trusting a cross-source cohort](03_flagship_cross_source_pull.ipynb)
 
-</ul>
-</div>
-
-If you are looking to build a cohort of distinct individuals who meet some criteria, you would search using `get_subject_data`, and the result will be a table of information with one row per subject, then use the `add_columns` feature inside of `get_subject_data` to add on extra information.
+See also the [visual vignette index prototype](../../../prototypes/vignette_index.html) (card-grid directory of all 10 planned vignettes, not yet integrated into this theme).

@@ -1,6 +1,7 @@
-mkdocs-material
-pymdown-extensions
-mkdocs-material-extensions
+mkdocs-material>=9.5
 mkdocs-jupyter
+mkdocs-macros-plugin
+pyyaml
+ipykernel
+cdapython
 itables
-git+https://github.com/CancerDataAggregator/cdapython.git@develop

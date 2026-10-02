@@ -2,78 +2,22 @@
 title:  Re-Search made simple
 ---
 
-<div class="center" markdown> <p>With CDA you search by harmonized, common language terms. Using simple language you can get information about the subjects, files, or specimens that you care about in a standard dataframe format (tsv) that you can open in Excel, integrate into a pipeline or upload to your favorite cloud resource.</p></div>
+<div class="center" markdown>
 
+# Cancer Data Aggregator
 
-<div class="grid cards" markdown>
+<p style="font-size: 1.1rem; max-width: 640px; margin: 0 auto 8px;">Think of CDA as one really, really enormous spreadsheet spanning six cancer data centers — GDC, PDC, IDC, GC, ICDC, and CTDC. Search by harmonized, common-language terms and get results back in a standard dataframe (or TSV) you can open in Excel, feed into a pipeline, or send to your favorite cloud resource.</p>
 
--   :material-clock-fast:{ .lg .middle } __Don't code? No problem!__
+<p style="max-width: 640px; margin: 0 auto 24px;">No matter your coding comfort — from zero code to full API access — there's a way in.</p>
 
-    ---
-
-    Browse through a curated dataset of all subjects that have data at multiple data centers using an intuitive filtering tool right in this website. 
-<a href="interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.
-</a></p>
-
--   :material-clock-fast:{ .lg .middle } __Low code, no install__
-
-    ---
-
-    Fill in the blanks in our pre-built queries to find the data you need without installing a thing. <p>Send your results to [Broad Institute FireCloud:octicons-link-external-16:](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud:octicons-link-external-16:](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*<p>
-<a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud
-</a></p>
-
--   :fontawesome-brands-python:{ .lg .middle } __Power users__
-
-    ---
-
-    Install `cdapython` with `pip` and get up
-    and running in no time
-
-    ```bash
-    pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
-    python3
-    ```
-
-    ```python
-    from cdapython import *
-    ```
-
--   :fontawesome-brands-python:{ .lg .middle } __Code in the Cloud__
-
-    ---
-
-    Bring lists of files or subjects found with CDA to the [ISB Cancer Gateway in the Cloud (ISB-CGC):octicons-link-external-16:](https://isb-cgc.org/){:target="_blank"} to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
-    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/010_isbcgc.ipynb" title="isbcgcusecase" class="md-button md-button">Test it out on Google Colab
-</a></p>
-
--   :simple-swagger:{ .lg .middle } __Developers__
-
-    ---
-
-    Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? <p>Whatever your use case, CDA can help.
-
-    [:octicons-arrow-right-24:**API documentation**](documentation/developers/)
-
--   :material-bell-alert-outline:{ .lg .middle } __What's new?__
-
-    ---
-
-    Recently Updated Pages:
-
-    - [Data Release](release_notes/data_updates.md)
-    - [Code Release](release_notes/cdapython.md)
-
--   :simple-mysql:{ .lg .middle } __Need even more data?__
-
-    ---
-
-    Do you dream of having a CDA database instance of your very own? Or CDA but bigger somehow?
-    We can make those dreams come true. Let's chat!
-
-    :material-email: cancerdataaggregator `@` gmail
-
-
+<a href="getting_started/" title="Getting started" class="md-button md-button--primary">Get started →</a>
 
 </div>
 
+{{ release_status_widget() }}
+
+<div class="cdanote" style="background-color:#fff3cd;color:black;padding:20px;margin-top:24px;">
+
+<b>A note on mutation data and ISB-CGC:</b> the <a href="https://www.isb-cgc.org/">ISB Cancer Gateway in the Cloud</a> (ISB-CGC) is not one of CDA's six data sources, but it has a two-way relationship with CDA. <b>Upstream</b>, all mutation data in CDA comes from GDC via ISB-CGC's aggregation pipeline, which combines GDC's per-individual VCF files into a single harmonized, searchable dataset. <b>Downstream</b>, ISB-CGC also consumes CDA's non-mutation phenotypic data and incorporates it into their own search tools. See <a href="./about_us/ourdata.md">our data sources</a> page for more detail.
+
+</div>
