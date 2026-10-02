@@ -23,3 +23,4 @@ title: Getting Help
 -   📧 [__Something else?__](mailto:cancerdataaggregator@gmail.com)
 ---
     Need something we didn't list yet? We still want to hear from you! email us at cancerdataaggregator `@` gmail
+</div>
