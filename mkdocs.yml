@@ -2,20 +2,8 @@ site_name: Cancer Data Aggregator (Minimal Preview)
 site_description: Minimal build to validate Read the Docs rendering
 
 theme:
-  name: material
-  font:
-    text: noto sans
-  palette: default
-  features:
-    - toc.integrate
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.code.annotate
-    - content.code.copy
+  name: readthedocs
+  highlightjs: true
 
 plugins:
   - search
@@ -35,32 +23,27 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
-  - pymdownx.arithmatex:
-      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
   - pymdownx.tilde
   - pymdownx.snippets:
       base_path: docs
       check_paths: true
 
+extra_css:
+  - css/cards.css
+
 nav:
   - Home: index.md
+  - "Home (alternate, long-form)": index_long_form.md
   - Getting Started: getting_started/index.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
