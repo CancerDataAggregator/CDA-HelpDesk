@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #f0f0f5;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .crumb { font-size: 0.85rem; color: #a5a2c2; margin-bottom: 20px; }
+  .crumb a { color: #93c5fd; text-decoration: none; }
+
+  header h1 {
+    font-size: 2rem; margin: 0 0 10px;
+    background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-weight: 800;
+  }
+  header p { color: #c4c1d9; font-size: 1rem; max-width: 660px; line-height: 1.6; margin-bottom: 40px; }
+  header p strong { color: #e0dff5; }
+
+  h2.section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #a5a2c2;
+    margin: 40px 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+  .section-sub { color: #8b87ac; font-size: 0.82rem; margin-bottom: 16px; }
+
+  .badge-new {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(52,211,153,0.18);
+    color: #6ee7b7;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .badge-video {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(96,165,250,0.18);
+    color: #93c5fd;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .badge-feature {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(167,139,250,0.15);
+    color: #c4b5fd;
+    margin: 2px 4px 0 0;
+  }
+
+  .vgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .vcard {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+  }
+  .vcard:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(167,139,250,0.5);
+  }
+  .vcard h3 { margin: 0 0 8px; font-size: 1.02rem; line-height: 1.4; }
+  .vcard p { margin: 0 0 10px; color: #c4c1d9; font-size: 0.85rem; line-height: 1.5; }
+  .vcard .step-num {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(167,139,250,0.2);
+    color: #c4b5fd;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  .flow-note {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: #8b87ac;
+    font-style: italic;
+  }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(10,8,30,0.75);
+    align-items: center; justify-content: center; z-index: 50;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: #1e1b3a; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px; padding: 32px; max-width: 440px; text-align: center;
+  }
+  .modal h3 { margin-top: 0; }
+  .modal p { color: #c4c1d9; font-size: 0.88rem; line-height: 1.5; }
+  .modal button {
+    margin-top: 16px; background: linear-gradient(90deg,#a78bfa,#60a5fa);
+    border: none; color: #1e1b3a; font-weight: 700; padding: 10px 20px;
+    border-radius: 8px; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="crumb"><a href="#">← Back to CDA home</a></div>
+
+  <header>
+    <h1>Vignettes</h1>
+    <p>Remember: CDA is one really, really enormous spreadsheet spanning GDC, PDC, IDC, GC, ICDC, and CTDC. Each vignette below shows how to select the columns and filter the rows you need — usually across more than one source at once, since that's the whole point of CDA. Start with the <strong>Conceptual Overview</strong> if you're new.</p>
+  </header>
+
+  <h2 class="section-title">Start here</h2>
+  <div class="vgrid">
+    <div class="vcard" data-target="overview">
+      <h3>Conceptual Overview</h3>
+      <p>The spreadsheet metaphor, explained: tables, columns, endpoints, and how they fit together before you write a single query.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">The running example <span class="badge-new">New</span></h2>
+  <div class="section-sub">A three-part series following one research question start to finish. Each part also stands alone.</div>
+  <div class="vgrid">
+    <div class="vcard" data-target="v1">
+      <h3><span class="step-num">1</span>Checking what a field says before I search it</h3>
+      <p>Compare values across sources before filtering; use a wildcard to catch spelling differences.</p>
+      <span class="badge-feature">column_values()</span><span class="badge-feature">force</span>
+    </div>
+    <div class="vcard" data-target="v2">
+      <h3><span class="step-num">2</span>Finding tumors across the circulatory system</h3>
+      <p>Ontology-backed search: one broad term automatically catches synonyms and everything more specific.</p>
+      <span class="badge-feature">add_extras</span>
+    </div>
+    <div class="vcard" data-target="v3">
+      <h3><span class="step-num">3</span>Trusting a cross-source cohort</h3>
+      <p>Check per-source data freshness before drawing conclusions, then save results out.</p>
+      <span class="badge-feature">data currency</span>
+    </div>
+  </div>
+
+  <h2 class="section-title">Standalone examples <span class="badge-new">New</span></h2>
+  <div class="vgrid">
+    <div class="vcard" data-target="v4">
+      <h3>Exploring when I don't know what I'm looking for</h3>
+      <p>Free-text search across every column at once, before you know the exact filter you want.</p>
+      <span class="badge-feature">search_terms</span>
+    </div>
+    <div class="vcard" data-target="v5">
+      <h3>Tracking down files for a project, across data centers</h3>
+      <p>Combine "must match all" and "match any" conditions; sort column metadata; why source counts don't simply add up.</p>
+      <span class="badge-feature">match_all + match_any</span><span class="badge-feature">sort_by</span>
+    </div>
+    <div class="vcard" data-target="v6">
+      <h3>Finding patients with both imaging and sequencing data</h3>
+      <p>Join in related table data, trim what you don't need, and untangle nested per-subject results.</p>
+      <span class="badge-feature">add_columns</span><span class="badge-feature">exclude_columns</span><span class="badge-feature">intersect/expand</span>
+    </div>
+    <div class="vcard" data-target="v7">
+      <h3>Profiling a diagnosis by age</h3>
+      <p>Search by column description, use numeric range filters, and handle missing data explicitly.</p>
+      <span class="badge-feature">numeric ranges</span><span class="badge-feature">NULL</span>
+    </div>
+    <div class="vcard" data-target="v8">
+      <h3>Following a subject back to its original source</h3>
+      <p>Trace a CDA result back to where it actually came from upstream.</p>
+      <span class="badge-feature">include_external_refs</span>
+    </div>
+    <div class="vcard" data-target="v9">
+      <h3>Getting CDA output into another pipeline</h3>
+      <p>For when the next step is another program, not a person reading a notebook.</p>
+      <span class="badge-feature">return_data_as=dict/json</span>
+    </div>
+    <div class="vcard" data-target="v10">
+      <h3>Checking my own subject list against CDA</h3>
+      <p>Match a whole file of your own IDs against CDA in one call.</p>
+      <span class="badge-feature">match_from_file</span>
+    </div>
+  </div>
+
+  <h2 class="section-title">Video intros</h2>
+  <div class="vgrid">
+    <div class="vcard" data-target="video-intro"><h3>Video: Intro to CDA <span class="badge-video">Video</span></h3><p>What CDA is and why cross-source search matters, in a few minutes.</p></div>
+    <div class="vcard" data-target="video-interactive"><h3>Video: Build a Cohort Interactively <span class="badge-video">Video</span></h3><p>A guided, no-code walkthrough of building a cohort.</p></div>
+    <div class="vcard" data-target="video-lowcode"><h3>Video: Cohort Building with cdapython <span class="badge-video">Video</span></h3><p>The same idea, using code.</p></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3 id="modal-title"></h3>
+    <p id="modal-body"></p>
+    <button onclick="document.getElementById('modal').classList.remove('show')">Got it</button>
+  </div>
+</div>
+
+<script>
+const info = {
+  overview: 'Links to the existing Conceptual Overview page (documentation/cdapython/vignettes/index.md).',
+  v1: 'Vignette 1 of 3 in the running example series.',
+  v2: 'Vignette 2 of 3 in the running example series.',
+  v3: 'Vignette 3 of 3 in the running example series.',
+  v4: 'Standalone vignette: free-text exploration.',
+  v5: 'Standalone vignette: cross-DC project file tracking.',
+  v6: 'Standalone vignette: joining imaging and sequencing data.',
+  v7: 'Standalone vignette: age/diagnosis profiling.',
+  v8: 'Standalone vignette: external reference tracing.',
+  v9: 'Standalone vignette: programmatic output formats.',
+  v10: 'Standalone vignette: match_from_file.',
+  'video-intro': 'Links to the existing 00A_intro_to_cda video page.',
+  'video-interactive': 'Links to the existing 00B_interactive_cohort video page.',
+  'video-lowcode': 'Links to the existing 00C_lowcode_cohort video page.'
+};
+
+document.querySelectorAll('.vcard').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.target;
+    document.getElementById('modal-title').textContent = card.querySelector('h3').textContent.replace(/New|Video/gi, '').trim();
+    document.getElementById('modal-body').textContent = info[key] || 'URL not yet wired up.';
+    document.getElementById('modal').classList.add('show');
+  });
+});
+</script>
+
+</body>
+</html>
