@@ -5,7 +5,7 @@ mkdocs.yml specifies a different `module_name` under the macros plugin config --
 see the mkdocs.yml snippet for where this gets referenced.
 
 Defines two macros, both reading from the same docs/_data/release_status.yml:
-  {{ release_status_widget() }}   -- compact, for the homepage
+  {{ release_status_table() }}   -- compact, for the homepage
   {{ release_status_table() }}    -- full detail, for the release notes page
 
 Editing docs/_data/release_status.yml is the ONLY thing that should change
@@ -72,27 +72,51 @@ def define_env(env):
     @env.macro
     def release_status_table():
         sources = _load_sources()
+        status_colors = {
+            "fresh":   {"bg": "rgba(52,211,153,0.15)",  "text": "#34d399", "dot": "#1a7f37"},
+            "stale":   {"bg": "rgba(251,191,36,0.15)",  "text": "#d97706", "dot": "#9a6700"},
+            "unknown": {"bg": "rgba(248,113,113,0.18)", "text": "#f87171", "dot": "#cf222e"},
+        }
         header = (
-            "<table><thead><tr>"
-            "<th>Source</th><th>Data release</th><th>API version</th>"
-            "<th>Extracted</th><th>Status</th></tr></thead><tbody>"
+            '<table style="width:100%;border-collapse:collapse;font-size:0.9rem;">'
+            "<thead><tr>"
+            '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Source</th>'
+            '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Data release</th>'
+            '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">API version</th>'
+            '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Extracted</th>'
+            '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Status</th>'
+            "</tr></thead><tbody>"
         )
         rows = []
         for src in sources:
             status_class, status_label = _status_for(src)
-            dot_color = {"fresh": "#1a7f37", "stale": "#9a6700", "unknown": "#cf222e"}[status_class]
+            colors = status_colors[status_class]
             release_cell = (
                 f'<a href="{src["link"]}" target="_blank" rel="noopener">{src["release"]}</a>'
                 if src.get("link") else src["release"]
             )
             rows.append(
-                "<tr>"
-                f'<td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;'
-                f'background:{dot_color};margin-right:6px;"></span><strong>{src["name"]}</strong></td>'
-                f"<td>{release_cell}</td>"
-                f'<td>{src["api"]}</td>'
-                f'<td>{src["extracted"]}</td>'
-                f"<td>{status_label}</td>"
+                '<tr style="border-bottom:1px solid var(--md-default-fg-color--lightest);">'
+                f'<td style="padding:10px 12px;"><span style="display:inline-block;width:8px;height:8px;'
+                f'border-radius:50%;background:{colors["dot"]};margin-right:8px;"></span><strong>{src["name"]}</strong></td>'
+                f'<td style="padding:10px 12px;">{release_cell}</td>'
+                f'<td style="padding:10px 12px;">{src["api"]}</td>'
+                f'<td style="padding:10px 12px;">{src["extracted"]}</td>'
+                f'<td style="padding:10px 12px;"><span style="display:inline-block;padding:3px 12px;'
+                f'border-radius:999px;font-size:0.78rem;font-weight:700;background:{colors["bg"]};'
+                f'color:{colors["text"]};">{status_label}</span></td>'
                 "</tr>"
             )
-        return header + "".join(rows) + "</tbody></table>"
+        return (
+            '<div style="border:1px solid var(--md-default-fg-color--lightest);border-radius:12px;'
+            'padding:20px 24px;margin:16px 0;">'
+            '<h3 style="margin-top:0;">📅 Data currency</h3>'
+            '<p style="color:var(--md-default-fg-color--light);font-size:0.85rem;margin-bottom:16px;">'
+            "How recently each underlying source was refreshed — updated with each CDA release.</p>"
+            + header + "".join(rows) + "</tbody></table></div>"
+        )
