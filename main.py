@@ -5,11 +5,16 @@ mkdocs.yml specifies a different `module_name` under the macros plugin config --
 see the mkdocs.yml snippet for where this gets referenced.
 
 Defines two macros, both reading from the same docs/_data/release_status.yml:
-  {{ release_status_table() }}   -- compact, for the homepage
-  {{ release_status_table() }}    -- full detail, for the release notes page
+  {{ release_status_widget() }}   -- compact, unused on homepage currently but kept
+                                      in case a future page wants the small version
+  {{ release_status_table() }}    -- full detail, used on the homepage and release notes
 
 Editing docs/_data/release_status.yml is the ONLY thing that should change
 each release. Nothing in this file should need to change release-to-release.
+
+Styling note: all HTML output uses plain hardcoded colors, NOT theme CSS variables
+(e.g. NOT var(--md-default-fg-color--lightest)), so this renders identically
+regardless of which mkdocs theme is active.
 """
 
 import yaml
@@ -60,10 +65,10 @@ def define_env(env):
                 f'<strong>{src["name"]}</strong></span>'
             )
         return (
-            '<div style="padding:10px 14px;border:1px solid var(--md-default-fg-color--lightest);'
+            '<div style="padding:10px 14px;border:1px solid #d0d0d0;'
             'border-radius:8px;margin:16px 0;">'
             '<div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;'
-            'color:var(--md-default-fg-color--light);margin-bottom:6px;">Data currency</div>'
+            'color:#777777;margin-bottom:6px;">Data currency</div>'
             + "".join(rows)
             + ' <a href="/release_notes/data_updates/" style="font-size:0.85rem;">Full details →</a>'
             "</div>"
@@ -73,9 +78,9 @@ def define_env(env):
     def release_status_table():
         sources = _load_sources()
         status_colors = {
-            "fresh":   {"bg": "rgba(52,211,153,0.15)",  "text": "#34d399", "dot": "#1a7f37"},
-            "stale":   {"bg": "rgba(251,191,36,0.15)",  "text": "#d97706", "dot": "#9a6700"},
-            "unknown": {"bg": "rgba(248,113,113,0.18)", "text": "#f87171", "dot": "#cf222e"},
+            "fresh":   {"bg": "rgba(52,211,153,0.15)",  "text": "#1a7f37", "dot": "#1a7f37"},
+            "stale":   {"bg": "rgba(251,191,36,0.18)",  "text": "#9a6700", "dot": "#9a6700"},
+            "unknown": {"bg": "rgba(248,113,113,0.18)", "text": "#cf222e", "dot": "#cf222e"},
         }
         header = (
             '<table style="width:100%;border-collapse:collapse;font-size:0.9rem;">'
