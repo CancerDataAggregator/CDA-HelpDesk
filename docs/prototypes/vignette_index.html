@@ -22,7 +22,7 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
     font-weight: 800;
   }
-  header p { color: #c4c1d9; font-size: 1rem; max-width: 660px; line-height: 1.6; margin-bottom: 40px; }
+  header p { color: #c4c1d9; font-size: 1rem; max-width: 680px; line-height: 1.6; margin-bottom: 40px; }
   header p strong { color: #e0dff5; }
 
   h2.section-title {
@@ -41,34 +41,8 @@
     height: 1px;
     background: rgba(255,255,255,0.12);
   }
-  .section-sub { color: #8b87ac; font-size: 0.82rem; margin-bottom: 16px; }
+  .section-sub { color: #8b87ac; font-size: 0.82rem; margin-bottom: 16px; line-height: 1.5; }
 
-  .badge-new {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: rgba(52,211,153,0.18);
-    color: #6ee7b7;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-  .badge-video {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: rgba(96,165,250,0.18);
-    color: #93c5fd;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
   .badge-feature {
     display: inline-block;
     font-size: 0.62rem;
@@ -78,6 +52,17 @@
     border-radius: 6px;
     background: rgba(167,139,250,0.15);
     color: #c4b5fd;
+    margin: 2px 4px 0 0;
+  }
+  .badge-draft {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(251,191,36,0.18);
+    color: #fbbf24;
     margin: 2px 4px 0 0;
   }
 
@@ -113,13 +98,6 @@
     margin-right: 8px;
   }
 
-  .flow-note {
-    margin-top: 10px;
-    font-size: 0.78rem;
-    color: #8b87ac;
-    font-style: italic;
-  }
-
   .modal-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(10,8,30,0.75);
@@ -128,7 +106,7 @@
   .modal-overlay.show { display: flex; }
   .modal {
     background: #1e1b3a; border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px; padding: 32px; max-width: 440px; text-align: center;
+    border-radius: 16px; padding: 32px; max-width: 460px; text-align: center;
   }
   .modal h3 { margin-top: 0; }
   .modal p { color: #c4c1d9; font-size: 0.88rem; line-height: 1.5; }
@@ -146,7 +124,7 @@
 
   <header>
     <h1>Vignettes</h1>
-    <p>Remember: CDA is one really, really enormous spreadsheet spanning GDC, PDC, IDC, GC, ICDC, and CTDC. Each vignette below shows how to select the columns and filter the rows you need — usually across more than one source at once, since that's the whole point of CDA. Start with the <strong>Conceptual Overview</strong> if you're new.</p>
+    <p>Every vignette here answers the same underlying question -- <strong>"is there already data about X?"</strong> -- just from a different starting point. Pick the one that matches how much you already know about what you're looking for. Start with the <strong>Conceptual Overview</strong> if you're new.</p>
   </header>
 
   <h2 class="section-title">Start here</h2>
@@ -157,70 +135,39 @@
     </div>
   </div>
 
-  <h2 class="section-title">The running example <span class="badge-new">New</span></h2>
-  <div class="section-sub">A three-part series following one research question start to finish. Each part also stands alone.</div>
+  <h2 class="section-title">The five vignettes</h2>
+  <div class="section-sub">Same question, five different entry points -- from "I just have a word" to "I know exactly what I need, help me reassemble it."</div>
   <div class="vgrid">
     <div class="vcard" data-target="v1">
-      <h3><span class="step-num">1</span>Checking what a field says before I search it</h3>
-      <p>Compare values across sources before filtering; use a wildcard to catch spelling differences.</p>
-      <span class="badge-feature">column_values()</span><span class="badge-feature">force</span>
+      <h3><span class="step-num">1</span>Is there anything about X?</h3>
+      <p>Bare-term global search. You don't know the model, the vocabulary, or whether this is even worth your time yet -- so you don't look anything up first, you just type the word.</p>
+      <span class="badge-feature">search_terms</span><span class="badge-feature">add_extras</span>
+      <span class="badge-draft">draft -- unverified output</span>
     </div>
     <div class="vcard" data-target="v2">
-      <h3><span class="step-num">2</span>Finding tumors across the circulatory system</h3>
-      <p>Ontology-backed search: one broad term automatically catches synonyms and everything more specific.</p>
-      <span class="badge-feature">add_extras</span>
+      <h3><span class="step-num">2</span>Getting oriented before I filter</h3>
+      <p>Systematic browsing -- tables, columns, real values -- before committing to a query, for when the stakes are higher than idle curiosity.</p>
+      <span class="badge-feature">tables()</span><span class="badge-feature">columns(description=)</span><span class="badge-feature">column_values()</span><span class="badge-feature">summarize_subjects/files</span><span class="badge-feature">NULL</span><span class="badge-feature">numeric ranges</span>
+      <span class="badge-draft">draft -- unverified output</span>
     </div>
     <div class="vcard" data-target="v3">
-      <h3><span class="step-num">3</span>Trusting a cross-source cohort</h3>
-      <p>Check per-source data freshness before drawing conclusions, then save results out.</p>
-      <span class="badge-feature">data currency</span>
+      <h3><span class="step-num">3</span>I have subjects, what else exists</h3>
+      <p>You already have a list of IDs. You're not exploring -- you want to know if there's more data on these specific people somewhere else.</p>
+      <span class="badge-feature">match_from_file</span><span class="badge-feature">include_external_refs</span>
+      <span class="badge-draft">draft -- unverified output</span>
     </div>
-  </div>
-
-  <h2 class="section-title">Standalone examples <span class="badge-new">New</span></h2>
-  <div class="vgrid">
     <div class="vcard" data-target="v4">
-      <h3>Exploring when I don't know what I'm looking for</h3>
-      <p>Free-text search across every column at once, before you know the exact filter you want.</p>
-      <span class="badge-feature">search_terms</span>
+      <h3><span class="step-num">4</span>Reassembling a scattered project</h3>
+      <p>You know a project exists (like CPTAC) and that it got split across data centers. You need the tool to undo that scattering, not help you discover something new.</p>
+      <span class="badge-feature">match_all + match_any</span><span class="badge-feature">non-additive source counts</span>
+      <span class="badge-draft">draft -- unverified output</span>
     </div>
     <div class="vcard" data-target="v5">
-      <h3>Tracking down files for a project, across data centers</h3>
-      <p>Combine "must match all" and "match any" conditions; sort column metadata; why source counts don't simply add up.</p>
-      <span class="badge-feature">match_all + match_any</span><span class="badge-feature">sort_by</span>
+      <h3><span class="step-num">5</span>Patients with multiple data types</h3>
+      <p>Not "everyone with kidney cancer" -- specifically people who have both imaging AND sequencing data for it, because your hypothesis needs both for the same person.</p>
+      <span class="badge-feature">intersect_subject_results</span><span class="badge-feature">collate_results</span><span class="badge-feature">expand_subject_results</span><span class="badge-feature">add_columns</span><span class="badge-feature">exclude_columns</span>
+      <span class="badge-draft">draft -- unverified output</span>
     </div>
-    <div class="vcard" data-target="v6">
-      <h3>Finding patients with both imaging and sequencing data</h3>
-      <p>Join in related table data, trim what you don't need, and untangle nested per-subject results.</p>
-      <span class="badge-feature">add_columns</span><span class="badge-feature">exclude_columns</span><span class="badge-feature">intersect/expand</span>
-    </div>
-    <div class="vcard" data-target="v7">
-      <h3>Profiling a diagnosis by age</h3>
-      <p>Search by column description, use numeric range filters, and handle missing data explicitly.</p>
-      <span class="badge-feature">numeric ranges</span><span class="badge-feature">NULL</span>
-    </div>
-    <div class="vcard" data-target="v8">
-      <h3>Following a subject back to its original source</h3>
-      <p>Trace a CDA result back to where it actually came from upstream.</p>
-      <span class="badge-feature">include_external_refs</span>
-    </div>
-    <div class="vcard" data-target="v9">
-      <h3>Getting CDA output into another pipeline</h3>
-      <p>For when the next step is another program, not a person reading a notebook.</p>
-      <span class="badge-feature">return_data_as=dict/json</span>
-    </div>
-    <div class="vcard" data-target="v10">
-      <h3>Checking my own subject list against CDA</h3>
-      <p>Match a whole file of your own IDs against CDA in one call.</p>
-      <span class="badge-feature">match_from_file</span>
-    </div>
-  </div>
-
-  <h2 class="section-title">Video intros</h2>
-  <div class="vgrid">
-    <div class="vcard" data-target="video-intro"><h3>Video: Intro to CDA <span class="badge-video">Video</span></h3><p>What CDA is and why cross-source search matters, in a few minutes.</p></div>
-    <div class="vcard" data-target="video-interactive"><h3>Video: Build a Cohort Interactively <span class="badge-video">Video</span></h3><p>A guided, no-code walkthrough of building a cohort.</p></div>
-    <div class="vcard" data-target="video-lowcode"><h3>Video: Cohort Building with cdapython <span class="badge-video">Video</span></h3><p>The same idea, using code.</p></div>
   </div>
 </div>
 
@@ -234,26 +181,18 @@
 
 <script>
 const info = {
-  overview: 'Links to the existing Conceptual Overview page (documentation/cdapython/vignettes/index.md).',
-  v1: 'Vignette 1 of 3 in the running example series.',
-  v2: 'Vignette 2 of 3 in the running example series.',
-  v3: 'Vignette 3 of 3 in the running example series.',
-  v4: 'Standalone vignette: free-text exploration.',
-  v5: 'Standalone vignette: cross-DC project file tracking.',
-  v6: 'Standalone vignette: joining imaging and sequencing data.',
-  v7: 'Standalone vignette: age/diagnosis profiling.',
-  v8: 'Standalone vignette: external reference tracing.',
-  v9: 'Standalone vignette: programmatic output formats.',
-  v10: 'Standalone vignette: match_from_file.',
-  'video-intro': 'Links to the existing 00A_intro_to_cda video page.',
-  'video-interactive': 'Links to the existing 00B_interactive_cohort video page.',
-  'video-lowcode': 'Links to the existing 00C_lowcode_cohort video page.'
+  overview: 'Links to the Conceptual Overview page (documentation/cdapython/vignettes/index.md).',
+  v1: '01_global_search.ipynb -- bare-term global search posture.',
+  v2: '02_systematic_browsing.ipynb -- deliberate browsing-before-filtering posture.',
+  v3: '03_match_from_file.ipynb -- "I have subjects, what else exists" posture.',
+  v4: '04_cptac_reassembly.ipynb -- known-project reassembly posture.',
+  v5: '05_multimodal_patients.ipynb -- multiple-data-types-per-patient posture.'
 };
 
 document.querySelectorAll('.vcard').forEach(card => {
   card.addEventListener('click', () => {
     const key = card.dataset.target;
-    document.getElementById('modal-title').textContent = card.querySelector('h3').textContent.replace(/New|Video/gi, '').trim();
+    document.getElementById('modal-title').textContent = card.querySelector('h3').textContent.trim();
     document.getElementById('modal-body').textContent = info[key] || 'URL not yet wired up.';
     document.getElementById('modal').classList.add('show');
   });
