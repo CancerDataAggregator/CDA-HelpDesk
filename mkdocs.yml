@@ -47,11 +47,11 @@ nav:
   - Getting Started: getting_started/index.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
-    - "Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
-    - "Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
-    - "I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
-    - "Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
-    - "Patients with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
+    - "1. Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
+    - "2. Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
+    - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
+    - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
+    - "5. Patients with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
   - Prototypes:
     - prototypes/index.md
   - Helpdesk: helpdesk/index.md
