@@ -1,6 +1,5 @@
 # Single source of truth for data-source freshness.
-# Edit ONLY this file each release -- both the homepage widget and the
-# full Release Notes page render from this automatically.
+# Edit ONLY this file each release -- both macros render from this automatically.
 #
 # extracted: YYYY-MM-DD, the date this source's data was pulled into CDA
 # release / api: whatever your source calls its own version; use "—" if not applicable
