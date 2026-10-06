@@ -1,13 +1,7 @@
 <!--
   Shared card grid — included by both docs/index.md and docs/getting_started/index.md
   via pymdownx.snippets. Edit ONLY this file; both pages will pick up changes automatically.
-
-  Link paths below are written relative to docs/getting_started/index.md (the deeper file).
-  Since docs/index.md sits one level up, pymdownx.snippets does NOT auto-adjust relative
-  links for you -- if a link breaks on the root index page after this change, that's why.
-  Fix: either use paths relative to docs/ root here and adjust getting_started/index.md's
-  version separately, or use MkDocs absolute-from-docs-root paths (leading slash) instead
-  of relative ones, which resolve the same regardless of which page includes this file.
+  Uses plain emoji + the .grid-cards CSS class (docs/css/cards.css) -- no Material dependency.
 -->
 
 <div class="grid-cards" markdown>
