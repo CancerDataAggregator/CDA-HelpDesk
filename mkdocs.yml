@@ -47,12 +47,17 @@ nav:
   - Getting Started: getting_started/index.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
-    - "1. Cross-Source Value Discovery": documentation/cdapython/vignettes/01_cross_source_value_discovery.ipynb
-    - "2. Harmonized Vocabulary Querying": documentation/cdapython/vignettes/02_harmonized_vocabulary_querying.ipynb
-    - "3. Flagship Cross-Source Pull": documentation/cdapython/vignettes/03_flagship_cross_source_pull.ipynb
+    - "Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
+    - "Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
+    - "I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
+    - "Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
+    - "Patients with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
   - Prototypes:
     - prototypes/index.md
   - Helpdesk: helpdesk/index.md
+  - About Us:
+    - about_us/index.md
+    - about_us/ourdata.md
   - Release Notes:
     - release_notes/cdapython.md
     - release_notes/data_updates.md
