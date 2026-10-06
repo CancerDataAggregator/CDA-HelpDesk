@@ -22,9 +22,6 @@ The [Cancer Research Data Commons ↗](https://datacommons.cancer.gov/){:target=
 ## Our team
 
 <div class="grid-cards" markdown>
-    
-
-    
 -   <figure>
     <img src="../images/arthur.png" width="100" height="100"
          alt="Arthur Brady">
@@ -46,11 +43,6 @@ The [Cancer Research Data Commons ↗](https://datacommons.cancer.gov/){:target=
          alt="David Pot">
     <figcaption>David Pot<p>Principal Investigator</figcaption>
 </figure>
-
-
-
-
-
 </div>
 
 ## Alumni
@@ -81,13 +73,11 @@ The [Cancer Research Data Commons ↗](https://datacommons.cancer.gov/){:target=
          alt="Rachel Kutner">
     <figcaption>Rachel Kutner <p>Developer & Project Management</figcaption>
 </figure>
-
 -   <figure>
     <img src="../images/kat.jpg" width="100" height="100"
          alt="Kat Thayer">
     <figcaption>Kat Thayer <p>Project Management</figcaption>
 </figure>
-
 -   <figure>
     <img src="../images/alex.jpeg" width="100" height="100"
          alt="Alex Baumann">
