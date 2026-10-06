@@ -81,15 +81,15 @@ def define_env(env):
             '<table style="width:100%;border-collapse:collapse;font-size:0.9rem;">'
             "<thead><tr>"
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
-            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Source</th>'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Source</th>'
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
-            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Data release</th>'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Data release</th>'
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
-            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">API version</th>'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">API version</th>'
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
-            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Extracted</th>'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Extracted</th>'
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
-            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid var(--md-default-fg-color--lightest);">Status</th>'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Status</th>'
             "</tr></thead><tbody>"
         )
         rows = []
@@ -101,7 +101,7 @@ def define_env(env):
                 if src.get("link") else src["release"]
             )
             rows.append(
-                '<tr style="border-bottom:1px solid var(--md-default-fg-color--lightest);">'
+                '<tr style="border-bottom:1px solid #e5e5e5;">'
                 f'<td style="padding:10px 12px;"><span style="display:inline-block;width:8px;height:8px;'
                 f'border-radius:50%;background:{colors["dot"]};margin-right:8px;"></span><strong>{src["name"]}</strong></td>'
                 f'<td style="padding:10px 12px;">{release_cell}</td>'
@@ -113,10 +113,10 @@ def define_env(env):
                 "</tr>"
             )
         return (
-            '<div style="border:1px solid var(--md-default-fg-color--lightest);border-radius:12px;'
+            '<div style="border:1px solid #d0d0d0;border-radius:12px;'
             'padding:20px 24px;margin:16px 0;">'
             '<h3 style="margin-top:0;">📅 Data currency</h3>'
-            '<p style="color:var(--md-default-fg-color--light);font-size:0.85rem;margin-bottom:16px;">'
+            '<p style="color:#555555;font-size:0.85rem;margin-bottom:16px;">'
             "How recently each underlying source was refreshed — updated with each CDA release.</p>"
             + header + "".join(rows) + "</tbody></table></div>"
         )
