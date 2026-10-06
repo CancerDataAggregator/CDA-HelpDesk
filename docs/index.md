@@ -14,7 +14,7 @@ title:  Re-Search made simple
 
 </div>
 
-{{ release_status_widget() }}
+{{ release_status_table() }}
 
 <div class="cdanote" style="background-color:#fff3cd;color:black;padding:20px;margin-top:24px;">
 
