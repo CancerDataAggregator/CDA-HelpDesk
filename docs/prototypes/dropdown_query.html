@@ -27,10 +27,9 @@
 <h1>CDA Dropdown Query — Prototype</h1>
 
 <div class="config-note">
-  <strong>Prototype status:</strong> endpoint, body keys, filter-string syntax (unquoted values), and
-  <code>data_source</code>-via-<code>MATCH_SOME</code> handling are now based on confirmed <code>cdapython</code>
-  docs, not guesses. Still worth verifying: that the raw REST API's internal filter-string parser accepts
-  exactly the same syntax cdapython constructs for you — these are close but not necessarily byte-identical layers.
+  <strong>Status: confirmed broken (CORS).</strong> Blocked even with the RTD domain allow-listed
+  on the API side — an additional firewall layer is involved, not just a missing CORS header.
+  Not fixable from this HTML/JS. Deferred until resolved upstream.
 </div>
 
 <div class="row">
@@ -65,18 +64,9 @@
 <div id="results"></div>
 
 <script>
-// ============================================================
-// CONFIG — adjust this block once the real schema is confirmed
-// ============================================================
 const CONFIG = {
   baseUrl: 'https://cda.datacommons.cancer.gov',
   endpointPath: '/data/subject',
-  // Confirmed from cdapython docs: get_subject_data()'s data_source param
-  // is NOT a field in the raw DataRequestBody schema, so cdapython must
-  // translate it into filter strings under the hood. Per the docs, string
-  // values in filter strings are UNQUOTED ('sex = F*', not 'sex = "F"').
-  // Multiple sources = OR logic = MATCH_SOME (not MATCH_ALL/IN, which was
-  // the earlier incorrect guess).
   buildBody: (queryString, sources) => {
     const body = { MATCH_ALL: [queryString] };
     if (sources && sources.length > 0) {
@@ -85,7 +75,6 @@ const CONFIG = {
     return body;
   }
 };
-// ============================================================
 
 const sourceColors = { GDC: '#2980b9', PDC: '#8e44ad', IDC: '#16a085', GC: '#d35400', ICDC: '#c0392b' };
 
@@ -95,7 +84,6 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// Load the real column list from /columns/ so the dropdown reflects actual fields.
 (async () => {
   const fieldSelect = document.getElementById('field');
   try {
@@ -112,7 +100,6 @@ function escapeHtml(str) {
       fieldSelect.innerHTML = `<option value="">No columns returned</option>`;
       return;
     }
-    // Column objects' exact shape is unconfirmed — try common key names.
     fieldSelect.innerHTML = cols.map(c => {
       const name = typeof c === 'string' ? c : (c.column_name || c.name || c.column || JSON.stringify(c));
       return `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`;
