@@ -22,8 +22,8 @@ All data hosted by IDC is available publicly. The current content of IDC is popu
 - ![](../images/general-commons_0.png)[General Commons ↗](https://datacommons.cancer.gov/repository/general-commons){:target="_blank"}
 
 The GC provides data storage and sharing capabilities for NCI-funded studies that fall under the following categories:
-•    Studies with data that do not match an existing CRDC data commons 
-•    Studies with data that do not fit current data type criteria and/or the minimum metadata standards for a CRDC data commons. 
+-    Studies with data that do not match an existing CRDC data commons 
+-    Studies with data that do not fit current data type criteria and/or the minimum metadata standards for a CRDC data commons. 
 
 GC currently hosts a variety of data types from NCI projects such as the Human Tumor Atlas Network (HTAN), Division of Cancer Control and Population Sciences (DCCPS), and Childhood Cancer Data Initiative (CCDI) as well as data from independent research projects. The GC is home to both open and controlled access data.
 
