@@ -38,6 +38,3 @@ The Clinical and Translational Data Commons (CTDC) accelerates scientific discov
 - ![](../images/isb-cancer-gateway-in-the-cloud.png)[ISB Cancer Gateway in the Cloud ↗](https://www.isb-cgc.org/){:target="_blank"}
 
 The ISB Cancer Gateway in the Cloud (ISB-CGC) is one of three National Cancer Institute (NCI) Cloud Resources tasked with enabling researchers to combine cancer data and cloud computation. ISB-CGC's relationship with CDA runs in both directions. **Upstream**, ISB-CGC is the source of all mutation data in CDA: GDC's own mutation files are released as per-individual VCFs, and ISB-CGC aggregates these into a single harmonized, queryable mutation dataset hosted in Google BigQuery, which CDA then incorporates. **Downstream**, ISB-CGC is also a consumer of CDA: they take CDA's non-mutation phenotypic data and incorporate it into their own search tools, alongside data from other sources such as HTAN, TCGA, CPTAC, and TARGET.
-
-- [Data Standards Services (DSS) ↗](https://datascience.cancer.gov/data-commons/data-standards-services)
-The DSS provides us with harmonized values mapped to the data sources above. In our current release, DSS has provided values for: ethnicity, file_format, morphology, primary_diagnosis, race, species, therapeutic_agent, source_material_type (cancer/normal), treatment_type, and vital_status.
