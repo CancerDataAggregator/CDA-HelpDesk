@@ -4,7 +4,6 @@ title:  Local installation docs
 
 # Installation Guide
 
-
 !!! requirements
 
     - A command-line environment that supports Python and pip
@@ -12,9 +11,10 @@ title:  Local installation docs
 
 1. In your terminal type:
 
-  ```bash
-  pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
-  ```
+```bash
+  pip install --upgrade cdapython
+```
+
 ## Terminal/Command line
 
 cdapython is a python package, to run on the command line, start python
@@ -27,6 +27,7 @@ and import the cdapython modules:
 ```python
 from cdapython import *
 ```
+
 ## Interactive notebook
 
 cdapython comes with jupyter notebook installed, and our documentation is all available as jupyter notebooks. To start a notebook server, go to your command line/terminal and type:
@@ -39,6 +40,3 @@ This will launch an interactive notebook in your browser. Be sure to import the 
 ```python
 from cdapython import *
 ```
-
-
-

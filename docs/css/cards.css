@@ -1,0 +1,23 @@
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.grid-cards > * {
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: #fafafa;
+}
+
+.grid-cards hr {
+    margin: 0.5rem 0 0.75rem 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.grid-cards p:last-child {
+    margin-bottom: 0;
+}

@@ -1,6 +1,6 @@
-mkdocs-material
-pymdown-extensions
-mkdocs-material-extensions
 mkdocs-jupyter
-itables
+mkdocs-macros-plugin
+pyyaml
+ipykernel
 cdapython
+itables

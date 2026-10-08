@@ -2,99 +2,76 @@
 title: columns()
 ---
 
+# `columns()`
+
+**NAME**
+
+`columns` — get structured metadata describing searchable CDA columns
+
+**SYNOPSIS**
+
+```python
+columns(*, return_data_as='', output_file='', sort_by='', **filter_arguments)
+```
+
+**DESCRIPTION**
+
 Get structured metadata describing searchable CDA columns.
 
+**ARGUMENTS**
 
-`columns(*, return_data_as='', output_file='', sort_by='', debug=False, **filter_arguments)`
+- `return_data_as` (*string, optional: `'dataframe'`, `'list'`, or `'tsv'`*)
+  Specify how `columns()` should return results: as a pandas DataFrame, a Python list, or as output written to a TSV file named by the user. If omitted, defaults to returning results as a DataFrame.
 
-## Arguments
+- `output_file` (*string, optional*)
+  If `return_data_as='tsv'` is specified, `output_file` should contain a resolvable path to a file into which `columns()` will write tab-delimited results.
 
-### return_data_as 
-( string; optional: 'dataframe' or 'list' or 'tsv' ):
-Specify how columns() should return results: as a pandas DataFrame,
-a Python list, or as output written to a TSV file named by the user.
-If this argument is omitted, columns() will default to returning
-results as a DataFrame.
+- `sort_by` (*string or list of strings, optional: any combination of `'table'`, `'column'`, `'data_type'`, and/or `'nullable'`*)
+  Specify the column metadata field(s) on which to sort result data. Results are sorted first by the first named field; groups of records sharing the same value in that field are then sub-sorted by the second field, and so on.
 
-### output_file
-( string; optional ):
-If return_data_as='tsv' is specified, output_file should contain a
-resolvable path to a file into which columns() will write
-tab-delimited results.
+  Appending `:desc` to a field name sorts it in reverse order; `:asc` ensures ascending order.
+  Example: `sort_by=['table', 'nullable:desc', 'column:asc']`
 
-### sort_by
-( string or list of strings; optional:
-any combination of 'table', 'column', 'data_type',
-and/or 'nullable'):
-Specify the column metadata field(s) on which to sort result data.
-Results will be sorted first by the first named field; groups of
-records sharing the same value in the first field will then be
-sub-sorted by the second field, and so on.
+**FILTER ARGUMENTS**
 
-Any field with a suffix of ':desc' appended to it will be sorted
-in reverse order; adding ':asc' will ensure ascending sort order.
-Example: sort_by=[ 'table', 'nullable:desc', 'column:asc' ]
+- `table` (*string or list of strings, optional*)
+  Restrict returned data to columns from tables whose names match any of the given strings. A wildcard (`*`) at either or both ends of each string allows partial matches. Case is ignored.
 
-### debug
-( boolean; optional ):
-If set to True, print internal process details to the standard
-error stream.
+- `column` (*string or list of strings, optional*)
+  Restrict returned data to columns whose name matches any of the given strings. Wildcards and case-insensitivity apply as above.
 
-## Filter arguments
-### table
-( string or list of strings; optional ):
-Restrict returned data to columns from tables whose names match any
-of the given strings. A wildcard (asterisk) at either end (or both
-ends) of each string will allow partial matches. Case will be
-ignored.
+- `data_type` (*string or list of strings, optional*)
+  Restrict returned data to columns whose data type matches any of the given strings. Wildcards and case-insensitivity apply as above.
 
-### column
-( string or list of strings; optional ):
-Restrict returned data to columns whose name matches any of the
-given strings. A wildcard (asterisk) at either end (or both ends)
-of each string will allow partial matches. Case will be ignored.
+- `nullable` (*boolean, optional*)
+  If `True`, restrict returned data to columns whose values are allowed to be empty; if `False`, return data only for columns requiring nonempty values.
 
-### data_type
-( string or list of strings; optional ):
-Restrict returned data to columns whose data type matches any of
-the given strings. A wildcard (asterisk) at either end (or both
-ends) of each string will allow partial matches. Case will be
-ignored.
+- `description` (*string or list of strings, optional*)
+  Restrict returned data to columns whose `description` field matches any of the given strings. Wildcards are applied automatically if not provided, to support straightforward keyword searching without extra punctuation. Case is ignored.
 
-### nullable
-( boolean; optional ):
-If set to True, restrict returned data to columns whose values are
-allowed to be empty; if False, return data only for columns
-requiring nonempty values.
+- `exclude_table` (*string or list of strings, optional*)
+  Restrict returned data to columns from tables whose names do **not** match any of the given strings. Wildcards and case-insensitivity apply as above.
 
-### description
-( string or list of strings; optional ):
-Restrict returned data to columns whose `description` field matches
-any of the given strings. Wildcards will be automatically applied
-(end-to-end matching makes no sense here), emphasized by the name
-'description_contains' and not 'description'. Case will be ignored.
+**RETURNS**
 
-### exclude_table
-( string or list of strings; optional ):
-Restrict returned data to columns from tables whose names do _not_
-match any of the given strings. A wildcard (asterisk) at either end
-(or both ends) of each string will allow partial matches. Case will
-be ignored.
+`pandas.DataFrame` where each row is a metadata record describing one searchable CDA column, comprised of:
 
-## Returns
-pandas.DataFrame where each row is a metadata record describing one
-searchable CDA column comprising the following fields:
+| Field | Type | Description |
+|---|---|---|
+| `table` | string | name of the CDA table containing this column |
+| `column` | string | name of this column |
+| `data_type` | string | data type of this column |
+| `nullable` | boolean | if `True`, this column can contain null values |
+| `description` | string | prose description of this column |
 
-`table` (string: name of the CDA table containing this column)
-`column` (string: name of this column)
-`data_type` (string: data type of this column)
-`nullable` (boolean: if True, this column can contain null values)
-`description` (string: prose description of this column)
+— or —
 
-OR 
+`list` of column names
 
-list of column names
+— or —
 
-OR 
+nothing; results are written to a user-specified TSV file
 
-returns nothing, but writes results to a user-specified TSV file
+**SEE ALSO**
+
+[`column_values()`](column_values.md), [`tables()`](tables.md), [`cda_functions()`](cda_functions.md)

@@ -8,12 +8,14 @@ status: new
 ## Available April 7, 2026
 
 Global keyword search is now available on 'summarize_subjects', 'summarize_files', 'get_subject_data',
-and 'get_file_data'. See documentation/cdapython/vignettes/011_global_search.ipynb
+and 'get_file_data'. See `documentation/cdapython/vignettes/01_global_search.ipynb`
 
 ## Available August 18, 2025
 
 New API: Streamlined, object-based query API that supports complex filter sets
 Improved cdapython with easier to read, subject and file based results tables, more intuitive query language, and support for joining data across multiple results
+
+`cdapython` is now available on PyPI -- install with `pip install cdapython` instead of installing from GitHub.
 
 ### Known Issues
 
@@ -71,7 +73,7 @@ We discovered incorrect results coming from queries involving the somatic_mutati
   
 - null data has been disambiguated
   
-- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/008_multidc-from-file.ipynb) for an example.
+- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/03_match_from_file.ipynb) for an example.
 
 ### Known issues
 
@@ -105,7 +107,7 @@ cdapython has had a complete rewrite to simplify the code.
 
 - Some complex joins will return more data than `summary_counts` or the `count_only` parameter report. This is due to miscounting of the join structure.
 
-- Not all errors are handled gracefully, as we haven't found them all yet. ff you experience one, please let us know.
+- Not all errors are handled gracefully, as we haven't found them all yet. If you experience one, please let us know.
 
 - Developers using the API may experience query problems when building calls that are technically correctly formatted, but do not fit our style guide. ex.: file_associated_project and subject_associated_project currently only work as filters when applied from their home-entity endpoint. ex.: using SELECTVALUES at the mutations endpoint without including the case_barcode column will break. These will be resolved in our upcoming API update. Until then, please contact us directly for assistance.
 
