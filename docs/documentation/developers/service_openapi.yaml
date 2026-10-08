@@ -1,0 +1,610 @@
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  /data/file:
+    post:
+      tags:
+      - data
+      summary: File Fetch Rows Endpoint
+      description: "File data endpoint that returns json formatted row data based\
+        \ on input query\n\nArgs:\n    request (Request): HTTP request object\n  \
+        \  request_body (DataRequestBody): JSON input query\n    limit (int, optional):\
+        \ Limit for paged results. Defaults to 100.\n    offset (int, optional): Offset\
+        \ for paged results. Defaults to 0.\n    db (Session, optional): Database\
+        \ session object. Defaults to Depends(get_db).\n\nReturns:\n    PagedResponseObj:\n\
+        \    {\n        'result': [{'column': 'data'}],\n        'query_sql': 'SQL\
+        \ statement used to generate result',\n        'total_row_count': 'total rows\
+        \ of data for query generated (not paged)',\n        'next_url': 'URL to acquire\
+        \ next paged result'\n    }"
+      operationId: file_fetch_rows_endpoint_data_file_post
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Offset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataRequestBody'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResponseObj'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+          description: Bad Request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+          description: Internal Server Error
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /data/subject:
+    post:
+      tags:
+      - data
+      summary: Subject Fetch Rows Endpoint
+      description: "Subject data endpoint that returns json formatted row data based\
+        \ on input query\n\nArgs:\n    request (Request): HTTP request object\n  \
+        \  request_body (DataRequestBody): JSON input query\n    limit (int, optional):\
+        \ Limit for paged results. Defaults to 100.\n    offset (int, optional): Offset\
+        \ for paged results. Defaults to 0.\n    db (Session, optional): Database\
+        \ session object. Defaults to Depends(get_db).\n\nReturns:\n    PagedResponseObj:\n\
+        \    {\n        'result': [{'column': 'data'}],\n        'query_sql': 'SQL\
+        \ statement used to generate result',\n        'total_row_count': 'total rows\
+        \ of data for query generated (not paged)',\n        'next_url': 'URL to acquire\
+        \ next paged result'\n    }"
+      operationId: subject_fetch_rows_endpoint_data_subject_post
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Offset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataRequestBody'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResponseObj'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+          description: Bad Request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+          description: Internal Server Error
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /summary/file:
+    post:
+      tags:
+      - summary
+      summary: File Summary Endpoint
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ request_body (SummaryRequestBody): _description_\n    db (Session, optional):\
+        \ _description_. Defaults to Depends(get_db).\n\nReturns:\n    SummaryResponseObj:\
+        \ _description_"
+      operationId: file_summary_endpoint_summary_file_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SummaryRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponseObj'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /summary/subject:
+    post:
+      tags:
+      - summary
+      summary: Subject Summary Endpoint
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ request_body (SummaryRequestBody): _description_\n    db (Session, optional):\
+        \ _description_. Defaults to Depends(get_db).\n\nReturns:\n    SummaryResponseObj:\
+        \ _description_"
+      operationId: subject_summary_endpoint_summary_subject_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SummaryRequestBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponseObj'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /column_values/{column}:
+    post:
+      tags:
+      - column_values
+      summary: Column Values Endpoint
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ column (str): _description_\n    data_source (str): _description_\n    db\
+        \ (Session, optional): _description_. Defaults to Depends(get_db).\n\nReturns:\n\
+        \    ColumnValuesResponseObj: _description_"
+      operationId: column_values_endpoint_column_values__column__post
+      parameters:
+      - name: column
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Column
+      - name: data_source
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+          title: Data Source
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          title: Offset
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColumnValuesResponseObj'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+          description: Bad Request
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+          description: Internal Server Error
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /release_metadata/:
+    get:
+      tags:
+      - release_metadata
+      summary: Release Metadata Endpoint
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ db (Session, optional): _description_. Defaults to Depends(get_db).\n\n\
+        Returns:\n    ReleaseMetadataObj: _description_"
+      operationId: release_metadata_endpoint_release_metadata__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseMetadataObj'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+  /columns/:
+    get:
+      tags:
+      - columns
+      summary: Columns Endpoint
+      description: "_summary_\n\nArgs:\n    request (Request): _description_\n   \
+        \ db (Session, optional): _description_. Defaults to Depends(get_db).\n\n\
+        Returns:\n    ColumnResponseObj: _description_"
+      operationId: columns_endpoint_columns__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColumnResponseObj'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalError'
+components:
+  schemas:
+    ClientError:
+      properties:
+        error_type:
+          type: string
+          title: Error Type
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - error_type
+      - message
+      title: ClientError
+    ColumnResponseObj:
+      properties:
+        result:
+          items:
+            anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          type: array
+          title: Result
+          description: List of query result json objects
+      type: object
+      required:
+      - result
+      title: ColumnResponseObj
+    ColumnValuesResponseObj:
+      properties:
+        result:
+          items:
+            anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          type: array
+          title: Result
+          description: List of query result json objects
+        query_sql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query Sql
+          description: SQL Query generated to yield the results
+        total_row_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Row Count
+          description: Count of total number of results from the query
+        next_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Url
+          description: URL to get to next page of results
+      type: object
+      required:
+      - result
+      - query_sql
+      title: ColumnValuesResponseObj
+    DataRequestBody:
+      properties:
+        SEARCH_LIST:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Search List
+          default: []
+        MATCH_ALL:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Match All
+          default: []
+        MATCH_SOME:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Match Some
+          default: []
+        ADD_COLUMNS:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Add Columns
+          default: []
+        EXCLUDE_COLUMNS:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Exclude Columns
+          default: []
+        COLLATE_RESULTS:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Collate Results
+          default: false
+        EXTERNAL_REFERENCE:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: External Reference
+          default: false
+      type: object
+      title: DataRequestBody
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    InternalError:
+      properties:
+        error_type:
+          type: string
+          title: Error Type
+        message:
+          type: string
+          title: Message
+      type: object
+      required:
+      - error_type
+      - message
+      title: InternalError
+    PagedResponseObj:
+      properties:
+        result:
+          items:
+            anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          type: array
+          title: Result
+          description: List of query result json objects
+        query_sql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query Sql
+          description: SQL Query generated to yield the results
+        total_row_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Row Count
+          description: Count of total number of results from the query
+        next_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Url
+          description: URL to get to next page of results
+      type: object
+      required:
+      - result
+      - query_sql
+      title: PagedResponseObj
+    ReleaseMetadataObj:
+      properties:
+        result:
+          items:
+            anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          type: array
+          title: Result
+      type: object
+      required:
+      - result
+      title: ReleaseMetadataObj
+    SummaryRequestBody:
+      properties:
+        SEARCH_LIST:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Search List
+          default: []
+        MATCH_ALL:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Match All
+          default: []
+        MATCH_SOME:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Match Some
+          default: []
+        ADD_COLUMNS:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Add Columns
+          default: []
+        EXCLUDE_COLUMNS:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Exclude Columns
+          default: []
+      type: object
+      title: SummaryRequestBody
+    SummaryResponseObj:
+      properties:
+        result:
+          items:
+            anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          type: array
+          title: Result
+          description: List of query result json objects
+        query_sql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query Sql
+          description: SQL Query generated to yield the results
+      type: object
+      required:
+      - result
+      - query_sql
+      title: SummaryResponseObj
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
