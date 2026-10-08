@@ -5,7 +5,7 @@ status: new
 
 # Data Release Notes
 
-{{ release_status_table() }}
+{{ data_available_table() }}
 
 # Public releases
 
@@ -382,4 +382,3 @@ If you'd like to see how the project has evolved, you can still access the their
 - [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html)
 
 <!-- Footnotes themselves at the bottom. -->
-`
