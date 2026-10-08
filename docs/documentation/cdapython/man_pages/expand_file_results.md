@@ -31,3 +31,5 @@ Given a result DataFrame `R` returned by [`get_file_data()`](get_file_data.md), 
 `pandas.DataFrame` — a flattened, 2-dimensional table with one row per row of every nested DataFrame in `column_to_expand`, each annotated with its associated `file_id`.
 
 **SEE ALSO**
+
+[`get_file_data()`](get_file_data.md), [`intersect_file_results()`](intersect_file_results.md)
