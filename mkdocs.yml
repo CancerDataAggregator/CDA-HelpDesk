@@ -1,0 +1,81 @@
+site_name: Cancer Data Aggregator
+site_description: Search and aggregate cancer data across multiple data commons
+
+theme:
+  name: readthedocs
+  highlightjs: true
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: true
+      allow_errors: false
+      include_source: true
+  - macros:
+      module_name: main
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - pymdownx.snippets:
+      base_path: docs
+      check_paths: true
+
+extra_css:
+  - css/cards.css
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Overview: getting_started/index.md
+    - Install locally: getting_started/install.md
+    - No installation (Colab): getting_started/no-install.md
+  - Interactive Search: interactive.ipynb
+  - Vignettes:
+    - Conceptual Overview: documentation/cdapython/vignettes/index.md
+    - "1. Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
+    - "2. Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
+    - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
+    - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
+    - "5. Subjects with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
+  - Developers:
+    - API Reference: documentation/developers/index.md
+  - Function Reference:
+    - "Quick Reference": documentation/cdapython/man_pages/index.ipynb
+    - cda_functions(): documentation/cdapython/man_pages/cda_functions.md
+    - tables(): documentation/cdapython/man_pages/tables.md
+    - columns(): documentation/cdapython/man_pages/columns.md
+    - column_values(): documentation/cdapython/man_pages/column_values.md
+    - summarize_subjects(): documentation/cdapython/man_pages/summarize_subjects.md
+    - summarize_files(): documentation/cdapython/man_pages/summarize_files.md
+    - get_subject_data(): documentation/cdapython/man_pages/get_subject_data.md
+    - get_file_data(): documentation/cdapython/man_pages/get_file_data.md
+    - intersect_subject_results(): documentation/cdapython/man_pages/intersect_subject_results.md
+    - expand_subject_results(): documentation/cdapython/man_pages/expand_subject_results.md
+    - intersect_file_results(): documentation/cdapython/man_pages/intersect_file_results.md
+    - expand_file_results(): documentation/cdapython/man_pages/expand_file_results.md
+  - Helpdesk: helpdesk/index.md
+  - About Us:
+    - about_us/index.md
+    - about_us/ourdata.md
+    - about_us/how_we_etl.md
+  - Release Notes:
+    - "Code Release Notes": release_notes/cdapython.md
+    - "Data Release Notes": release_notes/data_updates.md
