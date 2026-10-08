@@ -2,9 +2,33 @@ site_name: Cancer Data Aggregator
 site_description: Search and aggregate cancer data across multiple data commons
 
 theme:
-  name: readthedocs
-  highlightjs: true
+  name: material
+  custom_dir: overrides   # only needed if you add a custom homepage template later
+  features:
+    - navigation.tabs          # top-level sections become a horizontal tab bar
+    - navigation.tabs.sticky   # tabs stay visible while scrolling within a section
+    - navigation.sections      # left sidebar groups by section instead of one flat list
+    - navigation.expand        # sections start expanded, not collapsed-by-default
+    - navigation.indexes       # clicking a section title (e.g. "Vignettes") opens its index.md
+                                # instead of only toggling expand/collapse
+    - navigation.top           # "back to top" button
+    - header.autohide          # header scrolls away going down, reappears scrolling up
+    - toc.follow               # right-sidebar TOC auto-scrolls/highlights with reading position
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  # Single fixed palette, no dark/light toggle. itables' DataTables UI (search box,
+  # buttons, pagination) inherits color/background from ancestors instead of setting
+  # its own; Material's dark-scheme variable swap was leaking into it and rendering
+  # tables black. A static palette removes that entire mechanism.
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  icon:
+    repo: fontawesome/brands/github
 
+# Material ships its own search implementation; the plugin just builds the index.
 plugins:
   - search
   - mkdocs-jupyter:
@@ -55,8 +79,6 @@ nav:
     - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
     - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
     - "5. Subjects with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
-  - Developers:
-    - API Reference: documentation/developers/index.md
   - Function Reference:
     - "Quick Reference": documentation/cdapython/man_pages/index.ipynb
     - cda_functions(): documentation/cdapython/man_pages/cda_functions.md
@@ -71,11 +93,13 @@ nav:
     - expand_subject_results(): documentation/cdapython/man_pages/expand_subject_results.md
     - intersect_file_results(): documentation/cdapython/man_pages/intersect_file_results.md
     - expand_file_results(): documentation/cdapython/man_pages/expand_file_results.md
+  - Developers:
+    - API Reference: documentation/developers/index.md
   - Helpdesk: helpdesk/index.md
   - About Us:
+    - about_us/how_we_etl.md
     - about_us/index.md
     - about_us/ourdata.md
-    - about_us/how_we_etl.md
   - Release Notes:
     - "Code Release Notes": release_notes/cdapython.md
     - "Data Release Notes": release_notes/data_updates.md
