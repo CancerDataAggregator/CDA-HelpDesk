@@ -1,9 +1,3 @@
-<!--
-  Shared card grid — included by both docs/index.md and docs/getting_started/index.md
-  via pymdownx.snippets. Edit ONLY this file; both pages will pick up changes automatically.
-  Uses plain emoji + the .grid-cards CSS class (docs/css/cards.css) -- no Material dependency.
--->
-
 <div class="grid-cards" markdown>
 
 -   ⚡ __Don't code? No problem!__
@@ -30,13 +24,13 @@
 
     Install `cdapython` with `pip` and get up and running in no time
 
-    ```bash
-    pip3 uninstall -y cdapython; pip3 install git+https://github.com/CancerDataAggregator/cdapython.git@develop
+```bash
+    pip install cdapython
     python3
-    ```
-    ```python
+```
+```python
     from cdapython import *
-    ```
+```
 
 -   🐍 __Code in the Cloud__
 
@@ -50,7 +44,7 @@
 
     ---
 
-    Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource?
+    Are you building a metadata microservice? Connecting even more databases? Hosting a computational resource? Want the full REST API spec?
 
     <p>Whatever your use case, CDA can help.</p>
 
