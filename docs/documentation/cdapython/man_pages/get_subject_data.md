@@ -86,8 +86,8 @@ Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitesp
 `=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
 Partial matches to string values are supported by adding `*` to either or both ends. Examples:
-    diagnosis = duct
-    sex = F*
+   diagnosis = duct
+   sex = F*
 
 String values need not be quoted inside filter strings:
 
