@@ -43,7 +43,6 @@ extra_css:
 
 nav:
   - Home: index.md
-  - "Home (alternate, long-form)": index_long_form.md
   - Getting Started: getting_started/index.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
@@ -52,6 +51,8 @@ nav:
     - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
     - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
     - "5. Patients with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
+  - Developers:
+    - API Reference: documentation/developers/index.md
   - Prototypes:
     - prototypes/index.md
   - Helpdesk: helpdesk/index.md
@@ -59,5 +60,5 @@ nav:
     - about_us/index.md
     - about_us/ourdata.md
   - Release Notes:
-    - release_notes/cdapython.md
-    - release_notes/data_updates.md
+    - "Code Release Notes": release_notes/cdapython.md
+    - "Data Release Notes": release_notes/data_updates.md
