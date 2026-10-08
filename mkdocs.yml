@@ -50,9 +50,23 @@ nav:
     - "2. Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
     - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
     - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
-    - "5. Patients with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
+    - "5. Subjects with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
   - Developers:
     - API Reference: documentation/developers/index.md
+  - Function Reference:
+    - "Quick Reference": documentation/cdapython/man_pages/index.ipynb
+    - cda_functions(): documentation/cdapython/man_pages/cda_functions.md
+    - tables(): documentation/cdapython/man_pages/tables.md
+    - columns(): documentation/cdapython/man_pages/columns.md
+    - column_values(): documentation/cdapython/man_pages/column_values.md
+    - summarize_subjects(): documentation/cdapython/man_pages/summarize_subjects.md
+    - summarize_files(): documentation/cdapython/man_pages/summarize_files.md
+    - get_subject_data(): documentation/cdapython/man_pages/get_subject_data.md
+    - get_file_data(): documentation/cdapython/man_pages/get_file_data.md
+    - intersect_subject_results(): documentation/cdapython/man_pages/intersect_subject_results.md
+    - expand_subject_results(): documentation/cdapython/man_pages/expand_subject_results.md
+    - intersect_file_results(): documentation/cdapython/man_pages/intersect_file_results.md
+    - expand_file_results(): documentation/cdapython/man_pages/expand_file_results.md
   - Prototypes:
     - prototypes/index.md
   - Helpdesk: helpdesk/index.md
