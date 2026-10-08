@@ -1,10 +1,5 @@
-# Single source of truth for data-source freshness.
-# Edit ONLY this file each release -- both macros render from this automatically.
-#
-# extracted: YYYY-MM-DD, the date this source's data was pulled into CDA
-# release / api: whatever your source calls its own version; use "—" if not applicable
-# link: the source's own release-notes page, for the "release" value to link out to
-
+# 'extracted' field name kept as-is to avoid touching every entry, but its MEANING is
+# now "date this source's data was last updated upstream" -- see main.py docstring.
 sources:
   - name: GDC
     release: "46.0"
