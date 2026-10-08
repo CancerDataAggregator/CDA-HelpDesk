@@ -78,3 +78,42 @@ Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitesp
 `=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
 Partial matches to string values are supported by adding `*` to either or both ends. Examples:
+   diagnosis = duct
+   sex = F*
+   size < 100
+
+String values need not be quoted inside filter strings:
+
+````python
+summarize_subjects(match_all=['diagnosis = *duct*', 'sex = F*'])
+````
+
+`NULL` matches missing data:
+
+````python
+summarize_subjects(match_all=['year_of_birth = NULL'])
+````
+
+**RETURNS**
+
+`list` of `pandas.DataFrame` objects, one per summarized column, enumerating counts (or statistical summaries, for unbounded numeric values) over all of that column's data values appearing in matching result rows. Two DataFrames in this list — `number_of_matching_subjects` and `number_of_files_related_to_matching_subjects` — contain integers representing the total number of result subject rows and the total number of related files, respectively. Every other DataFrame is titled with a CDA column name and contains value counts or statistical summaries for that column, as filtered by the result row set.
+
+— or —
+
+Python `dict` enumerating counts of all data values for each summarized column (or a statistical summary, for unbounded numeric data) across all matching result rows. Two keys — `number_of_matching_subjects` and `number_of_files_related_to_matching_subjects` — point to integers representing the total number of result subject rows and associated file rows, respectively. Every other key is a CDA column name, whose value is itself a dictionary enumerating observed value counts (or a statistical summary) for that column.
+
+— or —
+
+JSON-formatted text representing the same structure as `return_data_as='dict'`, written to `output_file`.
+
+— or —
+
+nothing; a series of tables describing the same data is printed to standard output instead.
+
+**NOTES**
+
+Worth knowing while reading these counts: the file count reported here is *every file belonging to a subject who matched*, which can include files that have nothing to do with why that subject matched in the first place. If you want a count of files that themselves satisfy your filter, use [`summarize_files()`](summarize_files.md) instead.
+
+**SEE ALSO**
+
+[`summarize_files()`](summarize_files.md), [`get_subject_data()`](get_subject_data.md), [`columns()`](columns.md)
