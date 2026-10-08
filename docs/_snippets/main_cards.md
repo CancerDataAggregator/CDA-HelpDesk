@@ -24,13 +24,13 @@
 
     Install `cdapython` with `pip` and get up and running in no time
 
-```bash
+````bash
     pip install cdapython
     python3
-```
-```python
+````
+````python
     from cdapython import *
-```
+````
 
 -   🐍 __Code in the Cloud__
 
