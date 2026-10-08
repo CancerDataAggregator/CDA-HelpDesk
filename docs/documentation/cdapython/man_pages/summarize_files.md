@@ -49,7 +49,7 @@ This function's arguments and filter-string syntax are identical to [`summarize_
   2. `input_column` — the name of a column in that TSV
   3. `cda_column_to_match` — the name of a CDA column
 
-  Restricts result rows to those where the value of the given CDA column matches at least one value from the given column in the given TSV file.
+  Restricts result rows to those where the value of the given CDA column matches at least one value from the given column in the given TSV file. **Important:** on this table, `upstream_id` refers to the *file's own* native identifier at its source — not the identifier of the subject the file belongs to. A file of case/subject IDs will not match against `upstream_id` here and will silently return zero results. See [`get_file_data()`](get_file_data.md) for the two correct ways to find files belonging to a known list of subjects.
 
 - `data_source` (*string or list of strings, optional*)
   Restrict results to those deriving from the given upstream data source(s). Current valid values are `'CTDC'`, `'GC'`, `'GDC'`, `'IDC'`, `'PDC'`, and `'ICDC'`. Default: no filter.
@@ -80,9 +80,9 @@ Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitesp
 `=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
 Partial matches to string values are supported by adding `*` to either or both ends. Examples:
-    diagnosis = duct
-    sex = F*
-    size < 100
+   diagnosis = duct
+   sex = F*
+   size < 100
 
 String values need not be quoted inside filter strings:
 
