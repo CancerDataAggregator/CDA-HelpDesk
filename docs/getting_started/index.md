@@ -14,6 +14,7 @@ title: Getting Started
 - Know roughly what you're searching for, comfortable with a notebook? → **Low code, no install**
 - Running the same kinds of searches repeatedly, or need full flexibility? → **Power users**
 - Already have a CDA result set and want to do heavier analysis? → **Code in the Cloud**
+- Building something that talks to CDA programmatically? → **Developer / API Reference**
 
 ## What's new
 
