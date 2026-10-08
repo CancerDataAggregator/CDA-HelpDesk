@@ -21,7 +21,7 @@ This minimal build includes 5 standalone vignettes, each built around a differen
 2. [Getting oriented before I filter](02_systematic_browsing.ipynb) -- browsing tables/columns/values deliberately before committing to a query *(verified against live data)*
 3. [I have subjects, what else exists](03_match_from_file.ipynb) -- checking a real GDC case export against what else CDA knows, matching on native `upstream_id`s
 4. [Reassembling a scattered project](04_cptac_reassembly.ipynb) -- finding every piece of a known project (like CPTAC) that got split across data centers *(verified against live data)*
-5. [Patients with multiple data types](05_multimodal_patients.ipynb) -- finding subjects who have two or more kinds of data for the same condition
+5. [Subjects with multiple data types](05_multimodal_patients.ipynb) -- finding subjects who have two or more kinds of data for the same condition
 
 ## A note on harmonization and ontologies
 
