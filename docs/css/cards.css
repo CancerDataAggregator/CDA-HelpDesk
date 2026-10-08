@@ -1,6 +1,3 @@
-/* Theme-agnostic replacement for Material's .grid.cards component.
-   Plain CSS Grid -- no dependency on any specific mkdocs theme. */
-
 .grid-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
