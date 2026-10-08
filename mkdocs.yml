@@ -3,7 +3,6 @@ site_description: Search and aggregate cancer data across multiple data commons
 
 theme:
   name: material
-  custom_dir: overrides   # only needed if you add a custom homepage template later
   features:
     - navigation.tabs          # top-level sections become a horizontal tab bar
     - navigation.tabs.sticky   # tabs stay visible while scrolling within a section
