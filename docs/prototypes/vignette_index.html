@@ -6,127 +6,55 @@
   * { box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    margin: 0;
-    background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    color: #f0f0f5;
-    min-height: 100vh;
+    margin: 0; background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #f0f0f5; min-height: 100vh;
   }
   .wrap { max-width: 1000px; margin: 0 auto; padding: 56px 24px 80px; }
-
   .crumb { font-size: 0.85rem; color: #a5a2c2; margin-bottom: 20px; }
   .crumb a { color: #93c5fd; text-decoration: none; }
-
   header h1 {
     font-size: 2rem; margin: 0 0 10px;
     background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    font-weight: 800;
+    -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;
   }
   header p { color: #c4c1d9; font-size: 1rem; max-width: 680px; line-height: 1.6; margin-bottom: 40px; }
   header p strong { color: #e0dff5; }
-
   h2.section-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #a5a2c2;
-    margin: 40px 0 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: #a5a2c2;
+    margin: 40px 0 6px; display: flex; align-items: center; gap: 10px;
   }
-  h2.section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.12);
-  }
+  h2.section-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
   .section-sub { color: #8b87ac; font-size: 0.82rem; margin-bottom: 16px; line-height: 1.5; }
-
   .badge-feature {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    padding: 2px 7px;
-    border-radius: 6px;
-    background: rgba(167,139,250,0.15);
-    color: #c4b5fd;
-    margin: 2px 4px 0 0;
+    display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.03em;
+    padding: 2px 7px; border-radius: 6px; background: rgba(167,139,250,0.15); color: #c4b5fd; margin: 2px 4px 0 0;
   }
-  .badge-draft {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    padding: 2px 7px;
-    border-radius: 6px;
-    background: rgba(251,191,36,0.18);
-    color: #fbbf24;
-    margin: 2px 4px 0 0;
-  }
-
-  .vgrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
+  .vgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
   .vcard {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    padding: 20px 22px;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    cursor: pointer;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px;
+    padding: 20px 22px; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; cursor: pointer;
   }
-  .vcard:hover {
-    transform: translateY(-4px);
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(167,139,250,0.5);
-  }
+  .vcard:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); border-color: rgba(167,139,250,0.5); }
   .vcard h3 { margin: 0 0 8px; font-size: 1.02rem; line-height: 1.4; }
   .vcard p { margin: 0 0 10px; color: #c4c1d9; font-size: 0.85rem; line-height: 1.5; }
   .vcard .step-num {
-    display: inline-flex;
-    align-items: center; justify-content: center;
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: rgba(167,139,250,0.2);
-    color: #c4b5fd;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-right: 8px;
+    display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
+    border-radius: 50%; background: rgba(167,139,250,0.2); color: #c4b5fd; font-size: 0.75rem; font-weight: 700; margin-right: 8px;
   }
-
-  .modal-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(10,8,30,0.75);
-    align-items: center; justify-content: center; z-index: 50;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,8,30,0.75); align-items: center; justify-content: center; z-index: 50; }
   .modal-overlay.show { display: flex; }
-  .modal {
-    background: #1e1b3a; border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px; padding: 32px; max-width: 460px; text-align: center;
-  }
-  .modal h3 { margin-top: 0; }
-  .modal p { color: #c4c1d9; font-size: 0.88rem; line-height: 1.5; }
-  .modal button {
-    margin-top: 16px; background: linear-gradient(90deg,#a78bfa,#60a5fa);
-    border: none; color: #1e1b3a; font-weight: 700; padding: 10px 20px;
-    border-radius: 8px; cursor: pointer;
-  }
+  .modal { background: #1e1b3a; border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 32px; max-width: 460px; text-align: center; }
+  .modal h3 { margin-top: 0; } .modal p { color: #c4c1d9; font-size: 0.88rem; line-height: 1.5; }
+  .modal button { margin-top: 16px; background: linear-gradient(90deg,#a78bfa,#60a5fa); border: none; color: #1e1b3a; font-weight: 700; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <div class="crumb"><a href="#">← Back to CDA home</a></div>
-
   <header>
     <h1>Vignettes</h1>
     <p>Every vignette here answers the same underlying question -- <strong>"is there already data about X?"</strong> -- just from a different starting point. Pick the one that matches how much you already know about what you're looking for. Start with the <strong>Conceptual Overview</strong> if you're new.</p>
   </header>
-
   <h2 class="section-title">Start here</h2>
   <div class="vgrid">
     <div class="vcard" data-target="overview">
@@ -134,61 +62,48 @@
       <p>The spreadsheet metaphor, explained: tables, columns, endpoints, and how they fit together before you write a single query.</p>
     </div>
   </div>
-
   <h2 class="section-title">The five vignettes</h2>
   <div class="section-sub">Same question, five different entry points -- from "I just have a word" to "I know exactly what I need, help me reassemble it."</div>
   <div class="vgrid">
     <div class="vcard" data-target="v1">
       <h3><span class="step-num">1</span>Is there anything about X?</h3>
-      <p>Bare-term global search. You don't know the model, the vocabulary, or whether this is even worth your time yet -- so you don't look anything up first, you just type the word.</p>
+      <p>Bare-term global search. Verified against live data.</p>
       <span class="badge-feature">search_terms</span><span class="badge-feature">add_extras</span>
-      <span class="badge-draft">draft -- unverified output</span>
     </div>
     <div class="vcard" data-target="v2">
       <h3><span class="step-num">2</span>Getting oriented before I filter</h3>
-      <p>Systematic browsing -- tables, columns, real values -- before committing to a query, for when the stakes are higher than idle curiosity.</p>
-      <span class="badge-feature">tables()</span><span class="badge-feature">columns(description=)</span><span class="badge-feature">column_values()</span><span class="badge-feature">summarize_subjects/files</span><span class="badge-feature">NULL</span><span class="badge-feature">numeric ranges</span>
-      <span class="badge-draft">draft -- unverified output</span>
+      <p>Systematic browsing before committing to a query. Verified against live data.</p>
+      <span class="badge-feature">tables()</span><span class="badge-feature">columns(description=)</span><span class="badge-feature">column_values()</span><span class="badge-feature">NULL</span><span class="badge-feature">numeric ranges</span>
     </div>
     <div class="vcard" data-target="v3">
       <h3><span class="step-num">3</span>I have subjects, what else exists</h3>
-      <p>You already have a list of IDs. You're not exploring -- you want to know if there's more data on these specific people somewhere else.</p>
-      <span class="badge-feature">match_from_file</span><span class="badge-feature">include_external_refs</span>
-      <span class="badge-draft">draft -- unverified output</span>
+      <p>Checking a real GDC case export against what else CDA knows, using native source IDs.</p>
+      <span class="badge-feature">match_from_file</span><span class="badge-feature">upstream_id</span><span class="badge-feature">include_external_refs</span>
     </div>
     <div class="vcard" data-target="v4">
       <h3><span class="step-num">4</span>Reassembling a scattered project</h3>
-      <p>You know a project exists (like CPTAC) and that it got split across data centers. You need the tool to undo that scattering, not help you discover something new.</p>
-      <span class="badge-feature">match_all + match_any</span><span class="badge-feature">non-additive source counts</span>
-      <span class="badge-draft">draft -- unverified output</span>
+      <p>Finding every piece of CPTAC, reassembled automatically across data centers. Verified against live data.</p>
+      <span class="badge-feature">match_all + match_any</span><span class="badge-feature">drs_uri</span><span class="badge-feature">non-additive counts</span>
     </div>
     <div class="vcard" data-target="v5">
       <h3><span class="step-num">5</span>Patients with multiple data types</h3>
-      <p>Not "everyone with kidney cancer" -- specifically people who have both imaging AND sequencing data for it, because your hypothesis needs both for the same person.</p>
-      <span class="badge-feature">intersect_subject_results</span><span class="badge-feature">collate_results</span><span class="badge-feature">expand_subject_results</span><span class="badge-feature">add_columns</span><span class="badge-feature">exclude_columns</span>
-      <span class="badge-draft">draft -- unverified output</span>
+      <p>Finding subjects with both imaging AND sequencing data for the same condition.</p>
+      <span class="badge-feature">intersect_subject_results</span><span class="badge-feature">collate_results</span><span class="badge-feature">expand_subject_results</span>
     </div>
   </div>
 </div>
-
 <div class="modal-overlay" id="modal">
-  <div class="modal">
-    <h3 id="modal-title"></h3>
-    <p id="modal-body"></p>
-    <button onclick="document.getElementById('modal').classList.remove('show')">Got it</button>
-  </div>
+  <div class="modal"><h3 id="modal-title"></h3><p id="modal-body"></p><button onclick="document.getElementById('modal').classList.remove('show')">Got it</button></div>
 </div>
-
 <script>
 const info = {
-  overview: 'Links to the Conceptual Overview page (documentation/cdapython/vignettes/index.md).',
-  v1: '01_global_search.ipynb -- bare-term global search posture.',
-  v2: '02_systematic_browsing.ipynb -- deliberate browsing-before-filtering posture.',
-  v3: '03_match_from_file.ipynb -- "I have subjects, what else exists" posture.',
-  v4: '04_cptac_reassembly.ipynb -- known-project reassembly posture.',
-  v5: '05_multimodal_patients.ipynb -- multiple-data-types-per-patient posture.'
+  overview: 'Links to the Conceptual Overview page.',
+  v1: '01_global_search.ipynb -- verified against live data.',
+  v2: '02_systematic_browsing.ipynb -- verified against live data.',
+  v3: '03_match_from_file.ipynb -- uses real cases.tsv (GDC export), matches on upstream_id.',
+  v4: '04_cptac_reassembly.ipynb -- verified against live data.',
+  v5: '05_multimodal_patients.ipynb -- structure corrected, counts pending.'
 };
-
 document.querySelectorAll('.vcard').forEach(card => {
   card.addEventListener('click', () => {
     const key = card.dataset.target;
@@ -198,6 +113,5 @@ document.querySelectorAll('.vcard').forEach(card => {
   });
 });
 </script>
-
 </body>
 </html>
