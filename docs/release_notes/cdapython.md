@@ -1,375 +1,289 @@
 ---
-title:  data releases
+title:  cdapython releases
 status: new
 ---
 
-# Data Release Notes
-
-{{ release_status_table() }}
-
 # Public releases
-
-## Available June 30, 2026
-
-<p>CDA June 2026 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">45.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">8.4.4</a>&nbsp;(extracted 2026-05-22)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">6.1</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">4.0.14</a>&nbsp;(extracted 2026-06-17)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v24</a>&nbsp;(extracted 2026-05-28)</li>
-    <li>GC data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">27.0</a>&nbsp;(from most recent dump file provided to us by GC -- received 2026-05-14)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2026-04-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.3.0</a>&nbsp;(extracted 2026-05-28)</li>
-</ul>
 
 ## Available April 7, 2026
 
-<p>CDA March 2026 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">45.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.10.1.1</a>&nbsp;(extracted 2026-03-02)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">5.3</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">4.0.8</a>&nbsp;(extracted 2026-03-02)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v23</a>&nbsp;(extracted 2025-11-26)</li>
-    <li>GC data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">23.0</a>&nbsp;(from most recent dump file provided to us by GC -- received 2026-02-20)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2025-09-01</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.2.0</a>&nbsp;(extracted 2026-03-03)</li>
-</ul>
-
-
-## Available December 16, 2025
-<p>CDA December 2025 release notes:</p>
-
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">45.0-</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.10.1</a>&nbsp;(extracted 2025-12-05)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">5.1.1</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">4.0.4</a>&nbsp;(extracted 2025-12-08)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v23</a>&nbsp;(extracted 2025-11-26)</li>
-    <li>GC data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">21.0</a>&nbsp;(from most recent dump file provided to us by GC -- received 2025-10-20)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.2.0.475</a>&nbsp;(extracted 2025-12-08)</li>
-</ul>
-
-## Available September 12, 2025
-
-<p>CDA September 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">43.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.10.1</a>&nbsp;(extracted 2025-08-25)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.13</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.27</a>&nbsp;(extracted 2025-08-25)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v21</a>&nbsp;(extracted 2025-07-09)</li>
-    <li>GC data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">19.0</a>&nbsp;(from most recent dump file provided to us by GC -- received 2025-08-25)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.2.0.475</a>&nbsp;(extracted 2025-08-25)</li>
-</ul>
-
+Global keyword search is now available on 'summarize_subjects', 'summarize_files', 'get_subject_data',
+and 'get_file_data'. See documentation/cdapython/vignettes/011_global_search.ipynb
 
 ## Available August 18, 2025
 
-<p>CDA August 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">43.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.10</a>&nbsp;(extracted 2025-07-09)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.12</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.27</a>&nbsp;(extracted 2025-07-08)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v21</a>&nbsp;(extracted 2025-07-09)</li>
-    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">17.0</a>&nbsp;(from most recent dump file provided to us by CDS -- received 2025-06-12)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0.361</a>&nbsp;(extracted 2025-07-09)</li>
-</ul>
+New API: Streamlined, object-based query API that supports complex filter sets
+Improved cdapython with easier to read, subject and file based results tables, more intuitive query language, and support for joining data across multiple results
+
+`cdapython` is now available on PyPI -- install with `pip install cdapython` instead of installing from GitHub.
+
+### Known Issues
+
+- `upstream_source` results are incorrectly linking some records. We recommend not using this field until the fix is implemented in our next code release
 
 
-## Available June 24, 2025
+## Available July 16, 2024
 
-<p>CDA June 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">43</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.9.1</a>&nbsp;(extracted 2025-06-19)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.11</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.26</a>&nbsp;(extracted 2025-06-19)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v21</a>&nbsp;(extracted 2025-05-20)</li>
-    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">17.0</a>&nbsp;(from most recent dump file provided to us by CDS -- received 2025-06-12)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0.361</a>&nbsp;(extracted 2025-06-19)</li>
-</ul>
+cdapython version 2024.1.4
+API version 2024.1.2
 
-## Available May 29, 2025
+### Highlights:
 
-<p>CDA May 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">43.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.8.5</a>&nbsp;(extracted 2025-05-20)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.10</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.23</a>&nbsp;(extracted 2025-05-20)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v21</a>&nbsp;(extracted 2025-05-20)</li>
-    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">17.0</a>&nbsp;(from most recent dump file provided to us by CDS -- received 2025-05-14)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0.361</a>&nbsp;(extracted 2025-05-20)</li>
-</ul>
-
-## Available April 25, 2025
-
-<p>CDA April 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">42.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.8.5</a>&nbsp;(extracted 2025-04-22)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.9</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.22</a>&nbsp;(extracted 2025-04-22)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v20</a>&nbsp;(extracted 2025-01-24)</li>
-    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">16.2</a>&nbsp;(from most recent dump file provided to us by CDS -- exported 2025-03-31)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0</a>&nbsp;(extracted 2025-04-23)</li>
-</ul>
-
-## Available March 26, 2025
-
-<p>CDA March 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">42.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.7.0</a>&nbsp;(extracted 2025-03-12)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.6</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.19</a>&nbsp;(extracted 2025-03-19)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v20</a>&nbsp;(extracted 2025-01-24)</li>
-    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">16.0</a>&nbsp;(from most recent dump file provided to us by CDS -- received 2025-03-13)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0</a>&nbsp;(extracted 2025-03-19)</li>
-</ul>
+- Hotfix to resolve issues when querying against BIGINT typed columns. 
 
 
-## Available Feb 28, 2025
+We discovered a problem when attempting to apply filters against BIGINT typed columns (ex. file byte_size). This was resolved and all queries not noted in the previous known issues should be runnable. 
 
-<p>CDA February 2025 release notes:</p>
-<ul>
-    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">42.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">7.7.1</a>&nbsp;(extracted 2025-02-14)</li>
-    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">4.5</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">3.0.15</a>&nbsp;(extracted 2025-02-14)</li>
-    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v20</a>&nbsp;(extracted 2025-01-24)</li>
-    <li>CDS data release <a href="https://dataservice.datacommons.cancer.gov/#/releases">15.0</a>&nbsp;(from most recent dump file provided to us by CDS -- received 2024-12-18)</li>
-    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2023-10-16</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.1.0</a>&nbsp;(extracted 2025-02-14)</li>
-</ul>
+### Known Issues
+
+- The generated query string returned from the API will always show the filter value in quotes even if it is not a quoted value (ex. " byte_size > 20 " will be presented as " byte_size < '20' "). This is just an issue presenting the values in the query as a string and not what is actually queried to the database.
 
 
+## Available July 11, 2024
+
+cdapython version 2024.1.4
+API version 2024.1.1
+
+### Highlights:
+
+- Hotfix to resolve issues when using the summary_counts() function with the mutation table
 
 
-## Available December 20, 2024
-- GDC data release [41.0](https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/); API version [7.5.1](https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes) (extracted 2024-11-19)
-    - GDC introduced breaking changes into its data model between our November extraction and our mid-December extraction attempt
-    - 18 diagnosis fields were removed
-    - [release notes](https://docs.gdc.cancer.gov/Data_Portal/Release_Notes/Data_Portal_Release_Notes/#release-231) may not give full field list; complete changelog estimate currently under way
-    - GDC data in CDA's December release is thus based on the extracted instance of v41.0 from November, while we adjust our ETL
-- PDC data release [4.4](https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm); API version [3.0.15](https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm) (extracted 2024-12-17)
-- IDC data release [v20](https://learn.canceridc.dev/data/data-release-notes) (extracted 2024-12-17)
-- CDS data release [15.0](https://dataservice.datacommons.cancer.gov/#/releases) (from most recent dump file provided to us by CDS -- received 2024-12-18)
-    - CDS removed tumor_tissue_type from image, resulting in some CDA data loss (tumor/normal annotations)
-    - CDA changed our file.data_category field for CDS data to use CDS's genomic_info.library_strategy field instead of earlier file.experimental_strategy_and_data_subtypes
-- ICDC data release [2023-10-16](https://caninecommons.cancer.gov/#/news); front-end version [4.1.0](https://github.com/CBIIT/bento-icdc-frontend/releases) (extracted 2024-12-17)
+We discovered a problem when attempting to use the summary_counts() function with the mutation table. Attempting this would always result in an error. This was caused by an oversight in the code when we made the change from somatic_mutation to mutation in the previous release. The issue has been resolved.
 
-## Available November 26, 2024
-
-### Data extraction and release information
-
-- GDC data release [41.0](https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/); API version [7.6.1](https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes) (extracted 2024-11-19)
-- PDC data release [4.4](https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm); API version [3.0.12](https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm) (extracted 2024-11-19)
-- IDC data release [v19](https://learn.canceridc.dev/data/data-release-notes) (extracted 2024-11-19)
-- CDS data release [13.0](https://dataservice.datacommons.cancer.gov/#/releases); front-end version [4.3.0](https://github.com/CBIIT/bento-cds-frontend/releases) (from most recent dump file provided to us by CDS -- received 2024-10-31)
-- ICDC data release [2023-10-16](https://caninecommons.cancer.gov/#/news); front-end version [4.1.0](https://github.com/CBIIT/bento-icdc-frontend/releases) (extracted 2024-11-19)
-
-
-## Available October 29, 2024
-
-### Data extraction and release information
-
-CDA data version 2024-10
-
-- GDC data release [41.0](https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/); API version [7.4.1](https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes/) (extracted 2024-10-11)
-- PDC data release [4.4](https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm); API version [3.0.10](https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm) (extracted 2024-10-11)
-- IDC data release [v19](https://learn.canceridc.dev/data/data-release-notes) (extracted 2024-10-11)
-- CDS data release [13.0](https://dataservice.datacommons.cancer.gov/#/releases); front-end version [4.3.0](https://github.com/CBIIT/bento-cds-frontend/releases) (from most recent dump file provided to us by CDS -- received 2024-10-02)
-- ICDC data release [2023-10-16](https://caninecommons.cancer.gov/#/news); front-end version [4.1.0](https://github.com/CBIIT/bento-icdc-frontend/releases) (extracted 2024-10-21)
-
-
-## Available August 27, 2024
-
-### Data extraction and release information
-
-CDA data version 2024-08
-
-- GDC data release 40.0 extracted 2024-08-18
-- PDC data release 4.3 extracted 2024-08-18
-- IDC data release v18 extracted 2024-08-18
-- CDS data release 12.0 extracted 2024-08-14
-- ICDC data release 2023-10-16 extracted 2024-08-18
-
-## Available July 23, 2024
-
-### Data extraction and release information
-
-CDA data version 2024-07
-Extracted July 18, 2024:
-
-- GDC data release 40.0; API version 4.0.0 tag 7.3
-- PDC data release 4.2; API version 3.0.4.1
-- IDC data release v18
-- CDS data release 11.0; front-end version 4.2.0.269
-- ICDC data release 2023-10-16; front-end version 4.0.0.181
 
 ## Available June 26, 2024
 
-### Data extraction and release information
+cdapython version 2024.1.3
+API version 2024.1.1
 
-CDA data version 2024-06
-Extracted Fri June 21 2024:
+### Highlights:
 
-- CDS v10.0
-- GDC v40.0
-- ICDC v4.0.0
-- IDC v18
-- PDC v4.1
+- Fixed issue where somatic_mutation query was returning incorrect results
+- Fixed some performance issues with somatic_mutation queries
+- Renamed somatic_mutation table to mutation
+
+
+We discovered incorrect results coming from queries involving the somatic_mutation table. This was caused by the table not having its own id/primary key, instead relying on the subject_alias. This was a deviation from how every other data table was structured, therefore certain queries would fall apart. Changes were made to the data model to structure the newly named "mutation" table to mirror every other table. Due to this change, we needed to simply remove certain code from the API that was added in an attempt handle quirks with the original somatic_mutation table as well as update a few things within the cdapython client.
+
 
 ## Available May 29, 2024
 
-### Data extraction and release information
+- Summary value data has been reformatted for easier reading
+  
+- null data has been disambiguated
+  
+- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/008_multidc-from-file.ipynb) for an example.
 
-- GDC data version 40.0
-- PDC data version 4.1
-- IDC data version v18
-- CDS data version 9.0
+### Known issues
 
-#### Known Issues
+- `match_from_file` cannot handle very large lists of values (greater than ~10,000)
 
-- DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
+- the cdapython update is not currently available in pypi, please install using `pip install git+https://github.com/CancerDataAggregator/cdapython.git`. It should be available in pypi soon.
+
+- Some complex joins will return more data than `summary_counts` or the `count_only` parameter report. This is due to miscounting of the join structure.
+
+- Not all errors are handled gracefully, as we haven't found them all yet. If you experience one, please let us know.
+
+- help text for individual functions (and an error message, if you try to use an unavailable value) is currently the only way to obtain a valid list of data_source labels (DC names) for queries. Current list is GDC, PDC, IDC, and CDS.
+
+- column_values endpoint won't process more than one system (i.e. data_source/DC) filter per query.
+
+- the mutations endpoint gives wrong counts (but correct results)
+ex.: filtering by hugo_symbol='DOK1' reports 85 results, when the correct number of matching records (and the number of records that is actually returned) is 95.
+
+-Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab, mybinder, and other low-memory systems.
 
 
 ## Available April 5, 2024
 
-CDA is now harmonizing terms as they are incorporated into the CRDC Data Element list. In this release we have included harmonized the values for:
+cdapython has had a complete rewrite to simplify the code. 
 
-- ethnicity
-- file_format
-- morphology
-- primary_diagnosis
-- race
-- species
-- therapeutic_agent
-- source_material_type (cancer/normal)
-- treatment_type
-- vital_status
+### Known Issues:
 
-In future releases, we expect the harmonization to both broaden and improve. Additionally, in an upcoming release we will provide both the harmonized and original values to make finding the original data easier.
+- the cdapython update is not currently available in pypi, please install using `pip install git+https://github.com/CancerDataAggregator/cdapython.git`. It should be available in pypi soon.
 
-### Data extraction and release information
+- Impossible joins need better error handling, e.g. `fetch_rows( table='subject', link_to_table='subject' )`.
 
-- GDC data version 39.0 (extraction date 3/27/2024)
-- PDC data version 3.8 (extraction date 3/27/2024)
-- IDC data version v17 (extraction date 3/27/2024)
-- CDS data version 8.0 (extraction date 3/27/2024)
+- Some complex joins will return more data than `summary_counts` or the `count_only` parameter report. This is due to miscounting of the join structure.
 
-#### Known Issues
+- Not all errors are handled gracefully, as we haven't found them all yet. ff you experience one, please let us know.
 
-- DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
-- CDS data includes clashing integer IDs. We included that data with the following changes:
-    - Ensured that any integer IDs are well-wrapped by project qualifiers to make them unique within CDS
-    - In instances where the same ID was attached to multiple, conflicting metadata the resulting records will be clobbered copies of one instance. A record of the effected data is [available here](./warning_log.txt)
+- Developers using the API may experience query problems when building calls that are technically correctly formatted, but do not fit our style guide. ex.: file_associated_project and subject_associated_project currently only work as filters when applied from their home-entity endpoint. ex.: using SELECTVALUES at the mutations endpoint without including the case_barcode column will break. These will be resolved in our upcoming API update. Until then, please contact us directly for assistance.
+
+- help text for individual functions (and an error message, if you try to use an unavailable value) is currently the only way to obtain a valid list of data_source labels (DC names) for queries. Current list is GDC, PDC, IDC, and CDS.
+
+- column_values endpoint won't process more than one system (i.e. data_source/DC) filter per query.
+
+- the mutations endpoint gives wrong counts (but correct results)
+ex.: filtering by hugo_symbol='DOK1' reports 85 results, when the correct number of matching records (and the number of records that is actually returned) is 95.
+
+- the mutations endpoint exposes internal record alias info in API results (attaching example)
+front end presently strips them out.
+
+- Using the API directly (not through cdapython), it is possible to max out the Java heap space with certain queries.
+
+-Certain queries can pass back large amounts of data which can timeout or fill memory restrictions in colab, readthedocs, and low-memory systems.
 
 
 # beta versions
 
-## Available September, 12 2023.
+## Available August 22, 2023.
 
-#### Data extraction and release information
+### Updates
 
+- get_all has been expanded to work on unique_terms
 
-- GDC data version 38.0 (extraction date 9/1/2023)
-- PDC data version 3.4 (extraction date 8/24/2023)
-- IDC data version 15 (extraction date 7/19/2023)
-- CDS data version 3.0 (extraction date 8/31/2023)
+### Bug fixes
 
-Data from Cancer Data Services (CDS) is now available!
+- A visual bug where get_all was displaying multiple progress bars has been fixed
+- A bug in the code base model relationships has been fixed that was causing some queries to fail, or to not return all related results.
+- Improved linking between mutation table and everything else
 
+### Known bugs and issues - these will be fixed in an upcoming release
 
-## Available June 13, 2023.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
 
-
-
-#### Data extraction and release information
-
-- GDC data version 37.0 (extraction date 6/1/2023)
-- PDC data version 3.0 (extraction date 6/5/2023)
-- IDC data version 14 (extraction date 6/7/2023)
-
-IDC data now contains ethnicity data
 
 ## Available May 4, 2023.
 
+### Updates
+
+- Data extraction process completely rewritten with improved mappings
+- Parsing language completely rewritten to increase query speed and flexibility
+- `get_all` function replaces `auto_paginator`
+- New `.offset()` operator
+- New `.limit()` operator 
+- Dropped support for python 3.7
+
+### Bug fixes
+
+- 'treatment_anatomic_site', 'treatment_type', 'method_of_diagnosis' and others are now properly filled
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- mutation endpoint is not harmonized to other endpoints
+- progress bars are duplicated
 
 
-### Datasets & Fields
 
-#### Data extraction and release information
+## Available December 21, 2022.
 
-The current version and release dates for each of the database are:
+### Updates
 
-* GDC data version 37, extraction date - 4/5/2023
-* PDC data version 2.16, extraction date - 2/9/2023
-* IDC data version 13, extraction date - 4/4/2023
+- cdapython can now take subject/patient identifier lists from txt, csv, and tsv files as input for search
+- The unique_terms function now returns a count of null values along with the term counts
+
+### Bug fixes
+- Fixed error where / character was causing some urls to break
+- Fixed error where some columns could be counted, but not enumerated
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- 'treatment_anatomic_site', 'treatment_type', and 'method_of_diagnosis' are missing data
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- mutation endpoint is not harmonized to other endpoints
 
 
 
 ## Available November 3, 2022.
 
-### Datasets & Fields
+### Updates
 
-#### Data extraction and release information
-The current version and release dates for each of the database are:
+- users can now search for subjects that have data from multiple data centers using the `FROM` function
+- users can search within dataframes
+- dataframe results can be ordered by any column
+- `columns` now has information about what endpoint each column lives in, as well as what type of data it is (number, word, etc) and whether it's a required field
 
-* GDC data version - v34.0, GDC extraction date - 09/29/2022
-* PDC data version - v2.10, PDC extraction date - 09/29/2022
-* IDC data version - v.10.0, IDC extraction date - 09/29/2022
+### Known bugs and issues - these will be fixed in an upcoming release
 
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+- mutation endpoint is not harmonized to other endpoints
 
 ## Available September 2022.
 
-### Datasets & Fields
+ We recommend updating to take advantage of improvements to our query language
 
-* Versions:
-    * GDC: v33.1, 06/23/2022
-    * PDC: v2.7, 06/23/2022[^1]
-    * IDC: v.9.0, 06/24/2022
+The beta 3.1 release of CDA now includes search for a gene and mutation information from TCGA
 
-[^1]:Information pulled from the PDC API may contain embargoed data.
+
+### Updates
+
+- New `mutation` endpoint allows search for gene and mutation information by HUGO gene name, subject, specimen and file
+- Searches no longer require full path names for columns, e.g. 'ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site' is now 'treatment_anatomic_site'
+- 'id' columns have been made unique, e.g. ''ResearchSubject.Diagnosis.Treatment.id' is now 'treatment_id'
+- New `join_as_str` function allows users to use results from one Q search as input to another
+- `filter` function in `run` renamed to `include` and now includes flag to allow users to dynamically rename columns in search results
+- New `auto_paginator` function has been added that does not require the user to loop through results
+- `paginator` and `auto_paginator` now display a progress bar
+-  `limit` flag in paginators renamed to `page_size`
+- Query return details has been simplified
+- `to_list` can now do both fuzzy and exact matching
+- `unique_terms` can now optionally show counts of term usage
+- `columns` can now display descriptions
+- `Q` can now accept arbitrarily complex math as part of a query, e.g.: 
+ 
+         Q('days_to_birth >= 50 * -365 AND days_to_birth <= 20 + -365').specimen.run().to_dataframe()
+- Code optimization to improve search speed and performance
+
+
+### Bug fixes
+
+- Files associated with cancer or normal tissue specimens are now properly attributed as cancer or normal
+- `filters` option in `to_list` function is now case-insensitive
+- Various error message and handling improvements
+
+
+### Known bugs and issues - these will be fixed in an upcoming release
+
+- paginator and auto_paginator progress bars do not always reach 100%, when all data is retrieved.
+- adding columns to a results table from another endpoint causes duplication. If the column has much more or much less data than the results table, the duplication may cause inappropriate joins.
+
 
 ---
 
 # Early alphas
 
-## Available as of 7/11/22.
-
+## Available as of 7/11/22
 
 The beta 3.0 release of CDA searches across data from the Genomics Data Commons (GDC), the Proteomics Data Commons (PDC), and the Imaging Data Commons (IDC) to aggregate and return data to users via a single application programming interface (API).
 
-### Datasets & Fields
 
-* All datasets updated as follows
-    * GDC: v33.1, 06/23/2022
-    * PDC: v2.7, 06/23/2022[^1]
-    * IDC: v.9.0, 06/24/2022
+## Updates
 
-[^1]:Information pulled from the PDC API may contain embargoed data.
+* Added support for the following SQL operators: IN, LIKE, NOT IN, IS NOT, IS
+* Q now comes with a better query parser that allows for writing full AND/OR logic into a single Q object
+    - Example: `Q("ResearchSubject.primary_diagnosis_site = 'kidney' AND ResearchSubject.Diagnosis.stage = 'Stage II')`
+* Methods for data retrieval were split into multiple entities as opposed to returning one large nested structure
+    - To support this, method chaining was added to allow for querying each of the specific entities (e.g. `Q('[query here]').subject.run()`)
+    - Entities supported: `subject`, `researchsubject`, `specimen`, `diagnosis`, `treatment`, `file`
+    - Along with this also comes files and counts for each entity (e.g. `subject.file`, `subject.count`)
+* Counts functionality added, giving total counts for entities and per DCC depending on usage
+    - `Q("ResearchSubject.primary_diagnosis_site = 'kidney'").count.run()` would return total counts for each entity and DCC
+    - `Q("ResearchSubject.primary_diagnosis_site = 'kidney'").subject.count.run()` would give a more generalized breakdown of specific fields in subject (e.g. number of records per distinct value for `sex`, `ethnicity`, `cause_of_death` or `identifier.system`)
+    - `Q("ResearchSubject.primary_diagnosis_site = 'kidney'").subject.file.count.run()` would give a breakdown of distinct fields for subject files such as `data_type` or `file_format`
+* Filter flag added to Q's run method which allows horizontal filtering of results
+* Verbose flag added to Q's run method to hide/show Q actions when running a query
+* Queries on text fields are now case-insensitive
+* Added to_dataframe to Q's Result object that converts the JSON structure to a pandas dataframe
+* Added paginator to Q's Result object that allows for pagination through result pages. This also has a flag for paginating as a dataframe.
+* Added table formatting to count results objects for easier reading
 
+## Bug fixes
 
-### Metadata Changes
-
-
-* Summary
-    * Previous table format now called Subjects endpoint
-        * Replaced all File entities with Files - a list of file ids associated with the entity that the list is located in. e.g
-            * File -> Files
-            * ResearchSubject.File -> ResearchSubject.Files
-            * ResearchSubject.Specimen.File -> ResearchSubject.Specimen.Files
-    * Files endpoint added:
-        * Endpoint oriented around File information
-        * Includes all information regarding the file's associated entities(Subject, ResearchSubject, and Specimen)
-    * Newly available fields:
-        * vital_status
-        * days_to_death
-        * cause_of_death
-        * ResearchSubject.Diagnosis.morphology
-        * ResearchSubject.Diagnosis.method_of_diagnosis
-        * File.data_modality
-        * File.dbgap_accession_number
-        * File.imaging_modality
-        * File.imaging_series
-        * ResearchSubject.Diagnosis.Treatment.therapeutic_agent
-        * ResearchSubject.Diagnosis.Treatment.treatment_anatomic_site
-        * ResearchSubject.Diagnosis.Treatment.treatment_effect
-        * ResearchSubject.Diagnosis.Treatment.treatment_end_reason
-        * ResearchSubject.Diagnosis.Treatment.number_of_cycles
-    * Renamed fields (old -> new):
-        * ResearchSubject.associated_project -> ResearchSubject.member_of_research_project
-        * ResearchSubject.primary_disease_site -> ResearchSubject.primary_diagnosis_site
-        * ResearchSubject.primary_disease_type -> ResearchSubject.primary_disease_type
-        * ResearchSubject.Specimen.age_at_collection -> ResearchSubject.Specimen.days_to_collection
-
+* Fixed issue where queries on list columns that were not lists of json objects (i.e. subject_associated_project) would fail
+* Fixed issue where integer fields were being returned as strings
 
 
 ## Known bugs and issues - these will be fixed in an upcoming release
 
+* `unique_terms` are not sorted when they return
 * tumor stages are not harmonized, there are redundant terms (complicates query)
+* Days_to_birth should be reformatted (currently negative) or have an example query
+* Docker jupyter notebook does not work if a notebook is already open in port 8888
 * Searches on the subject endpoint incorrectly count files. Please use the file counts for the same query from the files endpoint
 * Some PDC files are incorrectly labeled at the specimen level, for e.g. a file may be inappropriately labeled as both cancer and normal.
 
@@ -378,7 +292,7 @@ The beta 3.0 release of CDA searches across data from the Genomics Data Commons 
 Version 3.0 is a full rewrite of our code and older versions of cdapython are no longer maintained or supported.
 If you'd like to see how the project has evolved, you can still access the their documentation here:
 
-- [2.0](https://cda.readthedocs.io/en/2.0/ReleaseNotes.html)
-- [2.1](https://cda.readthedocs.io/en/2.1/ReleaseNotes.html)
+- [2.0](https://github.com/CancerDataAggregator/CDA-HelpDesk/blob/2.0/docs/source/ReleaseNotes.md)
+- [2.1](https://github.com/CancerDataAggregator/CDA-HelpDesk/blob/2.1/docs/source/ReleaseNotes.md)
 
 <!-- Footnotes themselves at the bottom. -->
