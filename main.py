@@ -1,20 +1,20 @@
 """
 mkdocs-macros-plugin hook file.
-Save as main.py at your repo root (same level as mkdocs.yml), unless your
-mkdocs.yml specifies a different `module_name` under the macros plugin config --
-see the mkdocs.yml snippet for where this gets referenced.
 
-Defines two macros, both reading from the same docs/_data/release_status.yml:
-  {{ release_status_widget() }}   -- compact, unused on homepage currently but kept
-                                      in case a future page wants the small version
-  {{ release_status_table() }}    -- full detail, used on the homepage and release notes
+Defines two macros, both reading from docs/_data/release_status.yml:
+  {{ data_available_widget() }}   -- compact, unused currently but kept for future use
+  {{ data_available_table() }}    -- full detail, used on homepage and release notes
 
-Editing docs/_data/release_status.yml is the ONLY thing that should change
-each release. Nothing in this file should need to change release-to-release.
+IMPORTANT FRAMING NOTE: CDA pulls a fresh copy of every source at every single CDA
+release -- extraction timing is NOT the variable here, it's uniform. What varies is how
+recently each UPSTREAM SOURCE itself last published new data. The 'extracted' date in
+release_status.yml is being repurposed to mean "the date this source's data was last
+updated upstream, as best CDA can tell" -- NOT "the date CDA last pulled it." Language
+throughout reflects that: "source last updated" / "Nd since source update", not
+"extracted" / "Nd since extraction".
 
-Styling note: all HTML output uses plain hardcoded colors, NOT theme CSS variables
-(e.g. NOT var(--md-default-fg-color--lightest)), so this renders identically
-regardless of which mkdocs theme is active.
+Styling note: all HTML output uses plain hardcoded colors, not theme CSS variables, so
+this renders identically regardless of which mkdocs theme is active.
 """
 
 import yaml
@@ -32,32 +32,32 @@ def _load_sources():
         return yaml.safe_load(f)["sources"]
 
 
-def _status_for(src):
+def _update_status_for(src):
     release = str(src.get("release", "")).lower()
     if release in ("unassigned", "unknown", ""):
-        return "unknown", "Unassigned"
+        return "unknown", "No release assigned yet"
 
     try:
-        extracted = datetime.strptime(src["extracted"], "%Y-%m-%d").date()
+        updated = datetime.strptime(src["extracted"], "%Y-%m-%d").date()
     except (KeyError, ValueError):
         return "unknown", "Unknown"
 
-    age_days = (date.today() - extracted).days
+    age_days = (date.today() - updated).days
     if age_days <= FRESH_DAYS:
-        return "fresh", "Recently extracted"
+        return "fresh", "Recently updated by source"
     else:
-        return "stale", f"{age_days}d since extraction"
+        return "stale", f"{age_days}d since source update"
 
 
 def define_env(env):
     """Required entry point for mkdocs-macros-plugin."""
 
     @env.macro
-    def release_status_widget():
+    def data_available_widget():
         sources = _load_sources()
         rows = []
         for src in sources:
-            status_class, status_label = _status_for(src)
+            status_class, status_label = _update_status_for(src)
             dot_color = {"fresh": "#1a7f37", "stale": "#9a6700", "unknown": "#cf222e"}[status_class]
             rows.append(
                 f'<span title="{src["name"]}: {status_label}" style="display:inline-flex;align-items:center;gap:4px;margin-right:14px;font-size:0.85rem;">'
@@ -68,14 +68,14 @@ def define_env(env):
             '<div style="padding:10px 14px;border:1px solid #d0d0d0;'
             'border-radius:8px;margin:16px 0;">'
             '<div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;'
-            'color:#777777;margin-bottom:6px;">Data currency</div>'
+            'color:#777777;margin-bottom:6px;">Data available at CDA</div>'
             + "".join(rows)
             + ' <a href="/release_notes/data_updates/" style="font-size:0.85rem;">Full details →</a>'
             "</div>"
         )
 
     @env.macro
-    def release_status_table():
+    def data_available_table():
         sources = _load_sources()
         status_colors = {
             "fresh":   {"bg": "rgba(52,211,153,0.15)",  "text": "#1a7f37", "dot": "#1a7f37"},
@@ -92,14 +92,14 @@ def define_env(env):
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
             'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">API version</th>'
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
-            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Extracted</th>'
+            'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Source last updated</th>'
             '<th style="text-align:left;padding:8px 12px;font-size:0.78rem;'
             'text-transform:uppercase;letter-spacing:0.04em;border-bottom:2px solid #d0d0d0;">Status</th>'
             "</tr></thead><tbody>"
         )
         rows = []
         for src in sources:
-            status_class, status_label = _status_for(src)
+            status_class, status_label = _update_status_for(src)
             colors = status_colors[status_class]
             release_cell = (
                 f'<a href="{src["link"]}" target="_blank" rel="noopener">{src["release"]}</a>'
@@ -120,8 +120,10 @@ def define_env(env):
         return (
             '<div style="border:1px solid #d0d0d0;border-radius:12px;'
             'padding:20px 24px;margin:16px 0;">'
-            '<h3 style="margin-top:0;">📅 Data currency</h3>'
+            '<h3 style="margin-top:0;">📅 Data available at CDA</h3>'
             '<p style="color:#555555;font-size:0.85rem;margin-bottom:16px;">'
-            "How recently each underlying source was refreshed — updated with each CDA release.</p>"
+            "CDA pulls a fresh copy of every source at each release. These dates show how "
+            "recently each <em>upstream source itself</em> last published new data — not "
+            "how recently CDA last checked.</p>"
             + header + "".join(rows) + "</tbody></table></div>"
         )
