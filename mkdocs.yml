@@ -1,5 +1,5 @@
-site_name: Cancer Data Aggregator (Minimal Preview)
-site_description: Minimal build to validate Read the Docs rendering
+site_name: Cancer Data Aggregator
+site_description: Search and aggregate cancer data across multiple data commons
 
 theme:
   name: readthedocs
@@ -43,7 +43,11 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Getting Started: getting_started/index.md
+  - Getting Started:
+    - Overview: getting_started/index.md
+    - Install locally: getting_started/install.md
+    - No installation (Colab): getting_started/no-install.md
+  - Interactive Search: interactive.ipynb
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
     - "1. Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
@@ -67,8 +71,6 @@ nav:
     - expand_subject_results(): documentation/cdapython/man_pages/expand_subject_results.md
     - intersect_file_results(): documentation/cdapython/man_pages/intersect_file_results.md
     - expand_file_results(): documentation/cdapython/man_pages/expand_file_results.md
-  - Prototypes:
-    - prototypes/index.md
   - Helpdesk: helpdesk/index.md
   - About Us:
     - about_us/index.md
