@@ -1,5 +1,8 @@
 ---
-title:  Re-Search made simple
+title: Re-Search made simple
+hide:
+  - navigation
+  - toc
 ---
 
 <div class="center" markdown>
