@@ -1,5 +1,6 @@
 ---
 title: Getting Help
+hide: navigation
 ---
 <div class="grid-cards" markdown>
 -   ❓ [__Ask a question__ ↗](https://github.com/CancerDataAggregator/CDA-HelpDesk/discussions/categories/q-a){:target="_blank"}
