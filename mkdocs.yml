@@ -31,7 +31,7 @@ theme:
 plugins:
   - search
   - mkdocs-jupyter:
-      execute: true
+      execute: false
       allow_errors: false
       include_source: true
   - macros:
