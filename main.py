@@ -1,17 +1,23 @@
 """
 mkdocs-macros-plugin hook file.
 
-Defines two macros, both reading from docs/_data/release_status.yml:
-  {{ data_available_widget() }}   -- compact, unused currently but kept for future use
-  {{ data_available_table() }}    -- full detail, used on homepage and release notes
+Macros, all reading from docs/_data/release_status.yml:
+  {{ data_available_widget() }}     -- compact per-source strip, unused currently but kept
+  {{ data_available_table() }}      -- full per-source detail table, used on homepage and
+                                        data release notes page
+  {{ latest_code_release() }}       -- single small card showing the most recent cdapython
+                                        (code) release, separate from per-source data
+                                        releases above since it's a different kind of
+                                        information (one package, not six sources) and
+                                        updates on a different cadence. Used on homepage.
 
-IMPORTANT FRAMING NOTE: CDA pulls a fresh copy of every source at every single CDA
-release -- extraction timing is NOT the variable here, it's uniform. What varies is how
-recently each UPSTREAM SOURCE itself last published new data. The 'extracted' date in
-release_status.yml is being repurposed to mean "the date this source's data was last
-updated upstream, as best CDA can tell" -- NOT "the date CDA last pulled it." Language
-throughout reflects that: "source last updated" / "Nd since source update", not
-"extracted" / "Nd since extraction".
+FRAMING NOTE: CDA pulls a fresh copy of every source at every single CDA release --
+extraction timing is NOT the variable here, it's uniform. What varies is how recently
+each UPSTREAM SOURCE itself last published new data. The 'extracted' field in
+release_status.yml means "the date this source's data was last updated upstream, as
+best CDA can tell" -- NOT "the date CDA last pulled it." Language throughout reflects
+that: "source last updated" / "Nd since source update", not "extracted" / "Nd since
+extraction".
 
 Styling note: all HTML output uses plain hardcoded colors, not theme CSS variables, so
 this renders identically regardless of which mkdocs theme is active.
@@ -27,9 +33,17 @@ FRESH_DAYS = 30
 STALE_DAYS = 120
 
 
-def _load_sources():
+def _load_data():
     with open(DATA_PATH, "r") as f:
-        return yaml.safe_load(f)["sources"]
+        return yaml.safe_load(f)
+
+
+def _load_sources():
+    return _load_data()["sources"]
+
+
+def _load_cdapython_release():
+    return _load_data().get("cdapython_release")
 
 
 def _update_status_for(src):
@@ -122,8 +136,28 @@ def define_env(env):
             'padding:20px 24px;margin:16px 0;">'
             '<h3 style="margin-top:0;">📅 Data available at CDA</h3>'
             '<p style="color:#555555;font-size:0.85rem;margin-bottom:16px;">'
-            "CDA pulls a fresh copy of every source at each release. These dates show "
-            " the date each <em>upstream source itself</em> last published new data "
-            "that was captured by CDA, not how recently CDA last checked.</p>"
-            + header + "".join(rows) + "</tbody></table></div>"
+            "CDA pulls a fresh copy of every source at each release. These dates show how "
+            "recently each <em>upstream source itself</em> last published new data — not "
+            "how recently CDA last checked.</p>"
+            + header + "".join(rows) + "</tbody></table>"
+            '<p style="margin:16px 0 0;font-size:0.85rem;">'
+            '<a href="release_notes/data_updates/">Full data release history →</a>'
+            "</p></div>"
+        )
+
+    @env.macro
+    def latest_code_release():
+        rel = _load_cdapython_release()
+        if not rel:
+            return ""
+        return (
+            '<div style="border:1px solid #d0d0d0;border-radius:12px;'
+            'padding:20px 24px;margin:16px 0;">'
+            '<h3 style="margin-top:0;">🐍 Latest cdapython release</h3>'
+            f'<p style="margin:0 0 4px;"><strong>{rel["version"]}</strong>'
+            f'<span style="color:#777777;font-size:0.85rem;"> — {rel["date"]}</span></p>'
+            f'<p style="color:#555555;font-size:0.9rem;margin-bottom:16px;">{rel["highlight"]}</p>'
+            '<p style="margin:0;font-size:0.85rem;">'
+            '<a href="release_notes/cdapython/">Full code release history →</a>'
+            "</p></div>"
         )
