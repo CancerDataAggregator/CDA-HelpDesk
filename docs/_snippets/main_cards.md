@@ -48,6 +48,6 @@
 
     <p>Whatever your use case, CDA can help.</p>
 
-    [→ __API documentation__](/documentation/developers/)
+    [→ API documentation](/documentation/developers/){ .md-button }
 
 </div>
