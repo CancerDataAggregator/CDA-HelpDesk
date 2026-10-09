@@ -54,8 +54,9 @@
    so it reads as the end of the hero rather than the top of the data table card. */
 .md-typeset .hero {
     text-align: center;
-    max-width: 640px;
+    max-width: 760px;
     margin: 0 auto 3rem;
+    padding: 0 1rem;
 }
 
 .md-typeset .hero h1 {
