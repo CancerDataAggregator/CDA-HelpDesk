@@ -31,7 +31,7 @@ theme:
 plugins:
   - search
   - mkdocs-jupyter:
-      execute: false
+      execute: true
       allow_errors: false
       include_source: true
   - macros:
@@ -68,7 +68,7 @@ nav:
   - Home: index.md
   - Getting Started:
     - Overview: getting_started/index.md
-    - Interactive Search: interactive.ipynb
+    - Interactive Search: getting_started/interactive.ipynb
     - Install locally: getting_started/install.md
     - No installation (Colab): getting_started/no_install.md
   - Vignettes:
