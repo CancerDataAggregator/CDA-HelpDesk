@@ -6,7 +6,7 @@ hide:
 ---
 
 <div class="center" markdown>
-<p>CDA is one really, really enormous spreadsheet spanning six data centers — GDC, PDC, IDC, GC, ICDC, and CTDC. Every path below gets you to the same data; the difference is how much setup and flexibility you want.</p>
+<p>Every path below gets you to the same data; the difference is how much setup and flexibility you want.</p>
 </div>
 
 --8<-- "_snippets/main_cards.md"
