@@ -74,6 +74,7 @@ nav:
   - Helpdesk: helpdesk/index.md
   - About Us:
     - about_us/index.md
+    - about_us/how_we_etal.md
     - about_us/ourdata.md
   - Release Notes:
     - "Code Release Notes": release_notes/cdapython.md
