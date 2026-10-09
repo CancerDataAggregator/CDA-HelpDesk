@@ -14,9 +14,9 @@
 
     Fill in the blanks in our pre-built queries to find the data you need without installing a thing.
 
-    <p>Send your results to <a href="https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud" target="_blank">Broad Institute FireCloud ↗</a> or <a href="https://www.cancergenomicscloud.org/" target="_blank">Velsera Cancer Genomics Cloud ↗</a> for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*</p>
+    Send your results to [Broad Institute FireCloud ↗](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud ↗](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline _all without ever leaving your web browser._
 
-    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud</a>
+    [Launch CDA in the cloud](https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb){ .md-button }
 
 -   🐍 __Power users__
 
@@ -24,13 +24,13 @@
 
     Install `cdapython` with `pip` and get up and running in no time
 
-```bash
+    ```bash
     pip install cdapython
     python3
-```
-```python
+    ```
+    ```python
     from cdapython import *
-```
+    ```
 
 -   🐍 __Code in the Cloud__
 
