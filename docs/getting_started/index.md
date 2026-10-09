@@ -13,7 +13,7 @@ hide:
 
 ## Not sure which one fits?
 
-- Just want to look around? → **No installation, no code** (top-left card above)
+- Just want to look around? → **No installation, no code** (left card above)
 - Know roughly what you're searching for, comfortable with a notebook? → **Low code, no install**
 - Running the same kinds of searches repeatedly, or need full flexibility? → **Power users**
 - Already have a CDA result set and want to do heavier analysis? → **Code in the Cloud**
