@@ -1,5 +1,8 @@
 ---
 title: Getting Started
+hide:
+  - navigation
+  - toc
 ---
 
 <div class="center" markdown>
