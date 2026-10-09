@@ -7,7 +7,7 @@ hide:
 
 <div class="center" markdown>
 
-# Cancer Data Aggregator
+# Re-Search made simple
 
 <p style="font-size: 1.1rem; max-width: 640px; margin: 0 auto 8px;">Think of CDA as one really, really enormous spreadsheet spanning six cancer data centers — GDC, PDC, IDC, GC, ICDC, and CTDC. Search by harmonized, common-language terms and get results back in a standard dataframe (or TSV) you can open in Excel, feed into a pipeline, or send to your favorite cloud resource.</p>
 
