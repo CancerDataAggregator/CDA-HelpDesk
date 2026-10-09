@@ -4,7 +4,7 @@ hide:
   - navigation
   - toc
 ---
-
+# Getting Started
 <div class="center" markdown>
 <p style="font-size: 1.1rem; max-width: 640px; margin: 0 auto 24px;">Every path below gets you to the same data; the difference is how much setup and flexibility you want.</p>
 </div>
