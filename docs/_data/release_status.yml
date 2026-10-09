@@ -1,17 +1,13 @@
 # 'extracted' field name kept as-is to avoid touching every entry, but its MEANING is
 # "date this source's data was last updated upstream" -- see main.py docstring.
 cda_data_release:
-  version: "CDA data version 2026-06"
-  date: "2026-06-30"
-  highlight: "Bundles GDC 46.0, PDC 6.3, IDC v24, GC 30.0, and ICDC 2025-09-21 into one harmonized, versioned dataset."
+  date_display: "September 23, 2026"
+  highlight: "CTDC (Clinical and Translational Data Commons) data is now included in CDA for the first time."
 
 cdapython_release:
-  version: "Available April 7, 2026"
-  date: "2026-04-07"
+  date_display: "April 7, 2026"
   highlight: "Global keyword search is now available on summarize_subjects, summarize_files, get_subject_data, and get_file_data."
 
-sources:
-  # ...unchanged, your existing 6 entries  
 sources:
   - name: GDC
     release: "46.0"
