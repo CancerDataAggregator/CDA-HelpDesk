@@ -20,8 +20,3 @@ hide:
 - Building something that talks to CDA programmatically? → **Developer / API Reference**
 
 Want more detail first? See the full [install locally](install.md) guide or the full [no-installation / Colab](no_install.md) guide.
-
-## What's new
-
-- [Data Release Notes](../release_notes/data_updates.md)
-- [Code Release Notes](../release_notes/cdapython.md)
