@@ -19,7 +19,7 @@ hide:
 - Already have a CDA result set and want to do heavier analysis? → **Code in the Cloud**
 - Building something that talks to CDA programmatically? → **Developer / API Reference**
 
-Want more detail first? See the full [install locally](install.md) guide or the full [no-installation / Colab](no-install.md) guide.
+Want more detail first? See the full [install locally](install.md) guide or the full [no-installation / Colab](no_install.md) guide.
 
 ## What's new
 
