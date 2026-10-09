@@ -1,5 +1,8 @@
 ---
-title:  Developer documentation
+title: Developer documentation
+hide:
+  - navigation
+  - toc
 ---
 
 <redoc spec-url='./service_openapi.yaml'></redoc>
