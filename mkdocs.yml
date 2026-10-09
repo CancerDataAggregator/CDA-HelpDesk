@@ -68,9 +68,9 @@ nav:
   - Home: index.md
   - Getting Started:
     - Overview: getting_started/index.md
+    - Interactive Search: interactive.ipynb
     - Install locally: getting_started/install.md
     - No installation (Colab): getting_started/no_install.md
-  - Interactive Search: interactive.ipynb
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
     - "1. Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
