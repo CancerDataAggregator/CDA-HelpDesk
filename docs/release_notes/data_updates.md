@@ -7,8 +7,6 @@ status: new
 
 {{ data_available_table() }}
 
-# Public releases
-
 ## Available June 30, 2026
 
 <p>CDA June 2026 release notes:</p>
