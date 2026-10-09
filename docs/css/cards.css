@@ -64,10 +64,23 @@
    width, so pre/code content that doesn't wrap by default (the normal behavior for
    code blocks) runs off the edge instead of breaking to a new line. Wrap it instead
    of letting it get clipped. */
+/* Code blocks inside cards: card columns are narrower than Material's default content
+   width, so pre/code content that doesn't wrap by default (the normal behavior for
+   code blocks) runs off the edge instead of breaking to a new line. Wrap it instead
+   of letting it get clipped.
+   Scoped to pre/code specifically -- NOT applied to the whole .grid-cards container --
+   because button labels (e.g. "API documentation") have natural word-break points and
+   look worse forced into mid-word breaks like "documentatio" / "n" than left to wrap
+   normally at the space between words. */
 .md-typeset .grid-cards pre,
 .md-typeset .grid-cards code {
     white-space: pre-wrap;
     word-break: break-word;
+}
+
+.md-typeset .grid-cards .md-button {
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 /* Homepage hero: title, subtext, and button are one visually-centered unit instead of
