@@ -2,25 +2,30 @@
 mkdocs-macros-plugin hook file.
 
 Macros, all reading from docs/_data/release_status.yml:
-  {{ data_available_widget() }}     -- compact per-source strip, unused currently but kept
-  {{ data_available_table() }}      -- full per-source detail table, used on homepage and
-                                        data release notes page
-  {{ latest_code_release() }}       -- single small card showing the most recent cdapython
-                                        (code) release, separate from per-source data
-                                        releases above since it's a different kind of
-                                        information (one package, not six sources) and
-                                        updates on a different cadence. Used on homepage.
+  data_available_widget()  -- compact per-source strip, unused currently but kept
+  data_available_table()   -- full per-source detail table (GDC, PDC, IDC, GC, ICDC,
+                               CTDC individually)
+  latest_releases()        -- homepage summary box with two halves: the CDA data
+                               release (the versioned, bundled dataset CDA publishes
+                               once its ETL pipeline has pulled and harmonized ALL
+                               individual data commons together) and the cdapython
+                               code release (the Python package, on its own
+                               independent schedule). Carries the "Full data release
+                               history" link.
 
-FRAMING NOTE: CDA pulls a fresh copy of every source at every single CDA release --
-extraction timing is NOT the variable here, it's uniform. What varies is how recently
-each UPSTREAM SOURCE itself last published new data. The 'extracted' field in
-release_status.yml means "the date this source's data was last updated upstream, as
-best CDA can tell" -- NOT "the date CDA last pulled it." Language throughout reflects
-that: "source last updated" / "Nd since source update", not "extracted" / "Nd since
-extraction".
+FRAMING NOTE: within a single CDA data release, extraction timing across sources is
+uniform -- CDA pulls all of them together for that release. What varies, and what the
+per-source table communicates, is how recently each upstream source itself last
+published new data as of that pull. The 'extracted' field in release_status.yml means
+the date a source's data was last updated upstream, as best CDA can tell -- not the
+date CDA last pulled it.
 
 Styling note: all HTML output uses plain hardcoded colors, not theme CSS variables, so
 this renders identically regardless of which mkdocs theme is active.
+
+Both cda_data_release and cdapython_release are read from release_status.yml as plain
+manually-maintained entries (no live fetch) -- see the project's release PR checklist
+for the manual-update steps this depends on.
 """
 
 import yaml
@@ -40,6 +45,10 @@ def _load_data():
 
 def _load_sources():
     return _load_data()["sources"]
+
+
+def _load_cda_data_release():
+    return _load_data().get("cda_data_release")
 
 
 def _load_cdapython_release():
@@ -134,30 +143,47 @@ def define_env(env):
         return (
             '<div style="border:1px solid #d0d0d0;border-radius:12px;'
             'padding:20px 24px;margin:16px 0;">'
-            '<h3 style="margin-top:0;">📅 Data available at CDA</h3>'
+            '<h3 style="margin-top:0;">📅 Data available at CDA, by source</h3>'
             '<p style="color:#555555;font-size:0.85rem;margin-bottom:16px;">'
-            "CDA pulls a fresh copy of every source at each release. These dates show how "
-            "recently each <em>upstream source itself</em> last published new data — not "
-            "how recently CDA last checked.</p>"
-            + header + "".join(rows) + "</tbody></table>"
-            '<p style="margin:16px 0 0;font-size:0.85rem;">'
-            '<a href="release_notes/data_updates/">Full data release history →</a>'
-            "</p></div>"
+            "These dates show how recently each <em>upstream source itself</em> last "
+            "published new data as of CDA's most recent pull — not how recently CDA "
+            "last checked.</p>"
+            + header + "".join(rows) + "</tbody></table></div>"
         )
 
     @env.macro
-    def latest_code_release():
-        rel = _load_cdapython_release()
-        if not rel:
-            return ""
+    def latest_releases():
+        cda_rel = _load_cda_data_release()
+        code_rel = _load_cdapython_release()
+
+        def half(emoji, title, rel, link, link_text):
+            if not rel:
+                return '<div style="flex:1;min-width:240px;"></div>'
+            highlight_html = (
+                f'<p style="color:#555555;font-size:0.9rem;margin-bottom:12px;">{rel["highlight"]}</p>'
+                if rel.get("highlight") else ""
+            )
+            return (
+                '<div style="flex:1;min-width:240px;">'
+                f'<h3 style="margin-top:0;">{emoji} {title}</h3>'
+                f'<p style="margin:0 0 4px;"><strong>Available {rel["date_display"]}</strong></p>'
+                + highlight_html +
+                f'<p style="margin:0;font-size:0.85rem;"><a href="{link}">{link_text}</a></p>'
+                "</div>"
+            )
+
+        cda_half = half(
+            "📦", "Latest CDA data release", cda_rel,
+            "release_notes/data_updates/", "Full data release history →"
+        )
+        code_half = half(
+            "🐍", "Latest cdapython release", code_rel,
+            "release_notes/cdapython/", "Full code release history →"
+        )
+
         return (
             '<div style="border:1px solid #d0d0d0;border-radius:12px;'
-            'padding:20px 24px;margin:16px 0;">'
-            '<h3 style="margin-top:0;">🐍 Latest cdapython release</h3>'
-            f'<p style="margin:0 0 4px;"><strong>{rel["version"]}</strong>'
-            f'<span style="color:#777777;font-size:0.85rem;"> — {rel["date"]}</span></p>'
-            f'<p style="color:#555555;font-size:0.9rem;margin-bottom:16px;">{rel["highlight"]}</p>'
-            '<p style="margin:0;font-size:0.85rem;">'
-            '<a href="release_notes/cdapython/">Full code release history →</a>'
-            "</p></div>"
+            'padding:20px 24px;margin:16px 0;display:flex;gap:32px;flex-wrap:wrap;">'
+            + cda_half + code_half +
+            "</div>"
         )
