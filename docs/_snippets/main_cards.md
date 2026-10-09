@@ -6,7 +6,7 @@
 
     Browse through a curated dataset of all subjects that have data at multiple data centers using an intuitive filtering tool right in this website.
 
-    <a href="../interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.</a>
+    <a href="../gettig_started/interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.</a>
 
 -   ⚡ __Low code, no install__
 
