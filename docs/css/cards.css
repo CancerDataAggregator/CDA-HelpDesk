@@ -45,3 +45,27 @@
     white-space: pre-wrap;
     word-break: break-word;
 }
+
+/* Homepage hero: title, subtext, and button are one visually-centered unit instead of
+   three independently-positioned elements (the previous version only centered the
+   paragraph via its own inline style, leaving the heading and button left-aligned at
+   full container width -- which is why the button looked disconnected and off to the
+   side). All three are centered together here, with explicit space below the button
+   so it reads as the end of the hero rather than the top of the data table card. */
+.md-typeset .hero {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+}
+
+.md-typeset .hero h1 {
+    margin-bottom: 1rem;
+}
+
+.md-typeset .hero p {
+    margin: 0 auto 1rem;
+}
+
+.md-typeset .hero .md-button {
+    margin-top: 1.5rem;
+}
