@@ -3,7 +3,7 @@ title:  cdapython releases
 status: new
 ---
 
-# Public releases
+# cdapython Release Notes
 
 ## Available October 1, 2026
 
