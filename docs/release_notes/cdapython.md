@@ -5,6 +5,110 @@ status: new
 
 # Public releases
 
+## Available October 1, 2026
+
+cdapython version 2.2.1
+
+### Highlights
+
+- Fixed a typo in the help text for `column_values()`. No functional change — this release only corrects documentation shown when you run `help(column_values)`.
+
+---
+
+## Available August 25, 2026
+
+cdapython version 2.2.0
+
+### Highlights
+
+Added support for retrieving harmonized controlled-vocabulary metadata alongside your search results — specifically synonym terms, ontology "slim" terms, and containing terms. This builds on the `add_extras` option already available in `get_subject_data()`, `get_file_data()`, `summarize_subjects()`, and `summarize_files()`: previously `add_extras` could show you *that* a value matched through harmonization, and now it can also show you the specific synonym, slim, or containing terms involved.
+
+See the help text for the `add_extras` parameter in any of those four functions for the full list of accepted values.
+
+## Available December 9, 2025
+
+cdapython version 2.0.14
+
+### Highlights
+
+Added an early, experimental ("proof-of-concept") `include_disease_slims` option to `get_subject_data()` / `get_file_data()`, with a same-day follow-up fix to sort the returned `disease_slims` column consistently.
+
+**Note:** this proof-of-concept was later superseded — see the April 7, 2026 entry above, where full `search_terms` support replaced it.
+
+---
+
+## Available October 31, 2025
+
+cdapython version 2.0.12
+
+### Highlights
+
+- Standardized internal debug logging for generated SQL queries
+- Fixed `column_values()` to handle a few known edge cases in its input more gracefully
+
+---
+
+## Available October 27, 2025
+
+cdapython version 2.0.10
+
+### Highlights
+
+- `column_values()` parameter validation now shares the same validation logic used elsewhere in the library, for more consistent error messages
+- `column_values(data_source=...)` now accepts a list of sources, not just a single source string
+- Same-day follow-up fix for an issue introduced by the above change
+
+---
+
+## Available October 22, 2025
+
+cdapython version 2.0.9
+
+### Highlights
+
+- Internal cleanup to how `column_values()` checks its `data_source` argument (no user-facing behavior change)
+
+---
+
+## Available October 20, 2025
+
+cdapython version 2.0.8
+
+### Highlights
+
+**Breaking change:** `CDS` has been renamed to `GC` as a `data_source` value throughout cdapython. If your code passes `data_source='CDS'` to any function, update it to `data_source='GC'`.
+
+---
+
+## Available October 8, 2025
+
+cdapython version 2.0.7
+
+### Highlights
+
+- Fixed an issue with column metadata lookup inside `get_subject_data()` / `get_file_data()` when using `collate_results=True`
+
+---
+
+## Available September 17, 2025
+
+cdapython version 2.0.6
+
+### Highlights
+
+- Expanded support for numeric range filters (e.g. `60 < age_at_observation <= 70`) to match the latest API syntax
+
+---
+
+## Available August 18, 2025
+
+cdapython version 2.0.0
+
+### Highlights
+
+- Initial public release of `cdapython` on PyPI
+- 2.0.1: corrected the default API URL
+- 2.0.2: updated a build dependency (PyYAML) — no user-facing change
 ## Available April 7, 2026
 
 cdapython version 2.1.0
