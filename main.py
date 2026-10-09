@@ -122,8 +122,8 @@ def define_env(env):
             'padding:20px 24px;margin:16px 0;">'
             '<h3 style="margin-top:0;">📅 Data available at CDA</h3>'
             '<p style="color:#555555;font-size:0.85rem;margin-bottom:16px;">'
-            "CDA pulls a fresh copy of every source at each release. These dates show how "
-            "recently each <em>upstream source itself</em> last published new data — not "
-            "how recently CDA last checked.</p>"
+            "CDA pulls a fresh copy of every source at each release. These dates show "
+            " the date each <em>upstream source itself</em> last published new data "
+            "that was captured by CDA, not how recently CDA last checked.</p>"
             + header + "".join(rows) + "</tbody></table></div>"
         )
