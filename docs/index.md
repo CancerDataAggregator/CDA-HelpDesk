@@ -7,7 +7,7 @@ hide:
 
 <div class="hero" markdown>
 
-# Cancer Data Aggregator
+# Re-Search made simple
 
 No matter your coding comfort — from zero code to full API access — there's a way to CDA.
 
