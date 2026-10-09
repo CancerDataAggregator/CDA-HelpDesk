@@ -35,3 +35,13 @@
 .md-typeset .grid-cards > ul > li > p:last-child {
     margin-bottom: 0;
 }
+
+/* Code blocks inside cards: card columns are narrower than Material's default content
+   width, so pre/code content that doesn't wrap by default (the normal behavior for
+   code blocks) runs off the edge instead of breaking to a new line. Wrap it instead
+   of letting it get clipped. */
+.md-typeset .grid-cards pre,
+.md-typeset .grid-cards code {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
