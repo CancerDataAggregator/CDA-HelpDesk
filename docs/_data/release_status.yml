@@ -5,9 +5,9 @@ cda_data_release:
   highlight: "CTDC (Clinical and Translational Data Commons) data is now included in CDA for the first time."
 
 cdapython_release:
-  date_display: "April 7, 2026"
-  highlight: "Global keyword search is now available on summarize_subjects, summarize_files, get_subject_data, and get_file_data."
-
+  date_display: "October 1, 2026"
+  highlight: "Support for harmonized controlled-vocabulary metadata retrieval (slims, synonyms, containing terms); see help text for the add_extras flag in the get_data() and summarize() functions"
+  
 sources:
   - name: GDC
     release: "46.0"
