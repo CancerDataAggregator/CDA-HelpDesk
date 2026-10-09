@@ -1,23 +1,30 @@
-.grid-cards {
+/* .grid-cards wraps a markdown bullet list via md_in_html. Python-Markdown renders
+   that list as a single <ul>, which is the only direct child of .grid-cards -- the
+   individual list items are grandchildren, not children. Selectors target the <ul>
+   and its <li>s directly rather than ".grid-cards > *" for that reason. */
+
+.grid-cards > ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1rem;
     margin: 1.5rem 0;
+    padding-left: 0;
+    list-style: none;
 }
 
-.grid-cards > * {
+.grid-cards > ul > li {
     border: 1px solid #d0d0d0;
     border-radius: 8px;
     padding: 1rem 1.25rem;
     background: #fafafa;
 }
 
-.grid-cards hr {
+.grid-cards > ul > li > hr {
     margin: 0.5rem 0 0.75rem 0;
     border: none;
     border-top: 1px solid #e0e0e0;
 }
 
-.grid-cards p:last-child {
+.grid-cards > ul > li > p:last-child {
     margin-bottom: 0;
 }
