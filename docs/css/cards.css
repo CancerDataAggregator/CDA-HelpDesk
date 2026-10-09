@@ -3,7 +3,13 @@
    individual list items are grandchildren, not children. Selectors target the <ul>
    and its <li>s directly rather than ".grid-cards > *" for that reason. */
 
-.grid-cards > ul {
+/* .md-typeset prefix matches Material's own specificity for ul/li rules -- without it,
+   Material's built-in list styling (display: block, margin/padding on li, etc.) wins
+   the cascade over a plain ".grid-cards > ul" selector and silently drops the grid
+   layout while leaving item-level styles (border/padding/background) intact, since
+   those don't collide with any Material list rule. */
+
+.md-typeset .grid-cards > ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1rem;
@@ -12,19 +18,20 @@
     list-style: none;
 }
 
-.grid-cards > ul > li {
+.md-typeset .grid-cards > ul > li {
     border: 1px solid #d0d0d0;
     border-radius: 8px;
     padding: 1rem 1.25rem;
     background: #fafafa;
+    margin: 0;
 }
 
-.grid-cards > ul > li > hr {
+.md-typeset .grid-cards > ul > li > hr {
     margin: 0.5rem 0 0.75rem 0;
     border: none;
     border-top: 1px solid #e0e0e0;
 }
 
-.grid-cards > ul > li > p:last-child {
+.md-typeset .grid-cards > ul > li > p:last-child {
     margin-bottom: 0;
 }
