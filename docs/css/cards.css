@@ -70,3 +70,11 @@
 .md-typeset .hero .md-button {
     margin-top: 1.5rem;
 }
+
+/* Generic ".center" div wrapper (used on Getting Started and possibly elsewhere):
+   child elements with their own max-width + margin:auto get centered as a box, but
+   text inside stays left-aligned by default since margin:auto only positions the box,
+   not the text within it. This makes the class do what its name implies. */
+.md-typeset .center {
+    text-align: center;
+}
