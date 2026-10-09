@@ -17,4 +17,7 @@ Think of CDA as one really, really enormous spreadsheet spanning six cancer data
 
 </div>
 
+
 {{ data_available_table() }}
+
+{{ latest_code_release() }}
