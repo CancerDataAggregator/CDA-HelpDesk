@@ -1,5 +1,10 @@
 # 'extracted' field name kept as-is to avoid touching every entry, but its MEANING is
 # "date this source's data was last updated upstream" -- see main.py docstring.
+cdapython_release:
+  version: "Available April 7, 2026"
+  date: "2026-04-07"
+  highlight: "Global keyword search is now available on summarize_subjects, summarize_files, get_subject_data, and get_file_data."
+  
 sources:
   - name: GDC
     release: "46.0"
