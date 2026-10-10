@@ -3,18 +3,124 @@ title:  cdapython releases
 status: new
 ---
 
-# Public releases
+# cdapython Release Notes
 
+## Available October 1, 2026
+
+cdapython version 2.2.1
+
+### Highlights
+
+- Fixed a typo in the help text for `column_values()`. No functional change — this release only corrects documentation shown when you run `help(column_values)`.
+
+---
+
+## Available August 25, 2026
+
+cdapython version 2.2.0
+
+### Highlights
+
+Added support for retrieving harmonized controlled-vocabulary metadata alongside your search results — specifically synonym terms, ontology "slim" terms, and containing terms. This builds on the `add_extras` option already available in `get_subject_data()`, `get_file_data()`, `summarize_subjects()`, and `summarize_files()`: previously `add_extras` could show you *that* a value matched through harmonization, and now it can also show you the specific synonym, slim, or containing terms involved.
+
+See the help text for the `add_extras` parameter in any of those four functions for the full list of accepted values.
+
+## Available December 9, 2025
+
+cdapython version 2.0.14
+
+### Highlights
+
+Added an early, experimental ("proof-of-concept") `include_disease_slims` option to `get_subject_data()` / `get_file_data()`, with a same-day follow-up fix to sort the returned `disease_slims` column consistently.
+
+**Note:** this proof-of-concept was later superseded — see the April 7, 2026 entry above, where full `search_terms` support replaced it.
+
+---
+
+## Available October 31, 2025
+
+cdapython version 2.0.12
+
+### Highlights
+
+- Standardized internal debug logging for generated SQL queries
+- Fixed `column_values()` to handle a few known edge cases in its input more gracefully
+
+---
+
+## Available October 27, 2025
+
+cdapython version 2.0.10
+
+### Highlights
+
+- `column_values()` parameter validation now shares the same validation logic used elsewhere in the library, for more consistent error messages
+- `column_values(data_source=...)` now accepts a list of sources, not just a single source string
+- Same-day follow-up fix for an issue introduced by the above change
+
+---
+
+## Available October 22, 2025
+
+cdapython version 2.0.9
+
+### Highlights
+
+- Internal cleanup to how `column_values()` checks its `data_source` argument (no user-facing behavior change)
+
+---
+
+## Available October 20, 2025
+
+cdapython version 2.0.8
+
+### Highlights
+
+**Breaking change:** `CDS` has been renamed to `GC` as a `data_source` value throughout cdapython. If your code passes `data_source='CDS'` to any function, update it to `data_source='GC'`.
+
+---
+
+## Available October 8, 2025
+
+cdapython version 2.0.7
+
+### Highlights
+
+- Fixed an issue with column metadata lookup inside `get_subject_data()` / `get_file_data()` when using `collate_results=True`
+
+---
+
+## Available September 17, 2025
+
+cdapython version 2.0.6
+
+### Highlights
+
+- Expanded support for numeric range filters (e.g. `60 < age_at_observation <= 70`) to match the latest API syntax
+
+---
+
+## Available August 18, 2025
+
+cdapython version 2.0.0
+
+### Highlights
+
+- Initial public release of `cdapython` on PyPI
+- 2.0.1: corrected the default API URL
+- 2.0.2: updated a build dependency (PyYAML) — no user-facing change
 ## Available April 7, 2026
 
 cdapython version 2.1.0
 Global keyword search is now available on 'summarize_subjects', 'summarize_files', 'get_subject_data',
-and 'get_file_data'. See documentation/cdapython/vignettes/011_global_search.ipynb
+and 'get_file_data'. See `documentation/cdapython/vignettes/01_global_search.ipynb`
 
 ## Available August 18, 2025
 
 New API: Streamlined, object-based query API that supports complex filter sets
 Improved cdapython with easier to read, subject and file based results tables, more intuitive query language, and support for joining data across multiple results
+
+`cdapython` is now available on PyPI -- install with `pip install cdapython` instead of installing from GitHub.
 
 ### Known Issues
 
@@ -72,7 +178,7 @@ We discovered incorrect results coming from queries involving the somatic_mutati
   
 - null data has been disambiguated
   
-- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/008_multidc-from-file.ipynb) for an example.
+- Users can now submit a tab separated file (tsv) of identifiers or any other set of values to search using the `match_from_file` parameter in fetch_rows. See [this vignette](../documentation/cdapython/vignettes/03_match_from_file.ipynb) for an example.
 
 ### Known issues
 
@@ -106,7 +212,7 @@ cdapython has had a complete rewrite to simplify the code.
 
 - Some complex joins will return more data than `summary_counts` or the `count_only` parameter report. This is due to miscounting of the join structure.
 
-- Not all errors are handled gracefully, as we haven't found them all yet. ff you experience one, please let us know.
+- Not all errors are handled gracefully, as we haven't found them all yet. If you experience one, please let us know.
 
 - Developers using the API may experience query problems when building calls that are technically correctly formatted, but do not fit our style guide. ex.: file_associated_project and subject_associated_project currently only work as filters when applied from their home-entity endpoint. ex.: using SELECTVALUES at the mutations endpoint without including the case_barcode column will break. These will be resolved in our upcoming API update. Until then, please contact us directly for assistance.
 

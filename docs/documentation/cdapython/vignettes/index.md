@@ -1,26 +1,28 @@
+---
+title: Vignette Conceptual Overview
+---
 
-You can think of the CDA as a really, really enormous spreadsheet full of data. To search this enormous spreadsheet, you'd want to select columns that have data you're interested in, and then filter the rows to only the values you care about. 
+# Vignette Conceptual Overview
 
-<div class="cdanote" style="background-color:#b3e5d5;color:black;padding:20px;">
-    
-CDA data comes from six sources:
-<ul>
-<li><b>The <a href="https://proteomic.datacommons.cancer.gov/pdc/"> Proteomic Data Commons</a> (PDC)</b></li>
-<li><b>The <a href="https://gdc.cancer.gov/">Genomic Data Commons</a> (GDC)</b></li>
-<li><b>The <a href="https://datacommons.cancer.gov/repository/imaging-data-commons">Imaging Data Commons</a> (IDC)</b></li>
-<li><b>The <a href="https://general.datacommons.cancer.gov/#/">General Commons</a> (GC)</b></li>
-<li><b>The <a href="https://caninecommons.cancer.gov/#/explore">Integrated Canine Data Commons</a> (ICDC)</b></li>
-<li><b>The <a href="https://www.isb-cgc.org/">ISB Cancer Gateway in the Cloud</a> (ISB-CGC)</b></li>
-</ul> 
-    
-The CDA makes this data searchable in two main endpoints:
+You can think of the CDA as a really, really enormous spreadsheet full of data. To search this enormous spreadsheet, you'd want to select columns that have data you're interested in, and then filter the rows to only the values you care about.
 
-<ul>
-<li><b>subject:</b> A patient entity captures the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person to protect the subjects privacy.</li>
+CDA makes this data searchable in two main endpoints:
 
-<li><b>file:</b> A unit of data about subjects, researchsubjects, specimens, or their associated information.</li>
+- **subject:** a patient entity capturing the study-independent metadata for research subjects. Human research subjects are usually not traceable to a particular person, to protect their privacy.
+- **file:** a unit of data about subjects, research subjects, specimens, or their associated information.
 
-</ul>
-</div>
+If you're looking to build a cohort of distinct individuals who meet some criteria, you'd search using `get_subject_data`, which returns a table with one row per subject -- then use the `add_columns` parameter inside `get_subject_data` to pull in extra information per subject (file details, treatment history, whatever's relevant to what you're building).
 
-If you are looking to build a cohort of distinct individuals who meet some criteria, you would search using `get_subject_data`, and the result will be a table of information with one row per subject, then use the `add_columns` feature inside of `get_subject_data` to add on extra information.
+## The five vignettes
+
+This site includes 5 standalone vignettes, each built around a different starting point for the same underlying question -- "is there already data about X?":
+
+1. [Is there anything about X?](01_global_search.ipynb) -- a bare-term global search
+2. [Getting oriented before I filter](02_systematic_browsing.ipynb) -- browsing tables/columns/values deliberately before committing to a query
+3. [I have subjects, what else exists](03_match_from_file.ipynb) -- checking a real GDC case export against what else CDA knows, matching on native `upstream_id`s
+4. [Reassembling a scattered project](04_cptac_reassembly.ipynb) -- finding every piece of a known project (like CPTAC) that got split across data centers
+5. [Subjects with multiple data types](05_multimodal_patients.ipynb) -- finding subjects who have two or more kinds of data for the same condition
+
+## A note on harmonization and ontologies
+
+Worth knowing as you read these: only `anatomic_site` and `disease` currently have true ontology-backed rollup behavior in CDA (UBERON and ICD-O-3, respectively) -- those are the only fields where `add_extras` will show something meaningfully new. Most other harmonized fields are fully standardized but conceptually flat (no hierarchy to roll up through, e.g. `sex`, `species`); a handful of fields aren't harmonized yet at all (`stage`, `treatment_type`, and others). Full harmonization status and mappings are public at the [harmonization reference repo](https://github.com/CancerDataAggregator/harmonization_reference/tree/main/value_maps_by_concept).

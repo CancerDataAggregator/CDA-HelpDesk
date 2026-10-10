@@ -1,0 +1,203 @@
+/* .grid-cards wraps a markdown bullet list via md_in_html. Python-Markdown renders
+   that list as a single <ul>, which is the only direct child of .grid-cards -- the
+   individual list items are grandchildren, not children. Selectors target the <ul>
+   and its <li>s directly rather than ".grid-cards > *" for that reason. */
+
+/* .md-typeset prefix matches Material's own specificity for ul/li rules -- without it,
+   Material's built-in list styling (display: block, margin/padding on li, etc.) wins
+   the cascade over a plain ".grid-cards > ul" selector and silently drops the grid
+   layout while leaving item-level styles (border/padding/background) intact, since
+   those don't collide with any Material list rule. */
+
+.md-typeset .grid-cards > ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Below ~1100px, 5 equal columns get too narrow to read comfortably -- step down to
+   3, then 2, then 1 rather than letting columns shrink indefinitely. auto-fit was
+   dropped as the base behavior because the fixed count of 5 cards meant it would
+   orphan whichever card didn't fit into a row on its own at in-between widths (e.g.
+   a laptop fitting exactly 4), stretching that lone card to full row width. Fixed
+   column counts per breakpoint avoid that. */
+@media (max-width: 1100px) {
+    .md-typeset .grid-cards > ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .md-typeset .grid-cards > ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .md-typeset .grid-cards > ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+.md-typeset .grid-cards > ul > li {
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: #fafafa;
+    margin: 0;
+}
+
+.md-typeset .grid-cards > ul > li > hr {
+    margin: 0.5rem 0 0.75rem 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.md-typeset .grid-cards > ul > li > p:last-child {
+    margin-bottom: 0;
+}
+
+/* Code blocks inside cards: card columns are narrower than Material's default content
+   width, so pre/code content that doesn't wrap by default (the normal behavior for
+   code blocks) runs off the edge instead of breaking to a new line. Wrap it instead
+   of letting it get clipped. */
+/* Code blocks inside cards: card columns are narrower than Material's default content
+   width, so pre/code content that doesn't wrap by default (the normal behavior for
+   code blocks) runs off the edge instead of breaking to a new line. Wrap it instead
+   of letting it get clipped.
+   Scoped to pre/code specifically -- NOT applied to the whole .grid-cards container --
+   because button labels (e.g. "API documentation") have natural word-break points and
+   look worse forced into mid-word breaks like "documentatio" / "n" than left to wrap
+   normally at the space between words. */
+.md-typeset .grid-cards pre,
+.md-typeset .grid-cards code {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.md-typeset .grid-cards .md-button {
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+/* itables/DataTables dark-mode override.
+   Root cause (confirmed): DataTables ships its own bundled dark-mode CSS, gated
+   behind a raw "@media (prefers-color-scheme: dark)" query -- this reacts to the
+   VIEWER's OS/browser dark mode setting directly, completely independent of
+   Material's theme or data-md-color-scheme attribute. Removing Material's light/dark
+   toggle earlier did not address this; it's a separate mechanism entirely, triggered
+   by the visitor's own system setting regardless of what the site's theme is doing.
+   Because this is a real @media query (not just inherited color values), normal CSS
+   specificity can't selectively "win" against it -- the only reliable fix is pinning
+   explicit colors with !important on itables' own output elements, forcing light
+   styling regardless of the visitor's system preference, since this site doesn't
+   support dark mode as a concept at all right now. */
+.dt-container,
+.dt-container * {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+.dt-container th,
+.dt-container thead th {
+    background-color: #f4f2fb !important;
+    color: #1a1a1a !important;
+}
+
+.dt-button {
+    background-color: #f4f2fb !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d0d0d0 !important;
+}
+
+/* DataTables SearchBuilder extension dark-mode override.
+   Same root cause as the .dt-container fix above (DataTables ships its own
+   "@media (prefers-color-scheme: dark)" block, reacting to the viewer's OS setting
+   independent of Material's theme) -- but SearchBuilder is a SEPARATE extension with
+   its own bundled dark-mode CSS, so the earlier .dt-container override didn't reach
+   it. These class names (dtsb-*) are standard DataTables SearchBuilder classes, but
+   have not been confirmed against this site's actual rendered DOM -- if colors don't
+   change after rebuild, inspect the real elements and report back the actual class
+   names so these can be corrected. */
+.dtsb-searchBuilder,
+.dtsb-group,
+.dtsb-group *,
+.dtsb-criteria,
+.dtsb-data,
+.dtsb-condition,
+.dtsb-value,
+.dtsb-logic,
+.dtsb-logicContainer {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border-color: #d0d0d0 !important;
+}
+
+.dtsb-clearAll,
+.dtsb-add,
+.dtsb-delete {
+    background-color: #f4f2fb !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d0d0d0 !important;
+}
+
+select.dtsb-data,
+select.dtsb-condition,
+input.dtsb-value {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d0d0d0 !important;
+}
+
+/* Real root cause, confirmed via dev tools (correcting an earlier wrong assumption):
+   DataTables is NOT reacting to a "@media (prefers-color-scheme: dark)" query
+   directly -- something on this page adds a literal "dark" CLASS to <html>, and
+   DataTables' own bundled CSS reacts to that class with high-specificity selectors
+   like "html.dark div.dtsb-searchBuilder select.dtsb-dropDown". That selector has
+   much higher specificity than plain class selectors (like ".dtsb-condition" above),
+   so even with !important on both sides, their rule was winning the specificity
+   tiebreak. Matching their exact selector shape here, with !important, placed later
+   in the cascade, wins the tiebreak instead. */
+html.dark div.dtsb-searchBuilder button.dtsb-button,
+html.dark div.dtsb-searchBuilder select.dtsb-dropDown,
+html.dark div.dtsb-searchBuilder input.dtsb-input {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    color-scheme: light !important;
+}
+
+/* Homepage hero: title, subtext, and button are one visually-centered unit instead of
+   three independently-positioned elements (the previous version only centered the
+   paragraph via its own inline style, leaving the heading and button left-aligned at
+   full container width -- which is why the button looked disconnected and off to the
+   side). All three are centered together here, with explicit space below the button
+   so it reads as the end of the hero rather than the top of the data table card. */
+.md-typeset .hero {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+}
+
+.md-typeset .hero h1 {
+    margin-bottom: 1rem;
+}
+
+.md-typeset .hero p {
+    margin: 0 auto 1rem;
+}
+
+.md-typeset .hero .md-button {
+    margin-top: 1.5rem;
+}
+
+/* Generic ".center" div wrapper (used on Getting Started and possibly elsewhere):
+   child elements with their own max-width + margin:auto get centered as a box, but
+   text inside stays left-aligned by default since margin:auto only positions the box,
+   not the text within it. This makes the class do what its name implies. */
+.md-typeset .center {
+    text-align: center;
+}

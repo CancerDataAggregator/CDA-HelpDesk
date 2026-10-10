@@ -2,79 +2,62 @@
 title: column_values()
 ---
 
-Show all distinct values present in `column`, along with a count
-of occurrences for each value.
+# `column_values()`
 
+## NAME
+
+`column_values` — show all distinct values present in a column, with occurrence counts
+
+## SYNOPSIS
+
+```python
+column_values(
+    column='',
+    *,
+    return_data_as='',
+    output_file='',
+    sort_by='',
+    filters=None,
+    data_source=None,
+    force=False
+)
 ```
-column_values
-(column='', *, return_data_as='dataframe', output_file='', sort_by='', filters='', data_source='', force=False, debug=False)
-```
 
+## DESCRIPTION
 
-## Arguments
+Show all distinct values present in `column`, along with a count of occurrences for each value.
 
-### column
-( string; required ):
-The column to fetch values from.
+## ARGUMENTS
 
-### return_data_as
-( string; optional:'dataframe'(default) or 'list' or 'tsv' ):
-Specify how `column_values()` should return results: as a pandas
-DataFrame, a Python list, or as output written to a TSV file named
-by the user. If this argument is omitted, column_values() will default
-to returning results as a DataFrame.
+- `column` (*string, required*)
+  The column to fetch values from.
 
-### output_file
-( string; optional ):
-If return_data_as='tsv' is specified, output_file should contain a
-resolvable path to a file into which column_values will write tab-delimited results.
+- `return_data_as` (*string, optional: `'dataframe'`, `'list'`, or `'tsv'`*)
+  Specify how `column_values()` should return results: as a pandas DataFrame, a Python list, or as output written to a TSV file named by the user. If omitted, defaults to returning results as a DataFrame.
 
-### sort_by
-( string; optional:'count'( default for `return_data_as='dataframe'` and `return_data_as='tsv'` ) or 'value'( default for `return_data_as='list'` ) or '`count:desc`' or '`value:desc`' or '`count:asc`' or '`value:asc`' ):
+- `output_file` (*string, optional*)
+  If `return_data_as='tsv'` is specified, `output_file` should contain a resolvable path to a file into which `column_values()` will write tab-delimited results.
 
-Specify the primary column to sort when preparing result data: on
-values, or on counts of values.
+- `sort_by` (*string, optional: `'count'` (default for `return_data_as='dataframe'` and `'tsv'`), `'value'` (default for `return_data_as='list'`), `'count:desc'`, `'value:desc'`, `'count:asc'`, or `'value:asc'`*)
+  Specify the primary field to sort when preparing result data: on values, or on counts of values.
 
-A column name with a suffix of '`:desc`' appended to it will be
-sorted in reverse order; adding '`:asc`' will ensure ascending sort
-order. Example: `sort_by='value:desc'`
+  A field name with a suffix of `:desc` appended to it will be sorted in reverse order; adding `:asc` will ensure ascending sort order. Example: `sort_by='value:desc'`
 
-Secondary sort order is automatic: if the results are to be
-primarily sorted by count, then the automatic behavior will be to
-also (alphabetically) sort by value within each group of values
-that all share the same count. If results are primarily sorted by
-value, then there is no secondary sort -- each value is unique by
-design, so results don't contain groups with the same value but
-different counts, so there's nothing to arrange once the primary
-sort has been applied.
+  Secondary sort order is automatic: if results are primarily sorted by count, they are also (alphabetically) sorted by value within each group of values sharing the same count. If results are primarily sorted by value, there is no secondary sort — each value is unique by design, so there are no same-value groups with differing counts to further arrange.
 
-### filters
+- `filters` (*string or list of strings, optional*)
+  Restrict returned values to those matching any of the given strings. A wildcard (`*`) at either or both ends of each string allows partial matches. Case is ignored. Specify an empty filter string `''` to match and count missing (null) values.
 
-( string or list of strings; optional ):
+- `data_source` (*string, optional*)
+  Restrict returned values to the given upstream data source. Current valid values are `'CTDC'`, `'GC'`, `'GDC'`, `'PDC'`, `'IDC'`, and `'ICDC'`. Defaults to `None` (no filter).
 
-Restrict returned values to those matching any of the given strings.
-A wildcard (asterisk) at either end (or both ends) of each string
-will allow partial matches. Case will be ignored. Use an empty
-filter string '' to match and count missing (null) values.
+- `force` (*boolean, optional*)
+  Force execution of high-overhead queries on columns (like IDs) flagged as having large numbers of values. Defaults to `False`, in which case attempts to retrieve values for flagged columns result in a warning.
 
-### data_source
+## RETURNS
 
-( string; optional ):
-Restrict returned values to the given upstream data source, such
-as 'GDC', 'PDC', 'IDC', 'GC' and 'ICDC'. Defaults to `''` (no filter).
+`pandas.DataFrame` — or — `list` — or — nothing; results are written to a user-specified TSV file.
 
-### force
-( boolean; optional ): 
-Force execution of high-overhead queries on columns (like IDs)
-flagged as having large numbers of values. Defaults to False, in which case attempts to retrieve values for flagged columns will result in a warning.
+## SEE ALSO
 
-## Returns
-pandas.DataFrame 
-
-OR
-
-list
-
-OR
-
-returns nothing, but writes retrieved data to a user-specified TSV file
+[`columns()`](columns.md), [`tables()`](tables.md), [`cda_functions()`](cda_functions.md)

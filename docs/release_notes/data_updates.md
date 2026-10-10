@@ -3,7 +3,9 @@ title:  data releases
 status: new
 ---
 
-# Public releases
+# Data Release Notes
+
+{{ data_available_table() }}
 
 ## Available June 30, 2026
 
@@ -240,7 +242,7 @@ In future releases, we expect the harmonization to both broaden and improve. Add
 - DICOM was not included in the CRDC Data Element list for file_format, so no IDC files have file_format values
 - CDS data includes clashing integer IDs. We included that data with the following changes:
     - Ensured that any integer IDs are well-wrapped by project qualifiers to make them unique within CDS
-    - In instances where the same ID was attached to multiple, conflicting metadata the resulting records will be clobbered copies of one instance. A record of the effected data is [available here](./warning_log.txt)
+    - In instances where the same ID was attached to multiple, conflicting metadata the resulting records will be clobbered copies of one instance. A record of the affected data was kept internally at the time of this release.
 
 
 # beta versions

@@ -1,0 +1,41 @@
+# 'extracted' field name kept as-is to avoid touching every entry, but its MEANING is
+# "date this source's data was last updated upstream" -- see main.py docstring.
+cda_data_release:
+  date_display: "September 23, 2026"
+  highlight: "CTDC (Clinical and Translational Data Commons) data is now included in CDA for the first time."
+
+cdapython_release:
+  date_display: "October 1, 2026"
+  highlight: "Support for harmonized controlled-vocabulary metadata retrieval (slims, synonyms, containing terms); see help text for the add_extras flag in the get_data() and summarize() functions"
+  
+sources:
+  - name: GDC
+    release: "46.0"
+    api: "8.5.0"
+    extracted: "2026-09-23"
+    link: "https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/"
+  - name: PDC
+    release: "6.3"
+    api: "4.0.19"
+    extracted: "2026-09-23"
+    link: "https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm"
+  - name: IDC
+    release: "v24"
+    api: "—"
+    extracted: "2026-05-28"
+    link: "https://learn.canceridc.dev/data/data-release-notes"
+  - name: GC
+    release: "30.0"
+    api: "—"
+    extracted: "2026-08-20"
+    link: "https://dataservice.datacommons.cancer.gov/#/releases"
+  - name: ICDC
+    release: "2025-09-21"
+    api: "4.3.0"
+    extracted: "2026-05-28"
+    link: "https://caninecommons.cancer.gov/#/news"
+  - name: CTDC
+    release: "unassigned"
+    api: "—"
+    extracted: "2026-09-23"
+    link: "https://datacommons.cancer.gov/repository/clinical-and-translational-data-commons"

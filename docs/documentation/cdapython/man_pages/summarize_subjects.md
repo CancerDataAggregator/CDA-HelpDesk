@@ -2,10 +2,15 @@
 title: summarize_subjects()
 ---
 
-For a set of CDA subject rows that all match a user-specified set of filters -- "result rows" -- get a report showing counts of values present in that
-set of rows, profiled across (user-modifiable) columns of interest.
+# `summarize_subjects()`
 
-```
+## NAME
+
+`summarize_subjects` — get a value-count report profiling a filtered set of CDA subject rows
+
+## SYNOPSIS
+
+```python
 summarize_subjects(
     *search_terms,
     match_all=None,
@@ -15,134 +20,103 @@ summarize_subjects(
     add_columns=None,
     exclude_columns=None,
     return_data_as='',
-    output_file=''
+    output_file='',
+    add_extras=None
 )
 ```
 
+## DESCRIPTION
 
-## Arguments
+For a set of CDA subject rows that all match a user-specified set of filters — "result rows" — get a report showing counts of values present in that set of rows, profiled across (user-modifiable) columns of interest.
 
-### search_terms
-( zero or more strings; optional: ):
-One or more search terms (including phrases), all of which must be
-associated with each result row. Users can add a wildcard character * to
-either or both ends of each search term to enable partial matches
-to longer values. Example:
-    summarize_files( 'kidney', 'adeno*', 'latino' )
-    
-### match_all
-( string or list of strings; optional ):
-One or more conditions, expressed as filter strings (see below),
-ALL of which must be met by all result rows.
+## ARGUMENTS
 
-### match_any
-( string or list of strings; optional ):
-One or more conditions, expressed as filter strings (see below),
-AT LEAST ONE of which must be met by all result rows.
+- `search_terms` (*zero or more strings, optional*)
+  One or more search terms (including phrases), all of which must be associated with each result row. A wildcard `*` at either or both ends of each term enables partial matches to longer values.
+  Example: `summarize_subjects('kidney', 'adeno*', 'hispanic or latino')`
 
-### match_from_file
-( 3-element dictionary of strings; optional ):
-A dictionary containing 3 named elements:
-    1. 'input_file': The name of a (local) TSV file (with column names in its first row)
-    2. 'input_column': The name of a column in that TSV
-    3. 'cda_column_to_match': The name of a CDA column
-Restrict result rows to those where the value of the given CDA
-column matches at least one value from the given column
-in the given TSV file.
+- `match_all` (*string or list of strings, optional*)
+  One or more conditions, expressed as filter strings (see **FILTER STRINGS** below), **all** of which must be met by all result rows.
 
-### data_source
-( string or list of strings; optional ):
-Restrict results to those deriving from the given upstream data source(s). Current valid values are 'GDC', 'IDC', 'PDC',
-'GC' and 'ICDC'. (Default: no filter.)
+- `match_any` (*string or list of strings, optional*)
+  One or more conditions, expressed as filter strings, **at least one** of which must be met by all result rows.
 
-### add_columns
-( string or list of strings; optional ):
-One or more columns from a second table to add to summary output.
+- `match_from_file` (*3-element dictionary of strings, optional*)
+  A dictionary with three named elements:
+  1. `input_file` — the name of a local TSV file (with column names in its first row)
+  2. `input_column` — the name of a column in that TSV
+  3. `cda_column_to_match` — the name of a CDA column
 
-### exclude_columns
-( string or list of strings; optional ):
-One or more columns to remove from summary output.
+  Restricts result rows to those where the value of the given CDA column matches at least one value from the given column in the given TSV file. **Note:** `upstream_id` here refers to the subject's own native ID at its source. This is the subject table, so that behaves as expected for case/subject ID files — see [`get_file_data()`](get_file_data.md) if matching on the file table instead, where `upstream_id` means something different.
 
-### return_data_as
-( string; optional: 'dataframe_list' or 'dict' or 'json' ):
-Specify how to return results: as a list of pandas DataFrames, as a
-Python dictionary, or as output written to a JSON file named by the user.
-If this argument is omitted, then for each DataFrame that would have
-been returned by the 'dataframe_list' option, a table will be
-pretty-printed to the standard output stream (and nothing will be returned).
+- `data_source` (*string or list of strings, optional*)
+  Restrict results to those deriving from the given upstream data source(s). Current valid values are `'CTDC'`, `'GC'`, `'GDC'`, `'IDC'`, `'PDC'`, and `'ICDC'`. Default: no filter.
 
-### output_file
-( string; optional ):
-If return_data_as='json' is specified, output_file should contain a
-resolvable path to a file into which summary_counts() will write
-JSON-formatted results.
+- `add_columns` (*string or list of strings, optional*)
+  One or more columns from a second table to add to summary output.
 
-## Filter strings
-Filter strings are expressions of the form "COLUMN_NAME OP VALUE"
-(note in particular that the whitespace surrounding OP is required),
-where
+- `exclude_columns` (*string or list of strings, optional*)
+  One or more columns to remove from summary output.
 
-- COLUMN_NAME is a searchable CDA column (see the columns() function
-for details)
+- `return_data_as` (*string, optional: `'dataframe_list'`, `'dict'`, or `'json'`*)
+  Specify how to return results: as a list of pandas DataFrames, as a Python dictionary, or as output written to a JSON file named by the user. If omitted, for each DataFrame that would have been returned by `'dataframe_list'`, a table is instead pretty-printed to standard output (and nothing is returned).
 
-- OP is one of: `< <=  > >= = !=`
+- `output_file` (*string, optional*)
+  If `return_data_as='json'` is specified, `output_file` should contain a resolvable path to a file into which JSON-formatted results will be written.
 
-- VALUE is a particular value of whatever data type is stored
-in COLUMN_NAME (see the columns() function for details), or
-the special keyword NULL, indicating the filter should match
-missing (null) values in COLUMN_NAME.
+- `add_extras` (*string or list of strings, optional*)
+  One or more columns of extra metadata to include, to contextualize harmonized CDA column values. Current valid values are `'synonym_terms'`, `'slim_terms'`, `'containing_terms'`, and `'all'` (which includes all of the above). Default: no extras.
 
-Operators `=` and `!=` will work on numeric, boolean and string VALUEs.
+## FILTER STRINGS
 
-Operators `< <= > >=` will only work on numeric VALUEs.
+Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitespace surrounding `OP` is required), where:
 
-Users can require partial matches to string VALUEs by adding `*` to either or
-both ends. For example:
+- `COLUMN_NAME` is a searchable CDA column (see [`columns()`](columns.md))
+- `OP` is one of: `<` `<=` `>` `>=` `=` `!=`
+- `VALUE` is a value of whatever data type is stored in `COLUMN_NAME`, or the special keyword `NULL`, indicating the filter should match missing (null) values in `COLUMN_NAME`
 
-`primary_disease_type = *duct*`
-`sex = F*`
-`size < 100`
+`=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
-String VALUEs need not be quoted inside of filter strings. For example, to include
-the filters specified just above in the `match_all` argument, we can write:
+Partial matches to string values are supported by adding `*` to either or both ends. Examples:
 
-`summarize_subjects( match_all=[ 'primary_disease_type = *duct*', 'sex = F*' ] )`
+```
+diagnosis = *duct*
+sex = F*
+size < 100
+```
 
-NULL is a special VALUE which can be used to match missing data. For
-example, to get a count summary for rows where the `sex` field is missing data,
-we can write:
+String values need not be quoted inside filter strings:
 
-`summarize_subjects( match_all=[ 'year_of_birth = NULL' ] )`
+```python
+summarize_subjects(match_all=['diagnosis = *duct*', 'sex = F*'])
+```
 
-## Returns
-        
-list of pandas DataFrames, with one DataFrame for each summarized column,
-enumerating counts (or statistically summarizing unbounded numeric values) over all of that column's data values appearing in any CDA subject rows that match the user-specified filter criteria (the 'result rows'). Two DataFrames in this list --
-    'number_of_matching_subjects' and 'number_of_files_related_to_matching_subjects' --
-will contain integers representing the total number of result subject rows and the
-total number of related files, respectively. Every other DataFrame in the list
-will be titled with a CDA column name and will contain value counts or statistical summaries for that column as filtered by the result row set.
+`NULL` matches missing data:
 
-OR
+```python
+summarize_subjects(match_all=['year_of_birth = NULL'])
+```
 
-Python dictionary enumerating counts of all data values for each summarized column (or a statistical summary of those data values, in the case of unbounded numeric data) across all CDA subject rows that match the user-specified filter criteria (the 'result rows').
-Two summary keys in this dictionary -- 
-    'number_of_matching_subjects' and
-    'number_of_files_related_to_matching_subjects' -- 
-will point to integers representing the total number of result subject rows 
-and the total number of associated file rows, respectively. Every other key 
-in the dictionary will contain a CDA column name; every dictionary value 
-will itself be a dictionary either enumerating observed counts of all values 
-appearing in that column as filtered by the result row set, or encoding a
-statistical summary of those values in the case of unbounded numeric data.
+## RETURNS
 
-OR
+`list` of `pandas.DataFrame` objects, one per summarized column, enumerating counts (or statistical summaries, for unbounded numeric values) over all of that column's data values appearing in matching result rows. Two DataFrames in this list — `number_of_matching_subjects` and `number_of_files_related_to_matching_subjects` — contain integers representing the total number of result subject rows and the total number of related files, respectively. Every other DataFrame is titled with a CDA column name and contains value counts or statistical summaries for that column, as filtered by the result row set.
 
-JSON-formatted text representing the same structure as the `return_data_as='dict'` option, written to `output_file`.
+— or —
 
-OR 
+Python `dict` enumerating counts of all data values for each summarized column (or a statistical summary, for unbounded numeric data) across all matching result rows. Two keys — `number_of_matching_subjects` and `number_of_files_related_to_matching_subjects` — point to integers representing the total number of result subject rows and associated file rows, respectively. Every other key is a CDA column name, whose value is itself a dictionary enumerating observed value counts (or a statistical summary) for that column.
 
-returns nothing, but displays a series of tables to standard output
-describing the same data returned by the other `return_data_as` options.
+— or —
 
-And yes, we know how those first two paragraphs look. We apologize to the entire English language
+JSON-formatted text representing the same structure as `return_data_as='dict'`, written to `output_file`.
+
+— or —
+
+nothing; a series of tables describing the same data is printed to standard output instead.
+
+## NOTES
+
+Worth knowing while reading these counts: the file count reported here is *every file belonging to a subject who matched*, which can include files that have nothing to do with why that subject matched in the first place. If you want a count of files that themselves satisfy your filter, use [`summarize_files()`](summarize_files.md) instead.
+
+## SEE ALSO
+
+[`summarize_files()`](summarize_files.md), [`get_subject_data()`](get_subject_data.md), [`columns()`](columns.md)
