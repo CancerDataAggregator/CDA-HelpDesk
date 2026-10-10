@@ -113,6 +113,45 @@
     border: 1px solid #d0d0d0 !important;
 }
 
+/* DataTables SearchBuilder extension dark-mode override.
+   Same root cause as the .dt-container fix above (DataTables ships its own
+   "@media (prefers-color-scheme: dark)" block, reacting to the viewer's OS setting
+   independent of Material's theme) -- but SearchBuilder is a SEPARATE extension with
+   its own bundled dark-mode CSS, so the earlier .dt-container override didn't reach
+   it. These class names (dtsb-*) are standard DataTables SearchBuilder classes, but
+   have not been confirmed against this site's actual rendered DOM -- if colors don't
+   change after rebuild, inspect the real elements and report back the actual class
+   names so these can be corrected. */
+.dtsb-searchBuilder,
+.dtsb-group,
+.dtsb-group *,
+.dtsb-criteria,
+.dtsb-data,
+.dtsb-condition,
+.dtsb-value,
+.dtsb-logic,
+.dtsb-logicContainer {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border-color: #d0d0d0 !important;
+}
+
+.dtsb-clearAll,
+.dtsb-add,
+.dtsb-delete {
+    background-color: #f4f2fb !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d0d0d0 !important;
+}
+
+select.dtsb-data,
+select.dtsb-condition,
+input.dtsb-value {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d0d0d0 !important;
+}
+
 /* Homepage hero: title, subtext, and button are one visually-centered unit instead of
    three independently-positioned elements (the previous version only centered the
    paragraph via its own inline style, leaving the heading and button left-aligned at
