@@ -4,24 +4,24 @@ title: tables()
 
 # `tables()`
 
-**NAME**
+## NAME
 
 `tables` — list all searchable CDA data tables
 
-**SYNOPSIS**
+## SYNOPSIS
 
 ```python
 tables()
 ```
 
-**DESCRIPTION**
+## DESCRIPTION
 
 Get a list of all searchable CDA data tables.
 
-**RETURNS**
+## RETURNS
 
 `list of strings` — names of searchable CDA tables.
 
-**SEE ALSO**
+## SEE ALSO
 
 [`columns()`](columns.md), [`cda_functions()`](cda_functions.md)
