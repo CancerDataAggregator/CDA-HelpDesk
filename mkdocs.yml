@@ -68,6 +68,7 @@ extra_css:
   - css/cards.css
   
 extra_javascript:
+  - js/force-light-mode.js
   - js/hide-interactive-sidebar.js
 
 nav:
