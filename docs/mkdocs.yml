@@ -40,7 +40,8 @@ markdown_extensions:
 
 extra_css:
   - css/cards.css
-
+extra_javascript:
+  - js/hide-interactive-sidebar.js
 nav:
   - Home: index.md
   - Getting Started:
