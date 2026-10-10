@@ -4,11 +4,11 @@ title: column_values()
 
 # `column_values()`
 
-**NAME**
+## NAME
 
 `column_values` — show all distinct values present in a column, with occurrence counts
 
-**SYNOPSIS**
+## SYNOPSIS
 
 ```python
 column_values(
@@ -23,11 +23,11 @@ column_values(
 )
 ```
 
-**DESCRIPTION**
+## DESCRIPTION
 
 Show all distinct values present in `column`, along with a count of occurrences for each value.
 
-**ARGUMENTS**
+## ARGUMENTS
 
 - `column` (*string, required*)
   The column to fetch values from.
@@ -54,10 +54,10 @@ Show all distinct values present in `column`, along with a count of occurrences 
 - `force` (*boolean, optional*)
   Force execution of high-overhead queries on columns (like IDs) flagged as having large numbers of values. Defaults to `False`, in which case attempts to retrieve values for flagged columns result in a warning.
 
-**RETURNS**
+## RETURNS
 
 `pandas.DataFrame` — or — `list` — or — nothing; results are written to a user-specified TSV file.
 
-**SEE ALSO**
+## SEE ALSO
 
 [`columns()`](columns.md), [`tables()`](tables.md), [`cda_functions()`](cda_functions.md)
