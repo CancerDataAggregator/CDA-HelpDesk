@@ -152,6 +152,23 @@ input.dtsb-value {
     border: 1px solid #d0d0d0 !important;
 }
 
+/* Real root cause, confirmed via dev tools (correcting an earlier wrong assumption):
+   DataTables is NOT reacting to a "@media (prefers-color-scheme: dark)" query
+   directly -- something on this page adds a literal "dark" CLASS to <html>, and
+   DataTables' own bundled CSS reacts to that class with high-specificity selectors
+   like "html.dark div.dtsb-searchBuilder select.dtsb-dropDown". That selector has
+   much higher specificity than plain class selectors (like ".dtsb-condition" above),
+   so even with !important on both sides, their rule was winning the specificity
+   tiebreak. Matching their exact selector shape here, with !important, placed later
+   in the cascade, wins the tiebreak instead. */
+html.dark div.dtsb-searchBuilder button.dtsb-button,
+html.dark div.dtsb-searchBuilder select.dtsb-dropDown,
+html.dark div.dtsb-searchBuilder input.dtsb-input {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    color-scheme: light !important;
+}
+
 /* Homepage hero: title, subtext, and button are one visually-centered unit instead of
    three independently-positioned elements (the previous version only centered the
    paragraph via its own inline style, leaving the heading and button left-aligned at
