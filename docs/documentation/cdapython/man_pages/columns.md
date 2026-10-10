@@ -4,21 +4,21 @@ title: columns()
 
 # `columns()`
 
-**NAME**
+## NAME
 
 `columns` — get structured metadata describing searchable CDA columns
 
-**SYNOPSIS**
+## SYNOPSIS
 
 ```python
 columns(*, return_data_as='', output_file='', sort_by='', **filter_arguments)
 ```
 
-**DESCRIPTION**
+## DESCRIPTION
 
 Get structured metadata describing searchable CDA columns.
 
-**ARGUMENTS**
+## ARGUMENTS
 
 - `return_data_as` (*string, optional: `'dataframe'`, `'list'`, or `'tsv'`*)
   Specify how `columns()` should return results: as a pandas DataFrame, a Python list, or as output written to a TSV file named by the user. If omitted, defaults to returning results as a DataFrame.
@@ -32,7 +32,7 @@ Get structured metadata describing searchable CDA columns.
   Appending `:desc` to a field name sorts it in reverse order; `:asc` ensures ascending order.
   Example: `sort_by=['table', 'nullable:desc', 'column:asc']`
 
-**FILTER ARGUMENTS**
+## FILTER ARGUMENTS
 
 - `table` (*string or list of strings, optional*)
   Restrict returned data to columns from tables whose names match any of the given strings. A wildcard (`*`) at either or both ends of each string allows partial matches. Case is ignored.
@@ -52,7 +52,7 @@ Get structured metadata describing searchable CDA columns.
 - `exclude_table` (*string or list of strings, optional*)
   Restrict returned data to columns from tables whose names do **not** match any of the given strings. Wildcards and case-insensitivity apply as above.
 
-**RETURNS**
+## RETURNS
 
 `pandas.DataFrame` where each row is a metadata record describing one searchable CDA column, comprised of:
 
@@ -72,6 +72,6 @@ Get structured metadata describing searchable CDA columns.
 
 nothing; results are written to a user-specified TSV file
 
-**SEE ALSO**
+## SEE ALSO
 
 [`column_values()`](column_values.md), [`tables()`](tables.md), [`cda_functions()`](cda_functions.md)
