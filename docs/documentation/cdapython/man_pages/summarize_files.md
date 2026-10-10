@@ -4,11 +4,11 @@ title: summarize_files()
 
 # `summarize_files()`
 
-**NAME**
+## NAME
 
 `summarize_files` — get a value-count report profiling a filtered set of CDA file rows
 
-**SYNOPSIS**
+## SYNOPSIS
 
 ```python
 summarize_files(
@@ -25,13 +25,13 @@ summarize_files(
 )
 ```
 
-**DESCRIPTION**
+## DESCRIPTION
 
 For a set of CDA file rows that all match a user-specified set of filters — "result rows" — get a report showing counts of values present in that set of rows, profiled across (user-modifiable) columns of interest.
 
 This function's arguments and filter-string syntax are identical to [`summarize_subjects()`](summarize_subjects.md), applied to the `file` table instead of `subject`. See `summarize_subjects()` for the full description of each argument and of filter-string syntax.
 
-**ARGUMENTS**
+## ARGUMENTS
 
 - `search_terms` (*zero or more strings, optional*)
   One or more search terms (including phrases), all of which must be associated with each result row. A wildcard `*` at either or both ends of each term enables partial matches to longer values.
@@ -69,7 +69,7 @@ This function's arguments and filter-string syntax are identical to [`summarize_
 - `add_extras` (*string or list of strings, optional*)
   One or more columns of extra metadata to include, to contextualize harmonized CDA column values. Current valid values are `'synonym_terms'`, `'slim_terms'`, `'containing_terms'`, and `'all'` (which includes all of the above). Default: no extras.
 
-**FILTER STRINGS**
+## FILTER STRINGS
 
 Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitespace surrounding `OP` is required), where:
 
@@ -80,9 +80,12 @@ Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitesp
 `=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
 Partial matches to string values are supported by adding `*` to either or both ends. Examples:
-   diagnosis = duct
-   sex = F*
-   size < 100
+
+```
+diagnosis = *duct*
+sex = F*
+size < 100
+```
 
 String values need not be quoted inside filter strings:
 
@@ -96,7 +99,7 @@ summarize_files(match_all=['diagnosis = *duct*', 'sex = F*', 'size < 100'])
 summarize_files(match_all=['access = NULL'])
 ```
 
-**RETURNS**
+## RETURNS
 
 `list` of `pandas.DataFrame` objects, one per summarized column, enumerating counts (or statistical summaries, for unbounded numeric values) over all of that column's data values appearing in matching result rows. Two DataFrames in this list — `number_of_matching_files` and `number_of_subjects_related_to_matching_files` — contain integers representing the total number of result file rows and the total number of related subjects, respectively. Every other DataFrame is titled with a CDA column name and contains value counts or statistical summaries for that column, as filtered by the result row set.
 
@@ -112,6 +115,6 @@ JSON-formatted text representing the same structure as `return_data_as='dict'`, 
 
 nothing; a series of tables describing the same data is printed to standard output instead.
 
-**SEE ALSO**
+## SEE ALSO
 
 [`summarize_subjects()`](summarize_subjects.md), [`get_file_data()`](get_file_data.md), [`columns()`](columns.md)
