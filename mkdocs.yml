@@ -34,6 +34,9 @@ plugins:
       execute: true
       allow_errors: false
       include_source: true
+      remove_tag_config:
+        remove_input_tags:
+          - hide_code
   - macros:
       module_name: main
 
