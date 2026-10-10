@@ -4,11 +4,11 @@ title: summarize_subjects()
 
 # `summarize_subjects()`
 
-**NAME**
+## NAME
 
 `summarize_subjects` — get a value-count report profiling a filtered set of CDA subject rows
 
-**SYNOPSIS**
+## SYNOPSIS
 
 ```python
 summarize_subjects(
@@ -25,11 +25,11 @@ summarize_subjects(
 )
 ```
 
-**DESCRIPTION**
+## DESCRIPTION
 
 For a set of CDA subject rows that all match a user-specified set of filters — "result rows" — get a report showing counts of values present in that set of rows, profiled across (user-modifiable) columns of interest.
 
-**ARGUMENTS**
+## ARGUMENTS
 
 - `search_terms` (*zero or more strings, optional*)
   One or more search terms (including phrases), all of which must be associated with each result row. A wildcard `*` at either or both ends of each term enables partial matches to longer values.
@@ -67,7 +67,7 @@ For a set of CDA subject rows that all match a user-specified set of filters —
 - `add_extras` (*string or list of strings, optional*)
   One or more columns of extra metadata to include, to contextualize harmonized CDA column values. Current valid values are `'synonym_terms'`, `'slim_terms'`, `'containing_terms'`, and `'all'` (which includes all of the above). Default: no extras.
 
-**FILTER STRINGS**
+## FILTER STRINGS
 
 Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitespace surrounding `OP` is required), where:
 
@@ -78,9 +78,12 @@ Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitesp
 `=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
 Partial matches to string values are supported by adding `*` to either or both ends. Examples:
-   diagnosis = duct
-   sex = F*
-   size < 100
+
+```
+diagnosis = *duct*
+sex = F*
+size < 100
+```
 
 String values need not be quoted inside filter strings:
 
@@ -94,7 +97,7 @@ summarize_subjects(match_all=['diagnosis = *duct*', 'sex = F*'])
 summarize_subjects(match_all=['year_of_birth = NULL'])
 ```
 
-**RETURNS**
+## RETURNS
 
 `list` of `pandas.DataFrame` objects, one per summarized column, enumerating counts (or statistical summaries, for unbounded numeric values) over all of that column's data values appearing in matching result rows. Two DataFrames in this list — `number_of_matching_subjects` and `number_of_files_related_to_matching_subjects` — contain integers representing the total number of result subject rows and the total number of related files, respectively. Every other DataFrame is titled with a CDA column name and contains value counts or statistical summaries for that column, as filtered by the result row set.
 
@@ -110,10 +113,10 @@ JSON-formatted text representing the same structure as `return_data_as='dict'`, 
 
 nothing; a series of tables describing the same data is printed to standard output instead.
 
-**NOTES**
+## NOTES
 
 Worth knowing while reading these counts: the file count reported here is *every file belonging to a subject who matched*, which can include files that have nothing to do with why that subject matched in the first place. If you want a count of files that themselves satisfy your filter, use [`summarize_files()`](summarize_files.md) instead.
 
-**SEE ALSO**
+## SEE ALSO
 
 [`summarize_files()`](summarize_files.md), [`get_subject_data()`](get_subject_data.md), [`columns()`](columns.md)
