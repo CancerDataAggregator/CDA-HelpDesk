@@ -4,11 +4,11 @@ title: get_subject_data()
 
 # `get_subject_data()`
 
-**NAME**
+## NAME
 
 `get_subject_data` — get CDA subject rows matching user-specified criteria
 
-**SYNOPSIS**
+## SYNOPSIS
 
 ```python
 get_subject_data(
@@ -27,11 +27,11 @@ get_subject_data(
 )
 ```
 
-**DESCRIPTION**
+## DESCRIPTION
 
 Get CDA subject rows ("result rows") that match user-specified criteria.
 
-**ARGUMENTS**
+## ARGUMENTS
 
 - `search_terms` (*zero or more strings, optional*)
   One or more search terms (including phrases), all of which must be associated with each result row. A wildcard `*` at either or both ends of each term enables partial matches to longer values.
@@ -75,7 +75,7 @@ Get CDA subject rows ("result rows") that match user-specified criteria.
 - `add_extras` (*string or list of strings, optional*)
   One or more columns of extra metadata to include, to contextualize harmonized CDA column values. Current valid values are `'synonym_terms'`, `'slim_terms'`, `'containing_terms'`, and `'all'` (which includes all of the above). Default: no extras.
 
-**FILTER STRINGS**
+## FILTER STRINGS
 
 Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitespace surrounding `OP` is required), where:
 
@@ -86,8 +86,11 @@ Filter strings are expressions of the form `"COLUMN_NAME OP VALUE"` (the whitesp
 `=` and `!=` work on numeric, boolean, and string values. `<` `<=` `>` `>=` work only on numeric values.
 
 Partial matches to string values are supported by adding `*` to either or both ends. Examples:
-   diagnosis = duct
-   sex = F*
+
+```
+diagnosis = *duct*
+sex = F*
+```
 
 String values need not be quoted inside filter strings:
 
@@ -101,7 +104,7 @@ get_subject_data(match_all=['diagnosis = *duct*', 'sex = F*'])
 get_subject_data(match_all=['cause_of_death = NULL'])
 ```
 
-**RETURNS**
+## RETURNS
 
 (Default) `pandas.DataFrame` containing CDA subject data matching the user-specified filter criteria. The DataFrame's named columns match columns in the `subject` table plus any optional user-added columns from other tables, and each row represents one CDA `subject` row (possibly with related data from other tables appended, according to user directives).
 
@@ -109,6 +112,6 @@ get_subject_data(match_all=['cause_of_death = NULL'])
 
 nothing; results are written to a user-specified TSV file.
 
-**SEE ALSO**
+## SEE ALSO
 
 [`get_file_data()`](get_file_data.md), [`summarize_subjects()`](summarize_subjects.md), [`intersect_subject_results()`](intersect_subject_results.md), [`expand_subject_results()`](expand_subject_results.md), [`columns()`](columns.md)
