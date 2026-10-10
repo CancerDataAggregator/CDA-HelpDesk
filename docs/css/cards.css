@@ -83,6 +83,36 @@
     overflow-wrap: normal;
 }
 
+/* itables/DataTables dark-mode override.
+   Root cause (confirmed): DataTables ships its own bundled dark-mode CSS, gated
+   behind a raw "@media (prefers-color-scheme: dark)" query -- this reacts to the
+   VIEWER's OS/browser dark mode setting directly, completely independent of
+   Material's theme or data-md-color-scheme attribute. Removing Material's light/dark
+   toggle earlier did not address this; it's a separate mechanism entirely, triggered
+   by the visitor's own system setting regardless of what the site's theme is doing.
+   Because this is a real @media query (not just inherited color values), normal CSS
+   specificity can't selectively "win" against it -- the only reliable fix is pinning
+   explicit colors with !important on itables' own output elements, forcing light
+   styling regardless of the visitor's system preference, since this site doesn't
+   support dark mode as a concept at all right now. */
+.dt-container,
+.dt-container * {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+.dt-container th,
+.dt-container thead th {
+    background-color: #f4f2fb !important;
+    color: #1a1a1a !important;
+}
+
+.dt-button {
+    background-color: #f4f2fb !important;
+    color: #1a1a1a !important;
+    border: 1px solid #d0d0d0 !important;
+}
+
 /* Homepage hero: title, subtext, and button are one visually-centered unit instead of
    three independently-positioned elements (the previous version only centered the
    paragraph via its own inline style, leaving the heading and button left-aligned at
