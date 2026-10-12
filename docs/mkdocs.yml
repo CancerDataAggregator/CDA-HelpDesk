@@ -53,11 +53,17 @@ nav:
     - No installation (Colab): getting_started/no-install.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
-    - "1. Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
-    - "2. Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
-    - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
-    - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
-    - "5. Subjects with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
+    - Videos:
+      - "Intro to CDA": documentation/cdapython/vignettes/videos/00A_intro_to_cda.md
+      - "Build a cohort interactively": documentation/cdapython/vignettes/videos/00B_interactive_cohort.md
+      - "Build a low-code cohort with python": documentation/cdapython/vignettes/videos/00C_lowcode_cohort.md
+      - "Multi-omics cohort building": documentation/cdapython/vignettes/videos/00D_multiomics_cohort.md
+    - Notebooks:
+      - "1. Is there anything about X?": documentation/cdapython/vignettes/01_global_search.ipynb
+      - "2. Getting oriented before I filter": documentation/cdapython/vignettes/02_systematic_browsing.ipynb
+      - "3. I have subjects, what else exists": documentation/cdapython/vignettes/03_match_from_file.ipynb
+      - "4. Reassembling a scattered project": documentation/cdapython/vignettes/04_cptac_reassembly.ipynb
+      - "5. Subjects with multiple data types": documentation/cdapython/vignettes/05_multimodal_patients.ipynb
   - Developers:
     - API Reference: documentation/developers/index.md
   - Function Reference:
