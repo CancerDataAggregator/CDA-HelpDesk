@@ -13,9 +13,13 @@ CDA makes this data searchable in two main endpoints:
 
 If you're looking to build a cohort of distinct individuals who meet some criteria, you'd search using `get_subject_data`, which returns a table with one row per subject -- then use the `add_columns` parameter inside `get_subject_data` to pull in extra information per subject (file details, treatment history, whatever's relevant to what you're building).
 
-## The five vignettes
+## Videos
 
-This site includes 5 standalone vignettes, each built around a different starting point for the same underlying question -- "is there already data about X?":
+If you'd rather watch a walkthrough before working through a notebook, see the **Videos** section below. These cover the same ground as the notebook vignettes in spirit, but some on-screen commands may be out of date -- each video links to its current notebook equivalent.
+
+## The five notebook vignettes
+
+This site includes 5 standalone notebook vignettes, each built around a different starting point for the same underlying question -- "is there already data about X?":
 
 1. [Is there anything about X?](01_global_search.ipynb) -- a bare-term global search
 2. [Getting oriented before I filter](02_systematic_browsing.ipynb) -- browsing tables/columns/values deliberately before committing to a query
