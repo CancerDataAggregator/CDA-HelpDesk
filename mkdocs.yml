@@ -80,7 +80,6 @@ nav:
     - No installation (Colab): getting_started/no_install.md
   - Vignettes:
     - Conceptual Overview: documentation/cdapython/vignettes/index.md
-    - Videos:
     - What's New:
       - "What's new in CDA": documentation/cdapython/vignettes/00E_whats_new.ipynb
     - Videos:
