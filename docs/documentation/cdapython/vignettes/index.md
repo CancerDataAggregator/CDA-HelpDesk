@@ -13,6 +13,12 @@ CDA makes this data searchable in two main endpoints:
 
 If you're looking to build a cohort of distinct individuals who meet some criteria, you'd search using `get_subject_data`, which returns a table with one row per subject -- then use the `add_columns` parameter inside `get_subject_data` to pull in extra information per subject (file details, treatment history, whatever's relevant to what you're building).
 
+## What's New
+
+New features, hot off the release. **What's New** pairs a quick video with a
+runnable notebook so you can see the latest search tricks in action -- and try
+them yourself immediately after.
+
 ## Videos
 
 If you'd rather watch a walkthrough before working through a notebook, see the **Videos** section below. These cover the same ground as the notebook vignettes in spirit, but some on-screen commands may be out of date -- each video links to its current notebook equivalent.
