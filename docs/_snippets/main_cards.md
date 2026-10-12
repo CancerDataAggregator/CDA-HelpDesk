@@ -14,7 +14,7 @@
 
     Fill in the blanks in our pre-built queries to find the data you need without installing a thing.
 
-    <p>Send your results to <a href="https://www.cancergenomicscloud.org/" target="_blank">Velsera Cancer Genomics Cloud ↗</a> for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*</p>
+    <p><strong>Run a pipeline on your results.</strong> Send your results to <a href="https://www.cancergenomicscloud.org/" target="_blank">Velsera Cancer Genomics Cloud ↗</a> for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*</p>
 
     <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud</a>
 
@@ -36,7 +36,7 @@
 
     ---
 
-    Bring lists of files or subjects found with CDA to the <a href="https://isb-cgc.org/" target="_blank">ISB Cancer Gateway in the Cloud (ISB-CGC) ↗</a> to instantly access both associated derived data and raw files, for use in cloud processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
+    <strong>Query and analyze directly.</strong> Bring lists of files or subjects found with CDA to the <a href="https://isb-cgc.org/" target="_blank">ISB Cancer Gateway in the Cloud (ISB-CGC) ↗</a> to instantly access both associated harmonized tabular derived data and raw experimental files, for use in cloud analytic or processing pipelines -- either in your own preferred environment or using ISB-CGC's free Google Cloud Platform credits program.
 
     <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/010_isbcgc.ipynb" title="isbcgcusecase" class="md-button md-button">Test it out on Google Colab</a>
 
