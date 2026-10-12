@@ -6,7 +6,7 @@
 
     Browse through a curated dataset of all subjects that have data at multiple data centers using an intuitive filtering tool right in this website.
 
-    <a href="../getting_started/interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.</a>
+    <a href="/interactive/" title="interactive search" class="md-button md-button">Head to our interactive page to try it out.</a>
 
 -   ⚡ __Low code, no install__
 
@@ -14,9 +14,9 @@
 
     Fill in the blanks in our pre-built queries to find the data you need without installing a thing.
 
-    Send your results to [Broad Institute FireCloud ↗](https://datacommons.cancer.gov/analytical-resource/broad-institute-firecloud){:target="_blank"} or [Velsera Cancer Genomics Cloud ↗](https://www.cancergenomicscloud.org/){:target="_blank"} for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline _all without ever leaving your web browser._
+    <p>Send your results to <a href="https://www.cancergenomicscloud.org/" target="_blank">Velsera Cancer Genomics Cloud ↗</a> for a complete cloud experience. Find the data you need, fetch all the files, and run your favorite bioinformatics pipeline *all without ever leaving your web browser.*</p>
 
-    [Launch CDA in the cloud](https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb){ .md-button }
+    <a href="https://colab.research.google.com/github/CancerDataAggregator/Community-Notebooks/blob/main/Tutorials/Welcome.ipynb" title="Try it now" class="md-button md-button">Launch CDA in the cloud</a>
 
 -   🐍 __Power users__
 
@@ -48,6 +48,6 @@
 
     <p>Whatever your use case, CDA can help.</p>
 
-    [API documentation](../documentation/developers/){ .md-button }
+    [→ __API documentation__](/documentation/developers/)
 
 </div>
