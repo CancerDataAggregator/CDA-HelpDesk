@@ -201,14 +201,17 @@ html.dark div.dtsb-searchBuilder input.dtsb-input {
 .md-typeset .center {
     text-align: center;
 }
-/* Notebook cell output (e.g. summarize_subjects()'s box-drawing ASCII tables) can be
-   wider than the content column once sidebars are open, and unlike prose, this output
-   can't be allowed to wrap -- wrapping box-drawing characters breaks the table's visual
-   alignment entirely. Horizontal scroll on the output container preserves the table's
-   shape while letting the user access content that overflows the visible width. */
-.jp-OutputArea-output pre,
-.jp-RenderedText pre {
-    overflow-x: auto;
-    white-space: pre;
+/* Notebook cell output (e.g. summarize_subjects()'s box-drawing ASCII tables) renders
+   inside Jupyter's own .jp-OutputArea-output pre, which ships with white-space: pre-wrap
+   and word-break: break-all -- built for ordinary text output, but actively destructive
+   to box-drawing tables, since wrapping/breaking those characters mid-table garbles the
+   whole layout. The selector below matches Jupyter's own specificity (.jupyter-wrapper
+   .jp-OutputArea-output pre) to reliably win the cascade, forcing the content back to
+   unwrapped text with horizontal scroll instead. */
+.jupyter-wrapper .jp-OutputArea-output pre {
+    white-space: pre !important;
+    word-break: normal !important;
+    word-wrap: normal !important;
+    overflow-x: auto !important;
     max-width: 100%;
 }
