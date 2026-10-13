@@ -1,12 +1,13 @@
 ## Release type
-<!-- Delete whichever doesn't apply, or keep both if this PR covers a combined release -->
+<!-- Delete whichever doesn't apply, or keep multiple if this PR is mixed -->
 - [ ] Code release (cdapython)
 - [ ] Data release (CDA dataset)
+- [ ] Maintenance / fix (no new release — bug fix, broken link, styling, nav, typo, etc.)
 
 ---
 
 ## 🐍 Code release checklist
-*(skip this section entirely if this PR is data-only)*
+*(skip this section entirely if this PR is data-only or maintenance-only)*
 
 - [ ] **`docs/_data/release_status.yml`** — update `cdapython_release`:
   - [ ] `date_display` matches the new entry's date in [CHANGELOG.md](https://github.com/CancerDataAggregator/cdapython/blob/develop/CHANGELOG.md)
@@ -24,7 +25,7 @@
 ---
 
 ## 📦 Data release checklist
-*(skip this section entirely if this PR is code-only)*
+*(skip this section entirely if this PR is code-only or maintenance-only)*
 
 - [ ] **`docs/_data/release_status.yml`** — update `cda_data_release`:
   - [ ] `date_display` matches this release's date
@@ -44,8 +45,29 @@
 
 ---
 
-## ✅ Shared checks (either release type)
+## 🔧 Maintenance / fix checklist
+*(skip this section entirely if this PR is a code or data release with no incidental fixes)*
+
+- [ ] **Describe the actual problem being fixed, not just the symptom.** ("Button 404'd" is a symptom; "`main_cards.md` used an absolute href that skipped RTD's `/en/<version>/` prefix on preview builds" is the problem.) Future-you, or whoever's doing the next sweep like this, benefits far more from the real cause than from "fixed the button."
+- [ ] **Check every place the fixed thing is referenced, not just the one you found.** Several past fixes here only patched one of multiple cross-links to the same page (e.g. a changed notebook path referenced from both a card and a video page) — grep for the old path/value site-wide before considering this closed.
+- [ ] **If this is a CSS fix:** confirm the exact winning selector via dev tools (Styles panel, not a guess) before writing an override. A plausible-looking selector with lower specificity than the real culprit will silently do nothing — inspect the actual computed styles and match or exceed the real rule's specificity.
+- [ ] **If this is a broken-link/path fix:** verify the fix against the real file tree (`ls`/repo browser), not against what a nav config or an old handoff doc *says* the structure should be — those can drift out of sync with what's actually on disk.
+- [ ] **If this touches a notebook:** confirm `execute: true` is actually on for the build you're testing against — a notebook can look fine in a build that silently isn't executing it.
+- [ ] **If this removes a "draft" / "unverified" marker:** confirm the underlying content was actually run against the live API and confirmed, not just that it reads cleanly. A draft banner should come off *because* it's verified, not because it's inconvenient to leave on.
+- [ ] Rebuild and visually confirm the fix on the actual rendered page — not just that the diff looks correct.
+
+---
+
+## ⚠️ Known-incomplete content currently live
+*(use this if something shipped to prod before it was fully ready, so it doesn't quietly get forgotten — add a line per item, remove once resolved)*
+
+- [ ] _Example: "What's New" video page is live with a placeholder video embed (`[PLACEHOLDER_VIDEO_ID]`) — real video not yet recorded/uploaded as of this PR._
+- [ ]
+
+---
+
+## ✅ Shared checks (any PR type)
 - [ ] Vignette notebooks still execute cleanly end-to-end (`mkdocs-jupyter` runs with `execute: true, allow_errors: false`, so a broken call fails the whole build — but confirm locally before pushing, not just hoping CI catches it)
 - [ ] Spot-check vignette **prose** against freshly-executed counts — numbers are always live at build time, but if a count shifted a lot (e.g. a new source adding thousands of subjects), the surrounding narrative sentences that reference specific old numbers may now read oddly and could use a rewrite, not just a number swap
-- [ ] Homepage (`docs/index.md`) renders both release cards correctly after the YAML changes above — check locally, don't assume the macro handled missing/malformed fields gracefully
-- [ ] No dead links introduced (new source links, new changelog links, etc.)
+- [ ] Homepage (`docs/index.md`) renders both release cards correctly after any YAML changes — check locally, don't assume the macro handled missing/malformed fields gracefully
+- [ ] No dead links introduced (new source links, new changelog links, path changes from a fix, etc.)
