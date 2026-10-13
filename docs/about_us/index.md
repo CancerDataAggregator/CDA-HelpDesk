@@ -2,29 +2,25 @@
 title:  About Us
 ---
 
-
 # About us
 
 The Cancer Data Aggregator is a service of the National Cancer Institutes' (NCI) Cancer Research Data Commons. We pull metadata for thousands of studies hosted at multiple data repositories across NCI, and make it available for search from a single tool so researchers can more easily find and reuse existing cancer research data. In between pulling and publishing, we thoroughly clean, harmonize, and cross-reference the metadata so you can easily do things like find subjects that have participated in multiple studies, discover data from a disease that was originally described in different ways at each repository, and compile all the data from your favorite program such as CPTAC - no matter where it ended up. 
 
-To learn more about how we make metadata ready for search, head to our [about our data](./ourdata.md) page.
+To learn more about how we make metadata ready for search, head to our [about our data](./our_data.md) page.
 
 To learn more about how to access and work with data you find using CDA, visit the CRDC [Cloud Resources](https://datacommons.cancer.gov/analyze/analytical-tools) page
 
 
 ## About the Cancer Research Data Commons
 
-The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommons.cancer.gov/){:target="_blank"} (CRDC) is a cloud-based data science infrastructure that provides secure access to a large, comprehensive, and expanding collection of cancer research data. Users can explore and use analytical and visualization tools for data analysis in the cloud.
+The [Cancer Research Data Commons ↗](https://datacommons.cancer.gov/){:target="_blank"} (CRDC) is a cloud-based data science infrastructure that provides secure access to a large, comprehensive, and expanding collection of cancer research data. Users can explore and use analytical and visualization tools for data analysis in the cloud.
 
 ![CRDC image](../images/CRDCoverviewDEC2023small.jpeg)
 
 
 ## Our team
 
-<div class="grid cards" markdown>
-    
-
-    
+<div class="grid-cards" markdown>
 -   <figure>
     <img src="../images/arthur.png" width="100" height="100"
          alt="Arthur Brady">
@@ -46,16 +42,11 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
          alt="David Pot">
     <figcaption>David Pot<p>Principal Investigator</figcaption>
 </figure>
-
-
-
-
-
 </div>
 
 ## Alumni
 
-<div class="grid cards" markdown>
+<div class="grid-cards" markdown>
 -   <figure>
     <img src="../images/BingxingHuo-bio.png" width="100" height="100"
          alt="Bing-Xing Huo">
@@ -81,13 +72,11 @@ The [Cancer Research Data Commons:octicons-link-external-16:](https://datacommon
          alt="Rachel Kutner">
     <figcaption>Rachel Kutner <p>Developer & Project Management</figcaption>
 </figure>
-
 -   <figure>
     <img src="../images/kat.jpg" width="100" height="100"
          alt="Kat Thayer">
     <figcaption>Kat Thayer <p>Project Management</figcaption>
 </figure>
-
 -   <figure>
     <img src="../images/alex.jpeg" width="100" height="100"
          alt="Alex Baumann">

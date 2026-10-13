@@ -1,5 +1,5 @@
 ---
-title:  Developer documentation
+title: Developer documentation
 hide:
   - navigation
   - toc
