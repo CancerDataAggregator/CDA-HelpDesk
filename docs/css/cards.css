@@ -201,3 +201,14 @@ html.dark div.dtsb-searchBuilder input.dtsb-input {
 .md-typeset .center {
     text-align: center;
 }
+/* Notebook cell output (e.g. summarize_subjects()'s box-drawing ASCII tables) can be
+   wider than the content column once sidebars are open, and unlike prose, this output
+   can't be allowed to wrap -- wrapping box-drawing characters breaks the table's visual
+   alignment entirely. Horizontal scroll on the output container preserves the table's
+   shape while letting the user access content that overflows the visible width. */
+.jp-OutputArea-output pre,
+.jp-RenderedText pre {
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
+}
