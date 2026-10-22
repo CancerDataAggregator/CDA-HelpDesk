@@ -7,6 +7,21 @@ status: new
 
 {{ data_available_table() }}
 
+
+## Available September 23, 2026
+
+<p>CDA September 2026 release notes:</p>
+<ul>
+    <li><strong>CTDC (Clinical and Translational Data Commons) data is now included in CDA for the first time.</strong></li>
+    <li>GDC data release <a href="https://docs.gdc.cancer.gov/Data/Release_Notes/Data_Release_Notes/">46.0</a>; API version <a href="https://docs.gdc.cancer.gov/API/Release_Notes/API_Release_Notes">8.5.0</a>&nbsp;(extracted 2026-09-23)</li>
+    <li>PDC data release <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Data_Release_Notes.htm">6.3</a>; API version <a href="https://pdc-release-notes.s3.amazonaws.com/PDC_Software_Release_Notes.htm">4.0.19</a>&nbsp;(extracted 2026-09-23)</li>
+    <li>IDC data release <a href="https://learn.canceridc.dev/data/data-release-notes">v24</a>&nbsp;(extracted 2026-05-28 -- unchanged this release)</li>
+    <li>GC data release <a href="https://general.datacommons.cancer.gov/#/releases">30.0</a>&nbsp;(from most recent dump file provided to us by GC -- received 2026-08-20)</li>
+    <li>ICDC data release <a href="https://caninecommons.cancer.gov/#/news">2025-09-21</a>; front-end version <a href="https://github.com/CBIIT/bento-icdc-frontend/releases">4.3.0</a>&nbsp;(extracted 2026-05-28 -- unchanged this release)</li>
+    <li>CTDC data release <a href="https://datacommons.cancer.gov/repository/clinical-and-translational-data-commons">unassigned</a>&nbsp;(extracted 2026-09-23) -- CTDC has no version-number system yet, so "unassigned" is the correct release value, not a placeholder</li>
+</ul>
+
+
 ## Available June 30, 2026
 
 <p>CDA June 2026 release notes:</p>
