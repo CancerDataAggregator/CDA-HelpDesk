@@ -37,6 +37,7 @@
   - [ ] **New data center added?** Add a full new entry (name, release, api, extracted, link)
   - [ ] **Data center hasn't assigned a version yet** (like CTDC currently) — use `"unassigned"` as the release value, not a guess or placeholder number
 - [ ] **`docs/release_notes/data_updates.md`** — add a new dated entry at the top, one bullet per source, matching existing format
+  - [ ] **This step is easy to skip silently** — `release_status.yml` drives the live homepage widget and `data_updates.md` is a separate, manually-maintained file; nothing currently enforces that a `date_display` change here is matched by a new entry there. Confirm the two actually match before merging (a real instance of this drifting out of sync, caught and manually reconstructed, prompted this checklist item).
 - [ ] **New data source added?** — if yes, a few more things need real content, not just data entry:
   - [ ] **`docs/about_us/ourdata.md`** — add a new blurb describing the source, matching the existing per-source structure and tone
   - [ ] **Logo image** — confirm a real logo asset exists for the new source (don't reference a placeholder path; this repo has previously shipped pages referencing logo files that didn't actually exist — check before merging, don't assume)
@@ -71,3 +72,4 @@
 - [ ] Spot-check vignette **prose** against freshly-executed counts — numbers are always live at build time, but if a count shifted a lot (e.g. a new source adding thousands of subjects), the surrounding narrative sentences that reference specific old numbers may now read oddly and could use a rewrite, not just a number swap
 - [ ] Homepage (`docs/index.md`) renders both release cards correctly after any YAML changes — check locally, don't assume the macro handled missing/malformed fields gracefully
 - [ ] No dead links introduced (new source links, new changelog links, path changes from a fix, etc.)
+- [ ] **`release_status.yml` vs. the release-notes files are in sync** — if `cda_data_release.date_display` changed, `data_updates.md` has a matching new entry; if `cdapython_release.date_display` changed, `cdapython.md` has a matching new entry. Check this even on PRs that didn't check a release-type box above — `release_status.yml` can get touched incidentally (e.g. during a maintenance fix) without the corresponding write-up following it.
